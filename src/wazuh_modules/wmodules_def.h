@@ -21,7 +21,7 @@
 #endif
 
 #ifndef ARGV0
-#define ARGV0 "wazuh-modulesd"
+#define ARGV0 "openarmor-modulesd"
 #endif // ARGV0
 
 #ifdef WIN32

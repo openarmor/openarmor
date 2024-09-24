@@ -39,7 +39,7 @@ alert_template = {
     'id': 'alert_id',
     'full_log': 'full log.',
     'decoder': {'name': 'decoder-name'},
-    'location': 'wazuh-X',
+    'location': 'openarmor-X',
     'agent': {'id': '001', 'name': 'The agent', 'ip': '1.1.1.1'},
 }
 
@@ -52,7 +52,7 @@ msg_template = {
     },
     'routing_key': f'{apikey_virustotal}',
     'event_action': 'trigger',
-    'client': 'Wazuh-X -- Alert generated',
+    'client': 'Openarmor-X -- Alert generated',
     'client_url': 'https://monitoring.example.com',
     'agent': {'id': '001', 'name': 'The agent', 'ip': '1.1.1.1'},
 }

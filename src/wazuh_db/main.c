@@ -111,7 +111,7 @@ int main(int argc, char ** argv)
 
     // Read ossec.conf
     if (ReadConfig(modules, OSSECCONF, &gconfig, NULL) < 0) {
-        merror_exit("Invalid configuration block for Wazuh-DB.");
+        merror_exit("Invalid configuration block for Openarmor-DB.");
     }
 
     if (!isDebug()) {

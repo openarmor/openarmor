@@ -24,7 +24,7 @@ from wazuh.core.cluster.dapi.dapi import DistributedAPI
 from wazuh.core.manager import query_update_check_service
 from wazuh.core.results import AffectedItemsWazuhResult
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 
 async def get_status(pretty: bool = False, wait_for_complete: bool = False) -> ConnexionResponse:

@@ -1,1 +1,1 @@
-wazuh_master = __import__('wazuh-master')
+wazuh_master = __import__('openarmor-master')

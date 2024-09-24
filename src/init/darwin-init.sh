@@ -9,7 +9,7 @@
 INSTALLATION_PATH=${1}
 SERVICE=/Library/LaunchDaemons/com.wazuh.agent.plist
 STARTUP=/Library/StartupItems/WAZUH/StartupParameters.plist
-LAUNCHER_SCRIPT=/Library/StartupItems/WAZUH/Wazuh-launcher
+LAUNCHER_SCRIPT=/Library/StartupItems/WAZUH/Openarmor-launcher
 STARTUP_SCRIPT=/Library/StartupItems/WAZUH/WAZUH
 
 launchctl unload /Library/LaunchDaemons/com.wazuh.agent.plist 2> /dev/null
@@ -44,15 +44,15 @@ echo '
 
 StartService ()
 {
-        '${INSTALLATION_PATH}'/bin/wazuh-control start
+        '${INSTALLATION_PATH}'/bin/openarmor-control start
 }
 StopService ()
 {
-        '${INSTALLATION_PATH}'/bin/wazuh-control stop
+        '${INSTALLATION_PATH}'/bin/openarmor-control stop
 }
 RestartService ()
 {
-        '${INSTALLATION_PATH}'/bin/wazuh-control restart
+        '${INSTALLATION_PATH}'/bin/openarmor-control restart
 }
 RunService "$1"
 ' > $STARTUP_SCRIPT
@@ -93,12 +93,12 @@ chmod u=rw-,go=r-- $STARTUP
 echo '#!/bin/sh
 
 capture_sigterm() {
-    '${INSTALLATION_PATH}'/bin/wazuh-control stop
+    '${INSTALLATION_PATH}'/bin/openarmor-control stop
     exit $?
 }
 
-if ! '${INSTALLATION_PATH}'/bin/wazuh-control start; then
-    '${INSTALLATION_PATH}'/bin/wazuh-control stop
+if ! '${INSTALLATION_PATH}'/bin/openarmor-control start; then
+    '${INSTALLATION_PATH}'/bin/openarmor-control stop
 fi
 
 while : ; do

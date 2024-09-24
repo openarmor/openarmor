@@ -19,7 +19,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-authd
+    - openarmor-authd
 
 os_platform:
     - linux

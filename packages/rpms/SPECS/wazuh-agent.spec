@@ -12,7 +12,7 @@
 %endif
 
 Summary:     Wazuh helps you to gain security visibility into your infrastructure by monitoring hosts at an operating system and application level. It provides the following capabilities: log analysis, file integrity monitoring, intrusions detection and policy and compliance monitoring
-Name:        wazuh-agent
+Name:        openarmor-agent
 Version:     %{_version}
 Release:     %{_release}
 License:     GPL
@@ -24,7 +24,7 @@ Vendor:      Wazuh, Inc <info@wazuh.com>
 Packager:    Wazuh, Inc <info@wazuh.com>
 Requires(pre):    /usr/sbin/groupadd /usr/sbin/useradd
 Requires(postun): /usr/sbin/groupdel /usr/sbin/userdel
-Conflicts:   ossec-hids ossec-hids-agent wazuh-manager wazuh-local
+Conflicts:   ossec-hids ossec-hids-agent openarmor-manager openarmor-local
 AutoReqProv: no
 
 Requires: coreutils
@@ -100,9 +100,9 @@ mkdir -p ${RPM_BUILD_ROOT}%{_localstatedir}/.ssh
 cp -pr %{_localstatedir}/* ${RPM_BUILD_ROOT}%{_localstatedir}/
 mkdir -p ${RPM_BUILD_ROOT}/usr/lib/systemd/system/
 sed -i "s:WAZUH_HOME_TMP:%{_localstatedir}:g" src/init/templates/ossec-hids-rh.init
-install -m 0755 src/init/templates/ossec-hids-rh.init ${RPM_BUILD_ROOT}%{_initrddir}/wazuh-agent
-sed -i "s:WAZUH_HOME_TMP:%{_localstatedir}:g" src/init/templates/wazuh-agent.service
-install -m 0644 src/init/templates/wazuh-agent.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system/
+install -m 0755 src/init/templates/ossec-hids-rh.init ${RPM_BUILD_ROOT}%{_initrddir}/openarmor-agent
+sed -i "s:WAZUH_HOME_TMP:%{_localstatedir}:g" src/init/templates/openarmor-agent.service
+install -m 0644 src/init/templates/openarmor-agent.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system/
 
 # Clean the preinstalled configuration assesment files
 rm -f ${RPM_BUILD_ROOT}%{_localstatedir}/ruleset/sca/*
@@ -216,24 +216,24 @@ if [ $1 = 2 ]; then
     exit 1
   fi
 
-  if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet wazuh-agent > /dev/null 2>&1; then
-    systemctl stop wazuh-agent.service > /dev/null 2>&1
+  if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet openarmor-agent > /dev/null 2>&1; then
+    systemctl stop openarmor-agent.service > /dev/null 2>&1
     touch %{_localstatedir}/tmp/wazuh.restart
   # Check for SysV
-  elif command -v service > /dev/null 2>&1 && service wazuh-agent status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
-    service wazuh-agent stop > /dev/null 2>&1
+  elif command -v service > /dev/null 2>&1 && service openarmor-agent status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
+    service openarmor-agent stop > /dev/null 2>&1
     touch %{_localstatedir}/tmp/wazuh.restart
-  elif %{_localstatedir}/bin/wazuh-control status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
+  elif %{_localstatedir}/bin/openarmor-control status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
     touch %{_localstatedir}/tmp/wazuh.restart
   elif %{_localstatedir}/bin/ossec-control status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
     touch %{_localstatedir}/tmp/wazuh.restart
   fi
-  %{_localstatedir}/bin/ossec-control stop > /dev/null 2>&1 || %{_localstatedir}/bin/wazuh-control stop > /dev/null 2>&1
+  %{_localstatedir}/bin/ossec-control stop > /dev/null 2>&1 || %{_localstatedir}/bin/openarmor-control stop > /dev/null 2>&1
 fi
 
 %post
 
-echo "VERSION=\"$(%{_localstatedir}/bin/wazuh-control info -v)\"" > /etc/ossec-init.conf
+echo "VERSION=\"$(%{_localstatedir}/bin/openarmor-control info -v)\"" > /etc/ossec-init.conf
 if [ $1 = 2 ]; then
   if [ -d %{_localstatedir}/logs/ossec ]; then
     rm -rf %{_localstatedir}/logs/wazuh
@@ -267,7 +267,7 @@ if [ $1 = 1 ]; then
 fi
 
 if [[ -d /run/systemd/system ]]; then
-  rm -f %{_initrddir}/wazuh-agent
+  rm -f %{_initrddir}/openarmor-agent
 fi
 
 # Delete the installation files used to configure the agent
@@ -419,13 +419,13 @@ if [ $1 = 0 ]; then
 
   # Stop the services before uninstall the package
   # Check for systemd
-  if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet wazuh-agent > /dev/null 2>&1; then
-    systemctl stop wazuh-agent.service > /dev/null 2>&1
+  if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet openarmor-agent > /dev/null 2>&1; then
+    systemctl stop openarmor-agent.service > /dev/null 2>&1
   # Check for SysV
-  elif command -v service > /dev/null 2>&1 && service wazuh-agent status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
-    service wazuh-agent stop > /dev/null 2>&1
+  elif command -v service > /dev/null 2>&1 && service openarmor-agent status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
+    service openarmor-agent stop > /dev/null 2>&1
   fi
-  %{_localstatedir}/bin/wazuh-control stop > /dev/null 2>&1
+  %{_localstatedir}/bin/openarmor-control stop > /dev/null 2>&1
 
   # Remove the SELinux policy
   if command -v getenforce > /dev/null 2>&1 && command -v semodule > /dev/null 2>&1; then
@@ -442,7 +442,7 @@ if [ $1 = 0 ]; then
     sles=$(grep "SUSE Linux Enterprise Server" /etc/SuSE-release)
   fi
   if [ ! -z "$sles" ]; then
-    rm -f /etc/init.d/wazuh-agent
+    rm -f /etc/init.d/openarmor-agent
   fi
 
   # Remove SCA files
@@ -505,8 +505,8 @@ fi
 
 # posttrans code is the last thing executed in a install/upgrade
 %posttrans
-if [ -f %{_sysconfdir}/systemd/system/wazuh-agent.service ]; then
-  rm -rf %{_sysconfdir}/systemd/system/wazuh-agent.service
+if [ -f %{_sysconfdir}/systemd/system/openarmor-agent.service ]; then
+  rm -rf %{_sysconfdir}/systemd/system/openarmor-agent.service
   systemctl daemon-reload > /dev/null 2>&1
 fi
 
@@ -514,11 +514,11 @@ if [ -f %{_localstatedir}/tmp/wazuh.restart ]; then
   rm -f %{_localstatedir}/tmp/wazuh.restart
   if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 ; then
     systemctl daemon-reload > /dev/null 2>&1
-    systemctl restart wazuh-agent.service > /dev/null 2>&1
+    systemctl restart openarmor-agent.service > /dev/null 2>&1
   elif command -v service > /dev/null 2>&1; then
-    service wazuh-agent restart > /dev/null 2>&1
+    service openarmor-agent restart > /dev/null 2>&1
   else
-    %{_localstatedir}/bin/wazuh-control restart > /dev/null 2>&1
+    %{_localstatedir}/bin/openarmor-control restart > /dev/null 2>&1
   fi
 fi
 
@@ -540,9 +540,9 @@ rm -fr %{buildroot}
 
 %files
 %defattr(-,root,root)
-%config(missingok) %{_initrddir}/wazuh-agent
+%config(missingok) %{_initrddir}/openarmor-agent
 %attr(640, root, wazuh) %verify(not md5 size mtime) %ghost %{_sysconfdir}/ossec-init.conf
-/usr/lib/systemd/system/wazuh-agent.service
+/usr/lib/systemd/system/openarmor-agent.service
 %dir %attr(750, root, wazuh) %{_localstatedir}
 %attr(750, root, wazuh) %{_localstatedir}/agentless
 %dir %attr(770, root, wazuh) %{_localstatedir}/.ssh
@@ -896,6 +896,6 @@ rm -fr %{buildroot}
 - Fixed compile errors on macOS.
 - Fixed option -V for Integrator.
 - Exclude symbolic links to directories when sending FIM diffs (by Stephan Joerrens).
-- Fixed daemon list for service reloading at wazuh-control.
+- Fixed daemon list for service reloading at openarmor-control.
 - Fixed socket waiting issue on Windows agents.
 - Fixed PCI_DSS definitions grouping issue at Rootcheck controls.

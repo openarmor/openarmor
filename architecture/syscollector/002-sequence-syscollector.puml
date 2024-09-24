@@ -5,7 +5,7 @@
 @startuml syscollector
 
 database "<agent-id>.db" as agent.db
-actor "wazuh-manager" as manager
+actor "openarmor-manager" as manager
 participant syscollector as sysco
 participant sysinfo as info
 participant rsync

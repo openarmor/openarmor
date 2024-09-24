@@ -171,7 +171,7 @@ int OS_RemoveAgent(const char *u_id) {
         free(name);
     }
 
-    // Remove DB from wazuh-db
+    // Remove DB from openarmor-db
     int sock = -1;
     int error;
     snprintf(wdbquery, OS_SIZE_128, "wazuhdb remove %s", u_id);

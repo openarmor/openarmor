@@ -79,7 +79,7 @@ def check_user(user: str, password: str, required_scopes=None) -> Union[dict, No
                           request_type='local_master',
                           is_async=False,
                           wait_for_complete=False,
-                          logger=logging.getLogger('wazuh-api')
+                          logger=logging.getLogger('openarmor-api')
                           )
     data = raise_if_exc(pool.submit(asyncio.run, dapi.distribute_function()).result())
 
@@ -177,7 +177,7 @@ def generate_token(user_id: str = None, data: dict = None, auth_context: dict = 
                           request_type='local_master',
                           is_async=False,
                           wait_for_complete=False,
-                          logger=logging.getLogger('wazuh-api')
+                          logger=logging.getLogger('openarmor-api')
                           )
     result = raise_if_exc(pool.submit(asyncio.run, dapi.distribute_function()).result()).dikt
     timestamp = int(core_utils.get_utc_now().timestamp())
@@ -271,7 +271,7 @@ def decode_token(token: str) -> dict:
                               request_type='local_master',
                               is_async=False,
                               wait_for_complete=False,
-                              logger=logging.getLogger('wazuh-api')
+                              logger=logging.getLogger('openarmor-api')
                               )
         data = raise_if_exc(pool.submit(asyncio.run, dapi.distribute_function()).result()).to_dict()
 
@@ -285,7 +285,7 @@ def decode_token(token: str) -> dict:
                               request_type='local_master',
                               is_async=False,
                               wait_for_complete=False,
-                              logger=logging.getLogger('wazuh-api')
+                              logger=logging.getLogger('openarmor-api')
                               )
         result = raise_if_exc(pool.submit(asyncio.run, dapi.distribute_function()).result())
 

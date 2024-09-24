@@ -46,7 +46,7 @@ def test_remove_from_bucket(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has appeared calling the module with correct parameters.
             - Check that the uploaded log was removed by the module after the execution.
@@ -172,7 +172,7 @@ def test_remove_log_stream(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has appeared calling the module with correct parameters.
             - Check that the created log stream was removed by the module after the execution.

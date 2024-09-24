@@ -1,5 +1,5 @@
 #!/bin/sh
-# prerm script for wazuh-manager
+# prerm script for openarmor-manager
 
 set -e
 
@@ -9,56 +9,56 @@ case "$1" in
     upgrade|deconfigure)
 
       # Stop the services before uninstalling the package
-      if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet wazuh-agent > /dev/null 2>&1; then
-          systemctl stop wazuh-agent > /dev/null 2>&1
-      elif command -v service > /dev/null 2>&1 && service wazuh-agent status 2>/dev/null | grep "running" > /dev/null 2>&1; then
-          service wazuh-agent stop > /dev/null 2>&1
+      if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet openarmor-agent > /dev/null 2>&1; then
+          systemctl stop openarmor-agent > /dev/null 2>&1
+      elif command -v service > /dev/null 2>&1 && service openarmor-agent status 2>/dev/null | grep "running" > /dev/null 2>&1; then
+          service openarmor-agent stop > /dev/null 2>&1
       fi
-      ${DIR}/bin/wazuh-control stop > /dev/null 2>&1
+      ${DIR}/bin/openarmor-control stop > /dev/null 2>&1
 
-      # Process: wazuh-execd
-      if pgrep -f "wazuh-execd" > /dev/null 2>&1; then
-        kill -15 $(pgrep -f "wazuh-execd") > /dev/null 2>&1
-      fi
-
-      if pgrep -f "wazuh-execd" > /dev/null 2>&1; then
-        kill -9 $(pgrep -f "wazuh-execd") > /dev/null 2>&1
+      # Process: openarmor-execd
+      if pgrep -f "openarmor-execd" > /dev/null 2>&1; then
+        kill -15 $(pgrep -f "openarmor-execd") > /dev/null 2>&1
       fi
 
-      # Process: wazuh-agentd
-      if pgrep -f "wazuh-agentd" > /dev/null 2>&1; then
-        kill -15 $(pgrep -f "wazuh-agentd") > /dev/null 2>&1
+      if pgrep -f "openarmor-execd" > /dev/null 2>&1; then
+        kill -9 $(pgrep -f "openarmor-execd") > /dev/null 2>&1
       fi
 
-      if pgrep -f "wazuh-agentd" > /dev/null 2>&1; then
-        kill -9 $(pgrep -f "wazuh-agentd") > /dev/null 2>&1
+      # Process: openarmor-agentd
+      if pgrep -f "openarmor-agentd" > /dev/null 2>&1; then
+        kill -15 $(pgrep -f "openarmor-agentd") > /dev/null 2>&1
       fi
 
-      # Process: wazuh-syscheckd
-      if pgrep -f "wazuh-syscheckd" > /dev/null 2>&1; then
-        kill -15 $(pgrep -f "wazuh-syscheckd") > /dev/null 2>&1
+      if pgrep -f "openarmor-agentd" > /dev/null 2>&1; then
+        kill -9 $(pgrep -f "openarmor-agentd") > /dev/null 2>&1
       fi
 
-      if pgrep -f "wazuh-syscheckd" > /dev/null 2>&1; then
-        kill -9 $(pgrep -f "wazuh-syscheckd") > /dev/null 2>&1
+      # Process: openarmor-syscheckd
+      if pgrep -f "openarmor-syscheckd" > /dev/null 2>&1; then
+        kill -15 $(pgrep -f "openarmor-syscheckd") > /dev/null 2>&1
       fi
 
-      # Process: wazuh-logcollector
-      if pgrep -f "wazuh-logcollector" > /dev/null 2>&1; then
-        kill -15 $(pgrep -f "wazuh-logcollector") > /dev/null 2>&1
+      if pgrep -f "openarmor-syscheckd" > /dev/null 2>&1; then
+        kill -9 $(pgrep -f "openarmor-syscheckd") > /dev/null 2>&1
       fi
 
-      if pgrep -f "wazuh-logcollector" > /dev/null 2>&1; then
-        kill -9 $(pgrep -f "wazuh-logcollector") > /dev/null 2>&1
+      # Process: openarmor-logcollector
+      if pgrep -f "openarmor-logcollector" > /dev/null 2>&1; then
+        kill -15 $(pgrep -f "openarmor-logcollector") > /dev/null 2>&1
       fi
 
-      # Process: wazuh-modulesd
-      if pgrep -f "wazuh-modulesd" > /dev/null 2>&1; then
-        kill -15 $(pgrep -f "wazuh-modulesd") > /dev/null 2>&1
+      if pgrep -f "openarmor-logcollector" > /dev/null 2>&1; then
+        kill -9 $(pgrep -f "openarmor-logcollector") > /dev/null 2>&1
       fi
 
-      if pgrep -f "wazuh-modulesd" > /dev/null 2>&1; then
-        kill -9 $(pgrep -f "wazuh-modulesd") > /dev/null 2>&1
+      # Process: openarmor-modulesd
+      if pgrep -f "openarmor-modulesd" > /dev/null 2>&1; then
+        kill -15 $(pgrep -f "openarmor-modulesd") > /dev/null 2>&1
+      fi
+
+      if pgrep -f "openarmor-modulesd" > /dev/null 2>&1; then
+        kill -9 $(pgrep -f "openarmor-modulesd") > /dev/null 2>&1
       fi
 
     ;;
@@ -67,13 +67,13 @@ case "$1" in
 
       # Stop the services before uninstalling the package
       # Check for systemd
-      if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet wazuh-agent > /dev/null 2>&1; then
-          systemctl stop wazuh-agent > /dev/null 2>&1
+      if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet openarmor-agent > /dev/null 2>&1; then
+          systemctl stop openarmor-agent > /dev/null 2>&1
       # Check for SysV
-      elif command -v service > /dev/null 2>&1 && service wazuh-agent status 2>/dev/null | grep "running" > /dev/null 2>&1; then
-          service wazuh-agent stop > /dev/null 2>&1
+      elif command -v service > /dev/null 2>&1 && service openarmor-agent status 2>/dev/null | grep "running" > /dev/null 2>&1; then
+          service openarmor-agent stop > /dev/null 2>&1
       fi
-      ${DIR}/bin/wazuh-control stop > /dev/null 2>&1
+      ${DIR}/bin/openarmor-control stop > /dev/null 2>&1
 
       # Save the conffiles
       mkdir -p ${DIR}/tmp/conffiles
@@ -93,8 +93,8 @@ case "$1" in
     ;;
 
     failed-upgrade)
-      if [ -f ${DIR}/bin/wazuh-control ]; then
-        ${DIR}/bin/wazuh-control stop > /dev/null 2>&1
+      if [ -f ${DIR}/bin/openarmor-control ]; then
+        ${DIR}/bin/openarmor-control stop > /dev/null 2>&1
       fi
     ;;
 

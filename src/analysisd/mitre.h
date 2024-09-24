@@ -29,7 +29,7 @@ typedef struct technique_data {
 /**
  * @brief This function fills Hash Table using Mitre technique ID as Key and technique's tactics as info.
  *
- * It connects to Wazuh-DB to get all IDs that are in mitre.db and their tactics and then it inserts these to Hash table.
+ * It connects to Openarmor-DB to get all IDs that are in mitre.db and their tactics and then it inserts these to Hash table.
  *
  * @return int, it returns 0 on success and -1 on failure.
  */

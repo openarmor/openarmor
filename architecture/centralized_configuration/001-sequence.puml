@@ -7,12 +7,12 @@
 hide footbox
 
 box "**Wazuh Master Node**"
-participant "wazuh-remoted" as masterremote
-participant "wazuh-clusterd" as mclusterd
+participant "openarmor-remoted" as masterremote
+participant "openarmor-clusterd" as mclusterd
 end box
 box "**Wazuh Worker Node**"
-participant "wazuh-clusterd" as wclusterd
-participant "wazuh-remoted" as workerremote
+participant "openarmor-clusterd" as wclusterd
+participant "openarmor-remoted" as workerremote
 end box
 participant "**Wazuh Agent**\nwazuh-agentd" as agent
 

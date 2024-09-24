@@ -2,8 +2,7 @@
 test_name: GET /lists
 
 stages:
-
-    # GET /lists
+  # GET /lists
   - name: Try to get all lists
     request: &get_lists
       verify: False
@@ -113,13 +112,13 @@ stages:
       <<: *get_lists
       params:
         # Single and nested select
-        select: 'filename'
+        select: "filename"
     response:
       verify_response_with:
         # Check response item keys are the selected keys
         function: tavern_utils:test_select_key_affected_items
         extra_kwargs:
-          select_key: 'filename,relative_dirname' # required_fields={'filename', 'relative_dirname'}
+          select_key: "filename,relative_dirname" # required_fields={'filename', 'relative_dirname'}
       status_code: 200
       json:
         error: 0
@@ -133,7 +132,7 @@ stages:
       verify: False
       <<: *get_lists
       params:
-        select: 'noexists'
+        select: "noexists"
     response:
       status_code: 400
       json: &invalid_select
@@ -144,7 +143,7 @@ stages:
       verify: False
       <<: *get_lists
       params:
-        select: 'filename,noexists'
+        select: "filename,noexists"
     response:
       status_code: 400
       json:
@@ -155,8 +154,8 @@ stages:
       verify: False
       <<: *get_lists
       params:
-        select: 'filename'
-        filename: 'invalid'
+        select: "filename"
+        filename: "invalid"
     response:
       status_code: 200
       json:
@@ -335,7 +334,6 @@ stages:
 test_name: GET /lists/files
 
 stages:
-
   # GET /lists/files
   - name: Try to get paths from all CDB lists
     request: &get_lists_files
@@ -349,7 +347,7 @@ stages:
       json:
         error: 0
         data:
-           # We get totalItems number of arrays in items, using !anything to check items key is in the response
+          # We get totalItems number of arrays in items, using !anything to check items key is in the response
           affected_items: !anything
           failed_items: []
           total_affected_items: !anyint
@@ -429,7 +427,7 @@ stages:
         error: 0
         data:
           affected_items:
-              # Check offset matches with previous request
+            # Check offset matches with previous request
             - filename: "{offset_item_filename}"
               relative_dirname: "{offset_item_relative_dirname}"
           failed_items: []
@@ -495,7 +493,6 @@ stages:
 test_name: GET /lists/files/{filename}
 
 stages:
-
   # GET /lists/files/{filename}
   - name: Get content of audit-keys
     request: &get_audit_keys_list
@@ -510,11 +507,11 @@ stages:
         error: 0
         data:
           affected_items:
-            - audit-wazuh-w: write
-              audit-wazuh-r: read
-              audit-wazuh-a: attribute
-              audit-wazuh-x: execute
-              audit-wazuh-c: command
+            - audit-openarmor-w: write
+              audit-openarmor-r: read
+              audit-openarmor-a: attribute
+              audit-openarmor-x: execute
+              audit-openarmor-c: command
           total_affected_items: 1
           total_failed_items: 0
           failed_items: []
@@ -566,7 +563,7 @@ stages:
             - error:
                 code: 1802
               id:
-                - 'unknown'
+                - "unknown"
           total_affected_items: 0
           total_failed_items: 1
 
@@ -596,7 +593,6 @@ stages:
 test_name: PUT /lists/files/{filename}
 
 stages:
-
   # PUT /lists/files/{filename}
   - name: Upload a new list file
     request:
@@ -612,7 +608,7 @@ stages:
         error: 0
         data:
           affected_items:
-            - 'etc/lists/new_list'
+            - "etc/lists/new_list"
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -635,7 +631,7 @@ stages:
             - error:
                 code: 1905
               id:
-                - 'etc/lists/new_list'
+                - "etc/lists/new_list"
           total_affected_items: 0
           total_failed_items: 1
 
@@ -656,7 +652,7 @@ stages:
         error: 0
         data:
           affected_items:
-            - 'etc/lists/new_list'
+            - "etc/lists/new_list"
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -679,7 +675,7 @@ stages:
             - error:
                 code: 1805
               id:
-                - 'etc/lists/aws-eventnames'
+                - "etc/lists/aws-eventnames"
           total_affected_items: 0
           total_failed_items: 1
 
@@ -703,7 +699,7 @@ stages:
             - error:
                 code: 1800
               id:
-                - 'etc/lists/new_list'
+                - "etc/lists/new_list"
           total_affected_items: 0
           total_failed_items: 1
 
@@ -720,9 +716,8 @@ stages:
       status_code: 400
       json:
         title: !anystr
-        detail: !anystr
+        detail: !anystr # PUT /lists/files/{filename}
 
-  # PUT /lists/files/{filename}
   - name: Try to upload CDB list (invalid file 2)
     request:
       verify: False
@@ -738,7 +733,6 @@ stages:
 test_name: DELETE /lists/files/{filename}
 
 stages:
-
   # DELETE /lists/files/{filename}
   - name: Delete an existent list file
     request:
@@ -753,7 +747,7 @@ stages:
         error: 0
         data:
           affected_items:
-            - 'etc/lists/new_list'
+            - "etc/lists/new_list"
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -775,7 +769,7 @@ stages:
             - error:
                 code: 1906
               id:
-                - 'etc/lists/new_list'
+                - "etc/lists/new_list"
           total_affected_items: 0
           total_failed_items: 1
 

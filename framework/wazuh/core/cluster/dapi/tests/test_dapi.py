@@ -96,7 +96,7 @@ class TestingLogger:
 
 @pytest.mark.parametrize('kwargs', [
     {'f_kwargs': {'select': ['id']}, 'rbac_permissions': {'mode': 'black'}, 'nodes': ['worker1'],
-     'basic_services': ('wazuh-modulesd', 'wazuh-db'), 'request_type': 'local_master'},
+     'basic_services': ('openarmor-modulesd', 'openarmor-db'), 'request_type': 'local_master'},
     {'request_type': 'local_master'},
     {'api_timeout': 15},
     {'api_timeout': 5}
@@ -116,7 +116,7 @@ def test_DistributedAPI(kwargs):
 
 def test_DistributedAPI_debug_log():
     """Check that error messages are correctly sent to the logger in the DistributedAPI class."""
-    logger_ = TestingLogger(logger_name="wazuh-api")
+    logger_ = TestingLogger(logger_name="openarmor-api")
     message = "Testing debug2"
     with patch.object(logger_, "debug2") as debug2_mock:
         dapi = DistributedAPI(f=agent.get_agents_summary_status, logger=logger_)

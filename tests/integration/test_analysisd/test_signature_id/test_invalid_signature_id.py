@@ -7,7 +7,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: The 'wazuh-analysisd' daemon uses a series of decoders and rules to analyze and interpret logs and events and
+brief: The 'openarmor-analysisd' daemon uses a series of decoders and rules to analyze and interpret logs and events and
        generate alerts when the decoded information matches the established rules. The 'if_sid' option is used to
        associate a rule to a parent rule by referencing the rule ID of the parent. This test module checks that when
        an invalid rule_id is used, the rule is ignored.
@@ -21,7 +21,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-analysisd
+    - openarmor-analysisd
 
 os_platform:
     - linux
@@ -113,7 +113,7 @@ def test_invalid_signature_id(test_configuration, test_metadata, set_wazuh_confi
 
     assertions:
         - Check that wazuh starts
-        - Check ".*wazuh-testrule.*Empty 'if_sid' value. Rule '(\\d*)' will be ignored.*"
+        - Check ".*openarmor-testrule.*Empty 'if_sid' value. Rule '(\\d*)' will be ignored.*"
 
     input_description:
         - The `configuration_signature_id_values.yaml` file provides the module configuration for

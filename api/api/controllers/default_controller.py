@@ -15,7 +15,7 @@ from wazuh.core.results import WazuhResult
 from wazuh.core.security import load_spec
 from wazuh.core.utils import get_utc_now
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 
 async def default_info(pretty: bool = False) -> ConnexionResponse:

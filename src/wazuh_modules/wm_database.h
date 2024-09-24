@@ -29,7 +29,7 @@ wmodule* wm_database_read();
 /**
  * @brief Synchronizes a keystore with the agent table of global.db. It will insert
  *        the agents that are in the keystore and are not in global.db.
- *        In addition it will remove from global.db in wazuh-db all the agents that
+ *        In addition it will remove from global.db in openarmor-db all the agents that
  *        are not in the keystore. Also it will remove all the artifacts for those
  *        agents.
  *
@@ -38,7 +38,7 @@ wmodule* wm_database_read();
 void sync_keys_with_wdb(keystore *keys);
 
 /**
- * @brief This function removes the wazuh-db agent DB and the diff folder of an agent.
+ * @brief This function removes the openarmor-db agent DB and the diff folder of an agent.
  *
  * @param agent_id The ID of the agent.
  * @param agent_name The name of the agent.

@@ -43,11 +43,11 @@ else
 fi
 
 if [[ "$OS" == "Darwin" ]]; then
-    installer -pkg ./var/upgrade/wazuh-agent* -target / >> ./logs/upgrade.log 2>&1
+    installer -pkg ./var/upgrade/openarmor-agent* -target / >> ./logs/upgrade.log 2>&1
 elif [[ "$OS" == "Linux" ]]; then
     if find ./var/upgrade/ -mindepth 1 -maxdepth 1 -type f -name "*.rpm" | read; then
         if command -v rpm >/dev/null 2>&1; then
-            rpm -UFvh ./var/upgrade/wazuh-agent* >> ./logs/upgrade.log 2>&1
+            rpm -UFvh ./var/upgrade/openarmor-agent* >> ./logs/upgrade.log 2>&1
         else
             echo "$(date +"%Y/%m/%d %H:%M:%S") - Upgrade failed. RPM package found but rpm command not found." >> ./logs/upgrade.log
             echo -ne "2" > ./var/upgrade/upgrade_result
@@ -56,7 +56,7 @@ elif [[ "$OS" == "Linux" ]]; then
         fi
     elif find ./var/upgrade/ -mindepth 1 -maxdepth 1 -type f -name "*.deb" | read; then
         if command -v dpkg >/dev/null 2>&1; then
-            dpkg -i ./var/upgrade/wazuh-agent* >> ./logs/upgrade.log 2>&1
+            dpkg -i ./var/upgrade/openarmor-agent* >> ./logs/upgrade.log 2>&1
         else
             echo "$(date +"%Y/%m/%d %H:%M:%S") - Upgrade failed. DEB package found but dpkg command not found." >> ./logs/upgrade.log
             echo -ne "2" > ./var/upgrade/upgrade_result
@@ -65,7 +65,7 @@ elif [[ "$OS" == "Linux" ]]; then
         fi
     elif find ./var/upgrade/ -mindepth 1 -maxdepth 1 -type f -name "*.apk" | read; then
         if command -v apk >/dev/null 2>&1; then
-            apk add --allow-untrusted --force ./var/upgrade/wazuh-agent* >> ./logs/upgrade.log 2>&1
+            apk add --allow-untrusted --force ./var/upgrade/openarmor-agent* >> ./logs/upgrade.log 2>&1
         else
             echo "$(date +"%Y/%m/%d %H:%M:%S") - Upgrade failed. APK package found but apk command not found." >> ./logs/upgrade.log
             echo -ne "2" > ./var/upgrade/upgrade_result
@@ -98,17 +98,17 @@ echo "$(date +"%Y/%m/%d %H:%M:%S") - Installation result = ${RESULT}" >> ./logs/
 # Restart Agent
 echo "$(date +"%Y/%m/%d %H:%M:%S") - Checking for Wazuh Agent control script." >> ./logs/upgrade.log
 
-if [ -f "./bin/wazuh-control" ]; then
+if [ -f "./bin/openarmor-control" ]; then
     echo "$(date +"%Y/%m/%d %H:%M:%S") - Restarting Wazuh Agent." >> ./logs/upgrade.log
-    ./bin/wazuh-control restart >> ./logs/upgrade.log 2>&1
+    ./bin/openarmor-control restart >> ./logs/upgrade.log 2>&1
 elif [ -f "./bin/ossec-control" ]; then
-    echo "$(date +"%Y/%m/%d %H:%M:%S") - Upgrade failed: wazuh-control not found. Attempting to restart using ossec-control." >> ./logs/upgrade.log
+    echo "$(date +"%Y/%m/%d %H:%M:%S") - Upgrade failed: openarmor-control not found. Attempting to restart using ossec-control." >> ./logs/upgrade.log
     ./bin/ossec-control restart >> ./logs/upgrade.log 2>&1
     echo -ne "2" > ./var/upgrade/upgrade_result
     rm -f $LOCK
     exit 1
 else
-    echo "$(date +"%Y/%m/%d %H:%M:%S") - Upgrade failed: Neither wazuh-control nor ossec-control were found." >> ./logs/upgrade.log
+    echo "$(date +"%Y/%m/%d %H:%M:%S") - Upgrade failed: Neither openarmor-control nor ossec-control were found." >> ./logs/upgrade.log
     echo -ne "2" > ./var/upgrade/upgrade_result
     rm -f $LOCK
     exit 1
@@ -121,7 +121,7 @@ sleep 1
 status="pending"
 COUNTER=30
 while [ "$status" != "connected" -a $COUNTER -gt 0 ]; do
-    . ./var/run/wazuh-agentd.state >> ./logs/upgrade.log 2>&1
+    . ./var/run/openarmor-agentd.state >> ./logs/upgrade.log 2>&1
     echo "$(date +"%Y/%m/%d %H:%M:%S") - Waiting connection... Remaining attempts: ${COUNTER}." >> ./logs/upgrade.log
     sleep 1
     COUNTER=$[COUNTER - 1]

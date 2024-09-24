@@ -104,14 +104,14 @@ def send_log_to_journal(conf_message: dict):
     Args:
         conf_message (dic): The message to send to the journal, with the following fields:
             - message (str): The message to send to the journal.
-            - tag (str): The tag of the message. Default is 'wazuh-itest'.
+            - tag (str): The tag of the message. Default is 'openarmor-itest'.
             - priority (str): The priority of the message. Default is 'info'.
     '''
     import subprocess as sp
 
     # Send the log message to the journal
     try:
-        tag = conf_message['tag'] if 'tag' in conf_message else 'wazuh-itest'
+        tag = conf_message['tag'] if 'tag' in conf_message else 'openarmor-itest'
         priority = conf_message['priority'] if 'priority' in conf_message else 'info'
         message = conf_message['message']
         if not message:

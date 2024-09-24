@@ -331,7 +331,7 @@ def send_msg(wazuh_queue, msg):
 
 def main():
     ar_log()
-    set_logger('wazuh-kaspersky', foreground=args.verbose)
+    set_logger('openarmor-kaspersky', foreground=args.verbose)
     run_kaspersky()
 
 if __name__ == "__main__":

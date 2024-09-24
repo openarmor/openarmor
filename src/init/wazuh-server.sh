@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Copyright (C) 2015, Wazuh Inc.
-# wazuh-control        This shell script takes care of starting
+# openarmor-control        This shell script takes care of starting
 #                      or stopping ossec-hids
 # Author: Daniel B. Cid <daniel.cid@gmail.com>
 
@@ -27,8 +27,8 @@ fi
 
 AUTHOR="Wazuh Inc."
 USE_JSON=false
-DAEMONS="wazuh-clusterd wazuh-modulesd wazuh-monitord wazuh-logcollector wazuh-remoted wazuh-syscheckd wazuh-analysisd wazuh-maild wazuh-execd wazuh-db wazuh-authd wazuh-agentlessd wazuh-integratord wazuh-dbd wazuh-csyslogd wazuh-apid"
-OP_DAEMONS="wazuh-clusterd wazuh-maild wazuh-agentlessd wazuh-integratord wazuh-dbd wazuh-csyslogd"
+DAEMONS="openarmor-clusterd openarmor-modulesd openarmor-monitord openarmor-logcollector openarmor-remoted openarmor-syscheckd openarmor-analysisd openarmor-maild openarmor-execd openarmor-db openarmor-authd openarmor-agentlessd openarmor-integratord openarmor-dbd openarmor-csyslogd openarmor-apid"
+OP_DAEMONS="openarmor-clusterd openarmor-maild openarmor-agentlessd openarmor-integratord openarmor-dbd openarmor-csyslogd"
 DEPRECATED_DAEMONS="ossec-authd"
 
 # Reverse order of daemons
@@ -263,14 +263,14 @@ start_service()
         echo "Starting Wazuh $VERSION..."
     fi
 
-    TEST=$(${DIR}/bin/wazuh-logtest-legacy -t  2>&1 | grep "ERROR")
+    TEST=$(${DIR}/bin/openarmor-logtest-legacy -t  2>&1 | grep "ERROR")
     if [ ! -z "$TEST" ]; then
         if [ $USE_JSON = true ]; then
             echo -n '{"error":21,"message":"OSSEC analysisd: Testing rules failed. Configuration error."}'
         else
             echo "OSSEC analysisd: Testing rules failed. Configuration error. Exiting."
         fi
-        touch ${DIR}/var/run/wazuh-analysisd.failed
+        touch ${DIR}/var/run/openarmor-analysisd.failed
         exit 1;
     fi
 
@@ -296,14 +296,14 @@ start_service()
         echo -n '{"error":0,"data":['
     fi
     for i in ${SDAEMONS}; do
-        ## If wazuh-maild is disabled, don't try to start it.
+        ## If openarmor-maild is disabled, don't try to start it.
         if [ X"$i" = "Xwazuh-maild" ]; then
              grep "<email_notification>no<" ${DIR}/etc/ossec.conf >/dev/null 2>&1
              if [ $? = 0 ]; then
                  continue
              fi
         fi
-        ## If wazuh-clusterd is disabled, don't try to start it.
+        ## If openarmor-clusterd is disabled, don't try to start it.
         if [ X"$i" = "Xwazuh-clusterd" ]; then
              start_config="$(grep -n "<cluster>" ${DIR}/etc/ossec.conf | cut -d':' -f 1)"
              end_config="$(grep -n "</cluster>" ${DIR}/etc/ossec.conf | cut -d':' -f 1)"
@@ -316,7 +316,7 @@ start_service()
                 continue
              fi
         fi
-        ## If wazuh-authd is disabled, don't try to start it.
+        ## If openarmor-authd is disabled, don't try to start it.
         if [ X"$i" = "Xwazuh-authd" ]; then
              start_config="$(grep -n "<auth>" ${DIR}/etc/ossec.conf | cut -d':' -f 1)"
              end_config="$(grep -n "</auth>" ${DIR}/etc/ossec.conf | cut -d':' -f 1)"
@@ -586,7 +586,7 @@ restart)
     restart_service
     ;;
 reload)
-    DAEMONS=$(echo $DAEMONS | sed 's/wazuh-execd//')
+    DAEMONS=$(echo $DAEMONS | sed 's/openarmor-execd//')
     restart_service
     ;;
 status)

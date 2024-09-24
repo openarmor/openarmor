@@ -23,11 +23,11 @@ cd $(dirname $0)
 VERSION_FILE="../src/VERSION"
 REVISION_FILE="../src/REVISION"
 DEFS_FILE="../src/headers/defs.h"
-WAZUH_SERVER="../src/init/wazuh-server.sh"
-WAZUH_AGENT="../src/init/wazuh-client.sh"
-WAZUH_LOCAL="../src/init/wazuh-local.sh"
-NSIS_FILE="../src/win32/wazuh-installer.nsi"
-MSI_FILE="../src/win32/wazuh-installer.wxs"
+WAZUH_SERVER="../src/init/openarmor-server.sh"
+WAZUH_AGENT="../src/init/openarmor-client.sh"
+WAZUH_LOCAL="../src/init/openarmor-local.sh"
+NSIS_FILE="../src/win32/openarmor-installer.nsi"
+MSI_FILE="../src/win32/openarmor-installer.wxs"
 FW_INIT="../framework/wazuh/__init__.py"
 CLUSTER_INIT="../framework/wazuh/core/cluster/__init__.py"
 API_SETUP="../api/setup.py"
@@ -135,13 +135,13 @@ then
 
     sed -E -i'' -e "s/^(#define __ossec_version +)\"v.*\"/\1\"$version\"/" $DEFS_FILE
 
-    # wazuh-control
+    # openarmor-control
 
     sed -E -i'' -e "s/^(VERSION=+)\"v.*\"/\1\"$version\"/" $WAZUH_SERVER
     sed -E -i'' -e "s/^(VERSION=+)\"v.*\"/\1\"$version\"/" $WAZUH_AGENT
     sed -E -i'' -e "s/^(VERSION=+)\"v.*\"/\1\"$version\"/" $WAZUH_LOCAL
 
-    # File wazuh-installer.nsi
+    # File openarmor-installer.nsi
 
     egrep "^\!define VERSION \".+\"" $NSIS_FILE > /dev/null
 
@@ -153,7 +153,7 @@ then
 
     sed -E -i'' -e "s/^(\!define VERSION \").+\"/\1${version:1}\"/g" $NSIS_FILE
 
-    # File wazuh-installer.wxs
+    # File openarmor-installer.wxs
 
     egrep '<Product Id="\*" Name="Wazuh Agent" Language="1033" Version=".+" Manufacturer=' $MSI_FILE > /dev/null
 
@@ -216,13 +216,13 @@ then
 
     echo $revision > $REVISION_FILE
 
-    # wazuh-control
+    # openarmor-control
 
     sed -E -i'' -e "s/^(REVISION=+)\".*\"/\1\"$revision\"/" $WAZUH_SERVER
     sed -E -i'' -e "s/^(REVISION=+)\".*\"/\1\"$revision\"/" $WAZUH_AGENT
     sed -E -i'' -e "s/^(REVISION=+)\".*\"/\1\"$revision\"/" $WAZUH_LOCAL
 
-    # File wazuh-installer.nsi
+    # File openarmor-installer.nsi
 
     egrep "^\!define REVISION \".+\"" $NSIS_FILE > /dev/null
 
@@ -250,7 +250,7 @@ fi
 if [ -n "$product" ]
 then
 
-    # File wazuh-installer.nsi
+    # File openarmor-installer.nsi
 
     egrep "^VIProductVersion \".+\"" $NSIS_FILE > /dev/null
 
@@ -298,7 +298,7 @@ done
 # Deb changelog files
 for changelog_file in $CHANGELOG_FILES; do
     echo "Updating the release date of $version in $changelog_file"
-    install_type=$(sed -E 's/.*wazuh-(manager|agent).*/wazuh-\1/' <<< $changelog_file)
+    install_type=$(sed -E 's/.*openarmor-(manager|agent).*/openarmor-\1/' <<< $changelog_file)
     if [ -z "$UPDATE_RELEASE_DATE" ] ; then
         changelog_string="$install_type (${VERSION}-RELEASE) stable; urgency=low\n\n  * More info: https://documentation.wazuh.com/current/release-notes/release-$mayor-$minor-$patch.html\
 \n\n -- Wazuh, Inc <info@wazuh.com>  $bump_date\n"
@@ -317,5 +317,5 @@ done
 # MacOS pkgproj files
 for pkgproj_file in $PKGPROJ_FILES; do
     sed -E -i'' "s/(<string>)([0-9]+\.){2}[0-9]+-[0-9]+(<\/string>)/\1$VERSION-1\3/" $pkgproj_file
-    sed -E -i'' "s/(<string>wazuh-agent-)([0-9]+\.){2}[0-9]+-[0-9]+/\1$VERSION-1/" $pkgproj_file
+    sed -E -i'' "s/(<string>openarmor-agent-)([0-9]+\.){2}[0-9]+-[0-9]+/\1$VERSION-1/" $pkgproj_file
 done

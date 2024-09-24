@@ -581,7 +581,7 @@ void test_w_logtest_init_error_parameters(void **state)
 {
     will_return(__wrap_ReadConfig, OS_INVALID);
 
-    expect_string(__wrap__merror, formatted_msg, "(7304): Invalid wazuh-logtest configuration");
+    expect_string(__wrap__merror, formatted_msg, "(7304): Invalid openarmor-logtest configuration");
 
     w_logtest_init();
 

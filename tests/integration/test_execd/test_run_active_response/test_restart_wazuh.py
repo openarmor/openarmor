@@ -9,7 +9,7 @@ type: integration
 
 brief: Active responses execute a script in response to the triggering of specific alerts based
        on the alert level or rule group. These tests will check if the 'active responses',
-       which are executed by the 'wazuh-execd' daemon via scripts, run correctly.
+       which are executed by the 'openarmor-execd' daemon via scripts, run correctly.
 
 components:
     - execd
@@ -20,8 +20,8 @@ targets:
     - agent
 
 daemons:
-    - wazuh-analysisd
-    - wazuh-execd
+    - openarmor-analysisd
+    - openarmor-execd
 
 os_platform:
     - linux
@@ -132,7 +132,7 @@ def test_execd_restart(test_configuration, test_metadata, configure_local_intern
     if error_message := test_metadata.get('expected_error'):
         callback = generate_callback(error_message)
         ar_monitor.start(callback=callback)
-        assert ar_monitor.callback_result, 'AR `wazuh-restart` did not fail.'
+        assert ar_monitor.callback_result, 'AR `openarmor-restart` did not fail.'
         return
 
     wazuh_log_monitor.start(callback=generate_callback(EXECD_SHUTDOWN_RECEIVED))

@@ -41,7 +41,7 @@
 #define W_LOGTEST_JSON_ORIGIN_NAME            "name"    ///< The origin name of the request
 #define W_LOGTEST_JSON_ORIGIN_MODULE        "module"    ///< The origin module of the request
 
-/* Wazuh-logtest's fields names for the requests and responses */
+/* Openarmor-logtest's fields names for the requests and responses */
 #define W_LOGTEST_JSON_TOKEN                    "token"   ///< Token field name of json input/output
 #define W_LOGTEST_JSON_EVENT                    "event"   ///< Event field name of json input
 #define W_LOGTEST_JSON_LOGFORMAT           "log_format"   ///< Log format field name of json input

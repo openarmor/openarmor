@@ -77,7 +77,7 @@ WriteSyscheck()
 ##########
 DisableAuthd()
 {
-    echo "  <!-- Configuration for wazuh-authd -->" >> $NEWCONFIG
+    echo "  <!-- Configuration for openarmor-authd -->" >> $NEWCONFIG
     echo "  <auth>" >> $NEWCONFIG
     echo "    <disabled>yes</disabled>" >> $NEWCONFIG
     echo "    <port>1515</port>" >> $NEWCONFIG
@@ -225,8 +225,8 @@ GenerateAuthCert()
         # Generation auto-signed certificate if not exists
         if [ ! -f "${INSTALLDIR}/etc/sslmanager.key" ] && [ ! -f "${INSTALLDIR}/etc/sslmanager.cert" ]; then
             if [ ! "X${USER_GENERATE_AUTHD_CERT}" = "Xn" ]; then
-                    echo "Generating self-signed certificate for wazuh-authd..."
-                    ${INSTALLDIR}/bin/wazuh-authd -C 365 -B 2048 -K ${INSTALLDIR}/etc/sslmanager.key -X ${INSTALLDIR}/etc/sslmanager.cert -S "/C=US/ST=California/CN=wazuh/"
+                    echo "Generating self-signed certificate for openarmor-authd..."
+                    ${INSTALLDIR}/bin/openarmor-authd -C 365 -B 2048 -K ${INSTALLDIR}/etc/sslmanager.key -X ${INSTALLDIR}/etc/sslmanager.cert -S "/C=US/ST=California/CN=wazuh/"
                     chmod 640 ${INSTALLDIR}/etc/sslmanager.key
                     chmod 640 ${INSTALLDIR}/etc/sslmanager.cert
             fi
@@ -323,7 +323,7 @@ WriteLogs()
 ##########
 SetHeaders()
 {
-    HEADERS_TMP="/tmp/wazuh-headers.tmp"
+    HEADERS_TMP="/tmp/openarmor-headers.tmp"
     if [ "$DIST_VER" = "0" ]; then
         sed -e "s/TYPE/$1/g; s/DISTRIBUTION/${DIST_NAME}/g; s/VERSION//g" "$HEADER_TEMPLATE" > $HEADERS_TMP
     else
@@ -604,7 +604,7 @@ WriteManager()
     cat ${RULES_TEMPLATE} >> $NEWCONFIG
     echo "" >> $NEWCONFIG
 
-    # Writting wazuh-logtest configuration
+    # Writting openarmor-logtest configuration
     cat ${RULE_TEST_TEMPLATE} >> $NEWCONFIG
     echo "" >> $NEWCONFIG
 
@@ -739,7 +739,7 @@ WriteLocal()
     cat ${RULES_TEMPLATE} >> $NEWCONFIG
     echo "" >> $NEWCONFIG
 
-    # Writting wazuh-logtest configuration
+    # Writting openarmor-logtest configuration
     cat ${RULE_TEST_TEMPLATE} >> $NEWCONFIG
     echo "" >> $NEWCONFIG
 
@@ -754,13 +754,13 @@ InstallCommon()
     INSTALL="install"
 
     if [ ${INSTYPE} = 'server' ]; then
-        OSSEC_CONTROL_SRC='./init/wazuh-server.sh'
+        OSSEC_CONTROL_SRC='./init/openarmor-server.sh'
         OSSEC_CONF_SRC='../etc/ossec-server.conf'
     elif [ ${INSTYPE} = 'agent' ]; then
-        OSSEC_CONTROL_SRC='./init/wazuh-client.sh'
+        OSSEC_CONTROL_SRC='./init/openarmor-client.sh'
         OSSEC_CONF_SRC='../etc/ossec-agent.conf'
     elif [ ${INSTYPE} = 'local' ]; then
-        OSSEC_CONTROL_SRC='./init/wazuh-local.sh'
+        OSSEC_CONTROL_SRC='./init/openarmor-local.sh'
         OSSEC_CONF_SRC='../etc/ossec-local.conf'
     fi
 
@@ -934,12 +934,12 @@ InstallCommon()
         fi
     fi
 
-  ${INSTALL} -m 0750 -o root -g 0 wazuh-logcollector ${INSTALLDIR}/bin
-  ${INSTALL} -m 0750 -o root -g 0 syscheckd/build/bin/wazuh-syscheckd ${INSTALLDIR}/bin
-  ${INSTALL} -m 0750 -o root -g 0 wazuh-execd ${INSTALLDIR}/bin
+  ${INSTALL} -m 0750 -o root -g 0 openarmor-logcollector ${INSTALLDIR}/bin
+  ${INSTALL} -m 0750 -o root -g 0 syscheckd/build/bin/openarmor-syscheckd ${INSTALLDIR}/bin
+  ${INSTALL} -m 0750 -o root -g 0 openarmor-execd ${INSTALLDIR}/bin
   ${INSTALL} -m 0750 -o root -g 0 manage_agents ${INSTALLDIR}/bin
-  ${INSTALL} -m 0750 -o root -g 0 ${OSSEC_CONTROL_SRC} ${INSTALLDIR}/bin/wazuh-control
-  ${INSTALL} -m 0750 -o root -g 0 wazuh-modulesd ${INSTALLDIR}/bin/
+  ${INSTALL} -m 0750 -o root -g 0 ${OSSEC_CONTROL_SRC} ${INSTALLDIR}/bin/openarmor-control
+  ${INSTALL} -m 0750 -o root -g 0 openarmor-modulesd ${INSTALLDIR}/bin/
 
   ${INSTALL} -d -m 0750 -o root -g ${WAZUH_GROUP} ${INSTALLDIR}/queue
   ${INSTALL} -d -m 0770 -o ${WAZUH_USER} -g ${WAZUH_GROUP} ${INSTALLDIR}/queue/alerts
@@ -1025,7 +1025,7 @@ InstallCommon()
   ${INSTALL} -m 0750 -o root -g ${WAZUH_GROUP} restart-wazuh ${INSTALLDIR}/active-response/bin/
   ${INSTALL} -m 0750 -o root -g ${WAZUH_GROUP} route-null ${INSTALLDIR}/active-response/bin/
   ${INSTALL} -m 0750 -o root -g ${WAZUH_GROUP} kaspersky ${INSTALLDIR}/active-response/bin/
-  ${INSTALL} -m 0750 -o root -g ${WAZUH_GROUP} wazuh-slack ${INSTALLDIR}/active-response/bin/
+  ${INSTALL} -m 0750 -o root -g ${WAZUH_GROUP} openarmor-slack ${INSTALLDIR}/active-response/bin/
 
   ${INSTALL} -d -m 0750 -o root -g ${WAZUH_GROUP} ${INSTALLDIR}/var
   ${INSTALL} -d -m 0770 -o root -g ${WAZUH_GROUP} ${INSTALLDIR}/var/run
@@ -1058,20 +1058,20 @@ InstallLocal()
     ${INSTALL} -d -m 0750 -o ${WAZUH_USER} -g ${WAZUH_GROUP} ${INSTALLDIR}/logs/api
     ${INSTALL} -d -m 0770 -o root -g ${WAZUH_GROUP} ${INSTALLDIR}/etc/rootcheck
 
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-agentlessd ${INSTALLDIR}/bin
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-analysisd ${INSTALLDIR}/bin
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-monitord ${INSTALLDIR}/bin
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-reportd ${INSTALLDIR}/bin
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-maild ${INSTALLDIR}/bin
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-logtest-legacy ${INSTALLDIR}/bin
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-csyslogd ${INSTALLDIR}/bin
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-dbd ${INSTALLDIR}/bin
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-agentlessd ${INSTALLDIR}/bin
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-analysisd ${INSTALLDIR}/bin
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-monitord ${INSTALLDIR}/bin
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-reportd ${INSTALLDIR}/bin
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-maild ${INSTALLDIR}/bin
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-logtest-legacy ${INSTALLDIR}/bin
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-csyslogd ${INSTALLDIR}/bin
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-dbd ${INSTALLDIR}/bin
     ${INSTALL} -m 0750 -o root -g ${WAZUH_GROUP} verify-agent-conf ${INSTALLDIR}/bin/
     ${INSTALL} -m 0750 -o root -g 0 clear_stats ${INSTALLDIR}/bin/
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-regex ${INSTALLDIR}/bin/
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-regex ${INSTALLDIR}/bin/
     ${INSTALL} -m 0750 -o root -g 0 agent_control ${INSTALLDIR}/bin/
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-integratord ${INSTALLDIR}/bin/
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-db ${INSTALLDIR}/bin/
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-integratord ${INSTALLDIR}/bin/
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-db ${INSTALLDIR}/bin/
 
     ${INSTALL} -d -m 0750 -o ${WAZUH_USER} -g ${WAZUH_GROUP} ${INSTALLDIR}/stats
     ${INSTALL} -d -m 0750 -o root -g ${WAZUH_GROUP} ${INSTALLDIR}/ruleset/decoders
@@ -1237,8 +1237,8 @@ InstallServer()
 
     TransferShared
 
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-remoted ${INSTALLDIR}/bin
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-authd ${INSTALLDIR}/bin
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-remoted ${INSTALLDIR}/bin
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-authd ${INSTALLDIR}/bin
 
     ${INSTALL} -d -m 0770 -o ${WAZUH_USER} -g ${WAZUH_GROUP} ${INSTALLDIR}/queue/rids
     ${INSTALL} -d -m 0770 -o ${WAZUH_USER} -g ${WAZUH_GROUP} ${INSTALLDIR}/queue/router
@@ -1333,7 +1333,7 @@ InstallServer()
 
     # Keystore
     ${INSTALL} -d -m 0750 -o ${WAZUH_USER} -g ${WAZUH_GROUP} ${INSTALLDIR}/queue/keystore
-    ${INSTALL} -m 0750 -o root -g ${WAZUH_GROUP} wazuh-keystore ${INSTALLDIR}/bin/
+    ${INSTALL} -m 0750 -o root -g ${WAZUH_GROUP} openarmor-keystore ${INSTALLDIR}/bin/
 }
 
 InstallAgent()
@@ -1343,7 +1343,7 @@ InstallAgent()
 
     InstallSecurityConfigurationAssessmentFiles "agent"
 
-    ${INSTALL} -m 0750 -o root -g 0 wazuh-agentd ${INSTALLDIR}/bin
+    ${INSTALL} -m 0750 -o root -g 0 openarmor-agentd ${INSTALLDIR}/bin
     ${INSTALL} -m 0750 -o root -g 0 agent-auth ${INSTALLDIR}/bin
 
     ${INSTALL} -d -m 0750 -o ${WAZUH_USER} -g ${WAZUH_GROUP} ${INSTALLDIR}/queue/rids

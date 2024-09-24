@@ -32,7 +32,7 @@ class MultiOrderedDict(OrderedDict):
 
 
 def getWazuhInfo(wazuh_home):
-    wazuh_control = os.path.join(wazuh_home, "bin", "wazuh-control")
+    wazuh_control = os.path.join(wazuh_home, "bin", "openarmor-control")
     wazuh_env_vars = {}
     try:
         proc = subprocess.Popen([wazuh_control, "info"], stdout=subprocess.PIPE)
@@ -155,7 +155,7 @@ class OssecTester(object):
         self.tested_decoders = set()
 
     def buildCmd(self, rule, alert, decoder):
-        cmd = ['%s/wazuh-logtest' % (self._ossec_path), ]
+        cmd = ['%s/openarmor-logtest' % (self._ossec_path), ]
         cmd += ['-U', "%s:%s:%s" % (rule, alert, decoder)]
         return cmd
 

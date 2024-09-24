@@ -586,7 +586,7 @@ stages:
           affected_items:
             - name: wazuhPolicy
               id: 100
-            - name: wazuh-wuiPolicy
+            - name: openarmor-wuiPolicy
               id: 101
           total_affected_items: 2
       save:
@@ -1128,7 +1128,7 @@ marks:
   - parametrize:
       key: field
       vals:
-        - wazuh-wui
+        - openarmor-wui
         - normal
 
 stages:
@@ -1152,7 +1152,7 @@ stages:
               roles:
                 - 1
             - id: 2
-              username: wazuh-wui
+              username: openarmor-wui
               allow_run_as: true
               roles:
                 - 1
@@ -1226,7 +1226,7 @@ stages:
       params:
         limit: 1
         select: username
-        search: wazuh-wui
+        search: openarmor-wui
     response:
       verify_response_with:
         # Check response item keys are the selected keys
@@ -1239,7 +1239,7 @@ stages:
         data:
           affected_items:
             - id: 2
-              username: wazuh-wui
+              username: openarmor-wui
           total_affected_items: !anyint
           total_failed_items: 0
           failed_items: [ ]
@@ -1389,7 +1389,7 @@ stages:
             - id: 1
               username: wazuh
             - id: 2
-              username: wazuh-wui
+              username: openarmor-wui
           failed_items:
             - error:
                 code: 5001

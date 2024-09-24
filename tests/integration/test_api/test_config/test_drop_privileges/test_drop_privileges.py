@@ -8,7 +8,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 type: integration
 
 brief: These tests will check if the 'drop_privileges' setting of the API is working properly.
-       This setting allows the user who starts the 'wazuh-apid' daemon to be different from
+       This setting allows the user who starts the 'openarmor-apid' daemon to be different from
        the 'root' user. The Wazuh API is an open source 'RESTful' API that allows for interaction
        with the Wazuh manager from a web browser, command line tool like 'cURL' or any script
        or program that can make web requests.
@@ -22,12 +22,12 @@ targets:
     - manager
 
 daemons:
-    - wazuh-apid
-    - wazuh-modulesd
-    - wazuh-analysisd
-    - wazuh-execd
-    - wazuh-db
-    - wazuh-remoted
+    - openarmor-apid
+    - openarmor-modulesd
+    - openarmor-analysisd
+    - openarmor-execd
+    - openarmor-db
+    - openarmor-remoted
 
 os_platform:
     - linux
@@ -99,7 +99,7 @@ def test_drop_privileges(test_configuration, test_metadata, add_configuration, t
             - Restart daemons defined in `daemons_handler_configuration` in this module
             - Wait until the API is ready to receive requests
         - test:
-            - Search wazuh-apid process and verify that it is present
+            - Search openarmor-apid process and verify that it is present
             - Get current user of the process
             - Check that the user is the expected
         - teardown:
@@ -130,20 +130,20 @@ def test_drop_privileges(test_configuration, test_metadata, add_configuration, t
             brief: Monitor the API log file to detect whether it has been started or not.
 
     assertions:
-        - Verify that when 'drop_privileges' is enabled the user who has started the 'wazuh-apid' daemon is 'wazuh'.
-        - Verify that when 'drop_privileges' is disabled the user who has started the 'wazuh-apid' daemon is 'root'.
+        - Verify that when 'drop_privileges' is enabled the user who has started the 'openarmor-apid' daemon is 'wazuh'.
+        - Verify that when 'drop_privileges' is disabled the user who has started the 'openarmor-apid' daemon is 'root'.
 
     input_description: Different test cases are contained in an external YAML file (cases_drop_privileges.yaml)
                        which includes API configuration parameters.
 
     expected_output:
-        - PID of the 'wazuh-apid' process.
+        - PID of the 'openarmor-apid' process.
         - wazuh (if drop_privileges is enabled)
         - root (if drop_privileges is disabled)
     """
     expected_user = test_metadata['expected_user']
 
-    # Get wazuh-apid process info
+    # Get openarmor-apid process info
     api_process = search_process_by_command(WAZUH_API_SCRIPT)
     assert api_process is not None, f"The process {WAZUH_API_SCRIPT} could not be found"
 

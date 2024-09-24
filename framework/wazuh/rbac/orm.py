@@ -31,7 +31,7 @@ from wazuh.core.common import wazuh_uid, wazuh_gid, DEFAULT_RBAC_RESOURCES
 from wazuh.core.utils import get_utc_now, safe_move
 from wazuh.rbac.utils import clear_cache
 
-logger = logging.getLogger("wazuh-api")
+logger = logging.getLogger("openarmor-api")
 
 # Max reserved ID value
 WAZUH_USER_ID = 1

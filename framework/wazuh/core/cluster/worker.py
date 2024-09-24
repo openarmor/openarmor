@@ -559,8 +559,8 @@ class WorkerHandler(client.AbstractClient, c_common.WazuhCommon):
         Asynchronous task that is started when the worker connects to the master. It starts an agent-info
         synchronization process every 'sync_agent_info' seconds.
 
-        A list of JSON chunks with the information of all local agents is retrieved from local wazuh-db socket
-        and sent to the master's wazuh-db.
+        A list of JSON chunks with the information of all local agents is retrieved from local openarmor-db socket
+        and sent to the master's openarmor-db.
         """
         logger = self.task_loggers["Agent-info sync"]
         wdb_conn = AsyncWazuhDBConnection()

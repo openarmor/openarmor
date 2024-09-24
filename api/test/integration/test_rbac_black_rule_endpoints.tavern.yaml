@@ -115,7 +115,7 @@ stages:
               relative_dirname: ruleset/rules
               status: enabled
             - <<: *full_item_rules_files
-              filename: 0017-wazuh-api_rules.xml
+              filename: 0017-openarmor-api_rules.xml
             - <<: *full_item_rules_files
               filename: 0020-syslog_rules.xml
             - <<: *full_item_rules_files

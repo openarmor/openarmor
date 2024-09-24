@@ -28,11 +28,11 @@ ABSOLUTE_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data"
 RELATIVE_PATH = os.path.join("framework", "wazuh", "core", "tests", "data", "test_cdb_list")
 PATH_FILE = os.path.join(RELATIVE_PATH, "test_lists")
 
-CONTENT_FILE = {'test-wazuh-w': 'write',
-                'test-wazuh-r': 'read',
-                'test-wazuh-a': 'attribute',
-                'test-wazuh-x': 'execute',
-                'test-wazuh-c': 'command',
+CONTENT_FILE = {'test-openarmor-w': 'write',
+                'test-openarmor-r': 'read',
+                'test-openarmor-a': 'attribute',
+                'test-openarmor-x': 'execute',
+                'test-openarmor-c': 'command',
                 'test-key': 'value:1',
                 'test-key:1': 'value',
                 'test-key:2': 'value:2',

@@ -59,12 +59,11 @@ wazuh/tests/integration/test_aws
 
 For a step-by-step example guide using linux go to the [test setup section](#linux)
 
-
 ## Configuration settings
 
 - **Credentials**:
-    Set the credentials at `$HOME/.aws/credentials` (being `HOME` the home directory of the user who runs the tests, 
- more information [here](https://documentation.wazuh.com/current/amazon/services/prerequisites/credentials.html#profiles) with the content:
+  Set the credentials at `$HOME/.aws/credentials` (being `HOME` the home directory of the user who runs the tests,
+  more information [here](https://documentation.wazuh.com/current/amazon/services/prerequisites/credentials.html#profiles) with the content:
 
 ```ini
 [default]
@@ -73,6 +72,7 @@ aws_secret_access_key = <secret-key-value>
 ```
 
 The provided credentials must have the following set of minimum permissions defined in AWS:
+
 ```
     "s3:PutObject",
     "s3:PutObjectAcl",
@@ -148,20 +148,19 @@ _We are using **Ubuntu 22.04** for this example:_
 
 - Install Python tests dependencies:
 
-    ```shell script
-    # Install pip
-    apt install python3-pip git -y
+  ```shell script
+  # Install pip
+  apt install python3-pip git -y
 
-    # Clone `wazuh` repository within your testing environment
-    git clone https://github.com/wazuh/wazuh.git
+  # Clone `wazuh` repository within your testing environment
+  git clone https://github.com/wazuh/wazuh.git
 
-    # Clone the `qa-integration-framework` repository withing your testing environment
-    git clone https://github.com/wazuh/qa-integration-framework.git
-  
-    # Install tests dependencies
-    python3 -m pip install qa-integration-framework/
-    ```
-  
+  # Clone the `qa-integration-framework` repository withing your testing environment
+  git clone https://github.com/wazuh/qa-integration-framework.git
+
+  # Install tests dependencies
+  python3 -m pip install qa-integration-framework/
+  ```
 
 ## Integration tests
 
@@ -185,7 +184,6 @@ To run any test, we just need to call `pytest` from `python3` using the followin
     python3 -m pytest [options] [file_or_dir] [file_or_dir] [...]
 ```
 
-
 **Options:**
 
 - `v`: verbosity level (-v or -vv. Highly recommended to use -vv when tests are failing)
@@ -208,7 +206,7 @@ check its documentation for further information.
 #### AWS integration tests example
 
 ```bash
-#root@wazuh-master:/wazuh/tests/integration# pytest -x test_aws/ --disable-warnings
+#root@openarmor-master:/wazuh/tests/integration# pytest -x test_aws/ --disable-warnings
 ==================================== test session starts ====================================
 platform linux -- Python 3.10.12, pytest-7.1.2, pluggy-1.2.0
 rootdir: /wazuh/tests/integration, configfile: pytest.ini

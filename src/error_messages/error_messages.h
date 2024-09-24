@@ -150,9 +150,9 @@
 #define INVALID_PREFIX          "(1283): Incorrect prefix message, message type: %s."
 #define INVALID_OPERATION       "(1284): Incorrect/unknown operation, type: %s."
 #define INVALID_RESPONSE        "(1285): Response with unexpected content."
-#define A_QUERY_ERROR           "(1286): Wazuh-db query error, check wdb logs."
+#define A_QUERY_ERROR           "(1286): Openarmor-db query error, check wdb logs."
 #define INVALID_TYPE            "(1287): Incorrect/unknown type value %s."
-#define WDBC_QUERY_EX_ERROR     "(1288): Wazuh-db query execution error."
+#define WDBC_QUERY_EX_ERROR     "(1288): Openarmor-db query execution error."
 
 /* logcollector */
 #define SYSTEM_ERROR     "(1600): Internal error. Exiting.."
@@ -477,7 +477,7 @@
 #define LOGTEST_ERROR_ACCEPT_CONN                   "(7301): Failure to accept connection. Errno: %s"
 #define LOGTEST_ERROR_RECV_MSG_ERRNO                "(7302): Failure to receive message: Errno: %s"
 #define LOGTEST_ERROR_INIT_HASH                     "(7303): Failure to initialize all_sessions hash"
-#define LOGTEST_ERROR_INV_CONF                      "(7304): Invalid wazuh-logtest configuration"
+#define LOGTEST_ERROR_INV_CONF                      "(7304): Invalid openarmor-logtest configuration"
 #define LOGTEST_ERROR_SIZE_HASH                     "(7305): Failure to resize all_sessions hash"
 #define LOGTEST_ERROR_COMMAND_NOT_ALLOWED           "(7306): Unable to process command"
 #define LOGTEST_ERROR_JSON_PARSE_POS                "(7307): Error parsing JSON in position %i, ... %s ..."

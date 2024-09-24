@@ -32,8 +32,8 @@ OSSEC_LOG_FIELDS = ['timestamp', 'tag', 'level', 'description']
 CTI_URL = get_cti_url()
 RELEASE_UPDATES_URL = os.path.join(CTI_URL, 'api', 'v1', 'ping')
 ONE_DAY_SLEEP = 60 * 60 * 24
-WAZUH_UID_KEY = 'wazuh-uid'
-WAZUH_TAG_KEY = 'wazuh-tag'
+WAZUH_UID_KEY = 'openarmor-uid'
+WAZUH_TAG_KEY = 'openarmor-tag'
 USER_AGENT_KEY = 'user-agent'
 
 class LoggingFormat(Enum):
@@ -92,7 +92,7 @@ def get_ossec_log_fields(log: str, log_format: LoggingFormat = LoggingFormat.pla
         return None
 
     if "rootcheck" in tag:  # Unify rootcheck category
-        tag = "wazuh-rootcheck"
+        tag = "openarmor-rootcheck"
 
     return get_utc_strptime(date, '%Y/%m/%d %H:%M:%S'), tag, level.lower(), description
 

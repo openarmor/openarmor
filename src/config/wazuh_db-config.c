@@ -1,5 +1,5 @@
 /*
- * Wazuh-DB settings manager
+ * Openarmor-DB settings manager
  * Copyright (C) 2015, Wazuh Inc.
  * Dec 17, 2021.
  *

@@ -280,7 +280,7 @@ int receive_msg()
                                 if (!UnmergeFiles(file, SHAREDCFG_DIR, OS_TEXT, &ignore_list)) {
                                     char msg_output[OS_MAXSTR];
 
-                                    snprintf(msg_output, OS_MAXSTR, "%c:%s:%s",  LOCALFILE_MQ, "wazuh-agent", AG_IN_UNMERGE);
+                                    snprintf(msg_output, OS_MAXSTR, "%c:%s:%s",  LOCALFILE_MQ, "openarmor-agent", AG_IN_UNMERGE);
                                     send_msg(msg_output, -1);
                                 }
                                 else {

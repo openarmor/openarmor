@@ -254,7 +254,7 @@ WAZUH_COMPONENT_CONFIGURATION_MAPPING = MappingProxyType(
         'monitor': {"global", "internal", "reports"},
         'request': {"global", "remote", "internal"},
         'syscheck': {"syscheck", "rootcheck", "internal"},
-        'wazuh-db': {"wdb", "internal"},
+        'openarmor-db': {"wdb", "internal"},
         'wmodules': {"wmodules"}
     }
 )

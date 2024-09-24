@@ -22,9 +22,9 @@ targets:
     - agent
 
 daemons:
-    - wazuh-analysisd
-    - wazuh-monitord
-    - wazuh-modulesd
+    - openarmor-analysisd
+    - openarmor-monitord
+    - openarmor-modulesd
 
 os_platform:
     - linux
@@ -45,7 +45,7 @@ os_version:
     - Windows Server 2016
 
 references:
-    - https://github.com/wazuh/wazuh-documentation/blob/develop/source/github/monitoring-github-activity.rst
+    - https://github.com/wazuh/openarmor-documentation/blob/develop/source/github/monitoring-github-activity.rst
 
 tags:
     - github_configuration

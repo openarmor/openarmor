@@ -13,7 +13,7 @@ from api.util import remove_nones_to_dict, parse_api_param, raise_if_exc
 from wazuh.core.cluster.dapi.dapi import DistributedAPI
 import wazuh.ciscat as ciscat
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 
 async def get_agents_ciscat_results(agent_id: str, pretty: bool = False, wait_for_complete: bool = False,

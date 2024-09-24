@@ -66,7 +66,7 @@ def init_argparse() -> argparse.Namespace:
 
 
 def main():
-    """wazuh-logtest main function."""
+    """openarmor-logtest main function."""
     # Parse cmdline args
     parser = init_argparse()
     args = parser.parse_args()
@@ -88,9 +88,9 @@ def main():
     if args.verbose:
         options['rules_debug'] = True
 
-    # Initialize wazuh-logtest component
+    # Initialize openarmor-logtest component
     w_logtest = WazuhLogtest(location=args.location)
-    logging.info('Starting wazuh-logtest %s', Wazuh.get_version_str())
+    logging.info('Starting openarmor-logtest %s', Wazuh.get_version_str())
     logging.info('Type one log per line')
 
     # Cleanup: remove session before exit
@@ -127,10 +127,10 @@ def main():
         try:
             output = w_logtest.process_log(event, session_token, options)
         except ValueError as error:
-            logging.error('** Wazuh-logtest error ' + str(error))
+            logging.error('** Openarmor-logtest error ' + str(error))
             continue
         except ConnectionError:
-            logging.error('** Wazuh-logtest error when connecting with wazuh-analysisd')
+            logging.error('** Openarmor-logtest error when connecting with openarmor-analysisd')
             continue
         # Check and alert to user if new session was created
         if session_token and session_token != output['token']:
@@ -141,7 +141,7 @@ def main():
             do_print_newline = False
             for message in output['messages']:
                 if message.startswith("WARNING"):
-                    logging.warning('** Wazuh-Logtest: %s', message)
+                    logging.warning('** Openarmor-Logtest: %s', message)
                     do_print_newline = True
             if do_print_newline:
                 logging.warning('')
@@ -149,7 +149,7 @@ def main():
         # Continue using last available session
         session_token = output['token']
 
-        # Show wazuh-logtest output
+        # Show openarmor-logtest output
         WazuhLogtest.show_output(output)
 
         # Show UT info
@@ -160,7 +160,7 @@ def main():
 class WazuhDeamonProtocol:
     """Encapsulate logic communication aspects between Wazuh daemons."""
 
-    def __init__(self, version: int = 1, origin_module: str = "wazuh-logtest", module_name: str = "wazuh-logtest"):
+    def __init__(self, version: int = 1, origin_module: str = "openarmor-logtest", module_name: str = "openarmor-logtest"):
         """Class constructor.
 
         Parameters
@@ -168,9 +168,9 @@ class WazuhDeamonProtocol:
         version :int
             Protocol version. Default: 1
         origin_module : str
-            Origin source module. Default: "wazuh-logtest"
+            Origin source module. Default: "openarmor-logtest"
         module_name : str
-            Source module name. Default: "wazuh-logtest"
+            Source module name. Default: "openarmor-logtest"
         """
         self.protocol = dict()
         self.protocol['version'] = version
@@ -226,7 +226,7 @@ class WazuhDeamonProtocol:
 
 
 class WazuhSocket:
-    """Encapsulate wazuh-socket communication (header with message size)."""
+    """Encapsulate openarmor-socket communication (header with message size)."""
 
     def __init__(self, file: str):
         """Class constructor.
@@ -239,7 +239,7 @@ class WazuhSocket:
         self.file = file
 
     def send(self, msg: str) -> bytes:
-        """Send and receive data to wazuh-socket (header with message size).
+        """Send and receive data to openarmor-socket (header with message size).
 
         Parameters
         ----------
@@ -265,7 +265,7 @@ class WazuhSocket:
 
 
 class WazuhLogtest:
-    """Top level class to interact with wazuh-logtest feature, part of wazuh-analysisd."""
+    """Top level class to interact with openarmor-logtest feature, part of openarmor-analysisd."""
 
     def __init__(self, location: str = "stdin", log_format: str = "syslog"):
         """Class constructor.
@@ -286,7 +286,7 @@ class WazuhLogtest:
         self.ut = [''] * 3
 
     def process_log(self, log, token: str = None, options: str = None) -> dict:
-        """Send log event to wazuh-logtest and receive the outcome.
+        """Send log event to openarmor-logtest and receive the outcome.
 
         Parameters
         ----------
@@ -410,12 +410,12 @@ class WazuhLogtest:
         WazuhLogtest.show_ossec_logtest_like(output)
 
     def show_ossec_logtest_like(output: dict):
-        """Show wazuh-logtest output like ossec-logtest.
+        """Show openarmor-logtest output like ossec-logtest.
 
         Parameters
         ----------
         output : dict
-            Wazuh-logtest outcome.
+            Openarmor-logtest outcome.
         """
         output_data = output['output']
         # Pre-decoding phase
@@ -452,7 +452,7 @@ class WazuhLogtest:
             logging.info('**Alert to be generated.')
 
     def show_phase_info(phase_data: dict, show_first: list = None, prefix: str = ""):
-        """Show wazuh-logtest processing phase information.
+        """Show openarmor-logtest processing phase information.
 
         Parameters
         ----------
@@ -503,7 +503,7 @@ class Wazuh:
         return common.find_wazuh_path()
 
     def get_info(field: str) -> str:
-        """Get Wazuh information from wazuh-control.
+        """Get Wazuh information from openarmor-control.
 
         Parameters
         ----------
@@ -515,7 +515,7 @@ class Wazuh:
         str
             Field value.
         """
-        wazuh_control = os.path.join(Wazuh.get_install_path(), "bin", "wazuh-control")
+        wazuh_control = os.path.join(Wazuh.get_install_path(), "bin", "openarmor-control")
         wazuh_env_vars = dict()
         try:
             proc = subprocess.Popen([wazuh_control, "info"], stdout=subprocess.PIPE)
@@ -568,7 +568,7 @@ class Wazuh:
 
 
 def init_logger(args: argparse.Namespace):
-    """Initialize wazuh-logtest logger.
+    """Initialize openarmor-logtest logger.
 
     Parameters
     -------

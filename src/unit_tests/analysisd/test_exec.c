@@ -124,7 +124,7 @@ void test_server_success_json(void **state)
 
     data->ar->location = AS_ONLY;
 
-    char *exec_msg = "{\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"wazuh-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
+    char *exec_msg = "{\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"openarmor-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
     const char *alert_info = "[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]";
     char *node = NULL;
 
@@ -158,7 +158,7 @@ void test_all_agents_success_json_string(void **state)
     char *version_2 = "Wazuh v4.0.0";
     data->ar->location = ALL_AGENTS;
 
-    char *exec_msg_1 = "(local_source) [] NNS 003 {\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"wazuh-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
+    char *exec_msg_1 = "(local_source) [] NNS 003 {\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"openarmor-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
     const char *alert_info_1 = "[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]";
     char *node_1 = NULL;
 
@@ -242,7 +242,7 @@ void test_all_agents_success_json_string_wdb(void **state)
     cJSON_AddStringToObject(agent_info_1, "version", version_1);
     cJSON_AddItemToArray(agent_info_array_1, agent_info_1);
 
-    char *exec_msg_1 = "(local_source) [] NNS 003 {\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"wazuh-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
+    char *exec_msg_1 = "(local_source) [] NNS 003 {\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"openarmor-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
     const char *alert_info_1 = "[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]";
     char *node_1 = NULL;
 
@@ -381,7 +381,7 @@ void test_specific_agent_success_json(void **state)
     char *version = "Wazuh v4.2.0";
     data->ar->location = SPECIFIC_AGENT;
 
-    char *exec_msg = "(local_source) [] NNS 002 {\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"wazuh-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
+    char *exec_msg = "(local_source) [] NNS 002 {\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"openarmor-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
     const char *alert_info = "[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]";
     char *node = NULL;
 
@@ -431,7 +431,7 @@ void test_specific_agent_success_json_wdb(void **state)
     cJSON_AddStringToObject(agent_info, "version", version);
     cJSON_AddItemToArray(agent_info_array, agent_info);
 
-    char *exec_msg = "(local_source) [] NNS 002 {\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"wazuh-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
+    char *exec_msg = "(local_source) [] NNS 002 {\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"openarmor-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
     const char *alert_info = "[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]";
     char *node = NULL;
 
@@ -582,7 +582,7 @@ void test_remote_agent_success_json(void **state)
     char *version = "Wazuh v4.2.0";
     data->ar->location = REMOTE_AGENT;
 
-    char *exec_msg = "(local_source) [] NRN 001 {\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"wazuh-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
+    char *exec_msg = "(local_source) [] NRN 001 {\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"openarmor-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
     const char *alert_info = "[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]";
     char *node = NULL;
 
@@ -632,7 +632,7 @@ void test_remote_agent_success_json_wdb(void **state)
     cJSON_AddStringToObject(agent_info, "version", version);
     cJSON_AddItemToArray(agent_info_array, agent_info);
 
-    char *exec_msg = "(local_source) [] NRN 001 {\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"wazuh-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
+    char *exec_msg = "(local_source) [] NRN 001 {\"version\":1,\"origin\":{\"name\":\"node01\",\"module\":\"openarmor-analysisd\"},\"command\":\"restart-wazuh0\",\"parameters\":{\"extra_args\":[],\"alert\":[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]}}";
     const char *alert_info = "[{\"timestamp\":\"2021-01-05T15:23:00.547+0000\",\"rule\":{\"level\":5,\"description\":\"File added to the system.\",\"id\":\"554\"}}]";
     char *node = NULL;
 

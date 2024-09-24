@@ -36,7 +36,7 @@ getPreinstalledDirByType()
     # Checking for Systemd
     if hash ps 2>&1 > /dev/null && hash grep 2>&1 > /dev/null && [ -n "$(ps -e | egrep ^\ *1\ .*systemd$)" ]; then
 
-        SED_EXTRACT_PREINSTALLEDDIR="s/^ExecStart=\/usr\/bin\/env \(.*\)\/bin\/wazuh-control start$/\1/p"
+        SED_EXTRACT_PREINSTALLEDDIR="s/^ExecStart=\/usr\/bin\/env \(.*\)\/bin\/openarmor-control start$/\1/p"
 
         if [ "X$pidir_service_name" = "Xwazuh-manager" ] || [ "X$pidir_service_name" = "Xwazuh-local" ]; then #manager, hibrid or local
             type="manager"
@@ -45,19 +45,19 @@ getPreinstalledDirByType()
         fi
 
         # Get the unit file and extract the Wazuh home path
-        PREINSTALLEDDIR=$(systemctl cat wazuh-${type}.service 2>/dev/null | sed -n "${SED_EXTRACT_PREINSTALLEDDIR}")
+        PREINSTALLEDDIR=$(systemctl cat openarmor-${type}.service 2>/dev/null | sed -n "${SED_EXTRACT_PREINSTALLEDDIR}")
         if [ -n "${PREINSTALLEDDIR}" ] && [ -d "${PREINSTALLEDDIR}" ]; then
             return 0;
         fi
 
         # If fail, find the service file
         # RHEL 8 / Amazon / openSUSE Tumbleweed the services should be installed in /usr/lib/systemd/system/
-        if [ -f /usr/lib/systemd/system/wazuh-${type}.service ]; then
-            SERVICE_UNIT_PATH=/usr/lib/systemd/system/wazuh-${type}.service
+        if [ -f /usr/lib/systemd/system/openarmor-${type}.service ]; then
+            SERVICE_UNIT_PATH=/usr/lib/systemd/system/openarmor-${type}.service
         fi
         # Others
-        if [ -f /etc/systemd/system/wazuh-${type}.service ]; then
-            SERVICE_UNIT_PATH=/etc/systemd/system/wazuh-${type}.service
+        if [ -f /etc/systemd/system/openarmor-${type}.service ]; then
+            SERVICE_UNIT_PATH=/etc/systemd/system/openarmor-${type}.service
         fi
 
         if [ -f "$SERVICE_UNIT_PATH" ]; then
@@ -128,7 +128,7 @@ getPreinstalledDirByType()
     # Checking for Darwin
     if [ "X${NUNAME}" = "XDarwin" ]; then
         if [ -f /Library/StartupItems/WAZUH/WAZUH ]; then
-            PREINSTALLEDDIR=`sed -n 's/^ *//; s/^\s*\(.*\)\/bin\/wazuh-control start$/\1/p' /Library/StartupItems/WAZUH/WAZUH`
+            PREINSTALLEDDIR=`sed -n 's/^ *//; s/^\s*\(.*\)\/bin\/openarmor-control start$/\1/p' /Library/StartupItems/WAZUH/WAZUH`
             if [ -d "$PREINSTALLEDDIR" ]; then
                 return 0;
             else
@@ -179,10 +179,10 @@ getPreinstalledDirByType()
     fi
     # Checking for BSD
     if [ "X${UN}" = "XOpenBSD" -o "X${UN}" = "XNetBSD" -o "X${UN}" = "XFreeBSD" -o "X${UN}" = "XDragonFly" ]; then
-        # Checking for the presence of wazuh-control on rc.local
-        grep wazuh-control /etc/rc.local > /dev/null 2>&1
+        # Checking for the presence of openarmor-control on rc.local
+        grep openarmor-control /etc/rc.local > /dev/null 2>&1
         if [ $? = 0 ]; then
-            PREINSTALLEDDIR=`sed -n 's/^\(.*\)\/bin\/wazuh-control start$/\1/p' /etc/rc.local`
+            PREINSTALLEDDIR=`sed -n 's/^\(.*\)\/bin\/openarmor-control start$/\1/p' /etc/rc.local`
             if [ -d "$PREINSTALLEDDIR" ]; then
                 return 0;
             else
@@ -194,9 +194,9 @@ getPreinstalledDirByType()
     elif [ "X${NUNAME}" = "XLinux" ]; then
         # Checking for Linux
         if [ -e "/etc/rc.d/rc.local" ]; then
-            grep wazuh-control /etc/rc.d/rc.local > /dev/null 2>&1
+            grep openarmor-control /etc/rc.d/rc.local > /dev/null 2>&1
             if [ $? = 0 ]; then
-                PREINSTALLEDDIR=`sed -n 's/^\(.*\)\/bin\/wazuh-control start$/\1/p' /etc/rc.d/rc.local`
+                PREINSTALLEDDIR=`sed -n 's/^\(.*\)\/bin\/openarmor-control start$/\1/p' /etc/rc.d/rc.local`
                 if [ -d "$PREINSTALLEDDIR" ]; then
                     return 0;
                 else
@@ -242,7 +242,7 @@ getPreinstalledDirByType()
 ##########
 isWazuhInstalled()
 {
-    if [ -f "${1}/bin/wazuh-control" ]; then
+    if [ -f "${1}/bin/openarmor-control" ]; then
         return 0;
     elif [ -f "${1}/bin/ossec-control" ]; then
         return 0;
@@ -274,19 +274,19 @@ getPreinstalledDir()
     fi
 
     # Getting preinstalled dir for Wazuh manager and hibrid installations
-    pidir_service_name="wazuh-manager"
+    pidir_service_name="openarmor-manager"
     if getPreinstalledDirByType && isWazuhInstalled $PREINSTALLEDDIR; then
         return 0;
     fi
 
     # Getting preinstalled dir for Wazuh agent installations
-    pidir_service_name="wazuh-agent"
+    pidir_service_name="openarmor-agent"
     if getPreinstalledDirByType && isWazuhInstalled $PREINSTALLEDDIR; then
         return 0;
     fi
 
     # Getting preinstalled dir for Wazuh local installations
-    pidir_service_name="wazuh-local"
+    pidir_service_name="openarmor-local"
     if getPreinstalledDirByType && isWazuhInstalled $PREINSTALLEDDIR; then
         return 0;
     fi
@@ -304,7 +304,7 @@ getPreinstalledType()
             getPreinstalledDir
         fi
 
-        TYPE=`$PREINSTALLEDDIR/bin/wazuh-control info -t`
+        TYPE=`$PREINSTALLEDDIR/bin/openarmor-control info -t`
     fi
 
     echo $TYPE
@@ -321,7 +321,7 @@ getPreinstalledVersion()
             getPreinstalledDir
         fi
 
-        VERSION=`$PREINSTALLEDDIR/bin/wazuh-control info -v`
+        VERSION=`$PREINSTALLEDDIR/bin/openarmor-control info -v`
     fi
 
     echo $VERSION
@@ -352,15 +352,15 @@ UpdateStartOSSEC()
     fi
 
     if [ `stat /proc/1/exe 2> /dev/null | grep "systemd" | wc -l` -ne 0 ]; then
-        systemctl start wazuh-$TYPE
+        systemctl start openarmor-$TYPE
     elif [ `stat /proc/1/exe 2> /dev/null | grep "init.d" | wc -l` -ne 0 ]; then
-        service wazuh-$TYPE start
+        service openarmor-$TYPE start
     else
         # Considering that this function is only used after finishing the installation
         # the INSTALLDIR variable is always set. It could have either the default value,
         # or a value equals to the PREINSTALLEDDIR, or a value specified by the user.
         # The last two possibilities are set in the setInstallDir function.
-        $INSTALLDIR/bin/wazuh-control start
+        $INSTALLDIR/bin/openarmor-control start
     fi
 }
 
@@ -380,9 +380,9 @@ UpdateStopOSSEC()
     fi
 
     if [ `stat /proc/1/exe 2> /dev/null | grep "systemd" | wc -l` -ne 0 ]; then
-        systemctl stop wazuh-$TYPE
+        systemctl stop openarmor-$TYPE
     elif [ `stat /proc/1/exe 2> /dev/null | grep "init.d" | wc -l` -ne 0 ]; then
-        service wazuh-$TYPE stop
+        service openarmor-$TYPE stop
     fi
 
     # Make sure Wazuh is stopped
@@ -393,7 +393,7 @@ UpdateStopOSSEC()
     if [ -f "$PREINSTALLEDDIR/bin/ossec-control" ]; then
         $PREINSTALLEDDIR/bin/ossec-control stop > /dev/null 2>&1
     else
-        $PREINSTALLEDDIR/bin/wazuh-control stop > /dev/null 2>&1
+        $PREINSTALLEDDIR/bin/openarmor-control stop > /dev/null 2>&1
     fi
 
     sleep 2

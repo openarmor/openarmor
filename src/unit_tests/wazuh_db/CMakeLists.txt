@@ -203,7 +203,7 @@ list(APPEND wdb_tests_flags "-Wl,--wrap,wfopen,--wrap,fopen,--wrap,fclose,--wrap
 add_compile_options(-Wall)
 link_directories(${SRC_FOLDER}/build/shared_modules/router)
 
-# Wazuh-DB objects
+# Openarmor-DB objects
 FILE(GLOB wazuh_db_objects ${SRC_FOLDER}/wazuh_db/*.o)
 list(REMOVE_ITEM wazuh_db_objects ${SRC_FOLDER}/wazuh_db/main.o ${SRC_FOLDER}/wazuh_db/wdb_shared.o)
 

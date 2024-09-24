@@ -24,7 +24,7 @@ from api.constants import (
 
 ONE_DAY_SLEEP = 60*60*24
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 cti_context = {}
 
@@ -102,4 +102,4 @@ async def lifespan_handler(_: ConnexionMiddleware):
         task.cancel()
         await task
 
-    logger.info('Shutdown wazuh-apid server.')
+    logger.info('Shutdown openarmor-apid server.')

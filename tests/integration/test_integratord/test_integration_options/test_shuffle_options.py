@@ -20,7 +20,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-integratord
+    - openarmor-integratord
 
 os_platform:
     - Linux
@@ -31,7 +31,7 @@ os_version:
 
 references:
     - https://documentation.wazuh.com/current/user-manual/capabilities/virustotal-scan/integration.html
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-integratord.htm
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-integratord.htm
 
 pytest_args:
     - tier:

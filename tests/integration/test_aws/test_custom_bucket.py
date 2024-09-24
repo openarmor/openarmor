@@ -45,7 +45,7 @@ def test_custom_bucket_defaults(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has appeared calling the module with correct parameters.
             - Check in the ossec.log that no errors occurs.
@@ -152,7 +152,7 @@ def test_custom_bucket_logs(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
             - Uploads a file to the S3 Bucket.
         - test:
             - Check in the log that the module was called with correct parameters.

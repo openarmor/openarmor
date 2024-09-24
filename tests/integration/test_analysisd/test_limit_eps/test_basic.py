@@ -7,7 +7,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: The 'wazuh-analysisd' daemon uses a series of decoders and rules to analyze and interpret logs and events and
+brief: The 'openarmor-analysisd' daemon uses a series of decoders and rules to analyze and interpret logs and events and
        generate alerts when the decoded information matches the established rules. There is a feature to limit the
        number of events that the manager can process, in order to allow the correct functioning of the daemon. These
        tests check if this feature is enabled/disabled when desired.
@@ -21,7 +21,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-analysisd
+    - openarmor-analysisd
 
 os_platform:
     - linux
@@ -84,10 +84,10 @@ def test_enabled(test_configuration, test_metadata, load_wazuh_basic_configurati
             - Load Wazuh light configuration.
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has appeared indicating that EPS limiting has been enabled.
-            - Check that wazuh-analysisd is running (it has not been crashed).
+            - Check that openarmor-analysisd is running (it has not been crashed).
         - teardown:
             - Truncate wazuh logs.
             - Restore initial configuration.
@@ -143,10 +143,10 @@ def test_disabled(test_configuration, test_metadata, load_wazuh_basic_configurat
             - Load Wazuh light configuration.
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Look in the ossec.log to see if the EPS limitation activation does not appear.
-            - Check that wazuh-analysisd is running (it has not been crashed).
+            - Check that openarmor-analysisd is running (it has not been crashed).
         - teardown:
             - Truncate wazuh logs.
             - Restore initial configuration.

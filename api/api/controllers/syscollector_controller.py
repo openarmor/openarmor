@@ -12,7 +12,7 @@ from api.controllers.util import json_response
 from api.util import remove_nones_to_dict, parse_api_param, raise_if_exc
 from wazuh.core.cluster.dapi.dapi import DistributedAPI
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 
 async def get_hardware_info(agent_id: str, pretty: bool = False, wait_for_complete: bool = False,

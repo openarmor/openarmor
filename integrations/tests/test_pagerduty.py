@@ -34,10 +34,10 @@ alert_template = {
     'id': 'alert_id',
     'full_log': 'full log.',
     'decoder': {'name': 'decoder-name'},
-    'location': 'wazuh-X',
+    'location': 'openarmor-X',
 }
 
-options_template = {'client': 'Wazuh-X -- Alert generated'}
+options_template = {'client': 'Openarmor-X -- Alert generated'}
 
 msg_template = {
     'payload': {
@@ -48,7 +48,7 @@ msg_template = {
     },
     'routing_key': f'{apikey_pagerduty}',
     'event_action': 'trigger',
-    'client': 'Wazuh-X -- Alert generated',
+    'client': 'Openarmor-X -- Alert generated',
     'client_url': 'https://monitoring.example.com',
 }
 

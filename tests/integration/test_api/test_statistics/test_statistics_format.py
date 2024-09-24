@@ -20,12 +20,12 @@ targets:
     - manager
 
 daemons:
-    - wazuh-apid
-    - wazuh-modulesd
-    - wazuh-analysisd
-    - wazuh-execd
-    - wazuh-db
-    - wazuh-remoted
+    - openarmor-apid
+    - openarmor-modulesd
+    - openarmor-analysisd
+    - openarmor-execd
+    - openarmor-db
+    - openarmor-remoted
 
 os_platform:
     - linux
@@ -101,13 +101,13 @@ def test_manager_statistics_format(test_configuration, test_metadata, load_wazuh
         - setup:
             - Load Wazuh light configuration
             - Apply ossec.conf configuration changes according to the configuration template and use case
-            - Restart wazuh-manager service to apply configuration changes
+            - Restart openarmor-manager service to apply configuration changes
         - test:
             - Request the statistics of a particular daemon from the API
             - Compare the obtained statistics with the json schema
         - teardown:
             - Restore initial configuration
-            - Stop wazuh-manager
+            - Stop openarmor-manager
 
     wazuh_min_version: 4.4.0
 
@@ -155,14 +155,14 @@ def test_agent_statistics_format(test_metadata, daemons_handler, simulate_agent)
 
     test_phases:
         - setup:
-            - Restart wazuh-manager service to apply configuration changes
+            - Restart openarmor-manager service to apply configuration changes
         - test:
             - Simulate and connect an agent
             - Request the statistics of a particular daemon and agent from the API
             - Compare the obtained statistics with the json schema
             - Stop and delete the simulated agent
         - teardown:
-            - Stop wazuh-manager
+            - Stop openarmor-manager
 
     wazuh_min_version: 4.4.0
 

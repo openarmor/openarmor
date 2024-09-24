@@ -22,12 +22,12 @@ targets:
     - manager
 
 daemons:
-    - wazuh-apid
-    - wazuh-modulesd
-    - wazuh-analysisd
-    - wazuh-execd
-    - wazuh-db
-    - wazuh-remoted
+    - openarmor-apid
+    - openarmor-modulesd
+    - openarmor-analysisd
+    - openarmor-execd
+    - openarmor-db
+    - openarmor-remoted
 
 os_platform:
     - linux
@@ -166,7 +166,7 @@ def test_max_upload_size(test_configuration, test_metadata, add_configuration, t
             brief: Monitor the API log file to detect whether it has been started or not.
 
     assertions:
-        - Verify that the 'wazuh-apid' daemon returns a proper HTTP status code depending on the value
+        - Verify that the 'openarmor-apid' daemon returns a proper HTTP status code depending on the value
           of the 'max_upload_size' tag and the size of the response body received.
 
     input_description: The test gets the configuration from the YAML file, which contains the API configuration.

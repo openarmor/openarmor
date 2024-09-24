@@ -16,8 +16,8 @@ targets:
     - manager
 
 daemons:
-    - wazuh-authd
-    - wazuh-clusterd
+    - openarmor-authd
+    - openarmor-clusterd
 
 os_platform:
     - linux

@@ -7,7 +7,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: The 'wazuh-analysisd' daemon uses a series of decoders and rules to analyze and interpret logs and events and
+brief: The 'openarmor-analysisd' daemon uses a series of decoders and rules to analyze and interpret logs and events and
        generate alerts when the decoded information matches the established rules. There is a feature to limit the
        number of events that the manager can process, in order to allow the correct functioning of the daemon. These
        tests check different configuration values for this feature.
@@ -21,7 +21,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-analysisd
+    - openarmor-analysisd
 
 os_platform:
     - linux
@@ -90,10 +90,10 @@ def test_accepted_values(test_configuration, test_metadata, load_wazuh_basic_con
             - Load Wazuh light configuration.
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the log that the EPS limitation has been activated with the specified parameters.
-            - Check that wazuh-analysisd is running (it has not been crashed).
+            - Check that openarmor-analysisd is running (it has not been crashed).
         - teardown:
             - Truncate wazuh logs.
             - Restore initial configuration.
@@ -142,7 +142,7 @@ def test_accepted_values(test_configuration, test_metadata, load_wazuh_basic_con
 def test_invalid_values(test_configuration, test_metadata, load_wazuh_basic_configuration, set_wazuh_configuration,
                         truncate_monitored_files, daemons_handler):
     """
-    description: Check for configuration error and wazuh-analysisd if the EPS limiting configuration has unaccepted
+    description: Check for configuration error and openarmor-analysisd if the EPS limiting configuration has unaccepted
         values. Done for the following cases:
             - Maximum value above the allowed value.
             - Timeframe value above the allowed value.
@@ -155,9 +155,9 @@ def test_invalid_values(test_configuration, test_metadata, load_wazuh_basic_conf
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Truncate wazuh logs.
         - test:
-            - Restart wazuh-manager service to apply configuration changes.
-            - Check that a configuration error is raised when trying to start wazuh-manager.
-            - Check that wazuh-analysisd is not running (due to configuration error).
+            - Restart openarmor-manager service to apply configuration changes.
+            - Check that a configuration error is raised when trying to start openarmor-manager.
+            - Check that openarmor-analysisd is not running (due to configuration error).
         - teardown:
             - Truncate wazuh logs.
             - Restore initial configuration.
@@ -185,7 +185,7 @@ def test_invalid_values(test_configuration, test_metadata, load_wazuh_basic_conf
             brief: Handler of Wazuh daemons.
 
     assertions:
-        - Check that a configuration error is raised when trying to start wazuh-manager.
+        - Check that a configuration error is raised when trying to start openarmor-manager.
 
     input_description:
         - The `configuration_invalid_values` file provides the module configuration for this test.
@@ -216,10 +216,10 @@ def test_missing_configuration(test_configuration, test_metadata, load_wazuh_bas
             - Truncate wazuh logs.
         - test:
             - Remove the specified tag in ossec.conf
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
             - Check whether the EPS limitation is activated, deactivated or generates a configuration error due to a
               missing label.
-            - Check if wazuh-analysisd is running or not (according to the expected behavior).
+            - Check if openarmor-analysisd is running or not (according to the expected behavior).
         - teardown:
             - Truncate wazuh logs.
             - Restore initial configuration.

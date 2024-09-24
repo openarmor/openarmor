@@ -404,7 +404,7 @@ STATIC void send_msg_on_startup(void) {
     snprintf(msg, OS_MAXSTR, OS_AG_STARTED,
             keys.keyentries[0]->name,
             keys.keyentries[0]->ip->ip);
-    os_snprintf(fmsg, OS_MAXSTR, "%c:%s:%s", LOCALFILE_MQ, "wazuh-agent", msg);
+    os_snprintf(fmsg, OS_MAXSTR, "%c:%s:%s", LOCALFILE_MQ, "openarmor-agent", msg);
 
     send_msg(fmsg, -1);
 }

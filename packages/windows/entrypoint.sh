@@ -16,8 +16,8 @@ if [[ "${DEBUG}" = "yes" ]]; then
 fi
 
 if [ -z "${BRANCH}"]; then
-    mkdir /wazuh-local-src
-    cp -r /local-src/* /wazuh-local-src
+    mkdir /openarmor-local-src
+    cp -r /local-src/* /openarmor-local-src
 else
     URL_REPO=https://github.com/wazuh/wazuh/archive/${BRANCH}.zip
 
@@ -25,9 +25,9 @@ else
     wget -O wazuh.zip ${URL_REPO} && unzip wazuh.zip
 fi
 
-bash -c "make -C /wazuh-*/src deps TARGET=winagent ${FLAGS}"
-bash -c "make -C /wazuh-*/src TARGET=winagent ${FLAGS}"
+bash -c "make -C /openarmor-*/src deps TARGET=winagent ${FLAGS}"
+bash -c "make -C /openarmor-*/src TARGET=winagent ${FLAGS}"
 
-rm -rf /wazuh-*/src/external
+rm -rf /openarmor-*/src/external
 
-zip -r /shared/${ZIP_NAME} /wazuh-*
+zip -r /shared/${ZIP_NAME} /openarmor-*

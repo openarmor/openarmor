@@ -7,10 +7,10 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: Wazuh-db is the daemon in charge of the databases with all the Wazuh persistent information, exposing a socket
+brief: Openarmor-db is the daemon in charge of the databases with all the Wazuh persistent information, exposing a socket
        to receive requests and provide information. The Wazuh core uses list-based databases to store information
        related to agent keys, and FIM/Rootcheck event data.
-       Wazuh-db confirms that is able to save, update and erase the necessary information into the corresponding
+       Openarmor-db confirms that is able to save, update and erase the necessary information into the corresponding
        databases, using the proper commands and response strings.
 
 components:
@@ -20,7 +20,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-db
+    - openarmor-db
 
 os_platform:
     - linux
@@ -37,7 +37,7 @@ os_version:
     - Ubuntu Bionic
 
 references:
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-db.html
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-db.html
 
 tags:
     - wazuh_db
@@ -67,7 +67,7 @@ def test_wazuh_db_timeout(daemons_handler_module, connect_to_sockets_module,
     command = 'agent 000 package get'
     receiver_sockets[0].send(command, size=True)
 
-    # Waiting Wazuh-DB to process command
+    # Waiting Openarmor-DB to process command
     time.sleep(wazuh_db_send_sleep)
 
     socket_closed = False

@@ -1,4 +1,4 @@
-run-name: Package - Build ${{ inputs.system }} wazuh-manager on ${{ inputs.architecture }} ${{ inputs.is_stage && '- is stage' || '' }} ${{ inputs.checksum && '- checksum' || '' }} ${{ inputs.debug && '- debug' || '' }} ${{ inputs.id }}
+run-name: Package - Build ${{ inputs.system }} openarmor-manager on ${{ inputs.architecture }} ${{ inputs.is_stage && '- is stage' || '' }} ${{ inputs.checksum && '- checksum' || '' }} ${{ inputs.debug && '- debug' || '' }} ${{ inputs.id }}
 name: Package - Build Wazuh manager
 
 on:
@@ -92,7 +92,7 @@ jobs:
   Build-manager-packages:
     runs-on: ubuntu-latest
     timeout-minutes: 35
-    name: Build ${{ inputs.system }} wazuh-manager on ${{ inputs.architecture }}
+    name: Build ${{ inputs.system }} openarmor-manager on ${{ inputs.architecture }}
 
     steps:
       - name: Cancel previous runs
@@ -116,7 +116,7 @@ jobs:
         run: |
           bash $GITHUB_WORKSPACE/.github/actions/ghcr-pull-and-push/pull_image_from_ghcr.sh ${{ secrets.GITHUB_TOKEN }} ${{ github.actor}} $CONTAINER_NAME ${{ env.TAG }}
 
-      - name: Build ${{ inputs.system }} wazuh-manager on ${{ inputs.architecture }}
+      - name: Build ${{ inputs.system }} openarmor-manager on ${{ inputs.architecture }}
         working-directory: packages
         run: |
           REVISION=${{ inputs.revision }}
@@ -135,7 +135,7 @@ jobs:
           if [ -z "${{ env.PACKAGE_NAME }}" ]; then echo "No package found matching the pattern!"; exit 1; fi
           sudo docker run -v $GITHUB_WORKSPACE/.github/actions/test-install-components/:/tests -v /tmp/:/packages --entrypoint '/tests/install_component.sh' $CONTAINER_NAME:${{ env.TAG }} $PACKAGE_NAME manager
           # Check if Wazuh was installed. The /tmp/status.log file was generated in the previous step.
-          if grep -iq " installed.*wazuh-manager" /tmp/status.log ; then
+          if grep -iq " installed.*openarmor-manager" /tmp/status.log ; then
             echo "Installation successfully."
           else
             echo "The installation could not be completed. The package will not be uploaded.";

@@ -15,7 +15,7 @@ from wazuh import decoder as decoder_framework
 from wazuh.core.cluster.dapi.dapi import DistributedAPI
 from wazuh.core.results import AffectedItemsWazuhResult
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 
 async def get_decoders(decoder_names: list = None, pretty: bool = False, wait_for_complete: bool = False,

@@ -14,7 +14,7 @@ from api.api_exception import APIError
 # Compile regex when the module is imported so it's not necessary to compile it everytime log.info is called
 request_pattern = re.compile(r'\[.+]|\s+\*\s+')
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 # Variable used to specify an unknown user
 UNKNOWN_USER_STRING = "unknown_user"
@@ -85,7 +85,7 @@ class WazuhJsonFormatter(jsonlogger.JsonFormatter):
 def set_logging(log_filepath, log_level='INFO', foreground_mode=False) -> dict:
     """Set up logging for API.
     
-    This function creates a logging configuration dictionary, configure the wazuh-api logger
+    This function creates a logging configuration dictionary, configure the openarmor-api logger
     and returns the logging configuration dictionary that will be used in uvicorn logging
     configuration.
     
@@ -182,7 +182,7 @@ def set_logging(log_filepath, log_level='INFO', foreground_mode=False) -> dict:
             },
         },
         "loggers": {
-            "wazuh-api": {"handlers": hdls, "level": log_level, "propagate": False},
+            "openarmor-api": {"handlers": hdls, "level": log_level, "propagate": False},
             "start-stop-api": {"handlers": hdls, "level": 'INFO', "propagate": False}
         }
     }

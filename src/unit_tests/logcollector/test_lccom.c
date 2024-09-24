@@ -147,13 +147,13 @@ void _test_lccom_getstate_tmp (char *fullJson, char *ExpectedBlock, bool getNext
     expect_function_call(__wrap_cJSON_Delete);
 
     if (strstr(fullJson, outjson2) == NULL) {
-        expect_string(__wrap_stat, __file, "var/run/wazuh-logcollector.state");
+        expect_string(__wrap_stat, __file, "var/run/openarmor-logcollector.state");
         will_return(__wrap_stat, &stat_buf);
         will_return(__wrap_stat, 0);
         will_return(__wrap_difftime, 10);
         will_return(__wrap_strftime,"Wed Dec 31 19:00:00 1969");
         will_return(__wrap_strftime, 20);
-        expect_string(__wrap__mdebug2, formatted_msg, " Wed Dec 31 19:00:00 1969 var/run/wazuh-logcollector.state");
+        expect_string(__wrap__mdebug2, formatted_msg, " Wed Dec 31 19:00:00 1969 var/run/openarmor-logcollector.state");
     }
 
     size_t retval = lccom_getstate(&output, getNextPage);
@@ -222,14 +222,14 @@ void test_lccom_getJsonStr64kBlockFromLatestIndex(void ** state) {
 
 void test_lccom_isJsonUpdated(void ** state) {
     struct stat stat_buf = { .st_mode = 0040000 };
-    expect_string(__wrap_stat, __file, "var/run/wazuh-logcollector.state");
+    expect_string(__wrap_stat, __file, "var/run/openarmor-logcollector.state");
     will_return(__wrap_stat, &stat_buf);
     will_return(__wrap_stat, 0);
     will_return(__wrap_difftime, 10);
     will_return(__wrap_strftime,"Wed Dec 31 19:00:00 1969");
     will_return(__wrap_strftime, 20);
 
-    expect_string(__wrap__mdebug2, formatted_msg, " Wed Dec 31 19:00:00 1969 var/run/wazuh-logcollector.state");
+    expect_string(__wrap__mdebug2, formatted_msg, " Wed Dec 31 19:00:00 1969 var/run/openarmor-logcollector.state");
     size_t retval = isJsonUpdated();
 }
 

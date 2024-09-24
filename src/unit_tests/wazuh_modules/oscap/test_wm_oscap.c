@@ -169,7 +169,7 @@ void test_interval_execution(void **state) {
         will_return(__wrap_wm_state_io, -1);
     }
 
-    expect_string_count(__wrap__mterror, tag, "wazuh-modulesd:oscap", TEST_MAX_DATES + 1);
+    expect_string_count(__wrap__mterror, tag, "openarmor-modulesd:oscap", TEST_MAX_DATES + 1);
     expect_string_count(__wrap__mterror, formatted_msg, "Couldn't save running state.", TEST_MAX_DATES + 1);
     expect_any_always(__wrap__mtinfo, tag);
     expect_any_always(__wrap__mtinfo, formatted_msg);

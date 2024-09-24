@@ -7,7 +7,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: The 'wazuh-agentd' program is the client-side daemon that communicates with the server.
+brief: The 'openarmor-agentd' program is the client-side daemon that communicates with the server.
        This tests will check if the server address specified in the configuration is a valid
        address or not.
 
@@ -20,7 +20,7 @@ components:
     - agent
 
 daemons:
-    - wazuh-agentd
+    - openarmor-agentd
 
 os_platform:
     - linux

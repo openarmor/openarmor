@@ -53,7 +53,7 @@ def test_bucket_without_only_logs_after(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has appeared calling the module with correct parameters.
             - Check the expected number of events were sent to analysisd. Only the logs whose timestamp is greater than
@@ -185,7 +185,7 @@ def test_service_without_only_logs_after(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has appeared calling the module with correct parameters.
             - Check the expected number of events were sent to analysisd. Only the logs whose timestamp is greater than
@@ -308,7 +308,7 @@ def test_bucket_with_only_logs_after(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has appeared calling the module with correct parameters.
             - Check the expected number of events were sent to analysisd. Only the logs whose timestamp is greater than
@@ -443,7 +443,7 @@ def test_cloudwatch_with_only_logs_after(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has appeared calling the module with correct parameters.
             - Check the expected number of events were sent to analysisd. Only the logs whose timestamp is greater than
@@ -579,7 +579,7 @@ def test_inspector_with_only_logs_after(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has appeared calling the module with correct parameters.
             - Check the expected number of events were sent to analysisd. Only the logs whose timestamp is greater than

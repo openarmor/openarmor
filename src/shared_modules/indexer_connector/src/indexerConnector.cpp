@@ -141,7 +141,7 @@ nlohmann::json IndexerConnector::getAgentDocumentsIds(const std::string& url,
 {
     nlohmann::json postData;
     nlohmann::json responseJson;
-    constexpr auto ELEMENTS_PER_QUERY {10000}; // The max value for queries is 10000 in the wazuh-indexer.
+    constexpr auto ELEMENTS_PER_QUERY {10000}; // The max value for queries is 10000 in the openarmor-indexer.
 
     postData["query"]["match"]["agent.id"] = agentId;
     postData["size"] = ELEMENTS_PER_QUERY;

@@ -19,7 +19,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-integratord
+    - openarmor-integratord
 
 os_platform:
     - Linux
@@ -30,7 +30,7 @@ os_version:
 
 references:
     - https://documentation.wazuh.com/current/user-manual/manager/manual-integration.html#slack
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-integratord.html
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-integratord.html
 
 pytest_args:
     - tier:
@@ -92,7 +92,7 @@ local_internal_options = {INTEGRATORD_DEBUG: '2', ANALYSISD_DEBUG: '1', MONITORD
 def test_integratord_change_json_inode(test_configuration, test_metadata, set_wazuh_configuration, truncate_monitored_files,
                                        configure_local_internal_options, daemons_handler, wait_for_integratord_start):
     '''
-    description: Check that wazuh-integratord detects a change in the inode of the alerts.json and continues reading
+    description: Check that openarmor-integratord detects a change in the inode of the alerts.json and continues reading
                  alerts.
 
     test_phases:
@@ -106,9 +106,9 @@ def test_integratord_change_json_inode(test_configuration, test_metadata, set_wa
             - Wait until integratord is ready to read alerts.
             - Insert an alert in the `alerts.json` file.
             - Check if the alert was received by Slack.
-            - Replace the `alerts.json` file while wazuh-integratord is reading it.
-            - Wait for the inode change to be detected by wazuh-integratord.
-            - Check if wazuh-integratord detects that the file's inode has changed.
+            - Replace the `alerts.json` file while openarmor-integratord is reading it.
+            - Wait for the inode change to be detected by openarmor-integratord.
+            - Check if openarmor-integratord detects that the file's inode has changed.
             - Insert an alert in the `alerts.json` file.
             - Check if the alert is processed.
             - Check alert was received by Slack.
@@ -151,9 +151,9 @@ def test_integratord_change_json_inode(test_configuration, test_metadata, set_wa
         - The `cases_integratord_read_json_alerts` file provides the test cases.
 
     expected_output:
-        - r'.+wazuh-integratord.*DEBUG: jqueue_next.*Alert file inode changed.*'
-        - r'.+wazuh-integratord.*Processing alert.*'
-        - r'.+wazuh-integratord.*<Response [200]>'
+        - r'.+openarmor-integratord.*DEBUG: jqueue_next.*Alert file inode changed.*'
+        - r'.+openarmor-integratord.*Processing alert.*'
+        - r'.+openarmor-integratord.*<Response [200]>'
     '''
     wazuh_monitor = FileMonitor(WAZUH_LOG_PATH)
     command = f"echo '{test_metadata['alert_sample']}' >> {ALERTS_JSON_PATH}"
@@ -253,7 +253,7 @@ def test_integratord_read_valid_alerts(test_configuration, test_metadata, set_wa
         - The `cases_integratord_read_valid_json_alerts` file provides the test cases.
 
     expected_output:
-        - r'.+wazuh-integratord.*alert_id.*\"integration\": \"slack\".*'
+        - r'.+openarmor-integratord.*alert_id.*\"integration\": \"slack\".*'
     '''
     sample = test_metadata['alert_sample']
     wazuh_monitor = FileMonitor(WAZUH_LOG_PATH)
@@ -284,7 +284,7 @@ def test_integratord_read_invalid_alerts(test_configuration, test_metadata, set_
             - Wait for the restarted modules to start correctly.
         - test:
             - Insert an invalid alert in the alerts.json file.
-            - Check if wazuh-integratord process the alert and report an error.
+            - Check if openarmor-integratord process the alert and report an error.
         - teardown:
             - Truncate Wazuh's logs.
             - Restore initial configuration, both `ossec.conf` and `local_internal_options.conf`.
@@ -324,8 +324,8 @@ def test_integratord_read_invalid_alerts(test_configuration, test_metadata, set_
         - The `cases_integratord_read_invalid_json_alerts` file provides the test cases.
 
     expected_output:
-        - r'.+wazuh-integratord.*WARNING: Invalid JSON alert read.*'
-        - r'.+wazuh-integratord.*WARNING: Overlong JSON alert read.*'
+        - r'.+openarmor-integratord.*WARNING: Invalid JSON alert read.*'
+        - r'.+openarmor-integratord.*WARNING: Overlong JSON alert read.*'
 
     '''
     sample = test_metadata['alert_sample']

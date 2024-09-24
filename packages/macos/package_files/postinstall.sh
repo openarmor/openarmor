@@ -182,5 +182,5 @@ fi
 
 if [ -n "${upgrade}" ] && [ -n "${restart}" ]; then
     echo "Restarting Wazuh..."
-    ${DIR}/bin/wazuh-control restart
+    ${DIR}/bin/openarmor-control restart
 fi

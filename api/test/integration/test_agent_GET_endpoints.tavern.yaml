@@ -198,7 +198,7 @@ stages:
       verify: False
       <<: *get_agents
       params:
-        search: 'wazuh-agent6'
+        search: 'openarmor-agent6'
     response:
       status_code: 200
       json:
@@ -206,7 +206,7 @@ stages:
         data:
           affected_items:
             - id: '006'
-              name: 'wazuh-agent6'
+              name: 'openarmor-agent6'
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -216,7 +216,7 @@ stages:
       verify: False
       <<: *get_agents
       params:
-        search: "wazuh-agent6' or 'wazuh'='wazuh"
+        search: "openarmor-agent6' or 'wazuh'='wazuh"
     response:
       status_code: 200
       json:
@@ -1953,10 +1953,10 @@ stages:
             rootcheck:
               sleep: !anyint
 
-  - name: Get internal configuration from wazuh-db component
+  - name: Get internal configuration from openarmor-db component
     request:
       verify: False
-      url: "{protocol:s}://{host:s}:{port:d}/agents/000/config/wazuh-db/internal"
+      url: "{protocol:s}://{host:s}:{port:d}/agents/000/config/openarmor-db/internal"
       method: GET
       headers:
         Authorization: "Bearer {test_login_token}"
@@ -1971,10 +1971,10 @@ stages:
             open_db_limit: !anyint
             worker_pool_size: !anyint
 
-  - name: Get wdb configuration from wazuh-db component
+  - name: Get wdb configuration from openarmor-db component
     request:
       verify: False
-      url: "{protocol:s}://{host:s}:{port:d}/agents/000/config/wazuh-db/wdb"
+      url: "{protocol:s}://{host:s}:{port:d}/agents/000/config/openarmor-db/wdb"
       method: GET
       headers:
         Authorization: "Bearer {test_login_token}"
@@ -2315,13 +2315,13 @@ stages:
         data:
           affected_items:
             - timestamp: !anystr
-              name: wazuh-remoted
+              name: openarmor-remoted
               agents:
                 - id: 1
                   uptime: !anystr
                   metrics: !anything
             - timestamp: !anystr
-              name: wazuh-analysisd
+              name: openarmor-analysisd
               agents:
                 - id: 1
                   uptime: !anystr
@@ -2351,7 +2351,7 @@ stages:
       url: "{protocol:s}://{host:s}:{port:d}/agents/001/daemons/stats"
       method: GET
       params:
-        daemons_list: wazuh-remoted
+        daemons_list: openarmor-remoted
       headers:
         Authorization: "Bearer {test_login_token}"
     response:
@@ -2361,7 +2361,7 @@ stages:
         data:
           affected_items:
             - timestamp: !anystr
-              name: wazuh-remoted
+              name: openarmor-remoted
               agents:
                 - id: 1
                   uptime: !anystr
@@ -2421,7 +2421,7 @@ stages:
           total_affected_items: 1
           total_failed_items: 0
 
-  - name: Get wazuh-agentd stats from agent 000 (manager, not allowed)
+  - name: Get openarmor-agentd stats from agent 000 (manager, not allowed)
     request:
       verify: False
       url: "{protocol:s}://{host:s}:{port:d}/agents/000/stats/agent"
@@ -2460,7 +2460,7 @@ stages:
           total_affected_items: 1
           total_failed_items: 0
 
-  - name: Get wazuh-agentd stats from agent 001
+  - name: Get openarmor-agentd stats from agent 001
     request:
       verify: False
       url: "{protocol:s}://{host:s}:{port:d}/agents/001/stats/agent"
@@ -3037,7 +3037,7 @@ stages:
       verify: False
       <<: *groups_id_request
       params:
-        search: 'wazuh-agent8'
+        search: 'openarmor-agent8'
     response:
       status_code: 200
       json:
@@ -3045,7 +3045,7 @@ stages:
         data:
           affected_items:
             - id: '008'
-              name: 'wazuh-agent8'
+              name: 'openarmor-agent8'
               group:
                 - default
           failed_items: []
@@ -3877,7 +3877,7 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        name: wazuh-agent1
+        name: openarmor-agent1
     response:
       status_code: 200
       json:
@@ -3885,7 +3885,7 @@ stages:
         data: &get_agents_by_name_response
           affected_items:
             - id: '001'
-              name: 'wazuh-agent1'
+              name: 'openarmor-agent1'
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -3912,7 +3912,7 @@ stages:
       <<: *get_agents_by_name
       params:
         select: name
-        name: wazuh-agent1
+        name: openarmor-agent1
     response:
       verify_response_with:
         # Check response item keys are the selected keys
@@ -3931,7 +3931,7 @@ stages:
       <<: *get_agents_by_name
       params:
         select: name,id,status
-        name: wazuh-agent1
+        name: openarmor-agent1
     response:
       verify_response_with:
         # Check response item keys are the selected keys
@@ -3944,7 +3944,7 @@ stages:
         data:
           affected_items:
             - id: '001'
-              name: 'wazuh-agent1'
+              name: 'openarmor-agent1'
               status: 'active'
           failed_items: []
           total_affected_items: 1
@@ -3956,7 +3956,7 @@ stages:
       <<: *get_agents_by_name
       params:
         select: wrong_select
-        name: wazuh-agent1
+        name: openarmor-agent1
     response:
       status_code: 400
       json:
@@ -4098,7 +4098,7 @@ stages:
       verify: False
       <<: *no_group_request
       params:
-        search: wazuh-agent11
+        search: openarmor-agent11
     response:
       status_code: 200
       json:
@@ -4245,7 +4245,7 @@ stages:
           affected_items:
             - id: '005'
               status: active
-              name: wazuh-agent5
+              name: openarmor-agent5
               version: 'Wazuh v3.13.2'
               status_code: 0
               group:
@@ -4274,7 +4274,7 @@ stages:
         error: 0
         data:
           affected_items:
-            - name: wazuh-agent5
+            - name: openarmor-agent5
           failed_items: []
           total_affected_items: !anyint
           total_failed_items: 0

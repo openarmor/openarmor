@@ -897,7 +897,7 @@ def test_master_handler_end_receiving_integrity_checksums(end_receiving_file_moc
 @patch('wazuh.core.cluster.common.Handler.update_chunks_wdb', return_value={'updated_chunks': 1})
 @patch('wazuh.core.cluster.common.Handler.get_chunks_in_task_id', return_value='chunks')
 async def test_master_handler_sync_wazuh_db_info(get_chunks_mock, update_chunks_mock, send_request_mock):
-    """Check that the wazuh-db data reception task is created and chunks are obtained and updated in DB."""
+    """Check that the openarmor-db data reception task is created and chunks are obtained and updated in DB."""
     class LoggerMock:
         """Auxiliary class."""
 
@@ -926,7 +926,7 @@ async def test_master_handler_sync_wazuh_db_info(get_chunks_mock, update_chunks_
 @patch("wazuh.core.cluster.master.MasterHandler.recalculate_group_hash", return_value=AsyncMock())
 @patch('wazuh.core.cluster.common.SyncWazuhdb')
 async def test_manager_handler_send_entire_agent_groups_information(syncwazuhdb_mock, recalculate_group_hash_mock):
-    """Check if the data chunks are being properly forward to the Wazuh-db socket."""
+    """Check if the data chunks are being properly forward to the Openarmor-db socket."""
 
     class LoggerMock:
         """Auxiliary class."""
@@ -961,7 +961,7 @@ async def test_manager_handler_send_entire_agent_groups_information(syncwazuhdb_
 @pytest.mark.asyncio
 @patch("wazuh.core.cluster.master.AsyncWazuhDBConnection")
 async def test_manager_handler_send_agent_groups_information(asyncwazuhdbconnection_mock):
-    """Check if the data chunks are being properly forward to the Wazuh-db socket."""
+    """Check if the data chunks are being properly forward to the Openarmor-db socket."""
 
     class LoggerMock:
         """Auxiliary class."""

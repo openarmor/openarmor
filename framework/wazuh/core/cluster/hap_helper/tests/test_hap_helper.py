@@ -561,7 +561,7 @@ class TestHAPHelper:
         """Check that `start` method makes the correct callbacks."""
         HAPROXY_USER_VALUE = 'test'
         HAPROXY_PASSWORD_VALUE = 'test'
-        HAPROXY_ADDRESS_VALUE = 'wazuh-proxy'
+        HAPROXY_ADDRESS_VALUE = 'openarmor-proxy'
         HAPROXY_PORT_VALUE = 5555
         HAPROXY_PROTOCOL_VALUE = protocol
         HAPROXY_BACKEND_VALUE = 'wazuh_test'

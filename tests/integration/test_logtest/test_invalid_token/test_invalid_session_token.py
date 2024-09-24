@@ -7,10 +7,10 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: The 'wazuh-logtest' tool allows the testing and verification of rules and decoders against provided log examples
-       remotely inside a sandbox in 'wazuh-analysisd'. This functionality is provided by the manager, whose work
+brief: The 'openarmor-logtest' tool allows the testing and verification of rules and decoders against provided log examples
+       remotely inside a sandbox in 'openarmor-analysisd'. This functionality is provided by the manager, whose work
        parameters are configured in the ossec.conf file in the XML rule_test section. Test logs can be evaluated through
-       the 'wazuh-logtest' tool or by making requests via RESTful API. These tests will check if the logtest
+       the 'openarmor-logtest' tool or by making requests via RESTful API. These tests will check if the logtest
        configuration is valid. Also checks rules, decoders, decoders, alerts matching logs correctly.
 
 components:
@@ -22,7 +22,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-analysisd
+    - openarmor-analysisd
 
 os_platform:
     - linux
@@ -39,9 +39,9 @@ os_version:
     - Ubuntu Bionic
 
 references:
-    - https://documentation.wazuh.com/current/user-manual/reference/tools/wazuh-logtest.html
-    - https://documentation.wazuh.com/current/user-manual/capabilities/wazuh-logtest/index.html
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-analysisd.html
+    - https://documentation.wazuh.com/current/user-manual/reference/tools/openarmor-logtest.html
+    - https://documentation.wazuh.com/current/user-manual/capabilities/openarmor-logtest/index.html
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-analysisd.html
 
 tags:
     - logtest_configuration
@@ -75,7 +75,7 @@ daemons_handler_configuration = {'daemons': [ANALYSISD_DAEMON, WAZUH_DB_DAEMON]}
 @pytest.mark.parametrize('test_metadata', t_config_metadata, ids=t_case_ids)
 def test_invalid_session_token(test_metadata, daemons_handler_module, wait_for_logtest_startup):
     '''
-    description: Check if `wazuh-logtest` correctly detects and handles errors when using a session token.
+    description: Check if `openarmor-logtest` correctly detects and handles errors when using a session token.
                  To do this, it sends the inputs through a socket, receives and decodes the message. Then, it checks
                  if any invalid token or session token is not caught.
 

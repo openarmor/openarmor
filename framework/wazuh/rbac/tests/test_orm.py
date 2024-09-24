@@ -1075,7 +1075,7 @@ def test_check_database_integrity_exceptions(remove_mock, close_sessions_mock, e
 @pytest.mark.parametrize('from_id, to_id, users', [
     (WAZUH_USER_ID, WAZUH_WUI_USER_ID, [
         User('wazuh', 'test', user_id=WAZUH_USER_ID),
-        User('wazuh-wui', 'test2', user_id=WAZUH_WUI_USER_ID)
+        User('openarmor-wui', 'test2', user_id=WAZUH_WUI_USER_ID)
     ]),
     (MAX_ID_RESERVED + 1, None, [
         User('custom', 'test', user_id=110),

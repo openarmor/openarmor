@@ -79,12 +79,12 @@ jobs:
       - name: Build wazuh installer
         run: |
           cd  C:\wazuh\src\win32
-          .\wazuh-installer-build-msi.bat
+          .\openarmor-installer-build-msi.bat
       # Install the windows agent.
       - name: Install wazuh agent
         run: |
           cd  C:\wazuh\src\win32
-          .\wazuh-agent--.msi /q WAZUH_MANAGER="127.0.0.1"
+          .\openarmor-agent--.msi /q WAZUH_MANAGER="127.0.0.1"
       # Download and install integration tests framework.
       - name: Download and install qa-integration-framework
         run: |

@@ -2142,9 +2142,9 @@ static int decode_dbsync(Eventinfo * lf,   /* Event information */
                                                                                        data string. */
                         char *response = NULL;                                      /* Response is the string that will
                                                                                        contain the response from
-                                                                                       wazuh-db. */
+                                                                                       openarmor-db. */
                         char * msg = NULL;                                          /* Message is the string that will
-                                                                                       be sent to wazuh-db. */
+                                                                                       be sent to openarmor-db. */
 
                         os_calloc(OS_SIZE_1024, sizeof(char), response);
                         os_calloc(data_len + OS_SIZE_256, sizeof(char), msg);
@@ -2163,14 +2163,14 @@ static int decode_dbsync(Eventinfo * lf,   /* Event information */
 
                         if (ret_val == 0) {
                             if (strncmp(response, "err", 3) == 0) {
-                                /* If some error come to this point, it means that the error comes from wazuh-db. */
+                                /* If some error come to this point, it means that the error comes from openarmor-db. */
                                 mdebug1(A_QUERY_ERROR);
                             } else if (strncmp(response, "ok ", 3) != 0) {
                                 /* If the response is not ok, it means that the response is invalid. */
                                 merror(INVALID_RESPONSE);
                             }
                         } else {
-                            /* If the return value is not 0, it means that the query to wazuh-db failed. */
+                            /* If the return value is not 0, it means that the query to openarmor-db failed. */
                             mdebug2(WDBC_QUERY_EX_ERROR);
                         }
 

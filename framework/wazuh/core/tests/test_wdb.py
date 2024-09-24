@@ -87,7 +87,7 @@ async def test_async_send_ko():
     with pytest.raises(exception.WazuhInternalError, match=r'\b2010\b'):
         await async_wdb._send('test')
 
-    # Wazuh-db error response.
+    # Openarmor-db error response.
     encoded_response = 'err Error message'.encode(encoding='utf-8')
     async_wdb._reader.readexactly.side_effect = [struct.pack('<I', len(encoded_response)), encoded_response]
     with pytest.raises(exception.WazuhError, match=r'\b2003\b'):

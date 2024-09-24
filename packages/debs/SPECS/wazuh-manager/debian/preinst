@@ -21,18 +21,18 @@ case "$1" in
     install|upgrade)
 
         if [ "$1" = "upgrade" ]; then
-            if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet wazuh-manager > /dev/null 2>&1; then
-                systemctl stop wazuh-manager.service > /dev/null 2>&1
+            if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet openarmor-manager > /dev/null 2>&1; then
+                systemctl stop openarmor-manager.service > /dev/null 2>&1
                 touch ${WAZUH_TMP_DIR}/wazuh.restart
-            elif command -v service > /dev/null 2>&1 && service wazuh-manager status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
-                service wazuh-manager stop > /dev/null 2>&1
+            elif command -v service > /dev/null 2>&1 && service openarmor-manager status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
+                service openarmor-manager stop > /dev/null 2>&1
                 touch ${WAZUH_TMP_DIR}/wazuh.restart
-            elif ${DIR}/bin/wazuh-control status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
+            elif ${DIR}/bin/openarmor-control status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
                 touch ${WAZUH_TMP_DIR}/wazuh.restart
             elif ${DIR}/bin/ossec-control status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
                 touch ${WAZUH_TMP_DIR}/wazuh.restart
             fi
-            ${DIR}/bin/ossec-control stop > /dev/null 2>&1 || ${DIR}/bin/wazuh-control stop > /dev/null 2>&1
+            ${DIR}/bin/ossec-control stop > /dev/null 2>&1 || ${DIR}/bin/openarmor-control stop > /dev/null 2>&1
             if pgrep -f ossec-authd > /dev/null 2>&1; then
                 kill -15 $(pgrep -f ossec-authd)
             fi
@@ -54,7 +54,7 @@ case "$1" in
             if [ -f /etc/ossec-init.conf ]; then
                 . /etc/ossec-init.conf
             else
-                VERSION=$(${DIR}/bin/wazuh-control info -v)
+                VERSION=$(${DIR}/bin/openarmor-control info -v)
             fi
 
             # Get the major and minor version
@@ -64,16 +64,16 @@ case "$1" in
             # Delete 3.X Wazuh API service
             if [ "$MAJOR" = "3" ] && [ -d ${DIR}/api ]; then
                 if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && \
-                  systemctl list-unit-files --type service | grep wazuh-api; then
-                    systemctl stop wazuh-api.service > /dev/null 2>&1
-                    systemctl disable wazuh-api.service > /dev/null 2>&1
-                    rm -f /etc/systemd/system/wazuh-api.service || true
+                  systemctl list-unit-files --type service | grep openarmor-api; then
+                    systemctl stop openarmor-api.service > /dev/null 2>&1
+                    systemctl disable openarmor-api.service > /dev/null 2>&1
+                    rm -f /etc/systemd/system/openarmor-api.service || true
                 fi
 
-                if command -v service > /dev/null 2>&1 && service status wazuh-api > /dev/null 2>&1 ; then
-                    service wazuh-api stop > /dev/null 2>&1
-                    update-rc.d wazuh-api remove > /dev/null 2>&1
-                    rm -f /etc/rc.d/init.d/wazuh-api || true
+                if command -v service > /dev/null 2>&1 && service status openarmor-api > /dev/null 2>&1 ; then
+                    service openarmor-api stop > /dev/null 2>&1
+                    update-rc.d openarmor-api remove > /dev/null 2>&1
+                    rm -f /etc/rc.d/init.d/openarmor-api || true
                 fi
             fi
         fi

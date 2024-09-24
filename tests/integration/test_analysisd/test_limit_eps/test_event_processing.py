@@ -7,7 +7,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: The 'wazuh-analysisd' daemon uses a series of decoders and rules to analyze and interpret logs and events and
+brief: The 'openarmor-analysisd' daemon uses a series of decoders and rules to analyze and interpret logs and events and
        generate alerts when the decoded information matches the established rules. There is a feature to limit the
        number of events that the manager can process, in order to allow the correct functioning of the daemon. These
        tests validate that this feature works as expected.
@@ -21,7 +21,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-analysisd
+    - openarmor-analysisd
 
 os_platform:
     - linux
@@ -124,7 +124,7 @@ def test_limitation(test_configuration, test_metadata, load_wazuh_basic_configur
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Start the event simulator and check that the events are being received and analyzed.
             - Wait until the event limit is reached and check that the events are still being received but not
@@ -189,7 +189,7 @@ def test_limitation(test_configuration, test_metadata, load_wazuh_basic_configur
     events_received = int(analysisd_state['events_received'])
     events_processed = int(analysisd_state['events_processed'])
 
-    # Check that wazuh-manager is processing syslog events
+    # Check that openarmor-manager is processing syslog events
     assert events_received > 0, '(0): No events are being received when it is expected'
     assert events_processed > 0, 'No events are being processed when it is expected'
 
@@ -204,7 +204,7 @@ def test_limitation(test_configuration, test_metadata, load_wazuh_basic_configur
     events_processed = int(analysisd_state['events_processed'])
     expected_processed_events = test_metadata['maximum'] * test_metadata['timeframe']
 
-    # Check that the wazuh-manager is receiving events but it is not processing them due to the limitation
+    # Check that the openarmor-manager is receiving events but it is not processing them due to the limitation
     assert events_received > 0, '(1): No events are being received when it is expected'
     assert events_processed == expected_processed_events, f"Events are being processed when the limit has been " \
                                                           f"reached. {events_processed} != {expected_processed_events}"
@@ -236,7 +236,7 @@ def test_queueing_events_after_limitation(test_configuration, test_metadata, loa
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check that the initial events queue usage rate is 0%.
             - Calculate when the limit of processed events is reached, waits a few seconds for events to be stored in
@@ -336,7 +336,7 @@ def test_dropping_events_when_queue_is_full(test_configuration, test_metadata, l
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check that the initial queue usage rate is 0%.
             - Calculate when the event analysis blocking phase is expected and the queue is full, then it measures the
@@ -439,7 +439,7 @@ def test_event_processing_in_order_single_thread(test_configuration, test_metada
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh event logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Send a batch of identified events.
             - Wait a few seconds, then send another batch of identified events.
@@ -547,7 +547,7 @@ def test_event_processing_in_order_multi_thread(test_configuration, test_metadat
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh event logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Send a batch of identified events.
             - Wait a few seconds, then send another batch of identified events. This is repeated n times.

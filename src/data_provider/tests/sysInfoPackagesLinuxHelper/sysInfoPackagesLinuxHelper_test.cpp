@@ -400,7 +400,7 @@ TEST_F(SysInfoPackagesLinuxHelperTest, parsePacmanMultipleGroups)
 
     const auto& jsPackageInfo { PackageLinuxHelper::parsePacman(&mock) };
     EXPECT_FALSE(jsPackageInfo.empty());
-    EXPECT_EQ("Wazuh-test-Arch-lorem", jsPackageInfo["groups"]);
+    EXPECT_EQ("Openarmor-test-Arch-lorem", jsPackageInfo["groups"]);
 }
 
 TEST_F(SysInfoPackagesLinuxHelperTest, parsePacmanInformationNull)

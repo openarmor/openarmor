@@ -682,7 +682,7 @@ def get_ossec_conf(section: str = None, field: str = None, conf_file: str = comm
         if not from_import:
             raise WazuhError(1101, extra_message=str(e))
         else:
-            print(f"wazuh-apid: There is an error in the ossec.conf file: {str(e)}")
+            print(f"openarmor-apid: There is an error in the ossec.conf file: {str(e)}")
             sys.exit(0)
 
     if section:
@@ -1175,11 +1175,11 @@ def get_active_configuration(agent_id: str, component: str, configuration: str) 
     component_socket_mapping = {'agent': 'analysis', 'agentless': 'agentless', 'analysis': 'analysis', 'auth': 'auth',
                                 'com': 'com', 'csyslog': 'csyslog', 'integrator': 'integrator',
                                 'logcollector': 'logcollector', 'mail': 'mail', 'monitor': 'monitor',
-                                'request': 'remote', 'syscheck': 'syscheck', 'wazuh-db': 'wdb', 'wmodules': 'wmodules'}
+                                'request': 'remote', 'syscheck': 'syscheck', 'openarmor-db': 'wdb', 'wmodules': 'wmodules'}
     component_socket_dir_mapping = {'agent': 'sockets', 'agentless': 'sockets', 'analysis': 'sockets',
                                     'auth': 'sockets', 'com': 'sockets', 'csyslog': 'sockets', 'integrator': 'sockets',
                                     'logcollector': 'sockets', 'mail': 'sockets', 'monitor': 'sockets',
-                                    'request': 'sockets', 'syscheck': 'sockets', 'wazuh-db': 'db',
+                                    'request': 'sockets', 'syscheck': 'sockets', 'openarmor-db': 'db',
                                     'wmodules': 'sockets'}
 
     if not component or not configuration:

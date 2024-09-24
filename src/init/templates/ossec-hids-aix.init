@@ -7,7 +7,7 @@
 #
 
 WAZUH_HOME=WAZUH_HOME_TMP
-WAZUH_CONTROL="$WAZUH_HOME/bin/wazuh-control"
+WAZUH_CONTROL="$WAZUH_HOME/bin/openarmor-control"
 
 case "$1" in
 start)

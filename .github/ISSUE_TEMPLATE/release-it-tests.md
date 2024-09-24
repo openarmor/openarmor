@@ -1,13 +1,13 @@
-|||
-| :--                                   | :--                                                       |
-| **Main release issue**                | RELEASE_ISSUE                                             |
-| **Main release candidate issue**      | RELEASE_CANDIDATE_ISSUE_URL                               |
-| **Version**                           | WAZUH_VERSION                                             |
-| **Release candidate**                 | RC_VERSION                                                |
-| **wazuh/wazuh tag**                   | https://github.com/wazuh/wazuh/tree/vWAZUH_VERSION-TAG    |
-| **wazuh/wazuh-qa tag**                | https://github.com/wazuh/wazuh-qa/tree/vWAZUH_VERSION-TAG |
-| **Previous release testing issue**    | PREVIOUS_IT                                               |
-| **Build**                             | COMPLETE_THIS_FIELD :warning: :warning: :warning:         |
+|                                    |                                                               |
+| :--------------------------------- | :------------------------------------------------------------ |
+| **Main release issue**             | RELEASE_ISSUE                                                 |
+| **Main release candidate issue**   | RELEASE_CANDIDATE_ISSUE_URL                                   |
+| **Version**                        | WAZUH_VERSION                                                 |
+| **Release candidate**              | RC_VERSION                                                    |
+| **wazuh/wazuh tag**                | https://github.com/wazuh/wazuh/tree/vWAZUH_VERSION-TAG        |
+| **wazuh/openarmor-qa tag**         | https://github.com/wazuh/openarmor-qa/tree/vWAZUH_VERSION-TAG |
+| **Previous release testing issue** | PREVIOUS_IT                                                   |
+| **Build**                          | COMPLETE_THIS_FIELD :warning: :warning: :warning:             |
 
 </br>
 
@@ -29,12 +29,11 @@
 
 </br>
 
-> |Color|Status |
-> |:--:|:--|
-> | :green_circle: |All tests passed successfully|
-> | :yellow_circle: | Known issues were found |
-> | :red_circle: | New errors, failures, or defects were found |
-
+> |      Color      | Status                                      |
+> | :-------------: | :------------------------------------------ |
+> | :green_circle:  | All tests passed successfully               |
+> | :yellow_circle: | Known issues were found                     |
+> |  :red_circle:   | New errors, failures, or defects were found |
 
 ## Description
 

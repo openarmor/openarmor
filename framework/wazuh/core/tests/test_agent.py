@@ -342,8 +342,8 @@ def test_WazuhDBQueryGroupByAgents_format_data_into_dictionary(mock_socket_conn)
                                             select={'os.name'}, query=None, count=5, get_data=None)
 
     query_group.filter_fields = {'fields': set(query_group.filter_fields)}
-    query_group._data = [{'count': 1, 'name': 'wazuh-master'},
-                         {'count': 1, 'name': 'wazuh-agent1'}]
+    query_group._data = [{'count': 1, 'name': 'openarmor-master'},
+                         {'count': 1, 'name': 'openarmor-agent1'}]
 
     result = query_group._format_data_into_dictionary()
     assert all(x['os']['name'] == 'N/A' for x in result['items'])
@@ -626,7 +626,7 @@ def test_agent_reconnect_ko(socket_mock, send_mock, mock_queue):
 def test_agent_remove(mock_remove_authd):
     """Tests if method remove() works as expected."""
 
-    with patch('wazuh.core.agent.get_manager_status', return_value={'wazuh-authd': 'running'}):
+    with patch('wazuh.core.agent.get_manager_status', return_value={'openarmor-authd': 'running'}):
         agent = Agent('000')
         result = agent.remove()
         assert result == 'Agent was successfully deleted', 'Not expected message'
@@ -682,13 +682,13 @@ def test_agent_add(mock_add_authd, authd_status, ip, id, key, force):
     """
     agent = Agent('001')
 
-    with patch('wazuh.core.agent.get_manager_status', return_value={'wazuh-authd': 'running'}):
+    with patch('wazuh.core.agent.get_manager_status', return_value={'openarmor-authd': 'running'}):
         agent._add('test_name', ip, id=id, key=key, force=force)
 
     mock_add_authd.assert_called_once_with('test_name', ip, id, key, force)
 
 
-@patch('wazuh.core.agent.get_manager_status', return_value={'wazuh-authd': 'stopped'})
+@patch('wazuh.core.agent.get_manager_status', return_value={'openarmor-authd': 'stopped'})
 def test_agent_add_ko(mock_maganer_status):
     """Test if _add() method raises expected exception."""
     agent = Agent('001')

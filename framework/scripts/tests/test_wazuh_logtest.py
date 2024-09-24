@@ -176,11 +176,11 @@ def test_main(input_mock, argparse_mock, wazuh_logtest_class_mock, init_logger_m
                                                   'modify\nit under the terms of the GNU General Public License '
                                                   '(version 2) as\npublished by the Free Software Foundation. For more '
                                                   'details, go to\nhttps://www.gnu.org/licenses/gpl.html\n'),
-                                       call('Starting wazuh-logtest %s', 'ERROR'),
+                                       call('Starting openarmor-logtest %s', 'ERROR'),
                                        call('Type one log per line')])
     logger_error_mock.assert_called_once_with('Unit test configuration wrong syntax: %s',
                                               wazuh_logtest_class_mock.return_value.get_last_ut())
-    logger_warning_mock.assert_has_calls([call('** Wazuh-Logtest: %s', 'WARNING'), call('')])
+    logger_warning_mock.assert_has_calls([call('** Openarmor-Logtest: %s', 'WARNING'), call('')])
 
     assert wazuh_logtest_class_mock.return_value.show_last_ut_result_called is True
     assert wazuh_logtest_class_mock.return_value.remove_last_session_called is False
@@ -228,7 +228,7 @@ def test_main(input_mock, argparse_mock, wazuh_logtest_class_mock, init_logger_m
     except Exception:
         pass
 
-    logger_error_mock.assert_called_once_with('** Wazuh-logtest error ')
+    logger_error_mock.assert_called_once_with('** Openarmor-logtest error ')
 
     # Test the third exception
     logger_error_mock.reset_mock()
@@ -240,7 +240,7 @@ def test_main(input_mock, argparse_mock, wazuh_logtest_class_mock, init_logger_m
     except Exception:
         pass
 
-    logger_error_mock.assert_called_once_with('** Wazuh-logtest error when connecting with wazuh-analysisd')
+    logger_error_mock.assert_called_once_with('** Openarmor-logtest error when connecting with openarmor-analysisd')
 
 
 # Test WazuhDaemonProtocol class methods
@@ -257,8 +257,8 @@ def test_wdp_init():
     assert isinstance(wdp.protocol, dict)
     assert wdp.protocol['version'] == 1
     assert isinstance(wdp.protocol['origin'], dict)
-    assert wdp.protocol['origin']['name'] == 'wazuh-logtest'
-    assert wdp.protocol['origin']['module'] == 'wazuh-logtest'
+    assert wdp.protocol['origin']['name'] == 'openarmor-logtest'
+    assert wdp.protocol['origin']['module'] == 'openarmor-logtest'
 
 
 @patch('json.dumps', return_value='')
@@ -266,8 +266,8 @@ def test_wdp_wrap(json_dumps_mock):
     """Test if the data is being properly wrapped with wazuh daemon protocol information."""
     wdp = create_wazuh_daemon_protocol_class()
     assert wdp.wrap(command='command', parameters={'parameters': 'parameters'}) == json_dumps_mock.return_value
-    json_dumps_mock.assert_called_once_with({'version': 1, 'origin': {'name': 'wazuh-logtest', 'module':
-        'wazuh-logtest'}, 'command': 'command', 'parameters':
+    json_dumps_mock.assert_called_once_with({'version': 1, 'origin': {'name': 'openarmor-logtest', 'module':
+        'openarmor-logtest'}, 'command': 'command', 'parameters':
                                                  {'parameters': 'parameters'}})
 
 
@@ -462,7 +462,7 @@ def test_wl_show_output(show_ossec_logtest_like_mock, json_dumps_mock, debug_moc
 @patch('logging.info')
 @patch('scripts.wazuh_logtest.WazuhLogtest.show_phase_info')
 def test_wl_show_ossec_logtest_like(show_phase_info_mock, info_mock):
-    """Test if wazuh-logtest output is being shown as ossec-logtest output."""
+    """Test if openarmor-logtest output is being shown as ossec-logtest output."""
     output = {'output': {'full_log': '', 'predecoder': 'predecoder_value', 'decoder': 'decoder_value', 'data': '',
                          'rule': 'rule_value'}, 'alert': 'alert_value', 'rules_debug': ['mock']}
 
@@ -489,7 +489,7 @@ def test_wl_show_ossec_logtest_like(show_phase_info_mock, info_mock):
 
 @patch('logging.info')
 def test_wl_show_phase_info(info_mock):
-    """Check if wazuh-logtest is processing phase information."""
+    """Check if openarmor-logtest is processing phase information."""
     phase_data = {'key': 'value', 'key2': 'value2', 'key3': {'1': '2'}}
     show_first = ['key']
 
@@ -539,7 +539,7 @@ def test_wazuh_get_install_path(find_wazuh_path_mock):
 @patch('os.path.join', return_value='')
 @patch('scripts.wazuh_logtest.Wazuh.get_install_path', return_value='')
 def test_wazuh_get_info(get_install_mock, join_mock, popen_mock, pipe_mock):
-    """Check if we can properly obtain information from wazuh-control."""
+    """Check if we can properly obtain information from openarmor-control."""
 
     class ProcMock:
         """Auxiliary class."""
@@ -558,7 +558,7 @@ def test_wazuh_get_info(get_install_mock, join_mock, popen_mock, pipe_mock):
     # Test the 'try'
     assert wazuh.get_info(field=field) == field
     get_install_mock.assert_called_once_with()
-    join_mock.assert_called_once_with(get_install_mock.return_value, 'bin', 'wazuh-control')
+    join_mock.assert_called_once_with(get_install_mock.return_value, 'bin', 'openarmor-control')
     popen_mock.assert_called_once_with([join_mock.return_value, 'info'], stdout=pipe_mock)
     assert popen_mock.return_value.communicated is True
 

@@ -37,7 +37,7 @@ void set_current_time(time_t _time) {
  *          "<run_on_start>yes</run_on_start>\n"
  *          "<skip_on_error>yes</skip_on_error>\n"
  *          "<bucket type=\"config\">\n"
- *          "    <name>wazuh-aws-wodle</name>\n"
+ *          "    <name>openarmor-aws-wodle</name>\n"
  *          "    <path>config</path>\n"
  *          "   <aws_profile>default</aws_profile>\n"
  *          "</bucket>"

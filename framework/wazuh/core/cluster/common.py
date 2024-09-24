@@ -580,7 +580,7 @@ class Handler(asyncio.Protocol):
         Parameters
         ----------
         data : dict
-            Dict containing command and list of chunks to be sent to wazuh-db.
+            Dict containing command and list of chunks to be sent to openarmor-db.
         info_type : str
             Information type handled.
         logger : Logger object
@@ -611,9 +611,9 @@ class Handler(asyncio.Protocol):
 
         for error in result['error_messages']['chunks']:
             logger.debug2(f'Chunk {error[0] + 1}/{len(data["chunks"])}: {data["chunks"][error[0]]}')
-            logger.error(f'Wazuh-db response for chunk {error[0] + 1}/{len(data["chunks"])} was not "ok": {error[1]}')
+            logger.error(f'Openarmor-db response for chunk {error[0] + 1}/{len(data["chunks"])} was not "ok": {error[1]}')
 
-        logger.debug(f'{result["updated_chunks"]}/{len(data["chunks"])} chunks updated in wazuh-db '
+        logger.debug(f'{result["updated_chunks"]}/{len(data["chunks"])} chunks updated in openarmor-db '
                      f'in {result["time_spent"]:.3f}s.')
         result['error_messages'] = [error[1] for error in result['error_messages']['chunks']]
 
@@ -1517,7 +1517,7 @@ class SyncFiles(SyncTask):
 
 class SyncWazuhdb(SyncTask):
     """
-    Define methods to send information to the master/worker node (wazuh-db) through send_string protocol.
+    Define methods to send information to the master/worker node (openarmor-db) through send_string protocol.
     """
 
     def __init__(self, manager, logger, data_retriever: Callable, cmd: bytes = b'', get_data_command: str = '',
@@ -1531,9 +1531,9 @@ class SyncWazuhdb(SyncTask):
         cmd : bytes
             Request command to send to the master/worker.
         get_data_command : str
-            Command to retrieve data from local wazuh-db.
+            Command to retrieve data from local openarmor-db.
         set_data_command : str
-            Command to set data in master/worker's wazuh-db.
+            Command to set data in master/worker's openarmor-db.
         logger : Logger object
             Logger to use during synchronization process.
         data_retriever : Callable
@@ -1577,7 +1577,7 @@ class SyncWazuhdb(SyncTask):
             self.get_payload[self.pivot_key] = last_pivot_value
 
         try:
-            # Retrieve information from local wazuh-db
+            # Retrieve information from local openarmor-db
             start_time = time.perf_counter()
             while status != 'ok':
                 command = self.get_data_command + json.dumps(self.get_payload)
@@ -1592,7 +1592,7 @@ class SyncWazuhdb(SyncTask):
                     except (IndexError, KeyError):
                         pass
         except exception.WazuhException as e:
-            self.logger.error(f"Could not obtain data from wazuh-db: {e}")
+            self.logger.error(f"Could not obtain data from openarmor-db: {e}")
             return []
 
         self.logger.debug(f"Obtained {len(chunks)} chunks of data in {(time.perf_counter() - start_time):.3f}s.")
@@ -1689,12 +1689,12 @@ def error_receiving_agent_information(logger, response, info_type):
 
 
 def send_data_to_wdb(data, timeout, info_type='agent-info'):
-    """Send chunks of data to Wazuh-db socket.
+    """Send chunks of data to Openarmor-db socket.
 
     Parameters
     ----------
     data : dict
-        Dict containing command and list of chunks to be sent to wazuh-db.
+        Dict containing command and list of chunks to be sent to openarmor-db.
     timeout : int
         Seconds to wait before stopping the task.
     info_type : str

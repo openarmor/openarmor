@@ -1,5 +1,5 @@
 /*
- * Wazuh-DB Common variables and functions.
+ * Openarmor-DB Common variables and functions.
  * Copyright (C) 2015, Wazuh Inc.
  * Nov 22, 2023.
  *

@@ -41,7 +41,7 @@ Add this to the ossec.conf file, inside <ossec_config></ossec_config> block:
 
 And restart Wazuh Manager:
 
-    /etc/init.d/wazuh-manager restart
+    /etc/init.d/openarmor-manager restart
 
 """
 # Error Codes:

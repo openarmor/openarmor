@@ -5,8 +5,8 @@
 @startuml wm-syscollector
 
 actor user
-actor "wazuh-manager" as manager
-participant "wazuh-modulesd\nmain" as main
+actor "openarmor-manager" as manager
+participant "openarmor-modulesd\nmain" as main
 participant "wm_comm\n<<thread>>" as comm
 participant "wm_syscollector\n<<thread>>" as wm_syscollector
 

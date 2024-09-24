@@ -3,7 +3,7 @@
     "no_processed_policies": [
       {
         "actions": ["security:update"],
-        "resources": ["user:id:wazuh","user:id:wazuh-wui", "user:id:rbac"],
+        "resources": ["user:id:wazuh", "user:id:openarmor-wui", "user:id:rbac"],
         "effect": "allow"
       },
       {
@@ -25,7 +25,7 @@
     "processed_policies": {
       "security:update": {
         "user:id:wazuh": "allow",
-        "user:id:wazuh-wui": "allow",
+        "user:id:openarmor-wui": "allow",
         "role:id:1": "allow",
         "policy:id:2": "allow",
         "policy:id:3": "allow",
@@ -46,7 +46,7 @@
   {
     "no_processed_policies": [
       {
-        "actions": ["agent:read","agent:delete", "agent:update"],
+        "actions": ["agent:read", "agent:delete", "agent:update"],
         "resources": ["agent:id:*"],
         "effect": "deny"
       },
@@ -68,16 +68,16 @@
     ],
     "processed_policies": {
       "agent:read": {
-        "agent:id:*" : "deny",
-        "agent:group:group1" : "allow",
-        "agent:id:001" : "allow",
-        "agent:id:000" : "deny"
+        "agent:id:*": "deny",
+        "agent:group:group1": "allow",
+        "agent:id:001": "allow",
+        "agent:id:000": "deny"
       },
       "agent:delete": {
         "agent:id:*": "deny",
-        "agent:group:group1" : "allow",
-        "agent:id:001" : "allow",
-        "agent:id:000" : "deny"
+        "agent:group:group1": "allow",
+        "agent:id:001": "allow",
+        "agent:id:000": "deny"
       },
       "agent:update": {
         "agent:id:*": "deny"
@@ -92,7 +92,7 @@
         "effect": "deny"
       },
       {
-        "actions": ["agent:read","agent:delete", "agent:update"],
+        "actions": ["agent:read", "agent:delete", "agent:update"],
         "resources": ["agent:id:000", "agent:group:group1", "agent:id:001"],
         "effect": "deny"
       },
@@ -104,19 +104,19 @@
     ],
     "processed_policies": {
       "agent:read": {
-        "agent:id:*" : "allow"
+        "agent:id:*": "allow"
       },
       "agent:delete": {
-        "agent:id:*" : "deny",
-        "agent:id:000" : "deny",
-        "agent:group:group1" : "deny",
-        "agent:id:001" : "deny"
+        "agent:id:*": "deny",
+        "agent:id:000": "deny",
+        "agent:group:group1": "deny",
+        "agent:id:001": "deny"
       },
       "agent:update": {
         "agent:id:*": "deny",
-        "agent:id:000" : "deny",
-        "agent:group:group1" : "deny",
-        "agent:id:001" : "deny"
+        "agent:id:000": "deny",
+        "agent:group:group1": "deny",
+        "agent:id:001": "deny"
       }
     }
   },
@@ -135,10 +135,10 @@
     ],
     "processed_policies": {
       "agent:read": {
-        "agent:id:*" : "allow"
+        "agent:id:*": "allow"
       },
       "agent:delete": {
-        "agent:id:*" : "deny"
+        "agent:id:*": "deny"
       },
       "agent:update": {
         "agent:id:*": "deny"

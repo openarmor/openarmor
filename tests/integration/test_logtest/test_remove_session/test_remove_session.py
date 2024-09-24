@@ -7,10 +7,10 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: The 'wazuh-logtest' tool allows the testing and verification of rules and decoders against provided log examples
-       remotely inside a sandbox in 'wazuh-analysisd'. This functionality is provided by the manager, whose work
+brief: The 'openarmor-logtest' tool allows the testing and verification of rules and decoders against provided log examples
+       remotely inside a sandbox in 'openarmor-analysisd'. This functionality is provided by the manager, whose work
        parameters are configured in the ossec.conf file in the XML rule_test section. Test logs can be evaluated through
-       the 'wazuh-logtest' tool or by making requests via RESTful API. These tests will check if the logtest
+       the 'openarmor-logtest' tool or by making requests via RESTful API. These tests will check if the logtest
        configuration is valid. Also checks rules, decoders, decoders, alerts matching logs correctly.
 
 components:
@@ -22,7 +22,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-analysisd
+    - openarmor-analysisd
 
 os_platform:
     - linux
@@ -39,11 +39,11 @@ os_version:
     - Ubuntu Bionic
 
 references:
-    - https://documentation.wazuh.com/current/user-manual/reference/tools/wazuh-logtest.html
-    - https://documentation.wazuh.com/current/user-manual/capabilities/wazuh-logtest/index.html
+    - https://documentation.wazuh.com/current/user-manual/reference/tools/openarmor-logtest.html
+    - https://documentation.wazuh.com/current/user-manual/capabilities/openarmor-logtest/index.html
     - https://documentation.wazuh.com/current/user-manual/ruleset/testing.html?highlight=logtest
-    - https://documentation.wazuh.com/current/user-manual/capabilities/wazuh-logtest/logtest-configuration.html
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-analysisd.html
+    - https://documentation.wazuh.com/current/user-manual/capabilities/openarmor-logtest/logtest-configuration.html
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-analysisd.html
 
 tags:
     - logtest_configuration
@@ -107,7 +107,7 @@ def create_session():
 def test_remove_session(test_metadata, daemons_handler_module,
                         wait_for_logtest_startup, connect_to_sockets):
     '''
-    description: Check if 'wazuh-logtest' correctly detects and removes the sessions under pre-defined scenarios.
+    description: Check if 'openarmor-logtest' correctly detects and removes the sessions under pre-defined scenarios.
                  To do this, the session input is sent and the output is received, then it checks if the received data
                  within the logtest socket is the same that the test case expected output.
 

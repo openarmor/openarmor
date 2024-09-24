@@ -248,7 +248,7 @@ def test_get_ossec_conf():
     assert configuration.get_ossec_conf(
         section='integration', field='node',
         conf_file=os.path.join(parent_directory, tmp_path, 'configuration/ossec.conf')
-    )['integration'][0]['node'] == 'wazuh-worker'
+    )['integration'][0]['node'] == 'openarmor-worker'
 
     assert configuration.get_ossec_conf(
         conf_file=os.path.join(parent_directory, tmp_path, 'configuration/ossec.conf'),
@@ -442,7 +442,7 @@ def test_upload_group_file(mock_safe_move, mock_open, mock_wazuh_uid, mock_wazuh
     ('000', 'monitor', 'monitor', 'sockets', 'ok {"monitor": {"enabled": "yes"}}'),
     ('000', 'request', 'remote', 'sockets', {"error": 0, "data": {"enabled": "yes"}}),
     ('000', 'syscheck', 'syscheck', 'sockets', 'ok {"syscheck": {"enabled": "yes"}}'),
-    ('000', 'wazuh-db', 'wdb', 'db', {"error": 0, "data": {"enabled": "yes"}}),
+    ('000', 'openarmor-db', 'wdb', 'db', {"error": 0, "data": {"enabled": "yes"}}),
     ('000', 'wmodules', 'wmodules', 'sockets', 'ok {"wmodules": {"enabled": "yes"}}'),
     ('001', 'auth', 'remote', 'sockets', 'ok {"auth": {"use_password": "yes"}}'),
     ('001', 'auth', 'remote', 'sockets', 'ok {"auth": {"use_password": "no"}}'),

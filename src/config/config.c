@@ -54,7 +54,7 @@ static int read_main_elements(const OS_XML *xml, int modules,
     const char *wlogtest = "rule_test";                         /* Wazuh Logtest */
     const char *agent_upgrade = "agent-upgrade";                /* Agent Upgrade Module */
     const char *task_manager = "task-manager";                  /* Task Manager Module */
-    const char *wazuh_db = "wdb";                               /* Wazuh-DB Daemon */
+    const char *wazuh_db = "wdb";                               /* Openarmor-DB Daemon */
 #ifndef WIN32
     const char *osfluent_forward = "fluent-forward";            /* Fluent forwarder */
     const char *osauthd = "auth";                               /* Authd Config */

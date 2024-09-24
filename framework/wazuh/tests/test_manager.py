@@ -58,12 +58,12 @@ def test_manager():
     return test_manager
 
 
-manager_status = {'wazuh-agentlessd': 'running', 'wazuh-analysisd': 'running', 'wazuh-authd': 'running',
- 'wazuh-csyslogd': 'running', 'wazuh-dbd': 'running', 'wazuh-monitord': 'running',
- 'wazuh-execd': 'running', 'wazuh-integratord': 'running', 'wazuh-logcollector': 'running',
- 'wazuh-maild': 'running', 'wazuh-remoted': 'running', 'wazuh-reportd': 'running',
- 'wazuh-syscheckd': 'running', 'wazuh-clusterd': 'running', 'wazuh-modulesd': 'running',
- 'wazuh-db': 'running', 'wazuh-apid': 'running'}
+manager_status = {'openarmor-agentlessd': 'running', 'openarmor-analysisd': 'running', 'openarmor-authd': 'running',
+ 'openarmor-csyslogd': 'running', 'openarmor-dbd': 'running', 'openarmor-monitord': 'running',
+ 'openarmor-execd': 'running', 'openarmor-integratord': 'running', 'openarmor-logcollector': 'running',
+ 'openarmor-maild': 'running', 'openarmor-remoted': 'running', 'openarmor-reportd': 'running',
+ 'openarmor-syscheckd': 'running', 'openarmor-clusterd': 'running', 'openarmor-modulesd': 'running',
+ 'openarmor-db': 'running', 'openarmor-apid': 'running'}
 
 
 @patch('wazuh.core.manager.status', return_value=manager_status)
@@ -78,12 +78,12 @@ def test_get_status(mock_status):
 
 @pytest.mark.parametrize('tag, level, total_items, sort_by, sort_ascending', [
     (None, None, 13, None, None),
-    ('wazuh-modulesd:database', None, 2, None, None),
-    ('wazuh-modulesd:syscollector', None, 2, None, None),
-    ('wazuh-modulesd:syscollector', None, 2, None, None),
-    ('wazuh-modulesd:aws-s3', None, 5, None, None),
-    ('wazuh-execd', None, 1, None, None),
-    ('wazuh-csyslogd', None, 2, None, None),
+    ('openarmor-modulesd:database', None, 2, None, None),
+    ('openarmor-modulesd:syscollector', None, 2, None, None),
+    ('openarmor-modulesd:syscollector', None, 2, None, None),
+    ('openarmor-modulesd:aws-s3', None, 5, None, None),
+    ('openarmor-execd', None, 1, None, None),
+    ('openarmor-csyslogd', None, 2, None, None),
     ('random', None, 0, ['timestamp'], True),
     (None, 'info', 7, ['timestamp'], False),
     (None, 'error', 2, ['level'], True),
@@ -102,7 +102,7 @@ def test_ossec_log(mock_exists, mock_active_logging_format, tag, level, total_it
     level : str
         Filters by log type: all, error or info.
     tag : str
-        Filters by log category (i.e. wazuh-remoted).
+        Filters by log category (i.e. openarmor-remoted).
     total_items : int
         Expected items to be returned after calling ossec_log.
     sort_by : list
@@ -121,7 +121,7 @@ def test_ossec_log(mock_exists, mock_active_logging_format, tag, level, total_it
         assert isinstance(result, AffectedItemsWazuhResult), 'No expected result type'
         assert result.render()['data']['total_affected_items'] == total_items
         assert all(log['description'][-1] != '\n' for log in result.render()['data']['affected_items'])
-        if tag is not None and level != 'wazuh-modulesd:syscollector':
+        if tag is not None and level != 'openarmor-modulesd:syscollector':
             assert all('\n' not in log['description'] for log in result.render()['data']['affected_items'])
         if sort_by:
             reversed_result = ossec_log(level=level, tag=tag, sort_by=sort_by, sort_ascending=not sort_ascending)
@@ -169,12 +169,12 @@ def test_ossec_log_q(mock_exists, mock_active_logging_format, q, field, operatio
 def test_ossec_log_summary(mock_exists, mock_active_logging_format):
     """Tests ossec_log_summary function works and returned data match with expected"""
     expected_result = {
-        'wazuh-csyslogd': {'all': 2, 'info': 2, 'error': 0, 'critical': 0, 'warning': 0, 'debug': 0},
-        'wazuh-execd': {'all': 1, 'info': 0, 'error': 1, 'critical': 0, 'warning': 0, 'debug': 0},
-        'wazuh-modulesd:aws-s3': {'all': 5, 'info': 2, 'error': 1, 'critical': 0, 'warning': 2, 'debug': 0},
-        'wazuh-modulesd:database': {'all': 2, 'info': 0, 'error': 0, 'critical': 0, 'warning': 0, 'debug': 2},
-        'wazuh-modulesd:syscollector': {'all': 2, 'info': 2, 'error': 0, 'critical': 0, 'warning': 0, 'debug': 0},
-        'wazuh-rootcheck': {'all': 1, 'info': 1, 'error': 0, 'critical': 0, 'warning': 0, 'debug': 0}
+        'openarmor-csyslogd': {'all': 2, 'info': 2, 'error': 0, 'critical': 0, 'warning': 0, 'debug': 0},
+        'openarmor-execd': {'all': 1, 'info': 0, 'error': 1, 'critical': 0, 'warning': 0, 'debug': 0},
+        'openarmor-modulesd:aws-s3': {'all': 5, 'info': 2, 'error': 1, 'critical': 0, 'warning': 2, 'debug': 0},
+        'openarmor-modulesd:database': {'all': 2, 'info': 0, 'error': 0, 'critical': 0, 'warning': 0, 'debug': 2},
+        'openarmor-modulesd:syscollector': {'all': 2, 'info': 2, 'error': 0, 'critical': 0, 'warning': 0, 'debug': 0},
+        'openarmor-rootcheck': {'all': 1, 'info': 1, 'error': 0, 'critical': 0, 'warning': 0, 'debug': 0}
     }
 
     logs = get_logs().splitlines()
@@ -233,10 +233,10 @@ def test_restart_ko_socket(mock_exists, mock_fcntl, mock_open):
 
 @pytest.mark.parametrize('error_flag, error_msg', [
     (0, ""),
-    (1, "2019/02/27 11:30:07 wazuh-clusterd: ERROR: [Cluster] [Main] Error 3004 - Error in cluster configuration: "
+    (1, "2019/02/27 11:30:07 openarmor-clusterd: ERROR: [Cluster] [Main] Error 3004 - Error in cluster configuration: "
         "Unspecified key"),
-    (1, "2019/02/27 11:30:24 wazuh-authd: ERROR: (1230): Invalid element in the configuration: "
-        "'use_source_i'.\n2019/02/27 11:30:24 wazuh-authd: ERROR: (1202): Configuration error at "
+    (1, "2019/02/27 11:30:24 openarmor-authd: ERROR: (1230): Invalid element in the configuration: "
+        "'use_source_i'.\n2019/02/27 11:30:24 openarmor-authd: ERROR: (1202): Configuration error at "
         "'/var/ossec/etc/ossec.conf'.")
 ])
 @patch("wazuh.core.manager.exists", return_value=True)

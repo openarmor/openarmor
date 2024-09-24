@@ -7,10 +7,10 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: The 'wazuh-logtest' tool allows the testing and verification of rules and decoders against provided log examples
-       remotely inside a sandbox in 'wazuh-analysisd'. This functionality is provided by the manager, whose work
+brief: The 'openarmor-logtest' tool allows the testing and verification of rules and decoders against provided log examples
+       remotely inside a sandbox in 'openarmor-analysisd'. This functionality is provided by the manager, whose work
        parameters are configured in the ossec.conf file in the XML rule_test section. Test logs can be evaluated through
-       the 'wazuh-logtest' tool or by making requests via RESTful API. These tests will check if the logtest
+       the 'openarmor-logtest' tool or by making requests via RESTful API. These tests will check if the logtest
        configuration is valid. Also checks rules, decoders, decoders, alerts matching logs correctly.
 
 components:
@@ -22,7 +22,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-analysisd
+    - openarmor-analysisd
 
 os_platform:
     - linux
@@ -39,9 +39,9 @@ os_version:
     - Ubuntu Bionic
 
 references:
-    - https://documentation.wazuh.com/current/user-manual/reference/tools/wazuh-logtest.html
-    - https://documentation.wazuh.com/current/user-manual/capabilities/wazuh-logtest/index.html
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-analysisd.html
+    - https://documentation.wazuh.com/current/user-manual/reference/tools/openarmor-logtest.html
+    - https://documentation.wazuh.com/current/user-manual/capabilities/openarmor-logtest/index.html
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-analysisd.html
 
 tags:
     - logtest_configuration
@@ -91,9 +91,9 @@ def test_remove_old_session(configure_local_internal_options, test_configuration
                             test_metadata, set_wazuh_configuration, daemons_handler,
                             wait_for_logtest_startup):
     '''
-    description: Check if 'wazuh-logtest' correctly detects and handles the situation where trying to use more
+    description: Check if 'openarmor-logtest' correctly detects and handles the situation where trying to use more
                  sessions than allowed. To do this, it creates more sessions than allowed and wait for the message which
-                 informs that 'wazuh-logtest' has removed the oldest session.
+                 informs that 'openarmor-logtest' has removed the oldest session.
 
     wazuh_min_version: 4.2.0
 
@@ -163,7 +163,7 @@ def test_remove_old_session(configure_local_internal_options, test_configuration
                               callback=generate_callback(patterns.LOGTEST_SESSION_INIT))
             assert wazuh_log_monitor.callback_result,'Session initialization event not found'
 
-    # This session should do Wazuh-logtest to remove the oldest session
+    # This session should do Openarmor-logtest to remove the oldest session
     receiver_socket = SocketController(address=LOGTEST_SOCKET_PATH, family='AF_UNIX', connection_protocol='TCP')
     receiver_socket.send(msg_create_session, True)
     msg_recived = receiver_socket.receive()[4:]

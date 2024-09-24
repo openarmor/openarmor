@@ -75,8 +75,8 @@ def test_exit_handler(os_getpid_mock, os_kill_mock):
                         wazuh_clusterd.exit_handler(9, 99)
                         main_logger_mock.assert_has_calls([call.info('SIGNAL [(9)-(9)] received. Exit...')])
                         delete_child_pids_mock.assert_called_once_with(
-                            'wazuh-clusterd', os_getpid_mock.return_value, main_logger_mock)
-                        delete_pid_mock.assert_called_once_with('wazuh-clusterd', os_getpid_mock.return_value)
+                            'openarmor-clusterd', os_getpid_mock.return_value, main_logger_mock)
+                        delete_pid_mock.assert_called_once_with('openarmor-clusterd', os_getpid_mock.return_value)
                         original_sig_handler_mock.assert_called_once_with(9, 99)
                         main_logger_mock.reset_mock()
                         delete_child_pids_mock.reset_mock()
@@ -86,8 +86,8 @@ def test_exit_handler(os_getpid_mock, os_kill_mock):
                         wazuh_clusterd.original_sig_handler = original_sig_handler_not_callable
                         wazuh_clusterd.exit_handler(9, 99)
                         main_logger_mock.assert_has_calls([call.info('SIGNAL [(9)-(9)] received. Exit...')])
-                        delete_child_pids_mock.assert_called_once_with('wazuh-clusterd', 1001, main_logger_mock)
-                        delete_pid_mock.assert_called_once_with('wazuh-clusterd', 1001)
+                        delete_child_pids_mock.assert_called_once_with('openarmor-clusterd', 1001, main_logger_mock)
+                        delete_pid_mock.assert_called_once_with('openarmor-clusterd', 1001)
                         original_sig_handler_mock.assert_not_called()
 
 @pytest.mark.parametrize('helper_disabled', (True, False))
@@ -373,13 +373,13 @@ def test_main(print_mock, path_exists_mock, chown_mock, chmod_mock, setuid_mock,
                                                     main_logger_mock.assert_any_call(
                                                         "Unhandled exception: name 'cluster_items' is not defined")
                                                     clean_up_mock.assert_called_once()
-                                                    clean_pid_files_mock.assert_called_once_with('wazuh-clusterd')
+                                                    clean_pid_files_mock.assert_called_once_with('openarmor-clusterd')
                                                     pyDaemon_mock.assert_called_once()
                                                     setuid_mock.assert_called_once_with('uid_test')
                                                     setgid_mock.assert_called_once_with('gid_test')
                                                     getpid_mock.assert_called()
-                                                    create_pid_mock.assert_called_once_with('wazuh-clusterd', 543)
-                                                    delete_pid_mock.assert_called_once_with('wazuh-clusterd', 543)
+                                                    create_pid_mock.assert_called_once_with('openarmor-clusterd', 543)
+                                                    delete_pid_mock.assert_called_once_with('openarmor-clusterd', 543)
 
                                                     args.foreground = True
                                                     wazuh_clusterd.main()

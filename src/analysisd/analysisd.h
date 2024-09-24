@@ -97,7 +97,7 @@ extern w_queue_t * upgrade_module_input;
  */
 void w_init_queues();
 
-#define WAZUH_SERVER    "wazuh-server"
+#define WAZUH_SERVER    "openarmor-server"
 #define MAX_DECODER_ORDER_SIZE  1024
 
 extern OSHash *fim_agentinfo;

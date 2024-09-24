@@ -14,7 +14,7 @@
 #define CINTEGRATORCONFIG_H
 
 #ifndef ARGV0
-#define ARGV0 "wazuh-integrator"
+#define ARGV0 "openarmor-integrator"
 #endif
 
 /* Integrator Config Structure */

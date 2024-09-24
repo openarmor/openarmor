@@ -1,4 +1,5 @@
 # Change Log
+
 All notable changes to this project will be documented in this file.
 
 ## [v4.9.0]
@@ -19,13 +20,13 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - Fixed compilation issue for local installation. ([#20505](https://github.com/wazuh/wazuh/pull/20505))
-- Fixed malformed JSON error in wazuh-analysisd. ([#16666](https://github.com/wazuh/wazuh/pull/16666))
+- Fixed malformed JSON error in openarmor-analysisd. ([#16666](https://github.com/wazuh/wazuh/pull/16666))
 - Fixed a warning when uninstalling the Wazuh manager if the VD feed is missing. ([#24375](https://github.com/wazuh/wazuh/pull/24375))
 - Ensured vulnerability detection scanner log messages end with a period. ([#24393](https://github.com/wazuh/wazuh/pull/24393))
 
 #### Changed
 
-- Changed error messages about `recv()` messages from wazuh-db to debug logs. ([#20285](https://github.com/wazuh/wazuh/pull/20285))
+- Changed error messages about `recv()` messages from openarmor-db to debug logs. ([#20285](https://github.com/wazuh/wazuh/pull/20285))
 - Sanitized the `integrations` directory code. ([#21195](https://github.com/wazuh/wazuh/pull/21195))
 
 ### Agent
@@ -45,13 +46,13 @@ All notable changes to this project will be documented in this file.
 - Fixed an error in the osquery integration on Windows that avoided loading osquery.conf. ([#21728](https://github.com/wazuh/wazuh/pull/21728))
 - Fixed a crash in the agent's Rootcheck component when using `<ignore>`. ([#22588](https://github.com/wazuh/wazuh/pull/22588))
 - Fixed command wodle to support UTF-8 characters on windows agent. ([#19146](https://github.com/wazuh/wazuh/pull/19146))
-- Fixed Windows agent to delete wazuh-agent.state file when stopped. ([#20425](https://github.com/wazuh/wazuh/pull/20425))
+- Fixed Windows agent to delete openarmor-agent.state file when stopped. ([#20425](https://github.com/wazuh/wazuh/pull/20425))
 - Fixed Windows Agent 4.8.0 permission errors on Windows 11 after upgrade. ([#20727](https://github.com/wazuh/wazuh/pull/20727))
 - Fixed alerts are created when syscheck diff DB is full. ([#16487](https://github.com/wazuh/wazuh/pull/16487))
 - Fixed Wazuh deb uninstallation to remove non-config files. ([#2195](https://github.com/wazuh/wazuh/pull/2195))
 - Fixed improper Windows agent ACL on non-default installation directory. ([#23273](https://github.com/wazuh/wazuh/pull/23273))
 - Fixed socket configuration of an agent is displayed. ([#17664](https://github.com/wazuh/wazuh/pull/17664))
-- Fixed wazuh-modulesd printing child process not found error. ([#18494](https://github.com/wazuh/wazuh/pull/18494))
+- Fixed openarmor-modulesd printing child process not found error. ([#18494](https://github.com/wazuh/wazuh/pull/18494))
 - Fixed issue with an agent starting automatically without reason. ([#23848](https://github.com/wazuh/wazuh/pull/23848))
 - Fixed GET /syscheck to properly report size for files larger than 2GB. ([#17415](https://github.com/wazuh/wazuh/pull/17415))
 - Fixed error in packages generation centos 7. ([#24412](https://github.com/wazuh/wazuh/pull/24412))
@@ -87,9 +88,9 @@ All notable changes to this project will be documented in this file.
 - Updated the format of the fields that can be N/A in the API specification. ([#22908](https://github.com/wazuh/wazuh/pull/22908))
 - Updated the WAZUH API specification to conform with the current endpoint requests and responses. ([#22954](https://github.com/wazuh/wazuh/pull/22954))
 - Replaced the used aiohttp server with uvicorn. ([#23199](https://github.com/wazuh/wazuh/pull/23199))
-    - Changed the `PUT /groups/{group_id}/configuration` endpoint response error code when uploading an empty file.
-    - Changed the `GET, PUT and DELETE /lists/files/{filename}` endpoints response status code when an invalid file is used.
-    - Changed the `PUT /manager/configuration` endpoint response status code when uploading a file with invalid content-type.
+  - Changed the `PUT /groups/{group_id}/configuration` endpoint response error code when uploading an empty file.
+  - Changed the `GET, PUT and DELETE /lists/files/{filename}` endpoints response status code when an invalid file is used.
+  - Changed the `PUT /manager/configuration` endpoint response status code when uploading a file with invalid content-type.
 
 #### Fixed
 
@@ -125,14 +126,13 @@ All notable changes to this project will be documented in this file.
 
 - Fixed a buffer overflow hazard in HMAC internal library. ([#19794](https://github.com/wazuh/wazuh/pull/19794))
 
-
 ## [v4.8.2]
 
 ### Manager
 
 #### Fixed
 
-- Fixed memory management in wazuh-remoted that might cause data corruption in incoming messages. ([#25225](https://github.com/wazuh/wazuh/issues/25225))
+- Fixed memory management in openarmor-remoted that might cause data corruption in incoming messages. ([#25225](https://github.com/wazuh/wazuh/issues/25225))
 
 ## [v4.8.1]
 
@@ -166,7 +166,6 @@ All notable changes to this project will be documented in this file.
 - Upgraded external Jinja2 library dependency version to 3.1.4. ([#24108](https://github.com/wazuh/wazuh/pull/24108))
 - Upgraded external requests library dependency version to 2.32.2. ([#23925](https://github.com/wazuh/wazuh/pull/23925))
 
-
 ## [v4.8.0]
 
 ### Manager
@@ -178,19 +177,19 @@ All notable changes to this project will be documented in this file.
 #### Changed
 
 - Vulnerability Detection refactor. ([#21201](https://github.com/wazuh/wazuh/pull/21201))
-- Improved wazuh-db detection of deleted database files. ([#18476](https://github.com/wazuh/wazuh/pull/18476))
+- Improved openarmor-db detection of deleted database files. ([#18476](https://github.com/wazuh/wazuh/pull/18476))
 - Added timeout and retry parameters to the VirusTotal integration. ([#16893](https://github.com/wazuh/wazuh/pull/16893))
-- Extended wazuh-analysisd EPS metrics with events dropped by overload and remaining credits in the previous cycle. ([#18988](https://github.com/wazuh/wazuh/pull/18988))
+- Extended openarmor-analysisd EPS metrics with events dropped by overload and remaining credits in the previous cycle. ([#18988](https://github.com/wazuh/wazuh/pull/18988))
 - Updated API and framework packages installation commands to use pip instead of direct invocation of setuptools. ([#18466](https://github.com/wazuh/wazuh/pull/18466))
 - Upgraded docker-compose V1 to V2 in API Integration test scripts. ([#17750](https://github.com/wazuh/wazuh/pull/17750))
 - Refactored how cluster status dates are treated in the cluster. ([#17015](https://github.com/wazuh/wazuh/pull/17015))
-- The log message about file rotation and signature from wazuh-monitord has been updated. ([#21602](https://github.com/wazuh/wazuh/pull/21602))
-- Improved Wazuh-DB performance by adjusting SQLite synchronization policy. ([#22774](https://github.com/wazuh/wazuh/pull/22774))
+- The log message about file rotation and signature from openarmor-monitord has been updated. ([#21602](https://github.com/wazuh/wazuh/pull/21602))
+- Improved Openarmor-DB performance by adjusting SQLite synchronization policy. ([#22774](https://github.com/wazuh/wazuh/pull/22774))
 
 #### Fixed
 
 - Updated cluster connection cleanup to remove temporary files when the connection between a worker and a master is broken. ([#17886](https://github.com/wazuh/wazuh/pull/17886))
-- Added a mechanism to avoid cluster errors to raise from expected wazuh-db exceptions. ([#23371](https://github.com/wazuh/wazuh/pull/23371))
+- Added a mechanism to avoid cluster errors to raise from expected openarmor-db exceptions. ([#23371](https://github.com/wazuh/wazuh/pull/23371))
 - Fixed race condition when creating agent database files from a template. ([#23216](https://github.com/wazuh/wazuh/pull/23216))
 
 ### Agent
@@ -298,7 +297,6 @@ All notable changes to this project will be documented in this file.
 
 - Removed external `python-jose` and `ecdsa` library dependencies. ([#21749](https://github.com/wazuh/wazuh/pull/21749))
 
-
 ## [v4.7.5]
 
 ### Manager
@@ -310,7 +308,7 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - Fixed an issue in a cluster task where full group synchronization was constantly triggered. ([#23447](https://github.com/wazuh/wazuh/pull/23447))
-- Fixed a race condition in wazuh-db that might create corrupted database files. ([#23467](https://github.com/wazuh/wazuh/pull/23467))
+- Fixed a race condition in openarmor-db that might create corrupted database files. ([#23467](https://github.com/wazuh/wazuh/pull/23467))
 
 ### Agent
 
@@ -319,16 +317,14 @@ All notable changes to this project will be documented in this file.
 - Fixed segmentation fault in logcollector multiline-regex configuration. ([#23468](https://github.com/wazuh/wazuh/pull/23468))
 - Fixed crash in fim when processing paths with non UTF-8 characters. ([#23543](https://github.com/wazuh/wazuh/pull/23543))
 
-
 ## [v4.7.4]
 
 ### Manager
 
 #### Fixed
 
-- Fixed an issue where wazuh-db was retaining labels of deleted agents. ([#22933](https://github.com/wazuh/wazuh/pull/22933))
+- Fixed an issue where openarmor-db was retaining labels of deleted agents. ([#22933](https://github.com/wazuh/wazuh/pull/22933))
 - Improved stability by ensuring workers resume normal operations even during master node downtime. ([#22994](https://github.com/wazuh/wazuh/pull/22994))
-
 
 ## [v4.7.3]
 
@@ -336,9 +332,8 @@ All notable changes to this project will be documented in this file.
 
 #### Fixed
 
-- Resolved a transitive mutex locking issue in wazuh-db that was impacting performance. ([#21997](https://github.com/wazuh/wazuh/pull/21997))
+- Resolved a transitive mutex locking issue in openarmor-db that was impacting performance. ([#21997](https://github.com/wazuh/wazuh/pull/21997))
 - Wazuh DB internal SQL queries have been optimized by tuning database indexes to improve performance. ([#21977](https://github.com/wazuh/wazuh/pull/21977))
-
 
 ## [v4.7.2]
 
@@ -350,7 +345,7 @@ All notable changes to this project will be documented in this file.
 
 #### Fixed
 
-- wazuh-remoted now includes the offending bytes in the warning about invalid message size from agents. ([#21011](https://github.com/wazuh/wazuh/pull/21011))
+- openarmor-remoted now includes the offending bytes in the warning about invalid message size from agents. ([#21011](https://github.com/wazuh/wazuh/pull/21011))
 - Fixed a bug in the Windows Eventchannel decoder on handling Unicode characters. ([#20658](https://github.com/wazuh/wazuh/pull/20658))
 - Fixed data validation at Windows Eventchannel decoder. ([#20735](https://github.com/wazuh/wazuh/pull/20735))
 
@@ -384,7 +379,6 @@ All notable changes to this project will be documented in this file.
 - Upgraded external aiohttp library dependency version to 3.9.1. ([#20798](https://github.com/wazuh/wazuh/pull/20798))
 - Upgraded pip dependency version to 23.3.2. ([#20632](https://github.com/wazuh/wazuh/issues/20632))
 
-
 ## [v4.7.1]
 
 ### Manager
@@ -392,7 +386,7 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - Fixed a bug causing the Canonical feed parser to fail in Vulnerability Detector. ([#20580](https://github.com/wazuh/wazuh/pull/20580))
-- Fixed a thread lock bug that slowed down wazuh-db performance. ([#20178](https://github.com/wazuh/wazuh/pull/20178))
+- Fixed a thread lock bug that slowed down openarmor-db performance. ([#20178](https://github.com/wazuh/wazuh/pull/20178))
 - Fixed a bug in Vulnerability detector that skipped vulnerabilities for Windows 11 21H2. ([#20386](https://github.com/wazuh/wazuh/pull/20386))
 - The installer now updates the merged.mg file permissions on upgrade. ([#5941](https://github.com/wazuh/wazuh/pull/5941))
 - Fixed an insecure request warning in the shuffle integration. ([#19993](https://github.com/wazuh/wazuh/pull/19993))
@@ -409,8 +403,8 @@ All notable changes to this project will be documented in this file.
 - Fixed a bug that allowed two simultaneous updates to occur through WPK. ([#20545](https://github.com/wazuh/wazuh/pull/20545))
 - Fixed a bug that prevented the local IP from appearing in the port inventory from macOS agents. ([#20332](https://github.com/wazuh/wazuh/pull/20332))
 - Fixed the default Logcollector settings on macOS to collect logs out-of-the-box. ([#20180](https://github.com/wazuh/wazuh/pull/20180))
-- Fixed a bug in the FIM decoder at wazuh-analysisd that ignored Windows Registry events from agents under 4.6.0. ([#20169](https://github.com/wazuh/wazuh/pull/20169))
-- Fixed multiple bugs in the Syscollector decoder at wazuh-analysisd that did not sanitize the input data properly. ([#20250](https://github.com/wazuh/wazuh/pull/20250))
+- Fixed a bug in the FIM decoder at openarmor-analysisd that ignored Windows Registry events from agents under 4.6.0. ([#20169](https://github.com/wazuh/wazuh/pull/20169))
+- Fixed multiple bugs in the Syscollector decoder at openarmor-analysisd that did not sanitize the input data properly. ([#20250](https://github.com/wazuh/wazuh/pull/20250))
 - Added the pyarrow_hotfix dependency to fix the pyarrow CVE-2023-47248 vulnerability in the AWS integration. ([#20284](https://github.com/wazuh/wazuh/pull/20284))
 
 ### RESTful API
@@ -444,7 +438,7 @@ All notable changes to this project will be documented in this file.
 
 #### Changed
 
-- An unnecessary sanity check related to Syscollector has been removed from wazuh-db. ([#16008](https://github.com/wazuh/wazuh/pull/16008))
+- An unnecessary sanity check related to Syscollector has been removed from openarmor-db. ([#16008](https://github.com/wazuh/wazuh/pull/16008))
 - The manager now rejects agents with a higher version by default. ([#20367](https://github.com/wazuh/wazuh/pull/20367))
 
 #### Fixed
@@ -483,6 +477,7 @@ All notable changes to this project will be documented in this file.
 ### RESTful API
 
 ### Added
+
 - Added new `status_code` field to `GET /agents` response. ([#19726](https://github.com/wazuh/wazuh/pull/19726))
 
 #### Fixed
@@ -507,21 +502,21 @@ All notable changes to this project will be documented in this file.
 
 #### Added
 
-- wazuh-authd can now generate X509 certificates. ([#13559](https://github.com/wazuh/wazuh/pull/13559))
+- openarmor-authd can now generate X509 certificates. ([#13559](https://github.com/wazuh/wazuh/pull/13559))
 - Introduced a new CLI to manage features related to the Wazuh API RBAC resources. ([#13797](https://github.com/wazuh/wazuh/pull/13797))
 - Added support for Amazon Linux 2022 in Vulnerability Detector. ([#13034](https://github.com/wazuh/wazuh/issue/13034))
 - Added support for Alma Linux in Vulnerability Detector. ([#16343](https://github.com/wazuh/wazuh/pull/16343))
 - Added support for Debian 12 in Vulnerability Detector. ([#18542](https://github.com/wazuh/wazuh/pull/18542))
-- Added mechanism in wazuh-db to identify fragmentation and perform vacuum. ([#14953](https://github.com/wazuh/wazuh/pull/14953))
+- Added mechanism in openarmor-db to identify fragmentation and perform vacuum. ([#14953](https://github.com/wazuh/wazuh/pull/14953))
 - Added an option to set whether the manager should ban newer agents. ([#18333](https://github.com/wazuh/wazuh/pull/18333))
 - Added mechanism to prevent wazuh agents connections to lower manager versions. ([#15661](https://github.com/wazuh/wazuh/pull/15661))
 
 #### Changed
 
-- wazuh-remoted now checks the size of the files to avoid malformed merged.mg. ([#14659](https://github.com/wazuh/wazuh/pull/14659))
+- openarmor-remoted now checks the size of the files to avoid malformed merged.mg. ([#14659](https://github.com/wazuh/wazuh/pull/14659))
 - Added a limit option for the Rsync dispatch queue size. ([#14024](https://github.com/wazuh/wazuh/pull/14024))
 - Added a limit option for the Rsync thread pool. ([#14026](https://github.com/wazuh/wazuh/pull/14026))
-- wazuh-authd now shows a warning when deprecated forcing options are present in the configuration. ([#14549](https://github.com/wazuh/wazuh/pull/14549))
+- openarmor-authd now shows a warning when deprecated forcing options are present in the configuration. ([#14549](https://github.com/wazuh/wazuh/pull/14549))
 - The agent now notifies the manager when Active Reponse fails to run `netsh`. ([#14804](https://github.com/wazuh/wazuh/pull/14804))
 - Use new broadcast system to send agent groups information from the master node of a cluster. ([#13906](https://github.com/wazuh/wazuh/pull/13906))
 - Changed cluster `send_request` method so that timeouts are treated as exceptions and not as responses. ([#15220](https://github.com/wazuh/wazuh/pull/15220))
@@ -529,15 +524,15 @@ All notable changes to this project will be documented in this file.
 - Changed schema constraints for sys_hwinfo table. ([#16065](https://github.com/wazuh/wazuh/pull/16065))
 - Auth process not start when registration password is empty. ([#15709](https://github.com/wazuh/wazuh/pull/15709))
 - Changed error messages about corrupt GetSecurityInfo messages from FIM to debug logs. ([#19400](https://github.com/wazuh/wazuh/pull/19400))
-- Changed the default settings for wazuh-db to perform database auto-vacuum more often. ([#19956](https://github.com/wazuh/wazuh/pull/19956))
+- Changed the default settings for openarmor-db to perform database auto-vacuum more often. ([#19956](https://github.com/wazuh/wazuh/pull/19956))
 
 #### Fixed
 
-- Fixed wazuh-remoted not updating total bytes sent in UDP. ([#13979](https://github.com/wazuh/wazuh/pull/13979))
+- Fixed openarmor-remoted not updating total bytes sent in UDP. ([#13979](https://github.com/wazuh/wazuh/pull/13979))
 - Fixed translation of packages with a missing version in CPE Helper for Vulnerability Detector. ([#14356](https://github.com/wazuh/wazuh/pull/14356))
 - Fixed undefined behavior issues in Vulnerability Detector unit tests. ([#14174](https://github.com/wazuh/wazuh/pull/14174))
 - Fixed permission error when producing FIM alerts. ([#14019](https://github.com/wazuh/wazuh/pull/14019))
-- Fixed memory leaks wazuh-authd. ([#15164](https://github.com/wazuh/wazuh/pull/15164))
+- Fixed memory leaks openarmor-authd. ([#15164](https://github.com/wazuh/wazuh/pull/15164))
 - Fixed Audit policy change detection in FIM for Windows. ([#14763](https://github.com/wazuh/wazuh/pull/14763))
 - Fixed `origin_module` variable value when sending API or framework messages to core sockets. ([#14408](https://github.com/wazuh/wazuh/pull/14408))
 - Fixed an issue where an erroneous tag appeared in the cluster logs. ([#15715](https://github.com/wazuh/wazuh/pull/15715))
@@ -548,8 +543,8 @@ All notable changes to this project will be documented in this file.
 - Fixed error in which exceptions were not correctly handled when `dapi_err` command could not be sent to peers. ([#15298](https://github.com/wazuh/wazuh/pull/15298))
 - Fixed error in worker's Integrity sync task when a group folder was deleted in master. ([#16257](https://github.com/wazuh/wazuh/pull/16257))
 - Fixed error when trying tu update an agent through the API or the CLI while pointing to a WPK file. ([#16506](https://github.com/wazuh/wazuh/pull/16506))
-- Fixed wazuh-remoted high CPU usage in master node without agents. ([#15074](https://github.com/wazuh/wazuh/pull/15074))
-- Fixed race condition in wazuh-analysisd handling rule ignore option. ([#16101](https://github.com/wazuh/wazuh/pull/16101))
+- Fixed openarmor-remoted high CPU usage in master node without agents. ([#15074](https://github.com/wazuh/wazuh/pull/15074))
+- Fixed race condition in openarmor-analysisd handling rule ignore option. ([#16101](https://github.com/wazuh/wazuh/pull/16101))
 - Fixed missing rules and decoders in Analysisd JSON report. ([#16000](https://github.com/wazuh/wazuh/pull/16000))
 - Fixed translation of packages with missing version in CPE Helper. ([#14356](https://github.com/wazuh/wazuh/pull/14356))
 - Fixed log date parsing at predecoding stage. ([#15826](https://github.com/wazuh/wazuh/pull/15826))
@@ -663,7 +658,6 @@ All notable changes to this project will be documented in this file.
 
 - The SSHD decoder has been improved to catch disconnection events. ([#14138](https://github.com/wazuh/wazuh/pull/14138))
 
-
 ## [v4.5.4]
 
 ### Manager
@@ -677,7 +671,6 @@ All notable changes to this project will be documented in this file.
 - Fixed a bug that might leave some worker's services hanging if the connection to the master was broken. ([#19702](https://github.com/wazuh/wazuh/pull/19702))
 - Fixed vulnerability scan on Windows agent when the OS version has no release data. ([#19706](https://github.com/wazuh/wazuh/pull/19706))
 
-
 ## [v4.5.3] - 2023-10-10
 
 ### Manager
@@ -688,8 +681,8 @@ All notable changes to this project will be documented in this file.
 
 #### Fixed
 
-- Fixed a bug that might cause wazuh-analysisd to crash if it receives a status API query during startup. ([#18737](https://github.com/wazuh/wazuh/pull/18737))
-- Fixed a bug that might cause wazuh-maild to crash when handling large alerts. ([#18976](https://github.com/wazuh/wazuh/pull/18976))
+- Fixed a bug that might cause openarmor-analysisd to crash if it receives a status API query during startup. ([#18737](https://github.com/wazuh/wazuh/pull/18737))
+- Fixed a bug that might cause openarmor-maild to crash when handling large alerts. ([#18976](https://github.com/wazuh/wazuh/pull/18976))
 - Fixed an issue in Vulnerability Detector fetching the SLES 15 feed. ([#19217](https://github.com/wazuh/wazuh/pull/19217))
 
 ### Agent
@@ -702,7 +695,7 @@ All notable changes to this project will be documented in this file.
 
 - Fixed a bug in the memory handle at the agent's data provider helper. ([#18773](https://github.com/wazuh/wazuh/pull/18773))
 - Fixed a data mismatch in the OS name between the global and agents' databases. ([#18903](https://github.com/wazuh/wazuh/pull/18903))
-- Fixed an array limit check in wazuh-logcollector. ([#19069](https://github.com/wazuh/wazuh/pull/19069))
+- Fixed an array limit check in openarmor-logcollector. ([#19069](https://github.com/wazuh/wazuh/pull/19069))
 - Fixed wrong Windows agent binaries metadata. ([#19286](https://github.com/wazuh/wazuh/pull/19286))
 - Fixed error during the windows agent upgrade. ([#19397](https://github.com/wazuh/wazuh/pull/19397))
 
@@ -724,23 +717,21 @@ All notable changes to this project will be documented in this file.
 - Fixed an error when using the query `condition=all` in `GET /sca/{agent_id}/checks/{policy_id}`. ([#18434](https://github.com/wazuh/wazuh/pull/18434))
 - Fixed an error in the API log mechanism where sometimes the requests would not be printed in the log file. ([#18733](https://github.com/wazuh/wazuh/pull/18733))
 
-
 ## [v4.5.2] - 2023-09-06
 
 ### Manager
 
 #### Changed
 
-- wazuh-remoted now allows connection overtaking if the older agent did not respond for a while. ([#18085](https://github.com/wazuh/wazuh/pull/18085))
+- openarmor-remoted now allows connection overtaking if the older agent did not respond for a while. ([#18085](https://github.com/wazuh/wazuh/pull/18085))
 - The manager stops restricting the possible package formats in the inventory, to increase compatibility. ([#18437](https://github.com/wazuh/wazuh/pull/18437))
-- wazuh-remoted now prints the connection family when an unknown client gets connected. ([#18468](https://github.com/wazuh/wazuh/pull/18468))
+- openarmor-remoted now prints the connection family when an unknown client gets connected. ([#18468](https://github.com/wazuh/wazuh/pull/18468))
 - The manager stops blocking updates by WPK to macOS agents on ARM64, allowing custom updates. ([#18545](https://github.com/wazuh/wazuh/pull/18545))
 - Vulnerability Detector now fetches the Debian feeds in BZ2 compressed format. ([#18770](https://github.com/wazuh/wazuh/pull/18770))
 
 ### Fixed
 
-- Fixed a bug in wazuh-csyslogd that causes it to consume 100% of CPU while expecting new alerts. ([#18472](https://github.com/wazuh/wazuh/pull/18472))
-
+- Fixed a bug in openarmor-csyslogd that causes it to consume 100% of CPU while expecting new alerts. ([#18472](https://github.com/wazuh/wazuh/pull/18472))
 
 ## [v4.5.1] - 2023-08-24
 
@@ -754,10 +745,10 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - Fixed a race condition in some RBAC unit tests by clearing the SQLAlchemy mappers. ([#17866](https://github.com/wazuh/wazuh/pull/17866))
-- Fixed a bug in wazuh-analysisd that could exceed the maximum number of fields when loading a rule. ([#17490](https://github.com/wazuh/wazuh/pull/17490))
-- Fixed a race condition in wazuh-analysisd FTS list. ([#17126](https://github.com/wazuh/wazuh/pull/17126))
+- Fixed a bug in openarmor-analysisd that could exceed the maximum number of fields when loading a rule. ([#17490](https://github.com/wazuh/wazuh/pull/17490))
+- Fixed a race condition in openarmor-analysisd FTS list. ([#17126](https://github.com/wazuh/wazuh/pull/17126))
 - Fixed a crash in Analysisd when parsing an invalid decoder. ([#17143](https://github.com/wazuh/wazuh/pull/17143))
-- Fixed a segmentation fault in wazuh-modulesd due to duplicate Vulnerability Detector configuration. ([#17701](https://github.com/wazuh/wazuh/pull/17701))
+- Fixed a segmentation fault in openarmor-modulesd due to duplicate Vulnerability Detector configuration. ([#17701](https://github.com/wazuh/wazuh/pull/17701))
 - Fixed Vulnerability Detector configuration for unsupported SUSE systems. ([#16978](https://github.com/wazuh/wazuh/pull/16978))
 
 ### Agent
@@ -766,7 +757,7 @@ All notable changes to this project will be documented in this file.
 
 - Added the `discard_regex` functionality to Inspector and CloudWatchLogs AWS integrations. ([#17748](https://github.com/wazuh/wazuh/pull/17748))
 - Added new validations for the AWS integration arguments. ([#17673](https://github.com/wazuh/wazuh/pull/17673))
-- Added native agent support for Apple silicon. ([#2224](https://github.com/wazuh/wazuh-packages/pull/2224))
+- Added native agent support for Apple silicon. ([#2224](https://github.com/wazuh/openarmor-packages/pull/2224))
 
 #### Changed
 
@@ -811,7 +802,6 @@ All notable changes to this project will be documented in this file.
 
 - The CURL library has been updated to v7.88.1. ([#16990](https://github.com/wazuh/wazuh/pull/16990))
 
-
 ## [v4.5.0] - 2023-08-10
 
 ### Manager
@@ -836,16 +826,14 @@ All notable changes to this project will be documented in this file.
 
 - Fixed error in the Nginx LB entrypoint of the API integration tests. ([#17703](https://github.com/wazuh/wazuh/pull/17703))
 
-
 ## [v4.4.5] - 2023-07-10
 
 ### Installer
 
 #### Fixed
 
-- Fixed an error in the DEB package that prevented the agent and manager from being installed on Debian 12. ([#2256](https://github.com/wazuh/wazuh-packages/pull/2256))
-- Fixed a service requirement in the RPM package that prevented the agent and manager from being installed on Oracle Linux 9. ([#2257](https://github.com/wazuh/wazuh-packages/pull/2257))
-
+- Fixed an error in the DEB package that prevented the agent and manager from being installed on Debian 12. ([#2256](https://github.com/wazuh/openarmor-packages/pull/2256))
+- Fixed a service requirement in the RPM package that prevented the agent and manager from being installed on Oracle Linux 9. ([#2257](https://github.com/wazuh/openarmor-packages/pull/2257))
 
 ## [v4.4.4] - 2023-06-14
 
@@ -868,7 +856,6 @@ All notable changes to this project will be documented in this file.
 
 - Updated all current rule descriptions from "Ossec" to "Wazuh". ([#17211](https://github.com/wazuh/wazuh/pull/17211))
 
-
 ## [v4.4.3] - 2023-05-26
 
 ### Agent
@@ -876,14 +863,14 @@ All notable changes to this project will be documented in this file.
 #### Changed
 
 - Added support for Apple Silicon processors to the macOS agent. ([#16521](https://github.com/wazuh/wazuh/pull/16521))
-- Prevented the installer from checking the old users "ossecm" and "ossecr" on upgrade. ([#2211](https://github.com/wazuh/wazuh-packages/pull/2211))
+- Prevented the installer from checking the old users "ossecm" and "ossecr" on upgrade. ([#2211](https://github.com/wazuh/openarmor-packages/pull/2211))
 - The deployment variables capture has been changed on macOS. ([#17195](https://github.com/wazuh/wazuh/pull/17195))
 
 #### Fixed
 
-- The temporary file "ossec.confre" is now removed after upgrade on macOS. ([#2217](https://github.com/wazuh/wazuh-packages/pull/2217))
-- Prevented the installer from corrupting the agent configuration on macOS when deployment variables were defined on upgrade. ([#2208](https://github.com/wazuh/wazuh-packages/pull/2208))
-- The installation on macOS has been fixed by removing calls to launchctl. ([#2218](https://github.com/wazuh/wazuh-packages/pull/2218))
+- The temporary file "ossec.confre" is now removed after upgrade on macOS. ([#2217](https://github.com/wazuh/openarmor-packages/pull/2217))
+- Prevented the installer from corrupting the agent configuration on macOS when deployment variables were defined on upgrade. ([#2208](https://github.com/wazuh/openarmor-packages/pull/2208))
+- The installation on macOS has been fixed by removing calls to launchctl. ([#2218](https://github.com/wazuh/openarmor-packages/pull/2218))
 
 ### Ruleset
 
@@ -891,14 +878,13 @@ All notable changes to this project will be documented in this file.
 
 - The SCA policy names have been unified. ([#17202](https://github.com/wazuh/wazuh/pull/17202))
 
-
 ## [v4.4.2] - 2023-05-18
 
 ### Manager
 
 #### Changed
 
-- Remove an unused variable in wazuh-authd to fix a _String not null terminated_ Coverity finding. ([#15957](https://github.com/wazuh/wazuh/pull/15957))
+- Remove an unused variable in openarmor-authd to fix a _String not null terminated_ Coverity finding. ([#15957](https://github.com/wazuh/wazuh/pull/15957))
 
 #### Fixed
 
@@ -947,7 +933,6 @@ All notable changes to this project will be documented in this file.
 
 - Updated `Flask` Python dependency to 2.2.5. ([#17053](https://github.com/wazuh/wazuh/pull/17053))
 
-
 ## [v4.4.1] - 2023-04-12
 
 ### Manager
@@ -995,14 +980,14 @@ All notable changes to this project will be documented in this file.
 - Added support for SUSE in Vulnerability Detector. ([#9962](https://github.com/wazuh/wazuh/pull/9962))
 - Added support for Ubuntu Jammy in Vulnerability Detector. ([#13263](https://github.com/wazuh/wazuh/pull/13263))
 - Added a software limit to limit the number of EPS that a manager can process. ([#13608](https://github.com/wazuh/wazuh/pull/13608))
-- Added a new wazuh-clusterd task for agent-groups info synchronization. ([#11753](https://github.com/wazuh/wazuh/pull/11753))
+- Added a new openarmor-clusterd task for agent-groups info synchronization. ([#11753](https://github.com/wazuh/wazuh/pull/11753))
 - Added unit tests for functions in charge of getting ruleset sync status. ([#14950](https://github.com/wazuh/wazuh/pull/14950))
-- Added auto-vacuum mechanism in wazuh-db. ([#14950](https://github.com/wazuh/wazuh/pull/14950))
+- Added auto-vacuum mechanism in openarmor-db. ([#14950](https://github.com/wazuh/wazuh/pull/14950))
 - Delta events in Syscollector when data gets changed may now produce alerts. ([#10843](https://github.com/wazuh/wazuh/pull/10843))
 
 #### Changed
 
-- wazuh-logtest now shows warnings about ruleset issues. ([#10822](https://github.com/wazuh/wazuh/pull/10822))
+- openarmor-logtest now shows warnings about ruleset issues. ([#10822](https://github.com/wazuh/wazuh/pull/10822))
 - Modulesd memory is now managed by jemalloc, this helps reduce memory fragmentation. ([#12206](https://github.com/wazuh/wazuh/pull/12206))
 - Updated the Vulnerability Detector configuration reporting to include MSU and skip JSON Red Hat feed. ([#12117](https://github.com/wazuh/wazuh/pull/12117))
 - Improved the shared configuration file handling performance. ([#12352](https://github.com/wazuh/wazuh/pull/12352))
@@ -1013,15 +998,15 @@ All notable changes to this project will be documented in this file.
 - Limit the maximum zip size that can be created while synchronizing cluster Integrity. ([#11124](https://github.com/wazuh/wazuh/pull/11124))
 - Refactored the functions in charge of synchronizing files in the cluster. ([#13065](https://github.com/wazuh/wazuh/pull/))
 - Changed MD5 hash function to BLAKE2 for cluster file comparison. ([#13079](https://github.com/wazuh/wazuh/pull/13079))
-- Renamed wazuh-logtest and wazuh-clusterd scripts to follow the same scheme as the other scripts (spaces symbolized with _ instead of -). ([#12926](https://github.com/wazuh/wazuh/pull/12926))
-- The agent key polling module has been ported to wazuh-authd. ([#10865](https://github.com/wazuh/wazuh/pull/10865))
+- Renamed openarmor-logtest and openarmor-clusterd scripts to follow the same scheme as the other scripts (spaces symbolized with \_ instead of -). ([#12926](https://github.com/wazuh/wazuh/pull/12926))
+- The agent key polling module has been ported to openarmor-authd. ([#10865](https://github.com/wazuh/wazuh/pull/10865))
 - Added the update field in the CPE Helper for Vulnerability Detector. ([#13741](https://github.com/wazuh/wazuh/pull/13741))
 - Prevented agents with the same ID from connecting to the manager simultaneously. ([#11702](https://github.com/wazuh/wazuh/pull/11702))
-- wazuh-analysisd, wazuh-remoted and wazuh-db metrics have been extended. ([#13713](https://github.com/wazuh/wazuh/pull/13713))
-- Minimized and optimized wazuh-clusterd number of messages from workers to master related to agent-info tasks. ([#11753](https://github.com/wazuh/wazuh/pull/11753))
+- openarmor-analysisd, openarmor-remoted and openarmor-db metrics have been extended. ([#13713](https://github.com/wazuh/wazuh/pull/13713))
+- Minimized and optimized openarmor-clusterd number of messages from workers to master related to agent-info tasks. ([#11753](https://github.com/wazuh/wazuh/pull/11753))
 - Improved performance of the `agent_groups` CLI when listing agents belonging to a group. ([#14244](https://github.com/wazuh/wazuh/pull/14244)
-- Changed wazuh-clusterd binary behaviour to kill any existing cluster processes when executed. ([#14475](https://github.com/wazuh/wazuh/pull/14475))
-- Changed wazuh-clusterd tasks to wait asynchronously for responses coming from wazuh-db. ([#14791](https://github.com/wazuh/wazuh/pull/14843))
+- Changed openarmor-clusterd binary behaviour to kill any existing cluster processes when executed. ([#14475](https://github.com/wazuh/wazuh/pull/14475))
+- Changed openarmor-clusterd tasks to wait asynchronously for responses coming from openarmor-db. ([#14791](https://github.com/wazuh/wazuh/pull/14843))
 - Use zlib for zip compression in cluster synchronization. ([#11190](https://github.com/wazuh/wazuh/pull/11190))
 - Added mechanism to dynamically adjust zip size limit in Integrity sync. ([#12241](https://github.com/wazuh/wazuh/pull/12241))
 - Deprecate status field in SCA. ([#15853](https://github.com/wazuh/wazuh/pull/15853))
@@ -1031,7 +1016,7 @@ All notable changes to this project will be documented in this file.
 
 #### Fixed
 
-- Fixed wazuh-dbd halt procedure. ([#10873](https://github.com/wazuh/wazuh/pull/10873))
+- Fixed openarmor-dbd halt procedure. ([#10873](https://github.com/wazuh/wazuh/pull/10873))
 - Fixed compilation warnings in the manager. ([#12098](https://github.com/wazuh/wazuh/pull/12098))
 - Fixed a bug in the manager that did not send shared folders correctly to agents belonging to multiple groups. ([#12516](https://github.com/wazuh/wazuh/pull/12516))
 - Fixed the Active Response decoders to support back the top entries for source IP in reports. ([#12834](https://github.com/wazuh/wazuh/pull/12834))
@@ -1040,31 +1025,31 @@ All notable changes to this project will be documented in this file.
   - Fixed code flaw regarding the use of XML package. ([#10635](https://github.com/wazuh/wazuh/pull/10635))
   - Fixed code flaw regarding permissions at group directories. ([#10636](https://github.com/wazuh/wazuh/pull/10636))
   - Fixed code flaw regarding temporary directory names. ([#10544](https://github.com/wazuh/wazuh/pull/10544))
-  - Fixed code flaw regarding try, except and pass block in wazuh-clusterd. ([#11951](https://github.com/wazuh/wazuh/pull/11951))
+  - Fixed code flaw regarding try, except and pass block in openarmor-clusterd. ([#11951](https://github.com/wazuh/wazuh/pull/11951))
 - Fixed framework datetime transformations to UTC. ([#10782](https://github.com/wazuh/wazuh/pull/10782))
 - Fixed a cluster error when Master-Worker tasks where not properly stopped after an exception occurred in one or both parts. ([#11866](https://github.com/wazuh/wazuh/pull/11866))
 - Fixed cluster logger issue printing 'NoneType: None' in error logs. ([#12831](https://github.com/wazuh/wazuh/pull/12831))
 - Fixed unhandled cluster error when reading a malformed configuration. ([#13419](https://github.com/wazuh/wazuh/pull/13419))
 - Fixed framework unit test failures when they are run by the root user. ([#13368](https://github.com/wazuh/wazuh/pull/13368))
 - Fixed a memory leak in analysisd when parsing a disabled Active Response. ([#13405](https://github.com/wazuh/wazuh/pull/13405))
-- Prevented wazuh-db from deleting queue/diff when cleaning databases. ([#13892](https://github.com/wazuh/wazuh/pull/13892))
+- Prevented openarmor-db from deleting queue/diff when cleaning databases. ([#13892](https://github.com/wazuh/wazuh/pull/13892))
 - Fixed multiple data race conditions in Remoted reported by ThreadSanitizer. ([#14981](https://github.com/wazuh/wazuh/pull/14981))
 - Fixed aarch64 OS collection in Remoted to allow WPK upgrades. ([#15151](https://github.com/wazuh/wazuh/pull/15151))
 - Fixed a race condition in Remoted that was blocking agent connections. ([#15165](https://github.com/wazuh/wazuh/pull/15165))
 - Fixed Virustotal integration to support non UTF-8 characters. ([#13531](https://github.com/wazuh/wazuh/pull/13531))
 - Fixed a bug masking as Timeout any error that might occur while waiting to receive files in the cluster. ([#14922](https://github.com/wazuh/wazuh/pull/14922))
-- Fixed a read buffer overflow in wazuh-authd when parsing requests. ([#15876](https://github.com/wazuh/wazuh/pull/15876))
-- Applied workaround for bpo-46309 used in cluster to wazuh-db communication.([#16012](https://github.com/wazuh/wazuh/pull/16012))
+- Fixed a read buffer overflow in openarmor-authd when parsing requests. ([#15876](https://github.com/wazuh/wazuh/pull/15876))
+- Applied workaround for bpo-46309 used in cluster to openarmor-db communication.([#16012](https://github.com/wazuh/wazuh/pull/16012))
 - Let the database module synchronize the agent groups data before assignments. ([#16233](https://github.com/wazuh/wazuh/pull/16233))
-- Fixed memory leaks in wazuh-analysisd when parsing and matching rules. ([#16321](https://github.com/wazuh/wazuh/pull/16321))
+- Fixed memory leaks in openarmor-analysisd when parsing and matching rules. ([#16321](https://github.com/wazuh/wazuh/pull/16321))
 
 #### Removed
 
 - Removed the unused internal option `wazuh_db.sock_queue_size`. ([#12409](https://github.com/wazuh/wazuh/pull/12409))
-- Removed all the unused exceptions from the exceptions.py file.  ([#10940](https://github.com/wazuh/wazuh/pull/10940))
+- Removed all the unused exceptions from the exceptions.py file. ([#10940](https://github.com/wazuh/wazuh/pull/10940))
 - Removed unused execute method from core/utils.py. ([#10740](https://github.com/wazuh/wazuh/pull/10740))
 - Removed unused set_user_name function in framework. ([#13119](https://github.com/wazuh/wazuh/pull/13119))
-- Unused internal calls to wazuh-db have been deprecated. ([#12370](https://github.com/wazuh/wazuh/pull/12370))
+- Unused internal calls to openarmor-db have been deprecated. ([#12370](https://github.com/wazuh/wazuh/pull/12370))
 - Debian Stretch support in Vulnerability Detector has been deprecated. ([#14542](https://github.com/wazuh/wazuh/pull/14542))
 
 ### Agent
@@ -1083,7 +1068,7 @@ All notable changes to this project will be documented in this file.
 - Added support for CIS-CAT Pro v3 and v4 to the CIS-CAT integration module. Thanks to @hustliyilin. ([#12582](https://github.com/wazuh/wazuh/pull/12582))
 - Added support for the use of the Azure integration module in Linux agents. ([#10870](https://github.com/wazuh/wazuh/pull/10870))
 - Added new error messages when using invalid credentials with the Azure integration. ([#11852](https://github.com/wazuh/wazuh/pull/11852))
-- Added reparse option to CloudWatchLogs and Google Cloud Storage integrations.  ([#12515](https://github.com/wazuh/wazuh/pull/12515))
+- Added reparse option to CloudWatchLogs and Google Cloud Storage integrations. ([#12515](https://github.com/wazuh/wazuh/pull/12515))
 - Wazuh Agent can now be built and run on Alpine Linux. ([#14726](https://github.com/wazuh/wazuh/pull/14726))
 - Added native Shuffle integration. ([#15054](https://github.com/wazuh/wazuh/pull/15054))
 
@@ -1148,7 +1133,7 @@ All notable changes to this project will be documented in this file.
 #### Added
 
 - Added new API integration tests for a Wazuh environment without a cluster configuration. ([#10620](https://github.com/wazuh/wazuh/pull/10620))
-- Added wazuh-modulesd tags to `GET /manager/logs` and `GET /cluster/{node_id}/logs` endpoints. ([#11731](https://github.com/wazuh/wazuh/pull/11731))
+- Added openarmor-modulesd tags to `GET /manager/logs` and `GET /cluster/{node_id}/logs` endpoints. ([#11731](https://github.com/wazuh/wazuh/pull/11731))
 - Added Python decorator to soft deprecate API endpoints adding deprecation headers to their responses. ([#12438](https://github.com/wazuh/wazuh/pull/12438))
 - Added new exception to inform that /proc directory is not found or permissions to see its status are not granted. ([#12486](https://github.com/wazuh/wazuh/pull/12486))
 - Added new field and filter to `GET /agents` response to retrieve agent groups configuration synchronization status. ([#12362](https://github.com/wazuh/wazuh/pull/12483))
@@ -1161,7 +1146,7 @@ All notable changes to this project will be documented in this file.
 - Added logic to API logger to renew its streams if needed on every request. ([#14295](https://github.com/wazuh/wazuh/pull/14295))
 - Added `GET /manager/daemons/stats` and `GET /cluster/{node_id}/daemons/stats` API endpoints. ([#14401](https://github.com/wazuh/wazuh/pull/14401))
 - Added `GET /agents/{agent_id}/daemons/stats` API endpoint. ([#14464](https://github.com/wazuh/wazuh/pull/14464))
-- Added the possibility to get the configuration of the `wazuh-db` component in active configuration endpoints. ([#14471](https://github.com/wazuh/wazuh/pull/14471))
+- Added the possibility to get the configuration of the `openarmor-db` component in active configuration endpoints. ([#14471](https://github.com/wazuh/wazuh/pull/14471))
 - Added distinct and select parameters to GET /sca/{agent_id} and GET /sca/{agent_id}/checks/{policy_id} endpoints. ([#15084](https://github.com/wazuh/wazuh/pull/15084))
 - Added new endpoint to run vulnerability detector on-demand scans (`PUT /vulnerability`). ([#15290](https://github.com/wazuh/wazuh/pull/15290))
 
@@ -1172,7 +1157,7 @@ All notable changes to this project will be documented in this file.
 - Changed API version and upgrade_version filters to work with different version formats. ([#12551](https://github.com/wazuh/wazuh/pull/12551))
 - Renamed `GET /agents/{agent_id}/group/is_sync` endpoint to `GET /agents/group/is_sync` and added new `agents_list` parameter. ([#9413](https://github.com/wazuh/wazuh/pull/9413))
 - Added `POST /security/user/authenticate` endpoint and marked `GET /security/user/authenticate` endpoint as deprecated. ([#10397](https://github.com/wazuh/wazuh/pull/10397))
-- Adapted framework code to agent-group changes to use the new wazuh-db commands. ([#12526](https://github.com/wazuh/wazuh/pull/12526))
+- Adapted framework code to agent-group changes to use the new openarmor-db commands. ([#12526](https://github.com/wazuh/wazuh/pull/12526))
 - Updated default timeout for `GET /mitre/software` to avoid timing out in slow environments after the MITRE DB update to v11.2. ([#13791](https://github.com/wazuh/wazuh/pull/13791))
 - Changed API settings related to remote commands. The `remote_commands` section will be hold within `upload_wazuh_configuration`. ([#14119](https://github.com/wazuh/wazuh/pull/14119))
 - Improved API unauthorized responses to be more accurate. ([#14233](https://github.com/wazuh/wazuh/pull/14233))
@@ -1180,7 +1165,7 @@ All notable changes to this project will be documented in this file.
 - Improved parameter validation for API endpoints that require component and configuration parameters. ([#14766](https://github.com/wazuh/wazuh/pull/14766))
 - Improved `GET /sca/{agent_id}/checks/{policy_id}` API endpoint performance. ([#15017](https://github.com/wazuh/wazuh/pull/15017))
 - Improved exception handling when trying to connect to Wazuh sockets. ([#15334](https://github.com/wazuh/wazuh/pull/15334))
-- Modified _group_names and _group_names_or_all regexes to avoid invalid group names. ([#15671](https://github.com/wazuh/wazuh/pull/15671))
+- Modified \_group_names and \_group_names_or_all regexes to avoid invalid group names. ([#15671](https://github.com/wazuh/wazuh/pull/15671))
 - Changed `GET /sca/{agent_id}/checks/{policy_id}` endpoint filters and response to remove `status` field. ([#15747](https://github.com/wazuh/wazuh/pull/15747))
 - Removed RBAC group assignments' related permissions from `DELETE /groups` to improve performance and changed response structure. ([#16231](https://github.com/wazuh/wazuh/pull/16231))
 
@@ -1188,7 +1173,7 @@ All notable changes to this project will be documented in this file.
 
 - Fixed copy functions used for the backup files and upload endpoints to prevent incorrent metadata. ([#12302](https://github.com/wazuh/wazuh/pull/12302))
 - Fixed a bug regarding ids not being sorted with cluster disabled in Active Response and Agent endpoints. ([#11010](https://github.com/wazuh/wazuh/pull/11010))
-- Fixed a bug where `null` values from wazuh-db where returned in API responses. ([#10736](https://github.com/wazuh/wazuh/pull/10736))
+- Fixed a bug where `null` values from openarmor-db where returned in API responses. ([#10736](https://github.com/wazuh/wazuh/pull/10736))
 - Connections through `WazuhQueue` will be closed gracefully in all situations. ([#12063](https://github.com/wazuh/wazuh/pull/12063))
 - Fixed exception handling when trying to get the active configuration of a valid but not configured component. ([#12450](https://github.com/wazuh/wazuh/pull/12450))
 - Fixed api.yaml path suggested as remediation at exception.py ([#12700](https://github.com/wazuh/wazuh/pull/12700))
@@ -1237,7 +1222,7 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - Fixed OpenWRT decoder fixed to parse UFW logs. ([#11613](https://github.com/wazuh/wazuh/pull/11613))
-- Bug fix in wazuh-api-fields decoder. ([#14807](https://github.com/wazuh/wazuh/pull/14807))
+- Bug fix in openarmor-api-fields decoder. ([#14807](https://github.com/wazuh/wazuh/pull/14807))
 - Fixed deprecated MITRE tags in rules. ([#13567](https://github.com/wazuh/wazuh/pull/13567))
 - SCA checks IDs are not unique. ([#15241](https://github.com/wazuh/wazuh/pull/15241))
 - Fixed regex in check 5.1.1 of Ubuntu 20.04 SCA. ([#14513](https://github.com/wazuh/wazuh/pull/14513))
@@ -1267,15 +1252,13 @@ All notable changes to this project will be documented in this file.
 
 - Fixed Makefile to detect CPU archivecture on Gentoo Linux. ([#14165](https://github.com/wazuh/wazuh/pull/14165))
 
-
 ## [v4.3.11] - 2023-04-24
 
 ### Manager
 
 #### Fixed
 
-- Fixed a dead code bug that might cause wazuh-db to crash. ([#16752](https://github.com/wazuh/wazuh/pull/16752))
-
+- Fixed a dead code bug that might cause openarmor-db to crash. ([#16752](https://github.com/wazuh/wazuh/pull/16752))
 
 ## [v4.3.10] - 2022-11-16
 
@@ -1293,7 +1276,6 @@ All notable changes to this project will be documented in this file.
 
 - The agent upgrade configuration has been restricted to local settings. ([#15259](https://github.com/wazuh/wazuh/pull/15259))
 - Fixed unwanted Windows agent configuration modification on upgrade. ([#15262](https://github.com/wazuh/wazuh/pull/15262))
-
 
 ## [v4.3.9] - 2022-10-13
 
@@ -1314,7 +1296,6 @@ All notable changes to this project will be documented in this file.
 
 - Updated external protobuf python dependency to 3.19.6. ([#15067](https://github.com/wazuh/wazuh/pull/15067))
 
-
 ## [v4.3.8] - 2022-09-19
 
 ### Manager
@@ -1322,8 +1303,8 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - Fixed wrong field assignation in Audit decoders (thanks to @pyama86). ([#14752](https://github.com/wazuh/wazuh/pull/14752))
-- Prevented wazuh-remoted from cleaning the multigroup folder in worker nodes. ([#14825](https://github.com/wazuh/wazuh/pull/14825))
-- Fixed rule skipping in wazuh-analysisd when the option if_sid is invalid. ([#14772](https://github.com/wazuh/wazuh/pull/14772))
+- Prevented openarmor-remoted from cleaning the multigroup folder in worker nodes. ([#14825](https://github.com/wazuh/wazuh/pull/14825))
+- Fixed rule skipping in openarmor-analysisd when the option if_sid is invalid. ([#14772](https://github.com/wazuh/wazuh/pull/14772))
 
 ### Agent
 
@@ -1334,7 +1315,6 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - Fixed a path traversal flaw in Active Response affecting agents from v3.6.1 to v4.3.7 (reported by @guragainroshan0). ([#14801](https://github.com/wazuh/wazuh/pull/14801))
-
 
 ## [v4.3.7] - 2022-08-24
 
@@ -1348,8 +1328,8 @@ All notable changes to this project will be documented in this file.
 
 - Fixed a bug in Analysisd that may make it crash when decoding regexes with more than 14 or-ed subpatterns. ([#13956](https://github.com/wazuh/wazuh/pull/13956))
 - Fixed a crash hazard in Vulnerability Detector when parsing OVAL feeds. ([#14366](https://github.com/wazuh/wazuh/pull/14366))
-- Fixed busy-looping in wazuh-maild when monitoring alerts.json. ([#14436](https://github.com/wazuh/wazuh/pull/14436))
-- Fixed a segmentation fault in wazuh-maild when parsing alerts exceeding the nesting limit. ([#14417](https://github.com/wazuh/wazuh/pull/14417))
+- Fixed busy-looping in openarmor-maild when monitoring alerts.json. ([#14436](https://github.com/wazuh/wazuh/pull/14436))
+- Fixed a segmentation fault in openarmor-maild when parsing alerts exceeding the nesting limit. ([#14417](https://github.com/wazuh/wazuh/pull/14417))
 
 ### Agent
 
@@ -1384,11 +1364,10 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - Fixed rule regular expression bug on Ubuntu 20.04 Linux SCA policy control ID 19137. ([#14513](https://github.com/wazuh/wazuh/pull/14513))
-- Fixed AWS Amazon Linux SCA policy. Fixed bug when wazuh-agent tries to run the policy. ([#14483](https://github.com/wazuh/wazuh/pull/14483))
+- Fixed AWS Amazon Linux SCA policy. Fixed bug when openarmor-agent tries to run the policy. ([#14483](https://github.com/wazuh/wazuh/pull/14483))
 - Fixed AWS Amazon Linux 2 SCA policy. Limit journalctl to kernel events and only since boot. ([#13950](https://github.com/wazuh/wazuh/pull/13950))
-- Added missing SCA files during Wazuh-manager installation. ([#14482](https://github.com/wazuh/wazuh/pull/14482))
+- Added missing SCA files during Openarmor-manager installation. ([#14482](https://github.com/wazuh/wazuh/pull/14482))
 - Fixed OS detection in Ubuntu 20.04 LTS SCA policy. ([#14678](https://github.com/wazuh/wazuh/pull/14678))
-
 
 ## [v4.3.6] - 2022-07-20
 
@@ -1401,13 +1380,13 @@ All notable changes to this project will be documented in this file.
 
 #### Changed
 
-- Improved the shared configuration file handling performance in wazuh-remoted. ([#14111](https://github.com/wazuh/wazuh/pull/14111))
+- Improved the shared configuration file handling performance in openarmor-remoted. ([#14111](https://github.com/wazuh/wazuh/pull/14111))
 
 #### Fixed
 
 - Fixed potential memory leaks in Vulnerability Detector when parsing OVAL with no criteria. ([#14098](https://github.com/wazuh/wazuh/pull/14098))
 - Fixed a bug in Vulnerability Detector that skipped Windows 8.1 and Windows 8 agents. ([#13957](https://github.com/wazuh/wazuh/pull/13957))
-- Fixed a bug in wazuh-db that stored duplicate Syscollector package data. ([#14061](https://github.com/wazuh/wazuh/pull/14061))
+- Fixed a bug in openarmor-db that stored duplicate Syscollector package data. ([#14061](https://github.com/wazuh/wazuh/pull/14061))
 
 ### Agent
 
@@ -1444,7 +1423,6 @@ All notable changes to this project will be documented in this file.
 
 - Disabled filebeat logging metrics. ([#14121](https://github.com/wazuh/wazuh/pull/14121))
 
-
 ## [v4.3.5] - 2022-06-29
 
 ### Manager
@@ -1456,11 +1434,11 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - The upgrade module's response message has been fixed not to include null values. ([#13662](https://github.com/wazuh/wazuh/pull/13662))
-- Fixed a string truncation warning log in wazuh-authd when enabling password authentication. ([#13863](https://github.com/wazuh/wazuh/pull/13863))
-- Fixed a memory leak in wazuh-analysisd when overwriting a rule multiple times. ([#13587](https://github.com/wazuh/wazuh/pull/13587))
-- Prevented wazuh-agentd and client-auth from performing enrollment if the agent fails to validate the manager's certificate. ([#13907](https://github.com/wazuh/wazuh/pull/13907))
+- Fixed a string truncation warning log in openarmor-authd when enabling password authentication. ([#13863](https://github.com/wazuh/wazuh/pull/13863))
+- Fixed a memory leak in openarmor-analysisd when overwriting a rule multiple times. ([#13587](https://github.com/wazuh/wazuh/pull/13587))
+- Prevented openarmor-agentd and client-auth from performing enrollment if the agent fails to validate the manager's certificate. ([#13907](https://github.com/wazuh/wazuh/pull/13907))
 - Fixed manager's compilation when enabling GeoIP support. ([#13694](https://github.com/wazuh/wazuh/pull/13694))
-- Fixed a crash in wazuh-modulesd when getting stopped while downloading a Vulnerability Detector feed. ([#13883](https://github.com/wazuh/wazuh/pull/13883))
+- Fixed a crash in openarmor-modulesd when getting stopped while downloading a Vulnerability Detector feed. ([#13883](https://github.com/wazuh/wazuh/pull/13883))
 
 ### Agent
 
@@ -1477,6 +1455,7 @@ All notable changes to this project will be documented in this file.
 ### RESTful API
 
 #### Fixed
+
 - Updated `tag` parameter of `GET /manager/logs` and `GET /cluster/{node_id}/logs` endpoints to accept any string. ([#13867](https://github.com/wazuh/wazuh/pull/13867))
 
 ### Ruleset
@@ -1498,7 +1477,6 @@ All notable changes to this project will be documented in this file.
 - Fixed `test_agent_PUT_endpoints.tavern.yaml` API integration test failure in numbered branches. ([#13811](https://github.com/wazuh/wazuh/pull/13811))
 - Upgraded external click and clickclick python dependencies to 8.1.3 and 20.10.2 respectively. ([13790]([https://github.com/wazuh/wazuh/pull/13790))
 
-
 ## [v4.3.4] - 2022-06-09
 
 ### Manager
@@ -1512,10 +1490,10 @@ All notable changes to this project will be documented in this file.
 
 - Fixed bug in `agent_groups` CLI when removing agent groups. ([#13621](https://github.com/wazuh/wazuh/pull/13621))
 - Fixed linux compilation errors with GCC 12. ([#13459](https://github.com/wazuh/wazuh/pull/13459))
-- Fixed a crash in wazuh-analysisd when overwriting a rule with a configured active response. ([#13604](https://github.com/wazuh/wazuh/pull/13604))
-- Fixed a crash in wazuh-db when it cannot open a database file. ([#13666](https://github.com/wazuh/wazuh/pull/13666))
+- Fixed a crash in openarmor-analysisd when overwriting a rule with a configured active response. ([#13604](https://github.com/wazuh/wazuh/pull/13604))
+- Fixed a crash in openarmor-db when it cannot open a database file. ([#13666](https://github.com/wazuh/wazuh/pull/13666))
 - Fixed the vulnerability feed parsing mechanism, now truncates excessively long values (This problem was detected during Ubuntu Bionic feed update). ([#13566](https://github.com/wazuh/wazuh/pull/13566))
-- Fixed a crash in wazuh-maild when parsing an alert with no full log and containing arrays of non-strings. [#13679](https://github.com/wazuh/wazuh/pull/13679))
+- Fixed a crash in openarmor-maild when parsing an alert with no full log and containing arrays of non-strings. [#13679](https://github.com/wazuh/wazuh/pull/13679))
 
 ### RESTful API
 
@@ -1528,7 +1506,6 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - Fixed the prematch criteria of `sshd-disconnect` decoder. ([#13560](https://github.com/wazuh/wazuh/pull/13560))
-
 
 ## [v4.3.3] - 2022-05-31
 
@@ -1544,7 +1521,6 @@ All notable changes to this project will be documented in this file.
 
 - Prevented Agentd from resetting its configuration on client block re-definition. ([#13642](https://github.com/wazuh/wazuh/pull/13642))
 
-
 ## [v4.3.2] - 2022-05-30
 
 ### Manager
@@ -1552,7 +1528,6 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - Fixed a crash in Vuln Detector when scanning agents running on Windows. ([#13616](https://github.com/wazuh/wazuh/pull/13616))
-
 
 ## [v4.3.1] - 2022-05-18
 
@@ -1577,7 +1552,6 @@ All notable changes to this project will be documented in this file.
 
 - Fixed rule 92656, added field condition win.eventdata.logonType equals 10 to avoid false positives. ([#13409](https://github.com/wazuh/wazuh/pull/13409))
 
-
 ## [v4.3.0] - 2022-05-05
 
 ### Manager
@@ -1585,12 +1559,12 @@ All notable changes to this project will be documented in this file.
 #### Added
 
 - Added support for Arch Linux OS in Vulnerability Detector. Thanks to Aviel Warschawski (@avielw). ([#8178](https://github.com/wazuh/wazuh/pull/8178))
-- Added a log message in the `cluster.log` file to notify that wazuh-clusterd has been stopped. ([#8749](https://github.com/wazuh/wazuh/pull/8749))
-- Added message with the PID of `wazuh-clusterd` process when launched in foreground mode. ([#9077](https://github.com/wazuh/wazuh/pull/9077))
+- Added a log message in the `cluster.log` file to notify that openarmor-clusterd has been stopped. ([#8749](https://github.com/wazuh/wazuh/pull/8749))
+- Added message with the PID of `openarmor-clusterd` process when launched in foreground mode. ([#9077](https://github.com/wazuh/wazuh/pull/9077))
 - Added time calculation when extra information is requested to the `cluster_control` binary. ([#10492](https://github.com/wazuh/wazuh/pull/10492))
 - Added a context variable to indicate origin module in socket communication messages. ([#9209](https://github.com/wazuh/wazuh/pull/9209))
 - Added unit tests for framework/core files to increase coverage. ([#9733](https://github.com/wazuh/wazuh/pull/9733))
-- Added a verbose mode in the wazuh-logtest tool. ([#9204](https://github.com/wazuh/wazuh/pull/9204))
+- Added a verbose mode in the openarmor-logtest tool. ([#9204](https://github.com/wazuh/wazuh/pull/9204))
 - Added Vulnerability Detector support for Amazon Linux. ([#8830](https://github.com/wazuh/wazuh/pull/8830))
 - Introduced new option `<force>` to set the behavior when Authd finds conflicts on agent enrollment requests. ([#10693](https://github.com/wazuh/wazuh/pull/10693))
 - Added saniziters to the unit tests execution. ([#9099](https://github.com/wazuh/wazuh/pull/9099))
@@ -1615,8 +1589,8 @@ All notable changes to this project will be documented in this file.
 - Changed all XML file loads. Now, `defusedxml` library is used to avoid possible XML-based attacks. ([8351](https://github.com/wazuh/wazuh/pull/8351))
 - Changed configuration validation from execq socket to com socket. ([#8535](https://github.com/wazuh/wazuh/pull/8535))
 - Updated utils unittest to improve process_array function coverage. ([#8392](https://github.com/wazuh/wazuh/pull/8392))
-- Changed `request_slice` calculation to improve efficiency when accessing wazuh-db data. ([#8885](https://github.com/wazuh/wazuh/pull/8885))
-- Improved the retrieval of information from `wazuh-db` so it reaches the optimum size in a single iteration. ([#9273](https://github.com/wazuh/wazuh/pull/9273))
+- Changed `request_slice` calculation to improve efficiency when accessing openarmor-db data. ([#8885](https://github.com/wazuh/wazuh/pull/8885))
+- Improved the retrieval of information from `openarmor-db` so it reaches the optimum size in a single iteration. ([#9273](https://github.com/wazuh/wazuh/pull/9273))
 - Optimized the way framework uses context cached functions and added a note on context_cached docstring. ([#9234](https://github.com/wazuh/wazuh/issues/9234))
 - Improved framework regexes to be more specific and less vulnerable. ([#9332](https://github.com/wazuh/wazuh/pull/9332))
 - Unified framework exceptions for non-active agents. ([#9423](https://github.com/wazuh/wazuh/pull/9423))
@@ -1659,9 +1633,9 @@ All notable changes to this project will be documented in this file.
 - Handle `JSONDecodeError` in Distributed API class methods. ([#10341](https://github.com/wazuh/wazuh/pull/10341))
 - Fixed an issue with duplicated logs in Azure-logs module and applied several improvements to it. ([#9738](https://github.com/wazuh/wazuh/pull/9738))
 - Fixed the query parameter validation to allow usage of special chars in Azure module. ([#10680](https://github.com/wazuh/wazuh/pull/10680))
-- Fix a bug running wazuh-clusterd process when it was already running. ([#8394](https://github.com/wazuh/wazuh/pull/8394))
+- Fix a bug running openarmor-clusterd process when it was already running. ([#8394](https://github.com/wazuh/wazuh/pull/8394))
 - Allow cluster to send and receive messages with size higher than request_chunk. ([#8732](https://github.com/wazuh/wazuh/pull/8732))
-- Fixed a bug that caused `wazuh-clusterd` process to not delete its pidfile when running in foreground mode and it is stopped. ([#9077](https://github.com/wazuh/wazuh/pull/9077))
+- Fixed a bug that caused `openarmor-clusterd` process to not delete its pidfile when running in foreground mode and it is stopped. ([#9077](https://github.com/wazuh/wazuh/pull/9077))
 - Fixed race condition due to lack of atomicity in the cluster synchronization mechanism. ([#10376](https://github.com/wazuh/wazuh/pull/10376))
 - Fixed bug when displaying the dates of the cluster tasks that have not finished yet. Now `n/a` is displayed in these cases. ([#10492](https://github.com/wazuh/wazuh/pull/10492))
 - Fixed missing field `value_type` in FIM alerts. ([#9196](https://github.com/wazuh/wazuh/pull/9196))
@@ -1674,7 +1648,7 @@ All notable changes to this project will be documented in this file.
 - Fixed a crash in Analysisd when setting Active Response with agent_id = 0. ([#10948](https://github.com/wazuh/wazuh/pull/10948))
 - Fixed an uninitialized Blowfish encryption structure warning. ([#11161](https://github.com/wazuh/wazuh/pull/11161))
 - Fixed a memory overrun hazard in Vulnerability Detector. ([#11262](https://github.com/wazuh/wazuh/pull/11262))
-- Fixed a bug when using a limit parameter higher than the total number of objects in the wazuh-db queries. ([#11282](https://github.com/wazuh/wazuh/pull/11282))
+- Fixed a bug when using a limit parameter higher than the total number of objects in the openarmor-db queries. ([#11282](https://github.com/wazuh/wazuh/pull/11282))
 - Prevented a false positive for MySQL in Vulnerability Detector. ([#11440](https://github.com/wazuh/wazuh/pull/11440))
 - Fixed segmentation fault in Analysisd when setting the number of queues to zero. ([#11448](https://github.com/wazuh/wazuh/pull/11448))
 - Fixed false positives in Vulnerability Detector when scanning OVAl for Ubuntu Xenial and Bionic. ([#11440](https://github.com/wazuh/wazuh/pull/11440))
@@ -1686,7 +1660,7 @@ All notable changes to this project will be documented in this file.
 - Prevented Authd from exiting due to a pipe signal if Wazuh DB gets closed. ([#12368](https://github.com/wazuh/wazuh/pull/12368))
 - Fixed a buffer handling bug in Remoted that left the syslog TCP server stuck. ([#12415](https://github.com/wazuh/wazuh/pull/12415))
 - Fixed a memory leak in Vulnerability Detector when discarding kernel packages. ([#12644](https://github.com/wazuh/wazuh/pull/12644))
-- Fixed a memory leak at wazuh-logtest-legacy when matching a level-0 rule. ([#12655](https://github.com/wazuh/wazuh/pull/12655))
+- Fixed a memory leak at openarmor-logtest-legacy when matching a level-0 rule. ([#12655](https://github.com/wazuh/wazuh/pull/12655))
 - Fixed a bug in the Vulnerability Detector CPE helper that may lead to produce false positives about Firefox ESR. ([#13067](https://github.com/wazuh/wazuh/pull/13067))
 
 #### Removed
@@ -1767,7 +1741,7 @@ All notable changes to this project will be documented in this file.
 - Fixed Windows agent compilation warnings. ([#10942](https://github.com/wazuh/wazuh/pull/10942))
 - Fixed the OS version reported by the agent on OpenSUSE Tumbleweed. ([#11207](https://github.com/wazuh/wazuh/pull/11207))
 - Prevented Syscollector from truncating the open port inode numbers on Linux. ([#11329](https://github.com/wazuh/wazuh/pull/11329))
-- Fixed agent auto-restart on configuration changes when started via `wazuh-control` on a Systemd based Linux OS. ([#11365](https://github.com/wazuh/wazuh/pull/11365))
+- Fixed agent auto-restart on configuration changes when started via `openarmor-control` on a Systemd based Linux OS. ([#11365](https://github.com/wazuh/wazuh/pull/11365))
 - Fixed a bug in the AWS module resulting in unnecessary API calls when trying to obtain the different Account IDs for the bucket. ([#10952](https://github.com/wazuh/wazuh/pull/10952))
 - Fixed Azure integration's configuration parsing to allow omitting optional parameters. ([#11278](https://github.com/wazuh/wazuh/pull/11278))
 - Fixed Azure Storage credentials validation bug. ([#11296](https://github.com/wazuh/wazuh/pull/11296))
@@ -1782,6 +1756,7 @@ All notable changes to this project will be documented in this file.
 - Fixed a bug in the agent's leaky bucket throughput regulator that could leave it stuck if the time is advanced on Windows. ([#13088](https://github.com/wazuh/wazuh/pull/13088))
 
 #### Removed
+
 - Removed oscap module files as it was already deprecated since v4.0.0. ([#10900](https://github.com/wazuh/wazuh/pull/10900))
 
 ### RESTful API
@@ -1798,7 +1773,7 @@ All notable changes to this project will be documented in this file.
 - Added new `cvss` and `severity` fields and filters to `GET /vulnerability/{agent_id}` endpoint. ([#9028](https://github.com/wazuh/wazuh/pull/9028))
 - Added an option to configure the maximum allowed API upload size. ([#9100](https://github.com/wazuh/wazuh/pull/9100))
 - Added new unit and integration tests for API models. ([#9142](https://github.com/wazuh/wazuh/pull/9142))
-- Added message with the PID of `wazuh-apid` process when launched in foreground mode. ([#9077](https://github.com/wazuh/wazuh/pull/9077))
+- Added message with the PID of `openarmor-apid` process when launched in foreground mode. ([#9077](https://github.com/wazuh/wazuh/pull/9077))
 - Added `external id`, `source` and `url` to the MITRE endpoints responses. ([#9144](https://github.com/wazuh/wazuh/pull/9144))
 - Added custom healthchecks for legacy agents in API integration tests, improving maintainability. ([#9297](https://github.com/wazuh/wazuh/pull/9297))
 - Added new unit tests for the API python module to increase coverage. ([#9914](https://github.com/wazuh/wazuh/issues/9914))
@@ -1825,7 +1800,7 @@ All notable changes to this project will be documented in this file.
   - Improved `PUT /syscheck` endpoint. ([#8966](https://github.com/wazuh/wazuh/pull/8966))
   - Improved `DELETE /groups` endpoint and changed API response to be more consistent. ([#9046](https://github.com/wazuh/wazuh/pull/9046))
 - Changed `DELETE /rootcheck` endpoint to `DELETE /experimental/rootcheck`. ([#8945](https://github.com/wazuh/wazuh/pull/8945))
-- Reduced the time it takes for `wazuh-apid` process to check its configuration when using the `-t` parameter. ([#9012](https://github.com/wazuh/wazuh/pull/9012))
+- Reduced the time it takes for `openarmor-apid` process to check its configuration when using the `-t` parameter. ([#9012](https://github.com/wazuh/wazuh/pull/9012))
 - Fixed malfunction in the `sort` parameter of syscollector endpoints. ([#9019](https://github.com/wazuh/wazuh/pull/9019))
 - Improved API integration tests stability when failing in entrypoint. ([#9113](https://github.com/wazuh/wazuh/pull/9113))
 - Made SCA API integration tests dynamic to validate responses coming from any agent version. ([#9228](https://github.com/wazuh/wazuh/pull/9228))
@@ -1834,8 +1809,8 @@ All notable changes to this project will be documented in this file.
 - Improved JWT implementation by replacing HS256 signing algorithm with ES512. ([#9371](https://github.com/wazuh/wazuh/pull/9371))
 - Removed limit of agents to upgrade using the API upgrade endpoints. ([#10009](https://github.com/wazuh/wazuh/pull/10009))
 - Changed Windows agents FIM responses to return permissions as JSON. ([#10158](https://github.com/wazuh/wazuh/pull/10158))
-- Adapted API endpoints to changes in `wazuh-authd` daemon `force` parameter. ([#10389](https://github.com/wazuh/wazuh/pull/10389))
-- Deprecated `use_only_authd` API configuration option and related functionality. `wazuh-authd` will always be required for creating and removing agents. ([#10512](https://github.com/wazuh/wazuh/pull/10512))
+- Adapted API endpoints to changes in `openarmor-authd` daemon `force` parameter. ([#10389](https://github.com/wazuh/wazuh/pull/10389))
+- Deprecated `use_only_authd` API configuration option and related functionality. `openarmor-authd` will always be required for creating and removing agents. ([#10512](https://github.com/wazuh/wazuh/pull/10512))
 - Improved API validators and related unit tests. ([#10745](https://github.com/wazuh/wazuh/pull/10745))
 - Improved specific module healthchecks in API integration tests environment. ([#10905](https://github.com/wazuh/wazuh/pull/10905))
 - Changed thread pool executors for process pool executors to improve API availability. ([#10916](https://github.com/wazuh/wazuh/pull/10916))
@@ -1849,14 +1824,14 @@ All notable changes to this project will be documented in this file.
 - Fixed the description of `force_time` parameter in the API spec reference. ([#8597](https://github.com/wazuh/wazuh/issues/8597))
 - Fixed API incorrect path in remediation message when maximum number of requests per minute is reached. ([#8537](https://github.com/wazuh/wazuh/pull/8537))
 - Fixed agents' healthcheck error in the API integration test environment. ([#9071](https://github.com/wazuh/wazuh/pull/9071))
-- Fixed a bug with `wazuh-apid` process handling of pidfiles when running in foreground mode. ([#9077](https://github.com/wazuh/wazuh/pull/9077))
+- Fixed a bug with `openarmor-apid` process handling of pidfiles when running in foreground mode. ([#9077](https://github.com/wazuh/wazuh/pull/9077))
 - Fixed a bug with RBAC `group_id` matching. ([#9192](https://github.com/wazuh/wazuh/pull/9192))
 - Removed temporal development keys and values from `GET /cluster/healthcheck` response. ([#9147](https://github.com/wazuh/wazuh/pull/9147))
 - Fixed several errors when filtering by dates. ([#9227](https://github.com/wazuh/wazuh/pull/9227))
 - Fixed limit in some endpoints like `PUT /agents/group/{group_id}/restart` and added a pagination method. ([#9262](https://github.com/wazuh/wazuh/pull/9262))
 - Fixed bug with the `search` parameter resulting in invalid results. ([#9320](https://github.com/wazuh/wazuh/pull/9320))
 - Fixed wrong values of `external_id` field in MITRE resources. ([#9368](https://github.com/wazuh/wazuh/pull/9368))
-- Fixed how the API integration testing environment checks that `wazuh-apid` daemon is running before starting the tests. ([#9399](https://github.com/wazuh/wazuh/pull/9399))
+- Fixed how the API integration testing environment checks that `openarmor-apid` daemon is running before starting the tests. ([#9399](https://github.com/wazuh/wazuh/pull/9399))
 - Add healthcheck to verify that `logcollector` stats are ready before starting the API integration test. ([#9777](https://github.com/wazuh/wazuh/pull/9777))
 - Fixed API integration test healthcheck used in the `vulnerability` test cases. ([#10159](https://github.com/wazuh/wazuh/pull/10159))
 - Fixed an error with `PUT /agents/node/{node_id}/restart` endpoint when no agents are present in selected node. ([#10179](https://github.com/wazuh/wazuh/pull/10179))
@@ -1916,7 +1891,7 @@ All notable changes to this project will be documented in this file.
 - Added SCA policy for Ubuntu 20. ([#11430](https://github.com/wazuh/wazuh/pull/11430))
 - Added SCA policy for. Solaris 11.4. ([#11286](https://github.com/wazuh/wazuh/pull/11286))
 - Added Sophos UTM Firewall ruleset. ([#11122](https://github.com/wazuh/wazuh/pull/11122))
-- Added Wazuh-api ruleset. ([#11357](https://github.com/wazuh/wazuh/pull/11357))
+- Added Openarmor-api ruleset. ([#11357](https://github.com/wazuh/wazuh/pull/11357))
 
 #### Changed
 
@@ -1961,7 +1936,6 @@ All notable changes to this project will be documented in this file.
 - Fixed an installation error due to missing OS minor version on CentOS Stream. ([#11086](https://github.com/wazuh/wazuh/pull/11086))
 - Fixed an installation error due to missing command `hostname` on OpenSUSE Tumbleweed. ([#11455](https://github.com/wazuh/wazuh/pull/11455))
 
-
 ## [v4.2.7] - 2022-05-30
 
 ### Manager
@@ -1970,15 +1944,13 @@ All notable changes to this project will be documented in this file.
 
 - Fixed a crash in Vuln Detector when scanning agents running on Windows (backport from 4.3.2). ([#13617](https://github.com/wazuh/wazuh/pull/13617))
 
-
 ## [v4.2.6] - 2022-03-29
 
 ### Manager
 
 #### Fixed
 
-- Fixed an integer overflow hazard in `wazuh-remoted` that caused it to drop incoming data after receiving 2^31 messages. ([#11974](https://github.com/wazuh/wazuh/pull/11974))
-
+- Fixed an integer overflow hazard in `openarmor-remoted` that caused it to drop incoming data after receiving 2^31 messages. ([#11974](https://github.com/wazuh/wazuh/pull/11974))
 
 ## [v4.2.5] - 2021-11-15
 
@@ -1993,7 +1965,6 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - A bug in the Active response tools that may allow unauthorized code execution has been mitigated. Reported by @rk700. ([#10809](https://github.com/wazuh/wazuh/pull/10809))
-
 
 ## [v4.2.4] - 2021-10-20
 
@@ -2014,7 +1985,6 @@ All notable changes to this project will be documented in this file.
 #### Fixed
 
 - Fixed a bug in Remoted that might lead it to crash when retrieving an agent's group. ([#10388](https://github.com/wazuh/wazuh/pull/10388))
-
 
 ## [v4.2.2] - 2021-09-28
 
@@ -2073,23 +2043,23 @@ All notable changes to this project will be documented in this file.
 
 - Fixed a bug with distributed API calls when the cluster is disabled. ([#9984](https://github.com/wazuh/wazuh/pull/9984))
 
-
 ## [v4.2.1] - 2021-09-03
 
 ### Fixed
 
 - **Installer:**
+
   - Fixed a bug in the upgrade to 4.2.0 that disabled Eventchannel support on Windows agent. ([#9973](https://github.com/wazuh/wazuh/issues/9973))
 
 - **Modules:**
   - Fixed a bug with Python-based integration modules causing the integrations to stop working in agents for Wazuh v4.2.0. ([#9975](https://github.com/wazuh/wazuh/issues/9975))
-
 
 ## [v4.2.0] - 2021-08-25
 
 ### Added
 
 - **Core:**
+
   - Added support for bookmarks in Logcollector, allowing to follow the log file at the point where the agent stopped. ([#3368](https://github.com/wazuh/wazuh/issues/3368))
   - Improved support for multi-line logs with a variable number of lines in Logcollector. ([#5652](https://github.com/wazuh/wazuh/issues/5652))
   - Added an option to limit the number of files per second in FIM. ([#6830](https://github.com/wazuh/wazuh/pull/6830))
@@ -2103,6 +2073,7 @@ All notable changes to this project will be documented in this file.
   - Introduced an option to enable or disable listening Authd TLS port. ([#8755](https://github.com/wazuh/wazuh/pull/8755))
 
 - **API:**
+
   - Added new endpoint to get agent stats from different components. ([#7200](https://github.com/wazuh/wazuh/pull/7200))
   - Added new endpoint to modify users' allow_run_as flag. ([#7588](https://github.com/wazuh/wazuh/pull/7588))
   - Added new endpoint to get vulnerabilities that affect an agent. ([#7647](https://github.com/wazuh/wazuh/pull/7647))
@@ -2129,11 +2100,13 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - **Cluster:**
+
   - Improved the cluster nodes integrity calculation process. It only calculates the MD5 of the files that have been modified since the last integrity check. ([#8175](https://github.com/wazuh/wazuh/pull/8175))
   - Changed the synchronization of agent information between cluster nodes to complete the synchronization in a single task for each worker. ([#8182](https://github.com/wazuh/wazuh/pull/8182))
   - Changed cluster logs to show more useful information. ([#8002](https://github.com/wazuh/wazuh/pull/8002))
 
 - **Core:**
+
   - Wazuh daemons have been renamed to a unified standard. ([#6912](https://github.com/wazuh/wazuh/pull/6912))
   - Wazuh CLIs have been renamed to a unified standard. ([#6903](https://github.com/wazuh/wazuh/pull/6903))
   - Wazuh internal directories have been renamed to a unified standard. ([#6920](https://github.com/wazuh/wazuh/pull/6920))
@@ -2146,7 +2119,7 @@ All notable changes to this project will be documented in this file.
   - Improved the unit tests for the os_net library. ([#7595](https://github.com/wazuh/wazuh/pull/7595))
   - FIM now removes the audit rules when their corresponding symbolic links change their target. ([#6999](https://github.com/wazuh/wazuh/pull/6999))
   - Compilation from sources now downloads the external dependencies prebuilt. ([#7797](https://github.com/wazuh/wazuh/pull/7797))
-  - Added the old implementation of Logtest as `wazuh-logtest-legacy`. ([#7807](https://github.com/wazuh/wazuh/pull/7807))
+  - Added the old implementation of Logtest as `openarmor-logtest-legacy`. ([#7807](https://github.com/wazuh/wazuh/pull/7807))
   - Improved the performance of Analysisd when running on multi-core hosts. ([#7974](https://github.com/wazuh/wazuh/pull/7974))
   - Agents now report the manager when they stop. That allows the manager to log an alert and immediately set their state to "disconnected". ([#8021](https://github.com/wazuh/wazuh/pull/8021))
   - Wazuh building is now independent from the installation directory. ([#7327](https://github.com/wazuh/wazuh/pull/7327))
@@ -2156,6 +2129,7 @@ All notable changes to this project will be documented in this file.
   - The agent now validates the Audit connection configuration when enabling whodata for FIM on Linux. ([#8921](https://github.com/wazuh/wazuh/pull/8921))
 
 - **API:**
+
   - Removed ruleset version from `GET /cluster/{node_id}/info` and `GET /manager/info` as it was deprecated. ([#6904](https://github.com/wazuh/wazuh/issues/6904))
   - Changed the `POST /groups` endpoint to specify the group name in a JSON body instead of in a query parameter. ([#6909](https://github.com/wazuh/wazuh/pull/6909))
   - Changed the `PUT /active-response` endpoint function to create messages with the new JSON format. ([#7312](https://github.com/wazuh/wazuh/pull/7312))
@@ -2168,9 +2142,11 @@ All notable changes to this project will be documented in this file.
   - Increased to 100000 the maximum value accepted for `limit` API parameter, default value remains at 500. ([#8841](https://github.com/wazuh/wazuh/pull/8841))
 
 - **Framework:**
+
   - Improved agent insertion algorithm when Authd is not available. ([#8682](https://github.com/wazuh/wazuh/pull/8682))
 
 - **Ruleset:**
+
   - The ruleset was normalized according to the Wazuh standard. ([#6867](https://github.com/wazuh/wazuh/pull/6867))
   - Rules
     - Changed Ossec Rules. ([#7260](https://github.com/wazuh/wazuh/pull/7260))
@@ -2190,7 +2166,6 @@ All notable changes to this project will be documented in this file.
     - Changed PFsense Decoders. ([#7289](https://github.com/wazuh/wazuh/pull/7289))
     - Changed Panda PAPS Decoders. ([#8676](https://github.com/wazuh/wazuh/pull/8676))
 
-
 - **External dependencies:**
   - Upgrade boto3, botocore, requests, s3transfer and urllib3 Python dependencies to latest stable versions. ([#8886](https://github.com/wazuh/wazuh/pull/8886))
   - Update Python to latest stable version (3.9.6). ([#9389](https://github.com/wazuh/wazuh/pull/9389))
@@ -2201,6 +2176,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - **Cluster:**
+
   - Fixed memory usage when creating cluster messages. ([#6736](https://github.com/wazuh/wazuh/pull/6736))
   - Fixed a bug when unpacking incomplete headers in cluster messages. ([#8142](https://github.com/wazuh/wazuh/pull/8142))
   - Changed error message to debug when iterating a file listed that is already deleted. ([#8499](https://github.com/wazuh/wazuh/pull/8499))
@@ -2209,6 +2185,7 @@ All notable changes to this project will be documented in this file.
   - Fixed unhandled cluster error in send_string() communication protocol. ([#8943](https://github.com/wazuh/wazuh/pull/8943))
 
 - **Core:**
+
   - Fixed a bug in FIM when setting scan_time to "12am" or "12pm". ([#6934](https://github.com/wazuh/wazuh/pull/6934))
   - Fixed a bug in FIM that produced wrong alerts when the file limit was reached. ([#6802](https://github.com/wazuh/wazuh/pull/6802))
   - Fixed a bug in Analysisd that reserved the static decoder field name "command" but never used it. ([#7105](https://github.com/wazuh/wazuh/pull/7105))
@@ -2249,6 +2226,7 @@ All notable changes to this project will be documented in this file.
   - Fixed a bug in the agent that tried to verify the WPK CA certificate even when verification was disabled. ([#9547](https://github.com/wazuh/wazuh/pull/9547))
 
 - **API:**
+
   - Fixed wrong API messages returned when getting agents' upgrade results. ([#7587](https://github.com/wazuh/wazuh/pull/7587))
   - Fixed wrong `user` string in API logs when receiving responses with status codes 308 or 404. ([#7709](https://github.com/wazuh/wazuh/pull/7709))
   - Fixed API errors when cluster is disabled and node_type is worker. ([#7867](https://github.com/wazuh/wazuh/pull/7867))
@@ -2259,6 +2237,7 @@ All notable changes to this project will be documented in this file.
   - Fixed api.log to avoid unhandled exceptions on API timeouts. ([#8887](https://github.com/wazuh/wazuh/pull/8887))
 
 - **Ruleset:**
+
   - Fixed usb-storage-attached regex pattern to support blank spaces. ([#7837](https://github.com/wazuh/wazuh/issues/7837))
   - Fixed SCA checks for RHEL7 and CentOS 7. Thanks to J. Daniel Medeiros (@jdmedeiros). ([#7645](https://github.com/wazuh/wazuh/pull/7645))
   - Fixed the match criteria of the AWS WAF rules. ([#8111](https://github.com/wazuh/wazuh/pull/8111))
@@ -2282,14 +2261,17 @@ All notable changes to this project will be documented in this file.
 ### Removed
 
 - **Core:**
+
   - File /etc/ossec-init.conf does not exist anymore. ([#7175](https://github.com/wazuh/wazuh/pull/7175))
   - Unused files have been removed from the repository, including TAP tests. ([#7398](https://github.com/wazuh/wazuh/issues/7398))
 
 - **API:**
+
   - Removed the `allow_run_as` parameter from endpoints `POST /security/users` and `PUT /security/users/{user_id}`. ([#7588](https://github.com/wazuh/wazuh/pull/7588))
   - Removed `behind_proxy_server` option from configuration. ([#7006](https://github.com/wazuh/wazuh/issues/7006))
 
 - **Framework:**
+
   - Deprecated `update_ruleset` script. ([#6904](https://github.com/wazuh/wazuh/issues/6904))
 
 - **Ruleset**
@@ -2303,14 +2285,12 @@ All notable changes to this project will be documented in this file.
 - **Core:**
   - Fixed a bug in Vulnerability Detector that made Modulesd crash while updating the NVD feed due to a missing CPE entry. ([4cbd1e8](https://github.com/wazuh/wazuh/commit/4cbd1e85eeee0eb0d8247fa7228f590a9dd24153))
 
-
 ## [v4.1.4] - 2021-03-25
 
 ### Fixed
 
 - **Cluster:**
   - Fixed workers reconnection after restarting master node. Updated `asyncio.Task.all_tasks` method removed in Python 3.9. ([#8017](https://github.com/wazuh/wazuh/pull/8017))
-
 
 ## [v4.1.3] - 2021-03-23
 
@@ -2322,22 +2302,24 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - **Core:**
+
   - Fixed an error in FIM when getting the files' modification time on Windows due to wrong permission flags. ([#7870](https://github.com/wazuh/wazuh/pull/7870))
   - Fixed a bug in Wazuh DB that truncated the output of the agents' status query towards the cluster. ([#7873](https://github.com/wazuh/wazuh/pull/7873))
 
 - **API:**
   - Fixed validation for absolute and relative paths. ([#7906](https://github.com/wazuh/wazuh/pull/7906))
 
-
 ## [v4.1.2] - 2021-03-08
 
 ### Changed
 
 - **Core:**
+
   - The default value of the agent disconnection time option has been increased to 10 minutes. ([#7744](https://github.com/wazuh/wazuh/pull/7744))
   - The warning log from Remoted about sending messages to disconnected agents has been changed to level-1 debug log. ([#7755](https://github.com/wazuh/wazuh/pull/7755))
 
 - **API:**
+
   - API logs showing request parameters and body will be generated with API log level `info` instead of `debug`. ([#7735](https://github.com/wazuh/wazuh/issues/7735))
 
 - **External dependencies:**
@@ -2351,12 +2333,12 @@ All notable changes to this project will be documented in this file.
   - Fixed the checking of the option `ipv6` in Remoted. ([#7737](https://github.com/wazuh/wazuh/pull/7737))
   - Fixed the checking of the option `rids_closing_time` in Remoted. ([#7746](https://github.com/wazuh/wazuh/pull/7746))
 
-
 ## [v4.1.1] - 2021-02-25
 
 ### Added
 
 - **External dependencies:**
+
   - Added cython (0.29.21) library to Python dependencies. ([#7451](https://github.com/wazuh/wazuh/pull/7451))
   - Added xmltodict (0.12.0) library to Python dependencies. ([#7303](https://github.com/wazuh/wazuh/pull/7303))
 
@@ -2369,6 +2351,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - **External dependencies:**
+
   - Upgraded Python version from 3.8.2 to 3.8.6. ([#7451](https://github.com/wazuh/wazuh/pull/7451))
   - Upgraded Cryptography python library from 3.2.1 to 3.3.2. ([#7451](https://github.com/wazuh/wazuh/pull/7451))
   - Upgraded cffi python library from 1.14.0 to 1.14.4. ([#7451](https://github.com/wazuh/wazuh/pull/7451))
@@ -2399,7 +2382,6 @@ All notable changes to this project will be documented in this file.
 
 - **API:**
   - Deprecated /manager/files and /cluster/{node_id}/files endpoints. ([#7209](https://github.com/wazuh/wazuh/issues/7209))
-
 
 ## [v4.1.0] - 2021-02-15
 
@@ -2434,7 +2416,7 @@ All notable changes to this project will be documented in this file.
     - Migration of rootcheck results to Wazuh DB to remove the files with the results of each agent. ([#6096](https://github.com/wazuh/wazuh/issues/6096))
     - Designed new mechanism to close RIDS files when agents are disconnected. ([#6112](https://github.com/wazuh/wazuh/issues/6112))
   - Moved CA configuration section to verify WPK signatures from `active-response` section to `agent-upgrade` section. ([#5929](https://github.com/wazuh/wazuh/issues/5929))
-  - The tool ossec-logtest has been renamed to wazuh-logtest, and it uses a new testing service integrated in Analysisd. ([#6103](https://github.com/wazuh/wazuh/pull/6103))
+  - The tool ossec-logtest has been renamed to openarmor-logtest, and it uses a new testing service integrated in Analysisd. ([#6103](https://github.com/wazuh/wazuh/pull/6103))
   - Changed error message to debug when multiple daemons attempt to remove an agent simultaneously ([#6185](https://github.com/wazuh/wazuh/pull/6185))
   - Changed error message to warning when the agent fails to reach a module. ([#5817](https://github.com/wazuh/wazuh/pull/5817))
 - **API:**
@@ -2469,9 +2451,8 @@ All notable changes to this project will be documented in this file.
 - **API:**
   - Fixed an error with `/groups/{group_id}/config` endpoints (GET and PUT) when using complex `localfile` configurations. ([#6276](https://github.com/wazuh/wazuh/pull/6383))
 - **Framework:**
-  - Fixed a `cluster_control` bug that caused an error message when running `wazuh-clusterd` in foreground. ([#6724](https://github.com/wazuh/wazuh/pull/6724))
+  - Fixed a `cluster_control` bug that caused an error message when running `openarmor-clusterd` in foreground. ([#6724](https://github.com/wazuh/wazuh/pull/6724))
   - Fixed a bug with add_manual(agents) function when authd is disabled. ([#7062](https://github.com/wazuh/wazuh/pull/7062))
-
 
 ## [v4.0.4] - 2021-01-14
 
@@ -2504,7 +2485,6 @@ All notable changes to this project will be documented in this file.
 - **API:**
   - Fixed a problem with certain API calls exceeding timeout in highly loaded cluster environments. ([#6753](https://github.com/wazuh/wazuh/pull/6753))
 
-
 ## [v4.0.2] - 2020-11-24
 
 ### Added
@@ -2533,7 +2513,6 @@ All notable changes to this project will be documented in this file.
   - Fixed a bug in FIM that stopped monitoring folders pointed by a symbolic link. ([#6613](https://github.com/wazuh/wazuh/pull/6613))
   - Fixed a race condition in FIM that could cause Syscheckd to stop unexpectedly. ([#6696](https://github.com/wazuh/wazuh/pull/6696))
 
-
 ## [v4.0.1] - 2020-11-11
 
 ### Changed
@@ -2553,7 +2532,6 @@ All notable changes to this project will be documented in this file.
   - Fixed version matching when assigning feed in Vulnerability Detector. ([#6505](https://github.com/wazuh/wazuh/pull/6505))
   - Prevent unprivileged users from accessing the Wazuh Agent folder in Windows. ([#3593](https://github.com/wazuh/wazuh/pull/3593))
   - Fix a bug that may lead the agent to crash when reading an invalid Logcollector configuration. ([#6463](https://github.com/wazuh/wazuh/pull/6463))
-
 
 ## [v4.0.0] - 2020-10-23
 
@@ -2605,10 +2583,10 @@ All notable changes to this project will be documented in this file.
 - Changed the default manager-agent connection protocol to **TCP**. ([#5696](https://github.com/wazuh/wazuh/pull/5696))
 - Disable perpetual connection attempts to modules. ([#5622](https://github.com/wazuh/wazuh/pull/5622))
 - Unified the behaviour of Wazuh daemons when reconnecting with unix sockets. ([#4510](https://github.com/wazuh/wazuh/pull/4510))
-- Changed multiple Wazuh API endpoints. ([#2640](https://github.com/wazuh/wazuh/pull/2640)) ([#2413](https://github.com/wazuh/wazuh-documentation/issues/2413))
+- Changed multiple Wazuh API endpoints. ([#2640](https://github.com/wazuh/wazuh/pull/2640)) ([#2413](https://github.com/wazuh/openarmor-documentation/issues/2413))
 - Refactored framework module in SDK and core. ([#5263](https://github.com/wazuh/wazuh/issues/5263))
 - Refactored FIM Windows events handling. ([#5144](https://github.com/wazuh/wazuh/pull/5144))
-- Changed framework to access global.db using wazuh-db. ([#6095](https://github.com/wazuh/wazuh/pull/6095))
+- Changed framework to access global.db using openarmor-db. ([#6095](https://github.com/wazuh/wazuh/pull/6095))
 - Changed agent-info synchronization task in Wazuh cluster. ([#5585](https://github.com/wazuh/wazuh/issues/5585))
 - Use the proper algorithm name for SHA-256 inside Prelude output. Thanks to François Poirotte (@fpoirotte). ([#5004](https://github.com/wazuh/wazuh/pull/5004))
 - Elastic Stack configuration files have been adapted to Wazuh v4.x. ([#5796](https://github.com/wazuh/wazuh/pull/5796))
@@ -2655,13 +2633,11 @@ All notable changes to this project will be documented in this file.
 - Removed references to `manage_agents` in the installation process. ([#5840](https://github.com/wazuh/wazuh/pull/5840))
 - Removed compatibility with deprecated configuration at Vulnerability Detector. ([#5879](https://github.com/wazuh/wazuh/pull/5879))
 
-
 ## [v3.13.6] - 2022-09-19
 
 ### Fixed
 
 - Fixed a path traversal flaw in Active Response affecting agents from v3.6.1 (reported by @guragainroshan0). ([#14823](https://github.com/wazuh/wazuh/pull/14823))
-
 
 ## [v3.13.4] - 2022-05-30
 
@@ -2669,20 +2645,17 @@ All notable changes to this project will be documented in this file.
 
 - Fixed a crash in Vuln Detector when scanning agents running on Windows (backport from 4.3.2). ([#13624](https://github.com/wazuh/wazuh/pull/13624))
 
-
 ## [v3.13.3] - 2021-04-28
 
 ### Fixed
 
 - Fixed a bug in Vulnerability Detector that made Modulesd crash while updating the NVD feed due to a missing CPE entry. ([#8346](https://github.com/wazuh/wazuh/pull/8346))
 
-
 ## [v3.13.2] - 2020-09-21
 
 ### Fixed
 
 - Updated the default NVD feed URL from 1.0 to 1.1 in Vulnerability Detector. ([#6056](https://github.com/wazuh/wazuh/pull/6056))
-
 
 ## [v3.13.1] - 2020-07-14
 
@@ -2693,7 +2666,6 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - Fixed a crash in Modulesd caused by Vulnerability Detector when skipping a kernel package if the agent has OS info disabled. ([#5467](https://github.com/wazuh/wazuh/pull/5467))
-
 
 ## [v3.13.0] - 2020-06-29
 
@@ -2749,7 +2721,6 @@ All notable changes to this project will be documented in this file.
 - Added guarantee that all processes are killed when service stops. ([#4975](https://github.com/wazuh/wazuh/pull/4975))
 - Fixed mismatch in integration scripts when the debug flag is set to active. ([#4800](https://github.com/wazuh/wazuh/pull/4800))
 
-
 ## [v3.12.3] - 2020-04-30
 
 ### Changed
@@ -2766,13 +2737,11 @@ All notable changes to this project will be documented in this file.
 - Fixed a bug that caused FIM to not handle large inode numbers correctly. ([#4914](https://github.com/wazuh/wazuh/pull/4914))
 - Fixed a bug that made ossec-dbd crash due to a bad mutex initialization. ([#4552](https://github.com/wazuh/wazuh/pull/4552))
 
-
 ## [v3.12.2] - 2020-04-09
 
 ### Fixed
 
-- Fixed a bug in Vulnerability Detector that made wazuh-modulesd crash when parsing the version of a package from a RHEL feed. ([#4885](https://github.com/wazuh/wazuh/pull/4885))
-
+- Fixed a bug in Vulnerability Detector that made openarmor-modulesd crash when parsing the version of a package from a RHEL feed. ([#4885](https://github.com/wazuh/wazuh/pull/4885))
 
 ## [v3.12.1] - 2020-04-08
 
@@ -2792,7 +2761,6 @@ All notable changes to this project will be documented in this file.
 ### Removed
 
 - Removed support for Ubuntu 12.04 (Precise) in Vulneratiliby Detector as its feed is no longer available.
-
 
 ## [v3.12.0] - 2020-03-24
 
@@ -2828,20 +2796,17 @@ All notable changes to this project will be documented in this file.
 - Fix Windows upgrades in custom directories. ([#2534](https://github.com/wazuh/wazuh/pull/2534))
 - Fix the format of the alert payload passed to the Slack integration. ([#3978](https://github.com/wazuh/wazuh/pull/3978))
 
-
 ## [v3.11.4] - 2020-02-25
 
 ### Changed
 
 - Remove chroot in Agentd to allow it resolve DNS at any time. ([#4652](https://github.com/wazuh/wazuh/issues/4652))
 
-
 ## [v3.11.3] - 2020-01-28
 
 ### Fixed
 
 - Fixed a bug in the Windows agent that made Rootcheck report false positives about file size mismatch. ([#4493](https://github.com/wazuh/wazuh/pull/4493))
-
 
 ## [v3.11.2] - 2020-01-22
 
@@ -2859,13 +2824,11 @@ All notable changes to this project will be documented in this file.
 - Fixed a memory leak in Clusterd. ([#4448](https://github.com/wazuh/wazuh/pull/4448))
 - Disable TCP keepalive options at os_net library to allow building Wazuh on OpenBSD. ([#4462](https://github.com/wazuh/wazuh/pull/4462))
 
-
 ## [v3.11.1] - 2020-01-03
 
 ### Fixed
 
 - The Windows Eventchannel log decoder in Analysisd maxed out CPU usage due to an infinite loop. ([#4412](https://github.com/wazuh/wazuh/pull/4412))
-
 
 ## [v3.11.0] - 2019-12-23
 
@@ -2905,7 +2868,7 @@ All notable changes to this project will be documented in this file.
 - Fix bugs reported by Clang analyzer. ([#3887](https://github.com/wazuh/wazuh/pull/3887))
 - Fix compilation errors on OpenBSD platform. ([#3105](https://github.com/wazuh/wazuh/pull/3105))
 - Fix on-demand configuration labels section to obtain labels attributes. ([#3490](https://github.com/wazuh/wazuh/pull/3490))
-- Fixed race condition between `wazuh-clusterd` and `wazuh-modulesd` showing a 'No such file or directory' in `cluster.log` when synchronizing agent-info files in a cluster environment ([#4007](https://github.com/wazuh/wazuh/issues/4007))
+- Fixed race condition between `openarmor-clusterd` and `openarmor-modulesd` showing a 'No such file or directory' in `cluster.log` when synchronizing agent-info files in a cluster environment ([#4007](https://github.com/wazuh/wazuh/issues/4007))
 - Fixed 'ConnectionError object has no attribute code' error when package repository is not available ([#3441](https://github.com/wazuh/wazuh/issues/3441))
 - Fix the blocking of files monitored by Who-data in Windows agents. ([#3872](https://github.com/wazuh/wazuh/pull/3872))
 - Fix the processing of EventChannel logs with unexpected characters. ([#3320](https://github.com/wazuh/wazuh/pull/3320))
@@ -2923,13 +2886,11 @@ All notable changes to this project will be documented in this file.
 - Fix an invalid memory read in Agentd when checking a remote configuration containing an invalid stanza inside `<labels>`. ([#4334](https://github.com/wazuh/wazuh/pull/4334))
 - Fix error using force_reload and the eventchannel format in UNIX systems. ([#4294](https://github.com/wazuh/wazuh/pull/4294))
 
-
 ## [v3.10.2] - 2019-09-23
 
 ### Fixed
 
 - Fix error in Logcollector when reloading localfiles with timestamp wildcards. ([#3995](https://github.com/wazuh/wazuh/pull/3995))
-
 
 ## [v3.10.1] - 2019-09-19
 
@@ -2938,7 +2899,6 @@ All notable changes to this project will be documented in this file.
 - Fix error after removing a high volume of agents from a group using the Wazuh API. ([#3907](https://github.com/wazuh/wazuh/issues/3907))
 - Fix error in Remoted when reloading agent keys (busy resource). ([#3988](https://github.com/wazuh/wazuh/issues/3988))
 - Fix invalid read in Remoted counters. ([#3989](https://github.com/wazuh/wazuh/issues/3989))
-
 
 ## [v3.10.0] - 2019-09-16
 
@@ -2995,14 +2955,12 @@ All notable changes to this project will be documented in this file.
 - Fix who-data alerts when audit logs contain hex fields. ([#3909](https://github.com/wazuh/wazuh/pull/3909))
 - Remove useless `select()` calls in Analysisd decoders. ([#3964](https://github.com/wazuh/wazuh/pull/3964))
 
-
 ## [v3.9.5] - 2019-08-08
 
 ### Fixed
 
 - Fixed a bug in the Framework that prevented Cluster and API from handling the file _client.keys_ if it's mounted as a volume on Docker.
 - Fixed a bug in Analysisd that printed the millisecond part of the alerts' timestamp without zero-padding. That prevented Elasticsearch 7 from indexing those alerts. ([#3814](https://github.com/wazuh/wazuh/issues/3814))
-
 
 ## [v3.9.4] - 2019-08-07
 
@@ -3027,7 +2985,6 @@ All notable changes to this project will be documented in this file.
 - Fixed memory leaks in Syscollector for macOS agents. ([#3795](https://github.com/wazuh/wazuh/pull/3795))
 - Fix dangerous mutex initialization in Windows hosts. ([#3805](https://github.com/wazuh/wazuh/issues/3805))
 
-
 ## [v3.9.3] - 2019-07-08
 
 ### Changed
@@ -3037,7 +2994,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- Osquery integration did not follow the osquery results file (*osqueryd.results.log*) as of libc 2.28. ([#3494](https://github.com/wazuh/wazuh/pull/3494))
+- Osquery integration did not follow the osquery results file (_osqueryd.results.log_) as of libc 2.28. ([#3494](https://github.com/wazuh/wazuh/pull/3494))
 - Windows Eventchannnel log collector did not update the bookmarks so it reported old events repeatedly. ([#3485](https://github.com/wazuh/wazuh/pull/3485))
 - The agent sent invalid info data in the heartbeat message if it failed to get the host IP address. ([#3555](https://github.com/wazuh/wazuh/pull/3555))
 - Modulesd produced a memory leak when being queried for its running configuration. ([#3564](https://github.com/wazuh/wazuh/pull/3564))
@@ -3046,7 +3003,6 @@ All notable changes to this project will be documented in this file.
 - AWS Macie events produced erros in Elasticsearch. ([#3608](https://github.com/wazuh/wazuh/pull/3608))
 - Rules with `<list lookup="address_match_key" />` produced a false match if the CDB list file is missing. ([#3609](https://github.com/wazuh/wazuh/pull/3609))
 - Remote configuration was missing the `<ignore>` stanzas for Syscheck and Rootcheck when defined as sregex. ([#3617](https://github.com/wazuh/wazuh/pull/3617))
-
 
 ## [v3.9.2] - 2019-06-10
 
@@ -3062,9 +3018,9 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 
 - A configuration request to Analysisd made it crash if the option `<white_list>` is empty. ([#3383](https://github.com/wazuh/wazuh/pull/3383))
-- Fixed error when uploading some configuration files through API in wazuh-docker environments. ([#3335](https://github.com/wazuh/wazuh/issues/3335))
+- Fixed error when uploading some configuration files through API in openarmor-docker environments. ([#3335](https://github.com/wazuh/wazuh/issues/3335))
 - Fixed error deleting temporary files during cluster synchronization. ([#3379](https://github.com/wazuh/wazuh/issues/3379))
-- Fixed bad permissions on agent-groups files synchronized via wazuh-clusterd. ([#3438](https://github.com/wazuh/wazuh/issues/3438))
+- Fixed bad permissions on agent-groups files synchronized via openarmor-clusterd. ([#3438](https://github.com/wazuh/wazuh/issues/3438))
 - Fixed bug in the database module that ignored agents registered with a network mask. ([#3351](https://github.com/wazuh/wazuh/pull/3351))
 - Fixed a memory bug in the CIS-CAT module. ([#3406](https://github.com/wazuh/wazuh/pull/3406))
 - Fixed a bug in the agent upgrade tool when checking the version number. ([#3391](https://github.com/wazuh/wazuh/pull/3391))
@@ -3079,7 +3035,6 @@ All notable changes to this project will be documented in this file.
   - AWS.
   - Docker.
 - Prevent Modulesd from crashing at Vulnerability Detector when updating a RedHat feed. ([3458](https://github.com/wazuh/wazuh/pull/3458))
-
 
 ## [v3.9.1] - 2019-05-21
 
@@ -3112,7 +3067,6 @@ All notable changes to this project will be documented in this file.
 
 - Removed 5-second reading timeout for File Integrity Monitoring scan. ([#3366](https://github.com/wazuh/wazuh/pull/3366))
 
-
 ## [v3.9.0] - 2019-05-02
 
 ### Added
@@ -3130,12 +3084,12 @@ All notable changes to this project will be documented in this file.
 - The real agent IP is reported by the agent and shown in alerts and the App interface. ([#2577](https://github.com/wazuh/wazuh/pull/2577))
 - Added support for organizations in AWS wodle. ([#2627](https://github.com/wazuh/wazuh/pull/2627))
 - Added support for hot added symbolic links in _Whodata_. ([#2466](https://github.com/wazuh/wazuh/pull/2466))
-- Added `-t` option to `wazuh-clusterd` binary ([#2691](https://github.com/wazuh/wazuh/pull/2691)).
+- Added `-t` option to `openarmor-clusterd` binary ([#2691](https://github.com/wazuh/wazuh/pull/2691)).
 - Added options `same_field` and `not_same_field` in rules to correlate dynamic fields between events. ([#2689](https://github.com/wazuh/wazuh/pull/2689))
 - Added optional daemons start by default. ([#2769](https://github.com/wazuh/wazuh/pull/2769))
 - Make the Windows installer to choose the appropriate `ossec.conf` file based on the System version. ([#2773](https://github.com/wazuh/wazuh/pull/2773))
 - Added writer thread preference for Logcollector. ([#2783](https://github.com/wazuh/wazuh/pull/2783))
-- Added database deletion from Wazuh-DB for removed agents. ([#3123](https://github.com/wazuh/wazuh/pull/3123))
+- Added database deletion from Openarmor-DB for removed agents. ([#3123](https://github.com/wazuh/wazuh/pull/3123))
 
 ### Changed
 
@@ -3204,7 +3158,7 @@ All notable changes to this project will be documented in this file.
 - Fixed Syscheck hang when monitoring system directories. ([#3059](https://github.com/wazuh/wazuh/pull/3059))
 - Fixed the package inventory for MAC OS X. ([#3035](https://github.com/wazuh/wazuh/pull/3035))
 - Translated the Audit Policy fields from IDs for Windows events. ([#2950](https://github.com/wazuh/wazuh/pull/2950))
-- Fixed broken pipe error when Wazuh-manager closes TCP connection. ([#2965](https://github.com/wazuh/wazuh/pull/2965))
+- Fixed broken pipe error when Openarmor-manager closes TCP connection. ([#2965](https://github.com/wazuh/wazuh/pull/2965))
 - Fixed whodata mode on drives other than the main one. ([#2989](https://github.com/wazuh/wazuh/pull/2989))
 - Fixed bug occurred in the database while removing an agent. ([#2997](https://github.com/wazuh/wazuh/pull/2997))
 - Fixed duplicated alerts for Red Hat feed in `vulnerability-detector`. ([#3000](https://github.com/wazuh/wazuh/pull/3000))
@@ -3215,7 +3169,6 @@ All notable changes to this project will be documented in this file.
 - Fixed the reading of the setting `attempts` of the Docker module. ([#3067](https://github.com/wazuh/wazuh/pull/3067))
 - Fix a memory leak in Docker listener module. ([#2679](https://github.com/wazuh/wazuh/pull/2679))
 
-
 ## [v3.8.2] - 2019-01-30
 
 ### Fixed
@@ -3225,7 +3178,6 @@ All notable changes to this project will be documented in this file.
 - The Eventchannel decoder was not being escaping backslashes correctly. ([#2483](https://github.com/wazuh/wazuh/pull/2483))
 - The Eventchannel decoder was leaving spurious trailing spaces in some fields. ([#2484](https://github.com/wazuh/wazuh/pull/2484))
 
-
 ## [v3.8.1] - 2019-01-25
 
 ### Fixed
@@ -3233,7 +3185,6 @@ All notable changes to this project will be documented in this file.
 - Fixed memory leak in Logcollector when reading Windows eventchannel. ([#2450](https://github.com/wazuh/wazuh/pull/2450))
 - Fixed script parsing error in Solaris 10. ([#2449](https://github.com/wazuh/wazuh/pull/2449))
 - Fixed version comparisons on Red Hat systems. (By @orlando-jamie) ([#2445](https://github.com/wazuh/wazuh/pull/2445))
-
 
 ## [v3.8.0] - 2019-01-19
 
@@ -3244,20 +3195,20 @@ All notable changes to this project will be documented in this file.
 - Added **Audit health-check** in the Whodata initialization. ([#2180](https://github.com/wazuh/wazuh/pull/2180))
 - Added **Audit rules auto-reload** in Whodata. ([#2180](https://github.com/wazuh/wazuh/pull/2180))
 - Support for **new AWS services** in the AWS wodle ([#2242](https://github.com/wazuh/wazuh/pull/2242)):
-    - AWS Config
-    - AWS Trusted Advisor
-    - AWS KMS
-    - AWS Inspector
-    - Add support for IAM roles authentication in EC2 instances.
+  - AWS Config
+  - AWS Trusted Advisor
+  - AWS KMS
+  - AWS Inspector
+  - Add support for IAM roles authentication in EC2 instances.
 - New module "Agent Key Polling" to integrate agent key request to external data sources. ([#2127](https://github.com/wazuh/wazuh/pull/2127))
   - Look for missing or old agent keys when Remoted detects an authorization failure.
   - Request agent keys by calling a defined executable or connecting to a local socket.
 - Get process inventory for Windows natively. ([#1760](https://github.com/wazuh/wazuh/pull/1760))
 - Improved vulnerability detection in Red Hat systems. ([#2137](https://github.com/wazuh/wazuh/pull/2137))
 - Add retries to download the OVAL files in vulnerability-detector. ([#1832](https://github.com/wazuh/wazuh/pull/1832))
-- Auto-upgrade FIM databases in Wazuh-DB. ([#2147](https://github.com/wazuh/wazuh/pull/2147))
+- Auto-upgrade FIM databases in Openarmor-DB. ([#2147](https://github.com/wazuh/wazuh/pull/2147))
 - New dedicated thread for AR command running on Windows agent. ([#1725](https://github.com/wazuh/wazuh/pull/1725))
-  -  This will prevent the agent from delaying due to an AR execution.
+  - This will prevent the agent from delaying due to an AR execution.
 - New internal option to clean residual files of agent groups. ([#1985](https://github.com/wazuh/wazuh/pull/1985))
 - Add a manifest to run `agent-auth.exe` with elevated privileges. ([#1998](https://github.com/wazuh/wazuh/pull/1998))
 - Compress `last-entry` files to check differences by FIM. ([#2034](https://github.com/wazuh/wazuh/pull/2034))
@@ -3320,10 +3271,10 @@ All notable changes to this project will be documented in this file.
 - Fix high precision timestamp truncation in rsyslog messages. ([#2128](https://github.com/wazuh/wazuh/pull/2128))
 - Fix missing Whodata section to the remote configuration query. ([#2173](https://github.com/wazuh/wazuh/pull/2173))
 - Bugfixes in AWS wodle ([#2242](https://github.com/wazuh/wazuh/pull/2242)):
-    - Fixed bug in AWS Guard Duty alerts when there were multiple remote IPs.
-    - Fixed bug when using flag `remove_from_bucket`.
-    - Fixed bug when reading buckets generating more than 1000 logs in the same day.
-    - Increase `qty` of `aws.eventNames` and remove usage of `aws.eventSources`.
+  - Fixed bug in AWS Guard Duty alerts when there were multiple remote IPs.
+  - Fixed bug when using flag `remove_from_bucket`.
+  - Fixed bug when reading buckets generating more than 1000 logs in the same day.
+  - Increase `qty` of `aws.eventNames` and remove usage of `aws.eventSources`.
 - Fix bug in cluster configuration when using Kubernetes ([#2227](https://github.com/wazuh/wazuh/pull/2227)).
 - Fix network timeout setup in agent running on Windows. ([#2185](https://github.com/wazuh/wazuh/pull/2185))
 - Fix default values for the `<auto_ignore>` option. ([#2210](https://github.com/wazuh/wazuh/pull/2210))
@@ -3339,7 +3290,6 @@ All notable changes to this project will be documented in this file.
 - Analysisd and Syscollector did not detect the number of cores on Raspberry Pi. ([#2304](https://github.com/wazuh/wazuh/pull/2304))
 - Analysisd and Syscollector did not detect the number of cores on CentOS 5. ([#2340](https://github.com/wazuh/wazuh/pull/2340))
 
-
 ## [v3.7.2] - 2018-12-17
 
 ### Changed
@@ -3353,7 +3303,6 @@ All notable changes to this project will be documented in this file.
   - If a local file defined with wildcards disappears, Logcollector incorrectly shows a negative number of remaining open attempts.
   - Fixed end-of-file detection for text-based file formats.
 - Fixed a bug in Analysisd that made it crash when decoding a malformed FIM message. ([#2089](https://github.com/wazuh/wazuh/pull/2089))
-
 
 ## [v3.7.1] - 2018-12-05
 
@@ -3401,7 +3350,6 @@ All notable changes to this project will be documented in this file.
 - File descriptor leak that may impact agents running on UNIX platforms. ([#2021](https://github.com/wazuh/wazuh/pull/2021))
 - CIS-CAT events were being processed by a wrong decoder. ([#2014](https://github.com/wazuh/wazuh/pull/2014))
 
-
 ## [v3.7.0] - 2018-11-10
 
 ### Added
@@ -3426,7 +3374,7 @@ All notable changes to this project will be documented in this file.
 - Replaced the `execvpe` function by `execvp` for the Wazuh modules. ([#1207](https://github.com/wazuh/wazuh/pull/1207))
 - Avoid the use of reference ID in Syscollector network tables. ([#1315](https://github.com/wazuh/wazuh/pull/1315))
 - Make Syscheck case insensitive on Windows agent. ([#1349](https://github.com/wazuh/wazuh/pull/1349))
-- Avoid conflicts with the size of time_t variable in wazuh-db. ([#1366](https://github.com/wazuh/wazuh/pull/1366))
+- Avoid conflicts with the size of time_t variable in openarmor-db. ([#1366](https://github.com/wazuh/wazuh/pull/1366))
 - Osquery integration updated: ([#1369](https://github.com/wazuh/wazuh/pull/1369))
   - Nest the result data into a "osquery" object.
   - Extract the pack name into a new field.
@@ -3466,7 +3414,6 @@ All notable changes to this project will be documented in this file.
 - Set new agent.conf template when creating new groups. ([#1647](https://github.com/wazuh/wazuh/pull/1647))
 - Fix bug in Wazuh Modules that tried to delete PID folders if a subprocess call failed. ([#1836](https://github.com/wazuh/wazuh/pull/1836))
 
-
 ## [v3.6.1] - 2018-09-07
 
 ### Fixed
@@ -3483,7 +3430,6 @@ All notable changes to this project will be documented in this file.
 - Fix bug in folder recursion limit count in FIM real-time mode. ([#1226](https://github.com/wazuh/wazuh/issues/1226))
 - Fixed errors when parsing AWS events in Elasticsearch. ([#1229](https://github.com/wazuh/wazuh/issues/1229))
 - Fix bug when launching osquery from Wazuh. ([#1230](https://github.com/wazuh/wazuh/issues/1230))
-
 
 ## [v3.6.0] - 2018-08-29
 
@@ -3536,11 +3482,9 @@ All notable changes to this project will be documented in this file.
 - Fix active-response scripts installation for Windows. ([#1182](https://github.com/wazuh/wazuh/pull/1182)).
 - Fixed `open-scap` deadlock when opening large files. ([#1206](https://github.com/wazuh/wazuh/pull/1206)). Thanks to @juergenc for detecting this issue.
 
-
 ### Removed
 
 - The 'T' multiplier has been removed from option `max_output_size`. ([#1089](https://github.com/wazuh/wazuh/pull/1089))
-
 
 ## [v3.5.0] - 2018-08-10
 
@@ -3559,18 +3503,18 @@ All notable changes to this project will be documented in this file.
 - Get network inventory natively. ([#546](https://github.com/wazuh/wazuh/pull/546))
 - Add arch check for Red Hat's OVAL in vulnerability-detector. ([#625](https://github.com/wazuh/wazuh/pull/625))
 - Integration with Osquery. ([#627](https://github.com/wazuh/wazuh/pull/627))
-    - Enrich osquery configuration with pack files aggregation and agent labels as decorators.
-    - Launch osquery daemon in background.
-    - Monitor results file and send them to the manager.
-    - New option in rules `<location>` to filter events by osquery.
-    - Support folders in shared configuration. This makes easy to send pack folders to agents.
-    - Basic ruleset for osquery events and daemon logs.
+  - Enrich osquery configuration with pack files aggregation and agent labels as decorators.
+  - Launch osquery daemon in background.
+  - Monitor results file and send them to the manager.
+  - New option in rules `<location>` to filter events by osquery.
+  - Support folders in shared configuration. This makes easy to send pack folders to agents.
+  - Basic ruleset for osquery events and daemon logs.
 - Boost Remoted performance with multithreading. ([#649](https://github.com/wazuh/wazuh/pull/649))
-    - Up to 16 parallel threads to decrypt messages from agents.
-    - Limit the frequency of agent keys reloading.
-    - Message input buffer in Analysisd to prevent control messages starvation in Remoted.
+  - Up to 16 parallel threads to decrypt messages from agents.
+  - Limit the frequency of agent keys reloading.
+  - Message input buffer in Analysisd to prevent control messages starvation in Remoted.
 - Module to download shared files for agent groups dinamically. ([#519](https://github.com/wazuh/wazuh/pull/519))
-    - Added group creation for files.yml if the group does not exist. ([#1010](https://github.com/wazuh/wazuh/pull/1010))
+  - Added group creation for files.yml if the group does not exist. ([#1010](https://github.com/wazuh/wazuh/pull/1010))
 - Added scheduling options to CIS-CAT integration. ([#586](https://github.com/wazuh/wazuh/pull/586))
 - Option to download the wpk using http in `agent_upgrade`. ([#798](https://github.com/wazuh/wazuh/pull/798))
 - Add `172.0.0.1` as manager IP when creating `global.db`. ([#970](https://github.com/wazuh/wazuh/pull/970))
@@ -3651,7 +3595,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
-- Renamed cluster _client_ node type to ___worker___ ([#850](https://github.com/wazuh/wazuh/pull/850)).
+- Renamed cluster _client_ node type to **_worker_** ([#850](https://github.com/wazuh/wazuh/pull/850)).
 - Changed a descriptive message in the alert showing what attributes changed. ([#857](https://github.com/wazuh/wazuh/pull/857))
 - Change visualization of Syscheck alerts. ([#857](https://github.com/wazuh/wazuh/pull/857))
 - Add all the available fields in the Syscheck messages from the Wazuh configuration files. ([#857](https://github.com/wazuh/wazuh/pull/857))
@@ -3702,7 +3646,7 @@ All notable changes to this project will be documented in this file.
 - Prevent to access an unexisting hash table from 'whodata' thread. ([#911](https://github.com/wazuh/wazuh/pull/911))
 - Fix CA verification with more than one 'ca_store' definitions. ([#927](https://github.com/wazuh/wazuh/pull/927))
 - Fix error in syscollector API calls when Wazuh is installed in a directory different than `/var/ossec`. ([#942](https://github.com/wazuh/wazuh/pull/942)).
-- Fix error in CentOS 6 when `wazuh-cluster` is disabled. ([#944](https://github.com/wazuh/wazuh/pull/944)).
+- Fix error in CentOS 6 when `openarmor-cluster` is disabled. ([#944](https://github.com/wazuh/wazuh/pull/944)).
 - Fix Remoted connection failed warning in TCP mode due to timeout. ([#958](https://github.com/wazuh/wazuh/pull/958))
 - Fix option 'rule_id' in syslog client. ([#979](https://github.com/wazuh/wazuh/pull/979))
 - Fixed bug in legacy agent's server options that prevented it from setting port and protocol.
@@ -3729,9 +3673,9 @@ All notable changes to this project will be documented in this file.
 - Fixed missing `minor` field in agent data managed by the framework. ([#771](https://github.com/wazuh/wazuh/pull/771))
 - Fixed missing `build` and `key` fields in agent data managed by the framework. ([#802](https://github.com/wazuh/wazuh/pull/802))
 - Fixed several bugs in upgrade agents ([#784](https://github.com/wazuh/wazuh/pull/784)):
-    - Error upgrading an agent with status `Never Connected`.
-    - Fixed API support.
-    - Sockets were not closing properly.
+  - Error upgrading an agent with status `Never Connected`.
+  - Fixed API support.
+  - Sockets were not closing properly.
 - Cluster exits showing an error when an error occurs. ([#790](https://github.com/wazuh/wazuh/pull/790))
 - Fixed bug when cluster control or API cannot request the list of nodes to the master. ([#762](https://github.com/wazuh/wazuh/pull/762))
 - Fixed bug when the `agent.conf` contains an unrecognized module. ([#796](https://github.com/wazuh/wazuh/pull/796))
@@ -3740,7 +3684,6 @@ All notable changes to this project will be documented in this file.
 - Check version of python in cluster control. ([#760](https://github.com/wazuh/wazuh/pull/760))
 - Removed duplicated log message when Rootcheck is disabled. ([#783](https://github.com/wazuh/wazuh/pull/783))
 - Avoid infinite attempts to download CVE databases when it fails. ([#792](https://github.com/wazuh/wazuh/pull/792))
-
 
 ## [v3.3.0] - 2018-06-06
 
@@ -3768,16 +3711,15 @@ All notable changes to this project will be documented in this file.
 - Prevent Logcollector from reporting an error when a path with wildcards matches no files.
 - Fixes the feature to group with the option multi-line. ([#754](https://github.com/wazuh/wazuh/pull/754))
 
-
 ## [v3.2.4] - 2018-06-01
 
 ### Fixed
+
 - Fixed segmentation fault in maild when `<queue-size>` is included in the global configuration.
 - Fixed bug in Framework when retrieving mangers logs. ([#644](https://github.com/wazuh/wazuh/pull/644))
 - Fixed bug in clusterd to prevent the synchronization of `.swp` files. ([#694](https://github.com/wazuh/wazuh/pull/694))
 - Fixed bug in Framework parsing agent configuration. ([#681](https://github.com/wazuh/wazuh/pull/681))
 - Fixed several bugs using python3 with the Python framework. ([#701](https://github.com/wazuh/wazuh/pull/701))
-
 
 ## [v3.2.3] - 2018-05-28
 
@@ -3792,11 +3734,11 @@ All notable changes to this project will be documented in this file.
 
 - Set default agent limit to 14.000 and file descriptor limit to 65.536 per process. ([#624](https://github.com/wazuh/wazuh/pull/624))
 - Cluster improvements.
-    - New protocol for communications.
-    - Inverted communication flow: clients start communications with the master.
-    - Just the master address is required in the `<nodes>` list configuration.
-    - Improved synchronization algorithm.
-    - Reduced the number of processes to one: `wazuh-clusterd`.
+  - New protocol for communications.
+  - Inverted communication flow: clients start communications with the master.
+  - Just the master address is required in the `<nodes>` list configuration.
+  - Improved synchronization algorithm.
+  - Reduced the number of processes to one: `openarmor-clusterd`.
 - Cluster control tool improvements: outputs are the same regardless of node type.
 - The default input queue for remote events has been increased to 131072 events. ([#660](https://github.com/wazuh/wazuh/pull/660))
 - Disconnected agents will no longer report vulnerabilities. ([#666](https://github.com/wazuh/wazuh/pull/666))
@@ -3820,7 +3762,6 @@ All notable changes to this project will be documented in this file.
 ### Removed
 
 - Removed cluster database and internal cluster daemon.
-
 
 ## [v3.2.2] - 2018-05-07
 
@@ -3872,7 +3813,7 @@ All notable changes to this project will be documented in this file.
 - Improved cluster control to give more information. ([#421](https://github.com/wazuh/wazuh/pull/421))
 - Updated rules for CIS-CAT.
 - Removed unnecessary compilation of vulnerability-detector in agents.
-- Increased wazuh-modulesd's subprocess pool.
+- Increased openarmor-modulesd's subprocess pool.
 - Improved the agent software recollection by Syscollector.
 
 ### Fixed
@@ -3886,10 +3827,10 @@ All notable changes to this project will be documented in this file.
 - Fixed OS name detection in macOS and old Linux distros. ([#409](https://github.com/wazuh/wazuh/pull/409))
 - Fixed linked in HP-UX.
 - Fixed Red Hat detection in vulnerability-detector.
-- Fixed segmentation fault in wazuh-cluster when files path is too long.
+- Fixed segmentation fault in openarmor-cluster when files path is too long.
 - Fixed a bug getting groups and searching by them in `GET/agents` API call. ([#390](https://github.com/wazuh/wazuh/pull/390))
 - Several fixes and improvements in cluster.
-- Fixed bug in wazuh-db when closing exceeded databases in transaction.
+- Fixed bug in openarmor-db when closing exceeded databases in transaction.
 - Fixed bug in vulnerability-detector that discarded valid agents.
 - Fixed segmentation fault in Windows agents when getting OS info.
 - Fixed memory leaks in vulnerability-detector and CIS-CAT wodle.
@@ -3898,6 +3839,7 @@ All notable changes to this project will be documented in this file.
 ## [v3.2.0] - 2018-02-13
 
 ### Added
+
 - Added support to synchronize custom rules and decoders in the cluster.([#344](https://github.com/wazuh/wazuh/pull/344))
 - Add field `status` to `GET/agents/groups/:group_id` API call.([#338](https://github.com/wazuh/wazuh/pull/338))
 - Added support for Windows to CIS-CAT integration module ([#369](https://github.com/wazuh/wazuh/pull/369))
@@ -3905,6 +3847,7 @@ All notable changes to this project will be documented in this file.
 - New Wazuh Module "vulnerability-detector" to detect vulnerabilities in agents and managers.
 
 ### Fixed
+
 - Fixed oscap.py to support new versions of OpenSCAP scanner.([#331](https://github.com/wazuh/wazuh/pull/331))
 - Fixed timeout bug when the cluster port was closed. ([#343](https://github.com/wazuh/wazuh/pull/343))
 - Improve exception handling in `cluster_control`. ([#343](https://github.com/wazuh/wazuh/pull/343))
@@ -3990,7 +3933,7 @@ All notable changes to this project will be documented in this file.
 - Added integration with Virustotal.
 - Added timeout option for TCP sockets in Remoted and Agentd.
 - Added option to start the manager after installing.
-- Added a cluster of managers (`wazuh-clusterd`) and a script to control it (`cluster_control`).
+- Added a cluster of managers (`openarmor-clusterd`) and a script to control it (`cluster_control`).
 
 ### Changed
 
@@ -4075,7 +4018,6 @@ All notable changes to this project will be documented in this file.
 
 - Removed Picviz support (by Dan Parriott).
 
-
 ## [v2.1.1] - 2017-09-21
 
 ### Changed
@@ -4150,7 +4092,6 @@ All notable changes to this project will be documented in this file.
 ### Removed
 
 - Remove unused message queue to send alerts from Authd.
-
 
 ## [v2.0.1] - 2017-07-19
 
@@ -4439,14 +4380,16 @@ All notable changes to this project will be documented in this file.
 - Allow to disable syscheck:check_perm after enable check_all.
 
 ## [v1.0.4] - 2016-02-24
+
 ​
+
 ### Added
 
 - JSON output for manage_agents.
 - Increased analysis daemon's memory size.
 - Authd: Added password authorization.
 - Authd: Boost speed performance at assignation of ID for agents
-- Authd: New option -f *sec*. Force addding new agent (even with duplicated IP) if it was not active for the last *sec* seconds.
+- Authd: New option -f _sec_. Force addding new agent (even with duplicated IP) if it was not active for the last _sec_ seconds.
 - manage_agents: new option -d. Force adding new agent (even with duplicated IP)
 - manage_agents: Printing new agent ID on adding.
 
@@ -4462,8 +4405,7 @@ All notable changes to this project will be documented in this file.
 
 ### Removed
 
-- RESTful API no longer included in extensions/api folder. Available now at https://github.com/wazuh/wazuh-api
-
+- RESTful API no longer included in extensions/api folder. Available now at https://github.com/wazuh/openarmor-api
 
 ## [v1.0.3] - 2016-02-11
 
@@ -4516,4 +4458,5 @@ All notable changes to this project will be documented in this file.
 - Extensions: Improved Windows deployment script
 
 ## [v1.0.0] - 2015-11-23
+
 - Initial Wazuh version v1.0

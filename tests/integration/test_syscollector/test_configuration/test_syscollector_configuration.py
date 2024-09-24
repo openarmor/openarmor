@@ -20,9 +20,9 @@ targets:
     - agent
 
 daemons:
-    - wazuh-modulesd
-    - wazuh-analysisd
-    - wazuh-db
+    - openarmor-modulesd
+    - openarmor-analysisd
+    - openarmor-db
 
 os_platform:
     - linux

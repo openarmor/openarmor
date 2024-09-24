@@ -51,10 +51,10 @@ def exit_handler(signum, frame):
     main_logger.info(f'SIGNAL [({signum})-({signal.Signals(signum).name})] received. Exit...')
 
     # Terminate cluster's child processes
-    pyDaemonModule.delete_child_pids('wazuh-clusterd', cluster_pid, main_logger)
+    pyDaemonModule.delete_child_pids('openarmor-clusterd', cluster_pid, main_logger)
 
     # Remove cluster's pidfile
-    pyDaemonModule.delete_pid('wazuh-clusterd', cluster_pid)
+    pyDaemonModule.delete_pid('openarmor-clusterd', cluster_pid)
 
     if callable(original_sig_handler):
         original_sig_handler(signum, frame)
@@ -196,7 +196,7 @@ def get_script_arguments() -> argparse.Namespace:
 
 
 def main():
-    """Main function of the wazuh-clusterd script in charge of starting the cluster process."""
+    """Main function of the openarmor-clusterd script in charge of starting the cluster process."""
     import wazuh.core.cluster.cluster
 
     # Set correct permissions on cluster.log file
@@ -225,7 +225,7 @@ def main():
     wazuh.core.cluster.cluster.clean_up()
 
     # Check for unused PID files
-    clean_pid_files('wazuh-clusterd')
+    clean_pid_files('openarmor-clusterd')
 
     # Foreground/Daemon
     if not args.foreground:
@@ -237,7 +237,7 @@ def main():
         os.setuid(common.wazuh_uid())
 
     pid = os.getpid()
-    pyDaemonModule.create_pid('wazuh-clusterd', pid)
+    pyDaemonModule.create_pid('openarmor-clusterd', pid)
     if args.foreground:
         print(f"Starting cluster in foreground (pid: {pid})")
 
@@ -252,8 +252,8 @@ def main():
     except Exception as e:
         main_logger.error(f"Unhandled exception: {e}")
     finally:
-        pyDaemonModule.delete_child_pids('wazuh-clusterd', pid, main_logger)
-        pyDaemonModule.delete_pid('wazuh-clusterd', pid)
+        pyDaemonModule.delete_child_pids('openarmor-clusterd', pid, main_logger)
+        pyDaemonModule.delete_pid('openarmor-clusterd', pid)
 
 
 if __name__ == '__main__':

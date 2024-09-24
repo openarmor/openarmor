@@ -15,7 +15,7 @@ from connexion import ProblemException
 from wazuh.core import common, exception
 from wazuh.core.cluster.utils import running_in_master_node
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 
 def serialize(item: object) -> object:

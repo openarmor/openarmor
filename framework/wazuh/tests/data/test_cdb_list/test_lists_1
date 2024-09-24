@@ -1,5 +1,5 @@
-test-wazuh-w:write
-test-wazuh-r:read
-test-wazuh-a:attribute
-test-wazuh-x:execute
-test-wazuh-c:command
+test-openarmor-w:write
+test-openarmor-r:read
+test-openarmor-a:attribute
+test-openarmor-x:execute
+test-openarmor-c:command

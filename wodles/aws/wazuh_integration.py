@@ -35,7 +35,7 @@ DEPRECATED_TABLES = {'log_progress', 'trail_progress'}
 DEFAULT_GOV_REGIONS = {'us-gov-east-1', 'us-gov-west-1'}
 SERVICES_REQUIRING_REGION = {'inspector', 'cloudwatchlogs'}
 WAZUH_DEFAULT_RETRY_CONFIGURATION = {aws_tools.RETRY_ATTEMPTS_KEY: 10, aws_tools.RETRY_MODE_BOTO_KEY: 'standard'}
-MESSAGE_HEADER = "1:Wazuh-AWS:"
+MESSAGE_HEADER = "1:Openarmor-AWS:"
 
 
 class WazuhIntegration:

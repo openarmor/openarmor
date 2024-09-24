@@ -664,11 +664,11 @@ async def test_handler_update_chunks_wdb(send_request_mock):
                                                                                'generic_errors': ['ERR'],
                                                                                'time_spent': 6,
                                                                                'total_updated': 0, 'updated_chunks': 2}
-                    logger_debug_mock.assert_has_calls([call('2/5 chunks updated in wazuh-db in 6.000s.')])
+                    logger_debug_mock.assert_has_calls([call('2/5 chunks updated in openarmor-db in 6.000s.')])
                     logger_debug2_mock.assert_has_calls([call('Chunk 1/5: 0'), call('Chunk 2/5: 1')])
                     logger_error_mock.assert_has_calls([call('other1'), call('other2'),
-                                                        call('Wazuh-db response for chunk 1/5 was not "ok": 0'),
-                                                        call('Wazuh-db response for chunk 2/5 was not "ok": 1')])
+                                                        call('Openarmor-db response for chunk 1/5 was not "ok": 0'),
+                                                        call('Openarmor-db response for chunk 2/5 was not "ok": 1')])
 
     # Test Exception
     send_request_mock.reset_mock()
@@ -1504,7 +1504,7 @@ async def test_sync_wazuh_db_retrieve_information(socket_mock):
         with patch.object(sync_object.logger, 'error') as logger_error_mock:
             assert await sync_object.retrieve_information() == []
             logger_error_mock.assert_called_with(
-                'Could not obtain data from wazuh-db: Error 1000 - Wazuh Internal Error')
+                'Could not obtain data from openarmor-db: Error 1000 - Wazuh Internal Error')
 
 
 @pytest.mark.asyncio
@@ -1589,7 +1589,7 @@ def test_error_receiving_agent_information():
 
 @patch("wazuh.core.cluster.common.WazuhDBConnection")
 def test_send_data_to_wdb(WazuhDBConnection_mock):
-    """Check if the data chunks are being properly forward to the Wazuh-db socket."""
+    """Check if the data chunks are being properly forward to the Openarmor-db socket."""
 
     class MockWazuhDBConnection:
         """Auxiliary class."""

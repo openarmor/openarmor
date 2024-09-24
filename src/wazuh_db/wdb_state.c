@@ -21,7 +21,7 @@
 #endif
 
 #ifndef ARGV0
-#define ARGV0 "wazuh-db"
+#define ARGV0 "openarmor-db"
 #endif
 
 #define timeval_to_milis(time) ((time.tv_sec * (uint64_t)1000) + (time.tv_usec / 1000))

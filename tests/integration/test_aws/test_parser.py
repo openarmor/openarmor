@@ -44,7 +44,7 @@ def test_bucket_and_service_missing(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has not appeared calling the module with correct parameters.
         - teardown:
@@ -113,7 +113,7 @@ def test_type_missing_in_bucket(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has not appeared calling the module with correct parameters.
         - teardown:
@@ -181,7 +181,7 @@ def test_type_missing_in_service(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has not appeared calling the module with correct parameters.
         - teardown:
@@ -250,7 +250,7 @@ def test_empty_values_in_bucket(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has not appeared calling the module with correct parameters.
         - teardown:
@@ -318,7 +318,7 @@ def test_empty_values_in_service(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has not appeared calling the module with correct parameters.
         - teardown:
@@ -387,7 +387,7 @@ def test_invalid_values_in_bucket(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has not appeared calling the module with correct parameters.
         - teardown:
@@ -455,7 +455,7 @@ def test_invalid_values_in_service(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has not appeared calling the module with correct parameters.
         - teardown:
@@ -523,7 +523,7 @@ def test_multiple_bucket_and_service_tags(
             - Apply ossec.conf configuration changes according to the configuration template and use case.
             - Apply custom settings in local_internal_options.conf.
             - Truncate wazuh logs.
-            - Restart wazuh-manager service to apply configuration changes.
+            - Restart openarmor-manager service to apply configuration changes.
         - test:
             - Check in the ossec.log that a line has not appeared calling the module with correct parameters.
         - teardown:

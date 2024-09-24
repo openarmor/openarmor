@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Copyright (C) 2015, Wazuh Inc.
-# wazuh-control        This shell script takes care of starting
+# openarmor-control        This shell script takes care of starting
 #                      or stopping ossec-hids
 # Author: Daniel B. Cid <daniel.cid@gmail.com>
 
@@ -17,7 +17,7 @@ TYPE="agent"
 
 ###  Do not modify below here ###
 AUTHOR="Wazuh Inc."
-DAEMONS="wazuh-modulesd wazuh-logcollector wazuh-syscheckd wazuh-agentd wazuh-execd"
+DAEMONS="openarmor-modulesd openarmor-logcollector openarmor-syscheckd openarmor-agentd openarmor-execd"
 
 # Reverse order of daemons
 SDAEMONS=$(echo $DAEMONS | awk '{ for (i=NF; i>1; i--) printf("%s ",$i); print $1; }')
@@ -313,7 +313,7 @@ restart)
     restart_service
     ;;
 reload)
-    DAEMONS=$(echo $DAEMONS | sed 's/wazuh-execd//')
+    DAEMONS=$(echo $DAEMONS | sed 's/openarmor-execd//')
     restart_service
     ;;
 status)

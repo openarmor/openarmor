@@ -1654,7 +1654,7 @@ components:
           type: string
           description: "Daemon name"
           enum:
-            - wazuh-remoted
+            - openarmor-remoted
         agents:
           type: array
           items:
@@ -1743,7 +1743,7 @@ components:
           type: string
           description: "Daemon name"
           enum:
-            - wazuh-analysisd
+            - openarmor-analysisd
         agents:
           type: array
           items:
@@ -2458,7 +2458,7 @@ components:
           type: string
           description: "Daemon name"
           enum:
-            - wazuh-remoted
+            - openarmor-remoted
         metrics:
           type: object
           properties:
@@ -2587,7 +2587,7 @@ components:
           type: string
           description: "Daemon name"
           enum:
-            - wazuh-analysisd
+            - openarmor-analysisd
         metrics:
           type: object
           properties:
@@ -3082,7 +3082,7 @@ components:
           type: string
           description: "Daemon name"
           enum:
-            - wazuh-db
+            - openarmor-db
         metrics:
           type: object
           properties:
@@ -3742,39 +3742,39 @@ components:
     WazuhDaemonsStatus:
       type: object
       properties:
-        wazuh-agentlessd:
+        openarmor-agentlessd:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-analysisd:
+        openarmor-analysisd:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-authd:
+        openarmor-authd:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-csyslogd:
+        openarmor-csyslogd:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-dbd:
+        openarmor-dbd:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-execd:
+        openarmor-execd:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-integratord:
+        openarmor-integratord:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-logcollector:
+        openarmor-logcollector:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-maild:
+        openarmor-maild:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-monitord:
+        openarmor-monitord:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-remoted:
+        openarmor-remoted:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-reportd:
+        openarmor-reportd:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-syscheckd:
+        openarmor-syscheckd:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-apid:
+        openarmor-apid:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-clusterd:
+        openarmor-clusterd:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-db:
+        openarmor-db:
           $ref: '#/components/schemas/DaemonStatus'
-        wazuh-modulesd:
+        openarmor-modulesd:
           $ref: '#/components/schemas/DaemonStatus'
 
     WazuhInfo:
@@ -4222,69 +4222,69 @@ components:
       properties:
           indexer-connector:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-agentlessd:
+          openarmor-agentlessd:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-analysisd:
+          openarmor-analysisd:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-authd:
+          openarmor-authd:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-csyslogd:
+          openarmor-csyslogd:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-dbd:
+          openarmor-dbd:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-execd:
+          openarmor-execd:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-integratord:
+          openarmor-integratord:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-maild:
+          openarmor-maild:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-monitord:
+          openarmor-monitord:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-logcollector:
+          openarmor-logcollector:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-remoted:
+          openarmor-remoted:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-reportd:
+          openarmor-reportd:
             $ref: '#/components/schemas/LogSummary'
           rootcheck:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-syscheckd:
+          openarmor-syscheckd:
             $ref: '#/components/schemas/LogSummary'
           sca:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-db:
+          openarmor-db:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:
+          openarmor-modulesd:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:agent-upgrade:
+          openarmor-modulesd:agent-upgrade:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:aws-s3:
+          openarmor-modulesd:aws-s3:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:azure-logs:
+          openarmor-modulesd:azure-logs:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:ciscat:
+          openarmor-modulesd:ciscat:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:control:
+          openarmor-modulesd:control:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:command:
+          openarmor-modulesd:command:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:content_manager:
+          openarmor-modulesd:content_manager:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:database:
+          openarmor-modulesd:database:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:docker-listener:
+          openarmor-modulesd:docker-listener:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:download:
+          openarmor-modulesd:download:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:oscap:
+          openarmor-modulesd:oscap:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:osquery:
+          openarmor-modulesd:osquery:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:syscollector:
+          openarmor-modulesd:syscollector:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:vulnerability-scanner:
+          openarmor-modulesd:vulnerability-scanner:
             $ref: '#/components/schemas/LogSummary'
-          wazuh-modulesd:task-manager:
+          openarmor-modulesd:task-manager:
             $ref: '#/components/schemas/LogSummary'
 
     ConfirmationMessage:
@@ -5398,7 +5398,7 @@ components:
         - monitor
         - request
         - syscheck
-        - wazuh-db
+        - openarmor-db
         - wmodules
     configuration:
       in: path
@@ -5591,12 +5591,12 @@ components:
         <td><code>&lt;syscheck&gt;</code>, <code>&lt;rootcheck&gt;</code></td>
         </tr>
         <tr>
-        <td>wazuh-db</td>
+        <td>openarmor-db</td>
         <td>internal</td>
         <td><code>&lt;wazuh_db&gt;</code></td>
         </tr>
         <tr>
-        <td>wazuh-db</td>
+        <td>openarmor-db</td>
         <td>wdb</td>
         <td><code>&lt;wdb&gt;</code></td>
         </tr>
@@ -5646,9 +5646,9 @@ components:
         items:
           type: string
           enum:
-            - wazuh-analysisd
-            - wazuh-remoted
-            - wazuh-db
+            - openarmor-analysisd
+            - openarmor-remoted
+            - openarmor-db
     daemons_list_agents:
       in: query
       name: daemons_list
@@ -5658,8 +5658,8 @@ components:
         items:
           type: string
           enum:
-            - wazuh-analysisd
-            - wazuh-remoted
+            - openarmor-analysisd
+            - openarmor-remoted
     decoder_name:
       in: query
       name: decoder_names
@@ -7420,7 +7420,7 @@ paths:
                       id: '001'
                       dateAdd: 2021-05-26T12:40:08Z
                       configSum: ab73af41699f13fdd81903b5f23d8d00
-                      manager: wazuh-worker2
+                      manager: openarmor-worker2
                       group: [default]
                       registerIP: any
                       ip: 172.25.0.6
@@ -7445,7 +7445,7 @@ paths:
                       id: '002'
                       dateAdd: 2021-05-26T12:40:10Z
                       configSum: ab73af41699f13fdd81903b5f23d8d00
-                      manager: wazuh-worker2
+                      manager: openarmor-worker2
                       group: [default]
                       registerIP: any
                       ip: 172.25.0.11
@@ -7470,7 +7470,7 @@ paths:
                       id: '003'
                       dateAdd: 2021-05-26T12:40:10Z
                       configSum: ab73af41699f13fdd81903b5f23d8d00
-                      manager: wazuh-worker2
+                      manager: openarmor-worker2
                       group: [default]
                       registerIP: any
                       ip: 172.25.0.10
@@ -7912,7 +7912,7 @@ paths:
                 data:
                   affected_items:
                     - timestamp: 2022-07-27T14:09:20+00:00
-                      name: wazuh-remoted
+                      name: openarmor-remoted
                       agents:
                         - uptime: 2022-07-27T14:09:20+00:00
                           id: 1
@@ -7934,7 +7934,7 @@ paths:
                                 request: 0
                                 shared: 0
                     - timestamp: 2022-07-27T14:09:20+00:00
-                      name: wazuh-analysisd
+                      name: openarmor-analysisd
                       agents:
                         - uptime: 2022-07-27T14:09:20+00:00
                           id: 1
@@ -8695,7 +8695,7 @@ paths:
                       id: '001'
                       dateAdd: 2024-02-26T12:40:08Z
                       configSum: ab73af41699f13fdd81903b5f23d8d00
-                      manager: wazuh-worker2
+                      manager: openarmor-worker2
                       group: [default]
                       registerIP: any
                       ip: 172.25.0.6
@@ -8720,7 +8720,7 @@ paths:
                       id: '002'
                       dateAdd: 2024-02-26T12:40:10Z
                       configSum: ab73af41699f13fdd81903b5f23d8d00
-                      manager: wazuh-worker2
+                      manager: openarmor-worker2
                       group: [default]
                       registerIP: any
                       ip: 172.25.0.11
@@ -9200,7 +9200,7 @@ paths:
                       node_name: worker1
                       ip: 172.20.0.7
                       id: 004
-                      manager: wazuh-worker1
+                      manager: openarmor-worker1
                       group:
                         - default
                         - group1
@@ -9226,7 +9226,7 @@ paths:
                       node_name: worker1
                       ip: 172.20.0.9
                       id: 005
-                      manager: wazuh-worker1
+                      manager: openarmor-worker1
                       group:
                         - default
                         - group2
@@ -9252,7 +9252,7 @@ paths:
                       node_name: worker2
                       ip: 172.20.0.10
                       id: 006
-                      manager: wazuh-worker2
+                      manager: openarmor-worker2
                       group:
                         - default
                         - group3
@@ -9685,7 +9685,7 @@ paths:
                       port: 1516
                       bind_addr: 0.0.0.0
                       nodes:
-                        - wazuh-master
+                        - openarmor-master
                       hidden: "no"
                       disabled: false
                   total_affected_items: 1
@@ -9743,7 +9743,7 @@ paths:
                     - name: master-node
                       type: master
                       version: 4.4.0
-                      ip: wazuh-master
+                      ip: openarmor-master
                     - name: worker1
                       type: worker
                       version: 4.4.0
@@ -9801,7 +9801,7 @@ paths:
                         name: master-node
                         type: master
                         version: 4.4.0
-                        ip: wazuh-master
+                        ip: openarmor-master
                         n_active_agents: 5
                     - info:
                         name: worker1
@@ -10182,23 +10182,23 @@ paths:
               example:
                 data:
                   affected_items:
-                    - wazuh-agentlessd: stopped
-                      wazuh-analysisd: running
-                      wazuh-authd: stopped
-                      wazuh-csyslogd: stopped
-                      wazuh-dbd: stopped
-                      wazuh-monitord: running
-                      wazuh-execd: running
-                      wazuh-integratord: stopped
-                      wazuh-logcollector: running
-                      wazuh-maild: stopped
-                      wazuh-remoted: running
-                      wazuh-reportd: stopped
-                      wazuh-syscheckd: running
-                      wazuh-apid: running
-                      wazuh-clusterd: running
-                      wazuh-db: running
-                      wazuh-modulesd: running
+                    - openarmor-agentlessd: stopped
+                      openarmor-analysisd: running
+                      openarmor-authd: stopped
+                      openarmor-csyslogd: stopped
+                      openarmor-dbd: stopped
+                      openarmor-monitord: running
+                      openarmor-execd: running
+                      openarmor-integratord: stopped
+                      openarmor-logcollector: running
+                      openarmor-maild: stopped
+                      openarmor-remoted: running
+                      openarmor-reportd: stopped
+                      openarmor-syscheckd: running
+                      openarmor-apid: running
+                      openarmor-clusterd: running
+                      openarmor-db: running
+                      openarmor-modulesd: running
                   total_affected_items: 1
                   total_failed_items: 0
                   failed_items: []
@@ -10504,7 +10504,7 @@ paths:
                         port: "1516"
                         bind_addr: "0.0.0.0"
                         nodes:
-                          - "wazuh-master"
+                          - "openarmor-master"
                         hidden: "no"
                         disabled: "no"
                   total_affected_items: 1
@@ -10600,7 +10600,7 @@ paths:
                   affected_items:
                     - uptime: 2022-07-21T10:09:20+00:00
                       timestamp: 2022-07-21T10:48:32+00:00
-                      name: wazuh-remoted
+                      name: openarmor-remoted
                       metrics:
                         bytes:
                           received: 0
@@ -11214,15 +11214,15 @@ paths:
                 data:
                   affected_items:
                     - timestamp: '2021-05-27T12:18:08Z'
-                      tag: wazuh-remoted
+                      tag: openarmor-remoted
                       level: debug
                       description: " TCP socket 20 already in keystore. Updating..."
                     - timestamp: '2021-05-27T12:18:08Z'
-                      tag: wazuh-remoted
+                      tag: openarmor-remoted
                       level: debug
                       description: " Agent '003' group is 'default'"
                     - timestamp: '2021-05-27T12:18:08Z'
-                      tag: wazuh-remoted
+                      tag: openarmor-remoted
                       level: debug
                       description: " Agent '003' with group 'default' file 'merged.mg' MD5
                         '9a016508cea1e997ab8569f5cfab30f5'"
@@ -11277,28 +11277,28 @@ paths:
                         critical: 0
                         warning: 24
                         debug: 0
-                    - wazuh-db:
+                    - openarmor-db:
                         info: 1
                         all: 4
                         critical: 0
                         debug: 0
                         error: 3
                         warning: 0
-                    - wazuh-modulesd:content_manager:
+                    - openarmor-modulesd:content_manager:
                         info: 1
                         all: 1
                         critical: 0
                         debug: 0
                         error: 0
                         warning: 0
-                    - wazuh-modulesd:router:
+                    - openarmor-modulesd:router:
                         info: 1
                         all: 1
                         critical: 0
                         debug: 0
                         error: 0
                         warning: 0
-                    - wazuh-remoted:
+                    - openarmor-remoted:
                         info: 744
                         all: 0
                         critical: 0
@@ -11509,15 +11509,15 @@ paths:
                 data:
                   affected_items:
                     - items:
-                        - key: audit-wazuh-w
+                        - key: audit-openarmor-w
                           value: write
-                        - key: audit-wazuh-r
+                        - key: audit-openarmor-r
                           value: read
-                        - key: audit-wazuh-a
+                        - key: audit-openarmor-a
                           value: attribute
-                        - key: audit-wazuh-x
+                        - key: audit-openarmor-x
                           value: execute
-                        - key: audit-wazuh-c
+                        - key: audit-openarmor-c
                           value: command
                       relative_dirname: etc/lists
                       filename: audit-keys
@@ -11567,11 +11567,11 @@ paths:
               example:
                 data:
                   affected_items:
-                    - audit-wazuh-w: write
-                      audit-wazuh-r: read
-                      audit-wazuh-a: attribute
-                      audit-wazuh-x: execute
-                      audit-wazuh-c: command
+                    - audit-openarmor-w: write
+                      audit-openarmor-r: read
+                      audit-openarmor-a: attribute
+                      audit-openarmor-x: execute
+                      audit-openarmor-c: command
                   total_affected_items: 1
                   total_failed_items: 0
                   failed_items: []
@@ -11581,11 +11581,11 @@ paths:
               schema:
                 type: string
               example: |
-                audit-wazuh-w:write
-                audit-wazuh-r:read
-                audit-wazuh-a:attribute
-                audit-wazuh-x:execute
-                audit-wazuh-c:command
+                audit-openarmor-w:write
+                audit-openarmor-r:read
+                audit-openarmor-a:attribute
+                audit-openarmor-x:execute
+                audit-openarmor-c:command
         '400':
           $ref: '#/components/responses/ResponseError'
         '401':
@@ -11795,9 +11795,9 @@ paths:
                         - 4.3
                     agent:
                       id: "000"
-                      name: "wazuh-master"
+                      name: "openarmor-master"
                     manager:
-                      name: "wazuh-master"
+                      name: "openarmor-master"
                     id: "1622119563.2682664"
                     cluster:
                       name: "wazuh"
@@ -11891,23 +11891,23 @@ paths:
               example:
                 data:
                   affected_items:
-                    - wazuh-agentlessd: "stopped"
-                      wazuh-analysisd: "running"
-                      wazuh-authd: "running"
-                      wazuh-csyslogd: "stopped"
-                      wazuh-dbd: "stopped"
-                      wazuh-monitor": "running"
-                      wazuh-execd: "running"
-                      wazuh-integratord: "stopped"
-                      wazuh-logcollector: "running"
-                      wazuh-maild: "stopped"
-                      wazuh-remoted: "running"
-                      wazuh-reportd: "stopped"
-                      wazuh-syscheckd: "running"
-                      wazuh-clusterd: "running"
-                      wazuh-modulesd: "running"
-                      wazuh-db: "running"
-                      wazuh-apid: "running"
+                    - openarmor-agentlessd: "stopped"
+                      openarmor-analysisd: "running"
+                      openarmor-authd: "running"
+                      openarmor-csyslogd: "stopped"
+                      openarmor-dbd: "stopped"
+                      openarmor-monitor": "running"
+                      openarmor-execd: "running"
+                      openarmor-integratord: "stopped"
+                      openarmor-logcollector: "running"
+                      openarmor-maild: "stopped"
+                      openarmor-remoted: "running"
+                      openarmor-reportd: "stopped"
+                      openarmor-syscheckd: "running"
+                      openarmor-clusterd: "running"
+                      openarmor-modulesd: "running"
+                      openarmor-db: "running"
+                      openarmor-apid: "running"
                   total_affected_items: 1
                   total_failed_items: 0
                   failed_items: []
@@ -12140,7 +12140,7 @@ paths:
                   affected_items:
                     - uptime: 2022-07-21T10:09:20+00:00
                       timestamp: 2022-07-21T10:48:32+00:00
-                      name: wazuh-remoted
+                      name: openarmor-remoted
                       metrics:
                         bytes:
                           received: 0
@@ -12724,15 +12724,15 @@ paths:
                 data:
                   affected_items:
                     - timestamp: '2020-04-15T14:47:54Z'
-                      tag: wazuh-modulesd:syscollector
+                      tag: openarmor-modulesd:syscollector
                       level: info
                       description: "Start syscheck scan"
                     - timestamp: '2020-04-15T14:47:51Z'
-                      tag: wazuh-modulesd:syscollector
+                      tag: openarmor-modulesd:syscollector
                       level: info
                       description: "Starting evaluation"
                     - timestamp: '2020-04-15T13:50:24Z'
-                      tag: wazuh-maild
+                      tag: openarmor-maild
                       level: error
                       description: " (1263): Error Sending email to 69.172.200.109 (smtp server)"
                   total_affected_items: 3
@@ -12785,28 +12785,28 @@ paths:
                         critical: 0
                         warning: 24
                         debug: 0
-                    - wazuh-db:
+                    - openarmor-db:
                         info: 1
                         all: 4
                         critical: 0
                         debug: 0
                         error: 3
                         warning: 0
-                    - wazuh-modulesd:content_manager:
+                    - openarmor-modulesd:content_manager:
                         info: 1
                         all: 1
                         critical: 0
                         debug: 0
                         error: 0
                         warning: 0
-                    - wazuh-modulesd:router:
+                    - openarmor-modulesd:router:
                         info: 1
                         all: 1
                         critical: 0
                         debug: 0
                         error: 0
                         warning: 0
-                    - wazuh-remoted:
+                    - openarmor-remoted:
                         info: 744
                         all: 0
                         critical: 0
@@ -13028,7 +13028,7 @@ paths:
                       port: 1516
                       bind_addr: "0.0.0.0"
                       nodes:
-                        - wazuh-master
+                        - openarmor-master
                       hidden: no
                       disabled: false
                   total_affected_items: 1
@@ -15797,7 +15797,7 @@ paths:
                         id: 496386874
                         time: '2020-04-15T11:02:03Z'
                       sysname: Linux
-                      hostname: wazuh-master
+                      hostname: openarmor-master
                       version: "#34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC "
                       release: 5.3.0-7642-generic
                       architecture: x86_64
@@ -15813,7 +15813,7 @@ paths:
                         id: 196194860
                         time: '2020-04-15T11:02:23Z'
                       sysname: Linux
-                      hostname: wazuh-agent1
+                      hostname: openarmor-agent1
                       version: "#34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC "
                       release: 5.3.0-7642-generic
                       architecture: x86_64
@@ -15828,7 +15828,7 @@ paths:
                       scan:
                         id: 763390318
                         time: '2020-04-15T11:02:52Z'
-                      hostname: wazuh-agent2
+                      hostname: openarmor-agent2
                       release: 5.3.0-7642-generic
                       version: "#34~1584408018~19.10~21df4b1-Ubuntu SMP Tue Mar 17 13:38:51 UTC "
                       architecture: x86_64
@@ -16112,7 +16112,7 @@ paths:
                       utime: 23
                       egroup: root
                       ruser: root
-                      argvs: "/scripts/entrypoint.sh,wazuh-master,master-node,master"
+                      argvs: "/scripts/entrypoint.sh,openarmor-master,master-node,master"
                       size: 4593
                       euser: root
                       processor: 3
@@ -16135,7 +16135,7 @@ paths:
                     - scan:
                         id: 28643647
                         time: '2020-04-15T11:02:07Z'
-                      name: wazuh-control
+                      name: openarmor-control
                       suser: root
                       nlwp: 1
                       pgrp: 1
@@ -16144,7 +16144,7 @@ paths:
                       utime: 0
                       egroup: root
                       ruser: root
-                      argvs: "/var/ossec/bin/wazuh-control,restart"
+                      argvs: "/var/ossec/bin/openarmor-control,restart"
                       size: 1156
                       euser: root
                       processor: 6
@@ -16607,7 +16607,7 @@ paths:
                       release: 5.8.0-45-generic
                       version: "#51~20.04.1-Ubuntu SMP Tue Feb 23 13:46:31 UTC 2021"
                       architecture: x86_64
-                      hostname: wazuh-master
+                      hostname: openarmor-master
                       agent_id: '001'
                   total_affected_items: 1
                   total_failed_items: 0
@@ -17476,7 +17476,7 @@ paths:
                         roles:
                           - 1
                       - id: 2
-                        username: wazuh-wui
+                        username: openarmor-wui
                         allow_run_as: true
                         roles: []
                     total_affected_items: 8
@@ -17650,7 +17650,7 @@ paths:
                   data:
                     affected_items:
                       - id: 100
-                        username: wazuh-test
+                        username: openarmor-test
                         allow_run_as: false
                         roles:
                           - 2
@@ -18825,7 +18825,7 @@ paths:
                       name: "77000bae7bd0"
                       registerIP: "any"
                       dateAdd: "2021-05-31T09:49:28Z"
-                      manager: "wazuh-worker1"
+                      manager: "openarmor-worker1"
                       id: "004"
                       mergedSum: "9a016508cea1e997ab8569f5cfab30f5"
                       version: "Wazuh v4.3.0"

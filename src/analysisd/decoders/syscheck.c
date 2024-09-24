@@ -1878,7 +1878,7 @@ void fim_adjust_checksum(sk_sum_t *newsum, char **checksum) {
 
         // We need to escape the character ':' from the permissions
         //because we are going to compare against escaped permissions
-        // sent by wazuh-db
+        // sent by openarmor-db
         char *esc_perms = wstr_replace(newsum->win_perm, ":", "\\:");
         wm_strcat(checksum, esc_perms, 0);
         free(esc_perms);

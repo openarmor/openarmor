@@ -31,11 +31,11 @@ NAME_FILE_1 = "test_lists_1"
 NAME_FILE_2 = "test_lists_2"
 NAME_FILES = [NAME_FILE_1, NAME_FILE_2]
 
-RESULT_GET_LIST_FILE_1 = [{'items': [{'key': 'test-wazuh-w', 'value': 'write'},
-                                     {'key': 'test-wazuh-r', 'value': 'read'},
-                                     {'key': 'test-wazuh-a', 'value': 'attribute'},
-                                     {'key': 'test-wazuh-x', 'value': 'execute'},
-                                     {'key': 'test-wazuh-c', 'value': 'command'}
+RESULT_GET_LIST_FILE_1 = [{'items': [{'key': 'test-openarmor-w', 'value': 'write'},
+                                     {'key': 'test-openarmor-r', 'value': 'read'},
+                                     {'key': 'test-openarmor-a', 'value': 'attribute'},
+                                     {'key': 'test-openarmor-x', 'value': 'execute'},
+                                     {'key': 'test-openarmor-c', 'value': 'command'}
                                      ],
                            'relative_dirname': RELATIVE_PATH,
                            'filename': NAME_FILE_1
@@ -127,9 +127,9 @@ def test_get_lists_offset(offset):
     ("command", False, None, NAME_FILES, RESULT_GET_LIST_FILE_1),
     ("command", False, "items", [NAME_FILE_2], []),
     ("write", False, "items", NAME_FILES, RESULTS_GET_LIST),
-    ("test-wazuh-w", False, "items", NAME_FILES, RESULT_GET_LIST_FILE_1),
+    ("test-openarmor-w", False, "items", NAME_FILES, RESULT_GET_LIST_FILE_1),
     ("test-ossec-w", False, "items", NAME_FILES, RESULT_GET_LIST_FILE_2),
-    ("test-wazuh-w", False, "items", [NAME_FILE_2], []),
+    ("test-openarmor-w", False, "items", [NAME_FILE_2], []),
     ("command", True, None, NAME_FILES, RESULT_GET_LIST_FILE_2),
     ("test-ossec-w", True, None, NAME_FILES, RESULT_GET_LIST_FILE_1),
     ("command", True, None, [NAME_FILE_2], RESULT_GET_LIST_FILE_2),
@@ -137,9 +137,9 @@ def test_get_lists_offset(offset):
     ("command", True, "items", [NAME_FILE_2], RESULT_GET_LIST_FILE_2),
     ("command", True, "items", [NAME_FILE_1], []),
     ("write", True, "items", NAME_FILES, []),
-    ("test-wazuh-w", True, "items", NAME_FILES, RESULT_GET_LIST_FILE_2),
+    ("test-openarmor-w", True, "items", NAME_FILES, RESULT_GET_LIST_FILE_2),
     ("test-ossec-w", True, "items", NAME_FILES, RESULT_GET_LIST_FILE_1),
-    ("test-wazuh-w", True, "items", [NAME_FILE_2], RESULT_GET_LIST_FILE_2),
+    ("test-openarmor-w", True, "items", [NAME_FILE_2], RESULT_GET_LIST_FILE_2),
 ])
 @patch('wazuh.cdb_list.common.USER_LISTS_PATH', new=DATA_PATH)
 def test_get_lists_search(search_text, complementary_search, search_in_fields, paths, expected_result):

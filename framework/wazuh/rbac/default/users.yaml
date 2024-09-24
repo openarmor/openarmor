@@ -6,7 +6,7 @@ default_users:
     password: wazuh
     allow_run_as: True
 
-  wazuh-wui:
+  openarmor-wui:
     description: Superuser of Wazuh UI
-    password: wazuh-wui
+    password: openarmor-wui
     allow_run_as: True

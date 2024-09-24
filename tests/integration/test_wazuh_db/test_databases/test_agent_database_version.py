@@ -7,7 +7,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: Wazuh-db is the daemon in charge of the databases with all the Wazuh persistent information, exposing a socket
+brief: Openarmor-db is the daemon in charge of the databases with all the Wazuh persistent information, exposing a socket
        to receive requests and provide information. The Wazuh core uses list-based databases to store information
        related to agent keys, and FIM/Rootcheck event data.
        This test checks that the agent database version is the expected one. To do this, it performs a query to the agent
@@ -22,7 +22,7 @@ components:
     - manager
 
 daemons:
-    - wazuh-db
+    - openarmor-db
 
 os_platform:
     - linux
@@ -47,7 +47,7 @@ os_version:
     - Red Hat 6
 
 references:
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-db.html
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-db.html
 
 tags:
     - wazuh_db
@@ -75,7 +75,7 @@ def test_agent_database_version(daemons_handler, simulate_agent):
 
     test_phases:
         - setup:
-            - Restart wazuh-manager service.
+            - Restart openarmor-manager service.
         - test:
             - Get the version of the manager database through the socket
             - Get the version of the agent database through the socket

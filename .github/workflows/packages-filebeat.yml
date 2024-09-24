@@ -6,7 +6,7 @@ on:
     inputs:
       revision:
         description: |
-          Revision used to naming Filebeat package wazuh-filebeat-X.X.tar.gz.
+          Revision used to naming Filebeat package openarmor-filebeat-X.X.tar.gz.
           Default 0.0.
         required: false
         default: "0.0"
@@ -51,7 +51,7 @@ jobs:
 
       - name: Set package name
         run: |
-          echo "FILEBEAT_TAR_NAME=wazuh-filebeat-${{ inputs.revision }}.tar.gz" >> $GITHUB_ENV
+          echo "FILEBEAT_TAR_NAME=openarmor-filebeat-${{ inputs.revision }}.tar.gz" >> $GITHUB_ENV
 
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@v1
@@ -61,7 +61,7 @@ jobs:
           aws-region: ${{ secrets.CI_AWS_REGION }}
 
       - name: Package files, change permissions, create tar and upload to S3
-        working-directory: extensions/filebeat/7.x/wazuh-module
+        working-directory: extensions/filebeat/7.x/openarmor-module
         run: |
           mkdir wazuh
           cp -r _meta alerts archives module.yml wazuh/
@@ -86,7 +86,7 @@ jobs:
           tar -czvf ${{ env.FILEBEAT_TAR_NAME }} wazuh
 
       - name: Testing Filebeat module
-        working-directory: extensions/filebeat/7.x/wazuh-module
+        working-directory: extensions/filebeat/7.x/openarmor-module
         run: |
           echo "MODULE_CHECKED=no" >> $GITHUB_ENV
           DIR_PERMS="755 root root"
@@ -105,13 +105,13 @@ jobs:
 
       - name: Generate SHA512
         if: ${{ inputs.checksum }}
-        working-directory: extensions/filebeat/7.x/wazuh-module
+        working-directory: extensions/filebeat/7.x/openarmor-module
         run: |
           sha512sum "${{ env.FILEBEAT_TAR_NAME }}" > "${{ env.FILEBEAT_TAR_NAME }}.sha512"
 
       - name: Upload Filebeat module to S3
         if: env.MODULE_CHECKED == 'yes'
-        working-directory: extensions/filebeat/7.x/wazuh-module
+        working-directory: extensions/filebeat/7.x/openarmor-module
         run: |
           aws s3 cp ${{ env.FILEBEAT_TAR_NAME }} s3://packages-dev.internal.wazuh.com/development/wazuh/4.x/secondary/filebeat/modules/
           s3uri="s3://packages-dev.internal.wazuh.com/development/wazuh/4.x/secondary/filebeat/modules/${{ env.FILEBEAT_TAR_NAME }}"
@@ -119,7 +119,7 @@ jobs:
 
       - name: Upload Filebeat module SHA512 to S3
         if: ${{ env.MODULE_CHECKED == 'yes' && inputs.checksum }}
-        working-directory: extensions/filebeat/7.x/wazuh-module
+        working-directory: extensions/filebeat/7.x/openarmor-module
         run: |
           aws s3 cp ${{ env.FILEBEAT_TAR_NAME }}.sha512 s3://packages-dev.internal.wazuh.com/development/wazuh/4.x/secondary/filebeat/modules/
           s3uri="s3://packages-dev.internal.wazuh.com/development/wazuh/4.x/secondary/filebeat/modules/${{ env.FILEBEAT_TAR_NAME }}.sha512"

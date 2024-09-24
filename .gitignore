@@ -41,7 +41,7 @@ src/ossec-maild
 src/ossec-makelists
 src/ossec-monitord
 src/ossec-regex
-src/wazuh-regex
+src/openarmor-regex
 src/parallel-regex
 src/ossec-remoted
 src/ossec-reportd
@@ -51,25 +51,25 @@ src/rootcheck_control
 src/syscheck_control
 src/syscheck_update
 src/verify-agent-conf
-src/wazuh-modulesd
-src/wazuh-auth
-src/wazuh-db
-src/wazuh-agentd
-src/wazuh-agentlessd
-src/wazuh-analysisd
-src/wazuh-authd
-src/wazuh-csyslogd
-src/wazuh-dbd
-src/wazuh-execd
-src/wazuh-logcollector
-src/wazuh-logtest-legacy
-src/wazuh-maild
-src/wazuh-monitord
-src/wazuh-remoted
-src/wazuh-reportd
-src/wazuh-syscheckd
-src/wazuh-integratord
-src/wazuh-keystore
+src/openarmor-modulesd
+src/openarmor-auth
+src/openarmor-db
+src/openarmor-agentd
+src/openarmor-agentlessd
+src/openarmor-analysisd
+src/openarmor-authd
+src/openarmor-csyslogd
+src/openarmor-dbd
+src/openarmor-execd
+src/openarmor-logcollector
+src/openarmor-logtest-legacy
+src/openarmor-maild
+src/openarmor-monitord
+src/openarmor-remoted
+src/openarmor-reportd
+src/openarmor-syscheckd
+src/openarmor-integratord
+src/openarmor-keystore
 
 # Active responses
 src/firewall-drop
@@ -84,7 +84,7 @@ src/ip-customblock
 src/restart-wazuh
 src/route-null
 src/kaspersky
-src/wazuh-slack
+src/openarmor-slack
 
 # Windows agent
 src/win32/*.exe

@@ -16,12 +16,12 @@ targets:
     - manager
 
 daemons:
-    - wazuh-apid
-    - wazuh-modulesd
-    - wazuh-analysisd
-    - wazuh-execd
-    - wazuh-db
-    - wazuh-remoted
+    - openarmor-apid
+    - openarmor-modulesd
+    - openarmor-analysisd
+    - openarmor-execd
+    - openarmor-db
+    - openarmor-remoted
 
 os_platform:
     - linux

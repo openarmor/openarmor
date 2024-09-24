@@ -9,7 +9,7 @@
 <group name="wazuh_api,">
 
   <rule id="400" level="0">
-    <decoded_as>wazuh-api</decoded_as>
+    <decoded_as>openarmor-api</decoded_as>
     <description>Rules for Wazuh API events.</description>
   </rule>
 
@@ -131,7 +131,7 @@
   </rule>
 
   <rule id="420" level="0">
-    <decoded_as>wazuh-api-info</decoded_as>
+    <decoded_as>openarmor-api-info</decoded_as>
     <description>Rules for Wazuh API events.</description>
   </rule>
 

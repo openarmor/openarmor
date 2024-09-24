@@ -14,10 +14,10 @@ SSL_DEPRECATED_MESSAGE = 'The `{ssl_protocol}` SSL protocol is deprecated.'
 CACHE_DELETED_MESSAGE = 'The `cache` API configuration option no longer takes effect since {release} and will ' \
                         'be completely removed in the next major release.'
 
-API_MAIN_PROCESS = 'wazuh-apid'
-API_LOCAL_REQUEST_PROCESS = 'wazuh-apid_exec'
-API_AUTHENTICATION_PROCESS = 'wazuh-apid_auth'
-API_SECURITY_EVENTS_PROCESS = 'wazuh-apid_events'
+API_MAIN_PROCESS = 'openarmor-apid'
+API_LOCAL_REQUEST_PROCESS = 'openarmor-apid_exec'
+API_AUTHENTICATION_PROCESS = 'openarmor-apid_auth'
+API_SECURITY_EVENTS_PROCESS = 'openarmor-apid_events'
 
 logger = None
 
@@ -389,10 +389,10 @@ if __name__ == '__main__':
             assign_wazuh_ownership(handler['filename'])
             os.chmod(handler['filename'], 0o660)
 
-    # Configure and create the wazuh-api logger
+    # Configure and create the openarmor-api logger
     add_debug2_log_level_and_error()
     logging.config.dictConfig(uvicorn_params['log_config'])
-    logger = logging.getLogger('wazuh-api')
+    logger = logging.getLogger('openarmor-api')
 
     # Check deprecated options. To delete after expected versions
     if 'use_only_authd' in api_conf:

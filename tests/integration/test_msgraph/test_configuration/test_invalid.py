@@ -21,9 +21,9 @@ targets:
     - agent
 
 daemons:
-    - wazuh-analysisd
-    - wazuh-monitord
-    - wazuh-modulesd
+    - openarmor-analysisd
+    - openarmor-monitord
+    - openarmor-modulesd
 
 os_platform:
     - linux

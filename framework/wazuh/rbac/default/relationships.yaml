@@ -6,7 +6,7 @@ relationships:
       role_ids:
         - administrator
 
-    wazuh-wui:
+    openarmor-wui:
       role_ids:
         - administrator
 

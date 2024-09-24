@@ -35,7 +35,7 @@ clean() {
     exit_code=$1
 
     # Clean the files
-    find "${DOCKERFILE_PATH}" \( -name '*.sh' -o -name '*.tar.gz' -o -name 'wazuh-*' \) ! -name 'docker_builder.sh' -exec rm -rf {} +
+    find "${DOCKERFILE_PATH}" \( -name '*.sh' -o -name '*.tar.gz' -o -name 'openarmor-*' \) ! -name 'docker_builder.sh' -exec rm -rf {} +
 
     exit ${exit_code}
 }
@@ -228,7 +228,7 @@ main() {
             ;;
         "--sources")
             if [ -n "$2" ]; then
-               CUSTOM_CODE_VOL="-v $2:/wazuh-local-src:Z"
+               CUSTOM_CODE_VOL="-v $2:/openarmor-local-src:Z"
                shift 2
             else
                 help 1
@@ -265,7 +265,7 @@ main() {
 
     # Add a default source only if neither the branch nor a custom code volume is defined.
     if [ -z "${CUSTOM_CODE_VOL}" ] && [ -z "${BRANCH}" ]; then
-        CUSTOM_CODE_VOL="-v $WAZUH_PATH:/wazuh-local-src:Z"
+        CUSTOM_CODE_VOL="-v $WAZUH_PATH:/openarmor-local-src:Z"
     fi
 
     build && clean 0

@@ -4,7 +4,6 @@ test_name: GET /cluster/local/config
 marks:
   - cluster
 stages:
-
   - name: Get cluster config
     request:
       verify: False
@@ -38,7 +37,6 @@ marks:
   - cluster
 
 stages:
-
   - name: Get cluster healtcheck
     request:
       verify: False
@@ -47,7 +45,7 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        nodes_list: 'worker1,worker2'
+        nodes_list: "worker1,worker2"
     response:
       status_code: 200
       json:
@@ -86,20 +84,20 @@ stages:
         data:
           affected_items:
             - info:
-                name: 'master-node'
+                name: "master-node"
                 ip: !anystr
                 version: !anystr
                 type: !anystr
                 n_active_agents: !anyint
             - info:
-                name: 'worker1'
+                name: "worker1"
                 ip: !anystr
                 version: !anystr
                 type: !anystr
                 n_active_agents: !anyint
               status: !anything
             - info:
-                name: 'worker2'
+                name: "worker2"
                 ip: !anystr
                 version: !anystr
                 type: !anystr
@@ -113,7 +111,6 @@ stages:
 test_name: GET /cluster/ruleset/synchronization
 
 stages:
-
   - name: Get cluster ruleset synchronization status
     request:
       verify: False
@@ -127,11 +124,11 @@ stages:
         error: 0
         data:
           affected_items:
-            - name: 'master-node'
+            - name: "master-node"
               synced: !anybool
-            - name: 'worker1'
+            - name: "worker1"
               synced: !anybool
-            - name: 'worker2'
+            - name: "worker2"
               synced: !anybool
           failed_items: []
           total_affected_items: 3
@@ -152,7 +149,7 @@ stages:
         error: 0
         data:
           affected_items:
-            - name: 'master-node'
+            - name: "master-node"
               synced: !anybool
           failed_items: []
           total_affected_items: 1
@@ -188,7 +185,6 @@ marks:
   - cluster
 
 stages:
-
   - name: Get cluster node
     request:
       verify: False
@@ -216,7 +212,6 @@ marks:
   - cluster
 
 stages:
-
   - name: Get cluster nodes
     request: &get_cluster_nodes
       verify: False
@@ -408,7 +403,6 @@ stages:
           total_affected_items: 2
           total_failed_items: 0
 
-
   - name: Filters -> invalid type
     request:
       verify: False
@@ -489,7 +483,6 @@ marks:
         - worker2
 
 stages:
-
   - name: Get cluster {node_id}
     request:
       verify: False
@@ -527,7 +520,6 @@ marks:
         - version
 
 stages:
-
   - name: Get cluster nodes with select
     request:
       verify: False
@@ -553,7 +545,6 @@ marks:
   - cluster
 
 stages:
-
   - name: Get cluster status
     request:
       verify: False
@@ -576,7 +567,6 @@ marks:
   - cluster
 
 stages:
-
   - name: Request (master-node)
     request:
       verify: False
@@ -665,7 +655,6 @@ stages:
           total_affected_items: 1
           total_failed_items: 0
 
-
   - name: Filters -> section=syscheck (master)
     request:
       verify: False
@@ -717,7 +706,7 @@ stages:
                 network: !anystr
                 os: !anystr
                 packages: !anystr
-                ports : !anything
+                ports: !anything
                 processes: !anystr
                 scan_on_start: !anystr
           failed_items: []
@@ -797,7 +786,7 @@ stages:
                 network: !anystr
                 os: !anystr
                 packages: !anystr
-                ports : !anything
+                ports: !anything
                 processes: !anystr
                 scan_on_start: !anystr
           failed_items: []
@@ -811,7 +800,6 @@ marks:
   - cluster
 
 stages:
-
   - name: Request cluster validation
     request:
       verify: False
@@ -826,11 +814,11 @@ stages:
         data:
           affected_items:
             - name: master-node
-              status: 'OK'
+              status: "OK"
             - name: worker1
-              status: 'OK'
+              status: "OK"
             - name: worker2
-              status: 'OK'
+              status: "OK"
           failed_items: []
           total_affected_items: 3
           total_failed_items: 0
@@ -842,7 +830,6 @@ marks:
   - cluster
 
 stages:
-
   # GET /cluster/api/config
   - name: Get API configuration for all nodes
     request:
@@ -926,17 +913,17 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        nodes_list: 'worker1,worker2'
+        nodes_list: "worker1,worker2"
     response:
       status_code: 200
       json:
         error: 0
         data:
           affected_items:
-            - node_name: 'worker1'
+            - node_name: "worker1"
               node_api_config:
                 <<: *default_api_config
-            - node_name: 'worker2'
+            - node_name: "worker2"
               node_api_config:
                 <<: *default_api_config
           total_affected_items: 2
@@ -950,7 +937,6 @@ marks:
   - cluster
 
 stages:
-
   - name: Show the config of analisys/global on worker1
     request:
       verify: False
@@ -1230,7 +1216,7 @@ stages:
         data:
           affected_items:
             - reports: !anything
-          failed_items: [ ]
+          failed_items: []
           total_affected_items: 1
           total_failed_items: 0
 
@@ -1248,11 +1234,11 @@ stages:
         data:
           affected_items:
             - remote:
-              - connection: !anystr
-                ipv6: !anystr
-                port: !anystr
-                protocol: !anylist
-                queue_size: !anystr
+                - connection: !anystr
+                  ipv6: !anystr
+                  port: !anystr
+                  protocol: !anylist
+                  queue_size: !anystr
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -1376,10 +1362,10 @@ stages:
           total_affected_items: 1
           total_failed_items: 0
 
-  - name: Show the config of wazuh-db/internal on master
+  - name: Show the config of openarmor-db/internal on master
     request:
       verify: False
-      url: "{protocol:s}://{host:s}:{port:d}/cluster/master-node/configuration/wazuh-db/internal"
+      url: "{protocol:s}://{host:s}:{port:d}/cluster/master-node/configuration/openarmor-db/internal"
       method: GET
       headers:
         Authorization: "Bearer {test_login_token}"
@@ -1398,10 +1384,10 @@ stages:
           total_affected_items: 1
           total_failed_items: 0
 
-  - name: Show the config of wazuh-db/wdb on master
+  - name: Show the config of openarmor-db/wdb on master
     request:
       verify: False
-      url: "{protocol:s}://{host:s}:{port:d}/cluster/master-node/configuration/wazuh-db/wdb"
+      url: "{protocol:s}://{host:s}:{port:d}/cluster/master-node/configuration/openarmor-db/wdb"
       method: GET
       headers:
         Authorization: "Bearer {test_login_token}"
@@ -1464,7 +1450,6 @@ marks:
         - worker2
 
 stages:
-
   - name: Read info {node_id}
     request:
       verify: False
@@ -1502,7 +1487,6 @@ marks:
         - worker2
 
 stages:
-
   - name: Read logs {node_id}
     request: &get_cluster_logs
       verify: False
@@ -1631,12 +1615,12 @@ stages:
           total_affected_items: !anyint
           total_failed_items: 0
 
-  - name: Read logs with filters -> tag=wazuh-analysisd, limit=1 {node_id}
+  - name: Read logs with filters -> tag=openarmor-analysisd, limit=1 {node_id}
     request:
       verify: False
       <<: *get_cluster_logs
       params:
-        tag: wazuh-analysisd
+        tag: openarmor-analysisd
         limit: 1
     response:
       status_code: 200
@@ -1649,12 +1633,12 @@ stages:
           total_affected_items: !anyint
           total_failed_items: 0
 
-  - name: Read logs with filters -> tag=wazuh-syscheckd, limit=2 {node_id}
+  - name: Read logs with filters -> tag=openarmor-syscheckd, limit=2 {node_id}
     request:
       verify: False
       <<: *get_cluster_logs
       params:
-        tag: wazuh-syscheckd
+        tag: openarmor-syscheckd
         limit: 2
     response:
       status_code: 200
@@ -1663,19 +1647,19 @@ stages:
         data:
           affected_items:
             - <<: *cluster_log
-              tag: wazuh-syscheckd
+              tag: openarmor-syscheckd
             - <<: *cluster_log
-              tag: wazuh-syscheckd
+              tag: openarmor-syscheckd
           failed_items: []
           total_affected_items: !anyint
           total_failed_items: 0
 
-  - name: Read logs with filters -> tag=wazuh-unknown-daemon {node_id}
+  - name: Read logs with filters -> tag=openarmor-unknown-daemon {node_id}
     request:
       verify: False
       <<: *get_cluster_logs
       params:
-        tag: wazuh-unknown-daemon
+        tag: openarmor-unknown-daemon
     response:
       status_code: 200
       json:
@@ -1705,19 +1689,19 @@ stages:
           total_affected_items: !anyint
           total_failed_items: 0
 
-  - name: Read logs with filters by query (tag=wazuh-syscheckd, level=info) {node_id}
+  - name: Read logs with filters by query (tag=openarmor-syscheckd, level=info) {node_id}
     request:
       verify: False
       <<: *get_cluster_logs
       params:
-        q: tag=wazuh-syscheckd;level=info
+        q: tag=openarmor-syscheckd;level=info
     response:
       status_code: 200
       verify_response_with:
         - function: tavern_utils:test_expected_value
           extra_kwargs:
             key: "tag"
-            expected_values: "wazuh-syscheckd"
+            expected_values: "openarmor-syscheckd"
         - function: tavern_utils:test_expected_value
           extra_kwargs:
             key: "level"
@@ -1728,13 +1712,13 @@ stages:
       verify: False
       <<: *get_cluster_logs
       params:
-        select: 'timestamp,tag'
+        select: "timestamp,tag"
     response:
       verify_response_with:
         # Check response item keys are the selected keys
         function: tavern_utils:test_select_key_affected_items
         extra_kwargs:
-          select_key: 'timestamp,tag'
+          select_key: "timestamp,tag"
       status_code: 200
       json:
         error: 0
@@ -1748,7 +1732,7 @@ stages:
       verify: False
       <<: *get_cluster_logs
       params:
-        select: 'noexists'
+        select: "noexists"
     response:
       status_code: 400
       json: &invalid_select
@@ -1777,7 +1761,6 @@ marks:
         - worker2
 
 stages:
-
   - name: Read logs summary {node_id}
     request:
       verify: False
@@ -1809,7 +1792,6 @@ marks:
         - worker2
 
 stages:
-
   # GET /cluster/{node_id}/daemons/stats
   - name: Get all daemons' statistics from {node_id}
     request:
@@ -1824,14 +1806,14 @@ stages:
         error: 0
         data:
           affected_items:
-            - name: wazuh-remoted
-            - name: wazuh-analysisd
-            - name: wazuh-db
+            - name: openarmor-remoted
+            - name: openarmor-analysisd
+            - name: openarmor-db
           total_affected_items: 3
           failed_items: []
           total_failed_items: 0
 
-  # GET /cluster/{node_id}/daemons/stats?daemons_list=wazuh-remoted
+  # GET /cluster/{node_id}/daemons/stats?daemons_list=openarmor-remoted
   - name: Get statistics from a single daemon from {node_id}
     request:
       verify: False
@@ -1840,19 +1822,19 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        daemons_list: wazuh-remoted
+        daemons_list: openarmor-remoted
     response:
       status_code: 200
       json:
         error: 0
         data:
           affected_items:
-            - name: wazuh-remoted
+            - name: openarmor-remoted
           total_affected_items: 1
           failed_items: []
           total_failed_items: 0
 
-  # GET /cluster/{node_id}/daemons/stats?daemons_list=wazuh-remoted,wazuh-db,wazuh-analysisd
+  # GET /cluster/{node_id}/daemons/stats?daemons_list=openarmor-remoted,openarmor-db,openarmor-analysisd
   - name: Get statistics from a list of daemons from {node_id}
     request:
       verify: False
@@ -1861,16 +1843,16 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        daemons_list: wazuh-remoted,wazuh-db,wazuh-analysisd
+        daemons_list: openarmor-remoted,openarmor-db,openarmor-analysisd
     response:
       status_code: 200
       json:
         error: 0
         data:
           affected_items:
-            - name: wazuh-remoted
-            - name: wazuh-db
-            - name: wazuh-analysisd
+            - name: openarmor-remoted
+            - name: openarmor-db
+            - name: openarmor-analysisd
           total_affected_items: 3
           failed_items: []
           total_failed_items: 0
@@ -1901,7 +1883,6 @@ marks:
         - worker2
 
 stages:
-
   - name: Cluster stats {node_id} today
     request: &get_cluster_stats
       verify: False
@@ -1944,7 +1925,6 @@ marks:
   - cluster
 
 stages:
-
   - name: Unexisting_node stats
     request:
       verify: False
@@ -1978,7 +1958,6 @@ marks:
         - worker2
 
 stages:
-
   - name: Analysisd stats {node_id}
     request:
       verify: False
@@ -2046,7 +2025,6 @@ marks:
         - worker2
 
 stages:
-
   - name: Hourly node stats {node_id}
     request:
       verify: False
@@ -2079,7 +2057,6 @@ marks:
         - worker2
 
 stages:
-
   - name: Remoted stats {node_id}
     request:
       verify: False
@@ -2118,7 +2095,6 @@ marks:
         - worker2
 
 stages:
-
   - name: Weekly node stats {node_id}
     request:
       verify: False
@@ -2170,7 +2146,6 @@ marks:
         - worker2
 
 stages:
-
   - name: Read status {node_id}
     request:
       verify: False
@@ -2195,7 +2170,6 @@ marks:
   - cluster
 
 stages:
-
   - name: Restart cluster (worker1, worker2)
     request:
       verify: False
@@ -2204,15 +2178,15 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        nodes_list: 'worker1,worker2'
+        nodes_list: "worker1,worker2"
     response:
       status_code: 200
       json:
         error: 0
         data:
           affected_items:
-            - 'worker1'
-            - 'worker2'
+            - "worker1"
+            - "worker2"
           failed_items: []
           total_affected_items: 2
           total_failed_items: 0
@@ -2231,9 +2205,9 @@ stages:
         error: 0
         data:
           affected_items:
-            - 'master-node'
-            - 'worker1'
-            - 'worker2'
+            - "master-node"
+            - "worker1"
+            - "worker2"
           failed_items: []
           total_affected_items: 3
           total_failed_items: 0
@@ -2246,7 +2220,6 @@ marks:
   - cluster
 
 stages:
-
   # PUT /cluster/{node_id}/configuration
   - name: Upload a valid configuration
     request:
@@ -2262,7 +2235,7 @@ stages:
       json:
         data:
           affected_items:
-            - 'worker1'
+            - "worker1"
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -2286,11 +2259,10 @@ stages:
         data:
           affected_items:
             - alerts:
-                log_alert_level: '300'
+                log_alert_level: "300"
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
-
 
   # PUT /cluster/{node_id}/configuration
   - name: Try to upload an invalid configuration
@@ -2312,7 +2284,7 @@ stages:
             - error:
                 code: 1113
               id:
-                - 'worker1'
+                - "worker1"
           total_affected_items: 0
           total_failed_items: 1
 
@@ -2331,12 +2303,12 @@ stages:
       json:
         error: 1
         data:
-          affected_items: [ ]
+          affected_items: []
           failed_items:
             - error:
                 code: 1908
               id:
-                - 'worker1'
+                - "worker1"
           total_affected_items: 0
           total_failed_items: 1
 
@@ -2360,7 +2332,7 @@ stages:
             - error:
                 code: 1113
               id:
-                - 'worker1'
+                - "worker1"
           total_affected_items: 0
           total_failed_items: 1
 
@@ -2382,7 +2354,7 @@ stages:
         data:
           affected_items:
             - alerts:
-                log_alert_level: '300'
+                log_alert_level: "300"
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0

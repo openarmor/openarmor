@@ -1,5 +1,5 @@
 /*
- * Wazuh-DB settings manager
+ * Openarmor-DB settings manager
  * Copyright (C) 2015, Wazuh Inc.
  * Dec 17, 2021.
  *
@@ -22,7 +22,7 @@
 int Read_WazuhDB(const OS_XML *xml, XML_NODE chld_node);
 
 /**
- * @brief This method will read the "backup" configuration block of Wazuh-DB.
+ * @brief This method will read the "backup" configuration block of Openarmor-DB.
  *
  * @param xml The configuration file to read.
  * @param node The "backup" configuration block.

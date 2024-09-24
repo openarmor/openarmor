@@ -20,7 +20,7 @@ from wazuh.core.cluster.control import get_system_nodes
 from wazuh.core.cluster.dapi.dapi import DistributedAPI
 from wazuh.core.results import AffectedItemsWazuhResult
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 
 async def get_cluster_node(pretty: bool = False, wait_for_complete: bool = False) -> ConnexionResponse:

@@ -55,7 +55,7 @@ class WazuhException(Exception):
 
         # Configuration: 1100 - 1199
         1101: {'message': 'Requested component does not exist',
-               'remediation': 'Run `WAZUH_PATH/bin/wazuh-logtest -t` to check your configuration'},
+               'remediation': 'Run `WAZUH_PATH/bin/openarmor-logtest -t` to check your configuration'},
         1102: {'message': 'Invalid section',
                'remediation': f'Please, visit the official documentation (https://documentation.wazuh.com/'
                               f'{DOCU_VERSION}/user-manual/reference/ossec-conf/index.html) '
@@ -431,7 +431,7 @@ class WazuhException(Exception):
         2007: {'message': 'Error retrieving data from Wazuh DB'},
         2008: {'message': 'Corrupted RBAC database',
                'remediation': 'Restart the Wazuh service to restore the RBAC database to default'},
-        2009: {'message': 'Pagination error. Response from wazuh-db was over the maximum socket buffer size'},
+        2009: {'message': 'Pagination error. Response from openarmor-db was over the maximum socket buffer size'},
         2010: {'message': 'The requested read operation did not complete fully'},
 
         # External services
@@ -471,7 +471,7 @@ class WazuhException(Exception):
                'remediation': 'Check the name of the node'},
         3023: {'message': 'Worker node is not connected to master',
                'remediation': 'Check the cluster.log located at WAZUH_HOME/logs/cluster.log file to see if there are '
-                              'connection errors. Restart the `wazuh-manager` service.'},
+                              'connection errors. Restart the `openarmor-manager` service.'},
         3024: "Length of command exceeds limit defined in wazuh.cluster.common.Handler.cmd_len.",
         3025: {'message': "Could not decrypt message",
                'remediation': "Check the cluster key is correct in the worker's "
@@ -483,15 +483,15 @@ class WazuhException(Exception):
         3028: {'message': "Worker node ID already exists",
                'remediation': f"Check and fix [worker names](https://documentation.wazuh.com/{DOCU_VERSION}/"
                               f"user-manual/reference/ossec-conf/cluster.html#node-name)"
-                              " and restart the `wazuh-manager` service."},
+                              " and restart the `openarmor-manager` service."},
         3029: {"message": "Connected worker with same name as the master",
                "remediation": f"Check and fix the [worker name](https://documentation.wazuh.com/{DOCU_VERSION}/"
                               f"user-manual/reference/ossec-conf/cluster.html#node-name)"
-                              " and restart the `wazuh-manager` service in the node"},
+                              " and restart the `openarmor-manager` service in the node"},
         3030: {'message': 'Worker does not belong to the same cluster',
                'remediation': f"Change the [cluster name](https://documentation.wazuh.com/{DOCU_VERSION}/"
                               f"user-manual/reference/ossec-conf/cluster.html#name)"
-                              " in the worker configuration to match the master's and restart the `wazuh-manager` "
+                              " in the worker configuration to match the master's and restart the `openarmor-manager` "
                               "service"},
         3031: {'message': "Worker and master versions are not the same",
                'remediation': f"[Update](https://documentation.wazuh.com/{DOCU_VERSION}/upgrade-guide/index.html)"

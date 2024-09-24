@@ -12,7 +12,7 @@ help="segítség"
 moreinfo="További információk: "
 starting="Wazuh Indítása"
 systemis="A rendszer"
-modifiedinit="Init script módosítva, hogy bootoláskor automatikusan indítsa az Wazuh-et."
+modifiedinit="Init script módosítva, hogy bootoláskor automatikusan indítsa az Openarmor-et."
 noboot="Ismeretlen rendszer. Nincs init script hozzáadva."
 
 # Part 1
@@ -91,7 +91,7 @@ yesrunauthd="Auth szolgáltatás futtatása"
 
 # Part 4
 installing="A rendszer telepítése"
-startwazuh="Szeretné elindítani a Wazuh-ot a telepítés után?"
+startwazuh="Szeretné elindítani a Openarmor-ot a telepítés után?"
 nowazuhstart="A Wazuh nem indul el a telepítés végén."
 yeswazuhstart="A Wazuh a telepítés végén kezdődik."
 runningmake="A Make fájl futtatása"

@@ -7,7 +7,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: This module verifies the correct behavior of the enrollment daemon 'wazuh-authd' under different messages.
+brief: This module verifies the correct behavior of the enrollment daemon 'openarmor-authd' under different messages.
 
 components:
     - authd
@@ -16,9 +16,9 @@ targets:
     - manager
 
 daemons:
-    - wazuh-authd
-    - wazuh-db
-    - wazuh-modulesd
+    - openarmor-authd
+    - openarmor-db
+    - openarmor-modulesd
 
 os_platform:
     - linux

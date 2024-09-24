@@ -64,12 +64,12 @@ int mitre_load() {
     /* Connect to wdb */
     sock = wdbc_connect_with_attempts(5);
     if (sock < 0) {
-        merror("Unable to connect to Wazuh-DB for Mitre matrix information.");
+        merror("Unable to connect to Openarmor-DB for Mitre matrix information.");
         result = -1;
         goto end;
     }
 
-    /* Getting technique ID and name from Mitre's database in Wazuh-DB  */
+    /* Getting technique ID and name from Mitre's database in Openarmor-DB  */
     snprintf(wazuhdb_query, OS_SIZE_6144, SQL_GET_ALL_TECHNIQUES, MAX_TECHNIQUES_REQUEST, offset);
     techniques_json = wdbc_query_parse_json(&sock, wazuhdb_query, response, OS_MAXSTR);
 
@@ -119,7 +119,7 @@ int mitre_load() {
             /* Create tactics list */
             tactics_list = OSList_Create();
 
-            /* Getting tactics from Mitre's database in Wazuh-DB */
+            /* Getting tactics from Mitre's database in Openarmor-DB */
             snprintf(wazuhdb_query, OS_SIZE_6144, SQL_GET_ALL_TECHNIQUE_PHASES, tech_id);
             phases_json = wdbc_query_parse_json(&sock, wazuhdb_query, response, OS_MAXSTR);
 
@@ -145,7 +145,7 @@ int mitre_load() {
                 }
                 tactic_id = tactic_id_json->valuestring;
 
-                /* Getting tactic ID and name from Mitre's database in Wazuh-DB  */
+                /* Getting tactic ID and name from Mitre's database in Openarmor-DB  */
                 snprintf(wazuhdb_query, OS_SIZE_6144, SQL_GET_TACTIC_INFORMATION, tactic_id);
                 tactic_json = wdbc_query_parse_json(&sock, wazuhdb_query, response, OS_MAXSTR);
 
@@ -219,7 +219,7 @@ int mitre_load() {
 
         offset += MAX_TECHNIQUES_REQUEST;
 
-        /* Getting technique ID and name from Mitre's database in Wazuh-DB  */
+        /* Getting technique ID and name from Mitre's database in Openarmor-DB  */
         snprintf(wazuhdb_query, OS_SIZE_6144, SQL_GET_ALL_TECHNIQUES, MAX_TECHNIQUES_REQUEST, offset);
         techniques_json = wdbc_query_parse_json(&sock, wazuhdb_query, response, OS_MAXSTR);
 

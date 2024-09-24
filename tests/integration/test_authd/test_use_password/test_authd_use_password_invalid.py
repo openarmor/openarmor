@@ -19,7 +19,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-authd
+    - openarmor-authd
 
 os_platform:
     - linux
@@ -104,7 +104,7 @@ def test_authd_use_password_invalid(test_configuration, test_metadata, set_wazuh
 
     assertions:
         - Error log 'Empty password provided.' is raised in ossec.log.
-        - wazuh-manager.service must not be able to restart.
+        - openarmor-manager.service must not be able to restart.
 
     input_description:
         ./data/configuration_template/config_authd_use_password_invalid.yaml: Wazuh config needed for the tests.
@@ -118,7 +118,7 @@ def test_authd_use_password_invalid(test_configuration, test_metadata, set_wazuh
     if log == 'Invalid password provided.':
         pytest.xfail(reason="No password validation in authd.pass - Issue wazuh/wazuh#16282.")
 
-    # Verify wazuh-manager fails at restart.
+    # Verify openarmor-manager fails at restart.
     with pytest.raises(ValueError):
         control_service('restart')
 

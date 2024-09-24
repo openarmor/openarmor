@@ -1,5 +1,5 @@
-audit-wazuh-w:write
-audit-wazuh-r:read
-audit-wazuh-a:attribute
-audit-wazuh-x:execute
-audit-wazuh-c:command
+audit-openarmor-w:write
+audit-openarmor-r:read
+audit-openarmor-a:attribute
+audit-openarmor-x:execute
+audit-openarmor-c:command

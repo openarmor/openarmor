@@ -41,7 +41,7 @@ for sh_file in /tmp_volume/configuration_files/*.sh; do
 done
 
 echo "" > /var/ossec/logs/api.log
-/var/ossec/bin/wazuh-control start
+/var/ossec/bin/openarmor-control start
 
 # Master-only configuration
 if [ "$3" == "master" ]; then

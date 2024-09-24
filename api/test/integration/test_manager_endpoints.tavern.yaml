@@ -2,7 +2,6 @@
 test_name: GET /manager/status
 
 stages:
-
   # GET /manager/status
   - name: Request
     request:
@@ -17,23 +16,23 @@ stages:
         error: 0
         data:
           affected_items:
-            - wazuh-agentlessd: !anystr
-              wazuh-analysisd: !anystr
-              wazuh-authd: !anystr
-              wazuh-csyslogd: !anystr
-              wazuh-dbd: !anystr
-              wazuh-execd: !anystr
-              wazuh-integratord: !anystr
-              wazuh-logcollector: !anystr
-              wazuh-maild: !anystr
-              wazuh-monitord: !anystr
-              wazuh-remoted: !anystr
-              wazuh-reportd: !anystr
-              wazuh-syscheckd: !anystr
-              wazuh-apid: !anystr
-              wazuh-clusterd: !anystr
-              wazuh-db: !anystr
-              wazuh-modulesd: !anystr
+            - openarmor-agentlessd: !anystr
+              openarmor-analysisd: !anystr
+              openarmor-authd: !anystr
+              openarmor-csyslogd: !anystr
+              openarmor-dbd: !anystr
+              openarmor-execd: !anystr
+              openarmor-integratord: !anystr
+              openarmor-logcollector: !anystr
+              openarmor-maild: !anystr
+              openarmor-monitord: !anystr
+              openarmor-remoted: !anystr
+              openarmor-reportd: !anystr
+              openarmor-syscheckd: !anystr
+              openarmor-apid: !anystr
+              openarmor-clusterd: !anystr
+              openarmor-db: !anystr
+              openarmor-modulesd: !anystr
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -42,7 +41,6 @@ stages:
 test_name: GET /manager/info
 
 stages:
-
   # GET /manager/info
   - name: Request
     request:
@@ -50,7 +48,7 @@ stages:
       url: "{protocol:s}://{host:s}:{port:d}/manager/info"
       method: GET
       headers:
-          Authorization: "Bearer {test_login_token}"
+        Authorization: "Bearer {test_login_token}"
     response:
       status_code: 200
       json:
@@ -72,28 +70,27 @@ stages:
 test_name: GET /manager/configuration?{section}
 
 marks:
- - parametrize:
-     key: section
-     vals:
-       - alerts
-       - auth
-       - cis-cat
-       - cluster
-       - command
-       - global
-       - localfile
-       - osquery
-       - remote
-       - rootcheck
-       - ruleset
-       - sca
-       - syscheck
-       - syscollector
-       - vulnerability-detection
-       - indexer
+  - parametrize:
+      key: section
+      vals:
+        - alerts
+        - auth
+        - cis-cat
+        - cluster
+        - command
+        - global
+        - localfile
+        - osquery
+        - remote
+        - rootcheck
+        - ruleset
+        - sca
+        - syscheck
+        - syscollector
+        - vulnerability-detection
+        - indexer
 
 stages:
-
   # GET /manager/configuration
   - name: Request all sections
     request:
@@ -101,7 +98,7 @@ stages:
       url: "{protocol:s}://{host:s}:{port:d}/manager/configuration"
       method: GET
       headers:
-          Authorization: "Bearer {test_login_token}"
+        Authorization: "Bearer {test_login_token}"
       params:
         section: "{section}"
     response:
@@ -131,7 +128,6 @@ stages:
 test_name: GET /manager/configuration
 
 stages:
-
   # GET /manager/configuration
   - name: Request
     request:
@@ -139,7 +135,7 @@ stages:
       url: "{protocol:s}://{host:s}:{port:d}/manager/configuration"
       method: GET
       headers:
-          Authorization: "Bearer {test_login_token}"
+        Authorization: "Bearer {test_login_token}"
     response:
       status_code: 200
       json:
@@ -166,7 +162,6 @@ stages:
           total_affected_items: 1
           total_failed_items: 0
 
-
   # GET /manager/configuration
   - name: Request section and field (1)
     request:
@@ -174,7 +169,7 @@ stages:
       url: "{protocol:s}://{host:s}:{port:d}/manager/configuration"
       method: GET
       headers:
-          Authorization: "Bearer {test_login_token}"
+        Authorization: "Bearer {test_login_token}"
       params:
         section: rootcheck
         field: disabled
@@ -197,7 +192,7 @@ stages:
       url: "{protocol:s}://{host:s}:{port:d}/manager/configuration"
       method: GET
       headers:
-          Authorization: "Bearer {test_login_token}"
+        Authorization: "Bearer {test_login_token}"
       params:
         section: syscheck
         field: frequency
@@ -220,7 +215,7 @@ stages:
       url: "{protocol:s}://{host:s}:{port:d}/manager/configuration"
       method: GET
       headers:
-          Authorization: "Bearer {test_login_token}"
+        Authorization: "Bearer {test_login_token}"
       params:
         section: invalid_section
     response:
@@ -233,7 +228,7 @@ stages:
       url: "{protocol:s}://{host:s}:{port:d}/manager/configuration"
       method: GET
       headers:
-          Authorization: "Bearer {test_login_token}"
+        Authorization: "Bearer {test_login_token}"
       params:
         section: syscheck
         field: invalid_field
@@ -257,7 +252,7 @@ stages:
       url: "{protocol:s}://{host:s}:{port:d}/manager/configuration"
       method: GET
       headers:
-          Authorization: "Bearer {test_login_token}"
+        Authorization: "Bearer {test_login_token}"
       params:
         section: ruleset
         field: decoder_dir
@@ -273,7 +268,7 @@ stages:
       url: "{protocol:s}://{host:s}:{port:d}/manager/configuration"
       method: GET
       headers:
-          Authorization: "Bearer {test_login_token}"
+        Authorization: "Bearer {test_login_token}"
       params:
         section: ruleset
         field: rule_dir
@@ -287,7 +282,6 @@ stages:
 test_name: GET /manager/daemons/stats
 
 stages:
-
   # GET /manager/daemons/stats
   - name: Get all daemons' statistics
     request:
@@ -302,14 +296,14 @@ stages:
         error: 0
         data:
           affected_items:
-            - name: wazuh-remoted
-            - name: wazuh-analysisd
-            - name: wazuh-db
+            - name: openarmor-remoted
+            - name: openarmor-analysisd
+            - name: openarmor-db
           total_affected_items: 3
           failed_items: []
           total_failed_items: 0
 
-  # GET /manager/daemons/stats?daemons_list=wazuh-remoted
+  # GET /manager/daemons/stats?daemons_list=openarmor-remoted
   - name: Get statistics from a single daemon
     request:
       verify: False
@@ -318,19 +312,19 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        daemons_list: wazuh-remoted
+        daemons_list: openarmor-remoted
     response:
       status_code: 200
       json:
         error: 0
         data:
           affected_items:
-            - name: wazuh-remoted
+            - name: openarmor-remoted
           total_affected_items: 1
           failed_items: []
           total_failed_items: 0
 
-  # GET /manager/daemons/stats?daemons_list=wazuh-remoted,wazuh-db,wazuh-analysisd
+  # GET /manager/daemons/stats?daemons_list=openarmor-remoted,openarmor-db,openarmor-analysisd
   - name: Get statistics from a list of daemons
     request:
       verify: False
@@ -339,16 +333,16 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        daemons_list: wazuh-remoted,wazuh-db,wazuh-analysisd
+        daemons_list: openarmor-remoted,openarmor-db,openarmor-analysisd
     response:
       status_code: 200
       json:
         error: 0
         data:
           affected_items:
-            - name: wazuh-remoted
-            - name: wazuh-db
-            - name: wazuh-analysisd
+            - name: openarmor-remoted
+            - name: openarmor-db
+            - name: openarmor-analysisd
           total_affected_items: 3
           failed_items: []
           total_failed_items: 0
@@ -370,7 +364,6 @@ stages:
 test_name: GET /manager/stats
 
 stages:
-
   # GET /manager/stats
   - name: Manager stats
     request:
@@ -380,9 +373,9 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
     response:
-        status_code: 400
-        json:
-          error: 1308
+      status_code: 400
+      json:
+        error: 1308
 
   - name: Manager stats
     request:
@@ -428,7 +421,6 @@ stages:
 test_name: GET /manager/stats/hourly
 
 stages:
-
   # GET /manager/stats/hourly
   - name: Hourly stats
     request:
@@ -438,21 +430,20 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
     response:
-        status_code: 200
-        json:
-          error: 0
-          data:
-            affected_items:
-              - averages: !anything
-                interactions: !anyint
-            total_affected_items: 1
-            failed_items: []
-            total_failed_items: 0
+      status_code: 200
+      json:
+        error: 0
+        data:
+          affected_items:
+            - averages: !anything
+              interactions: !anyint
+          total_affected_items: 1
+          failed_items: []
+          total_failed_items: 0
 ---
 test_name: GET /manager/stats/weekly
 
 stages:
-
   # GET /manager/stats/weekly
   - name: Weekly stats
     request:
@@ -462,40 +453,39 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
     response:
-        status_code: 200
-        json:
-          error: 0
-          data:
-            affected_items:
-              - Sun:
-                    hours: !anything
-                    interactions: !anyint
-              - Mon:
-                  hours: !anything
-                  interactions: !anyint
-              - Tue:
-                  hours: !anything
-                  interactions: !anyint
-              - Wed:
-                  hours: !anything
-                  interactions: !anyint
-              - Thu:
-                  hours: !anything
-                  interactions: !anyint
-              - Fri:
-                  hours: !anything
-                  interactions: !anyint
-              - Sat:
-                  hours: !anything
-                  interactions: !anyint
-            total_affected_items: 7
-            failed_items: []
-            total_failed_items: 0
+      status_code: 200
+      json:
+        error: 0
+        data:
+          affected_items:
+            - Sun:
+                hours: !anything
+                interactions: !anyint
+            - Mon:
+                hours: !anything
+                interactions: !anyint
+            - Tue:
+                hours: !anything
+                interactions: !anyint
+            - Wed:
+                hours: !anything
+                interactions: !anyint
+            - Thu:
+                hours: !anything
+                interactions: !anyint
+            - Fri:
+                hours: !anything
+                interactions: !anyint
+            - Sat:
+                hours: !anything
+                interactions: !anyint
+          total_affected_items: 7
+          failed_items: []
+          total_failed_items: 0
 ---
 test_name: GET /manager/stats/analysisd
 
 stages:
-
   # GET /manager/stats/analysisd
   - name: Analysisd stats
     request:
@@ -505,56 +495,55 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
     response:
-        status_code: 200
-        json:
-          error: 0
-          data:
-            affected_items:
-              - total_events_decoded: !anyfloat
-                syscheck_events_decoded: !anyfloat
-                syscollector_events_decoded: !anyfloat
-                rootcheck_events_decoded: !anyfloat
-                sca_events_decoded: !anyfloat
-                winevt_events_decoded: !anyfloat
-                other_events_decoded: !anyfloat
-                events_processed: !anyfloat
-                events_received: !anyfloat
-                events_dropped: !anyfloat
-                alerts_written: !anyfloat
-                firewall_written: !anyfloat
-                fts_written: !anyfloat
-                syscheck_queue_usage: !anyfloat
-                syscheck_queue_size: !anyfloat
-                syscollector_queue_usage: !anyfloat
-                syscollector_queue_size: !anyfloat
-                rootcheck_queue_usage: !anyfloat
-                rootcheck_queue_size: !anyfloat
-                sca_queue_usage: !anyfloat
-                sca_queue_size: !anyfloat
-                hostinfo_queue_usage: !anyfloat
-                hostinfo_queue_size: !anyfloat
-                winevt_queue_usage: !anyfloat
-                winevt_queue_size: !anyfloat
-                event_queue_usage: !anyfloat
-                event_queue_size: !anyfloat
-                rule_matching_queue_usage: !anyfloat
-                rule_matching_queue_size: !anyfloat
-                alerts_queue_usage: !anyfloat
-                alerts_queue_size: !anyfloat
-                firewall_queue_usage: !anyfloat
-                firewall_queue_size: !anyfloat
-                statistical_queue_usage: !anyfloat
-                statistical_queue_size: !anyfloat
-                archives_queue_usage: !anyfloat
-                archives_queue_size: !anyfloat
-            total_affected_items: 1
-            failed_items: []
-            total_failed_items: 0
+      status_code: 200
+      json:
+        error: 0
+        data:
+          affected_items:
+            - total_events_decoded: !anyfloat
+              syscheck_events_decoded: !anyfloat
+              syscollector_events_decoded: !anyfloat
+              rootcheck_events_decoded: !anyfloat
+              sca_events_decoded: !anyfloat
+              winevt_events_decoded: !anyfloat
+              other_events_decoded: !anyfloat
+              events_processed: !anyfloat
+              events_received: !anyfloat
+              events_dropped: !anyfloat
+              alerts_written: !anyfloat
+              firewall_written: !anyfloat
+              fts_written: !anyfloat
+              syscheck_queue_usage: !anyfloat
+              syscheck_queue_size: !anyfloat
+              syscollector_queue_usage: !anyfloat
+              syscollector_queue_size: !anyfloat
+              rootcheck_queue_usage: !anyfloat
+              rootcheck_queue_size: !anyfloat
+              sca_queue_usage: !anyfloat
+              sca_queue_size: !anyfloat
+              hostinfo_queue_usage: !anyfloat
+              hostinfo_queue_size: !anyfloat
+              winevt_queue_usage: !anyfloat
+              winevt_queue_size: !anyfloat
+              event_queue_usage: !anyfloat
+              event_queue_size: !anyfloat
+              rule_matching_queue_usage: !anyfloat
+              rule_matching_queue_size: !anyfloat
+              alerts_queue_usage: !anyfloat
+              alerts_queue_size: !anyfloat
+              firewall_queue_usage: !anyfloat
+              firewall_queue_size: !anyfloat
+              statistical_queue_usage: !anyfloat
+              statistical_queue_size: !anyfloat
+              archives_queue_usage: !anyfloat
+              archives_queue_size: !anyfloat
+          total_affected_items: 1
+          failed_items: []
+          total_failed_items: 0
 ---
 test_name: GET /manager/stats/remoted
 
 stages:
-
   # GET /manager/stats/remoted
   - name: Remoted stats
     request:
@@ -564,28 +553,27 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
     response:
-        status_code: 200
-        json:
-          error: 0
-          data:
-            affected_items:
-              - queue_size: !anyfloat
-                total_queue_size: !anyfloat
-                tcp_sessions: !anyfloat
-                evt_count: !anyfloat
-                ctrl_msg_count: !anyfloat
-                discarded_count: !anyfloat
-                sent_bytes: !anyfloat
-                recv_bytes: !anyfloat
-            total_affected_items: 1
-            failed_items: []
-            total_failed_items: 0
+      status_code: 200
+      json:
+        error: 0
+        data:
+          affected_items:
+            - queue_size: !anyfloat
+              total_queue_size: !anyfloat
+              tcp_sessions: !anyfloat
+              evt_count: !anyfloat
+              ctrl_msg_count: !anyfloat
+              discarded_count: !anyfloat
+              sent_bytes: !anyfloat
+              recv_bytes: !anyfloat
+          total_affected_items: 1
+          failed_items: []
+          total_failed_items: 0
 
 ---
 test_name: GET /manager/logs
 
 stages:
-
   # GET /manager/logs
   - name: Request
     request:
@@ -595,14 +583,14 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
     response:
-        status_code: 200
-        json:
-          error: 0
-          data:
-            affected_items: !anything
-            failed_items: []
-            total_affected_items: !anyint
-            total_failed_items: 0
+      status_code: 200
+      json:
+        error: 0
+        data:
+          affected_items: !anything
+          failed_items: []
+          total_affected_items: !anyint
+          total_failed_items: 0
 
   # GET /manager/logs
   - name: Filters -> limit=4
@@ -615,22 +603,22 @@ stages:
       params:
         limit: 4
     response:
-        status_code: 200
-        json:
-          error: 0
-          data:
-            affected_items:
-              - &manager_log
-                description: !anystr
-                level: !anystr
-                tag: !anystr
-                timestamp: !anystr
-              - <<: *manager_log
-              - <<: *manager_log
-              - <<: *manager_log
-            failed_items: []
-            total_affected_items: !anyint
-            total_failed_items: 0
+      status_code: 200
+      json:
+        error: 0
+        data:
+          affected_items:
+            - &manager_log
+              description: !anystr
+              level: !anystr
+              tag: !anystr
+              timestamp: !anystr
+            - <<: *manager_log
+            - <<: *manager_log
+            - <<: *manager_log
+          failed_items: []
+          total_affected_items: !anyint
+          total_failed_items: 0
 
   # GET /manager/logs
   - name: Filters -> limit=2, sort=-level
@@ -663,17 +651,17 @@ stages:
         limit: 3
         offset: 3
     response:
-        status_code: 200
-        json:
-          error: 0
-          data:
-            affected_items:
-              - <<: *manager_log
-              - <<: *manager_log
-              - <<: *manager_log
-            failed_items: []
-            total_affected_items: !anyint
-            total_failed_items: 0
+      status_code: 200
+      json:
+        error: 0
+        data:
+          affected_items:
+            - <<: *manager_log
+            - <<: *manager_log
+            - <<: *manager_log
+          failed_items: []
+          total_affected_items: !anyint
+          total_failed_items: 0
 
   # GET /manager/logs
   - name: Filters -> offset=3, level=info, limit=4
@@ -688,21 +676,21 @@ stages:
         offset: 3
         level: info
     response:
-        status_code: 200
-        json:
-          error: 0
-          data:
-            affected_items:
-              - <<: *manager_log
-              - <<: *manager_log
-              - <<: *manager_log
-              - <<: *manager_log
-            failed_items: []
-            total_affected_items: !anyint
-            total_failed_items: 0
+      status_code: 200
+      json:
+        error: 0
+        data:
+          affected_items:
+            - <<: *manager_log
+            - <<: *manager_log
+            - <<: *manager_log
+            - <<: *manager_log
+          failed_items: []
+          total_affected_items: !anyint
+          total_failed_items: 0
 
   # GET /manager/logs
-  - name: Filters -> tag=wazuh-analysisd, limit=1
+  - name: Filters -> tag=openarmor-analysisd, limit=1
     request:
       verify: False
       url: "{protocol:s}://{host:s}:{port:d}/manager/logs"
@@ -710,21 +698,21 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        tag: wazuh-analysisd
+        tag: openarmor-analysisd
         limit: 1
     response:
-        status_code: 200
-        json:
-          error: 0
-          data:
-            affected_items:
-              - <<: *manager_log
-            failed_items: []
-            total_affected_items: !anyint
-            total_failed_items: 0
+      status_code: 200
+      json:
+        error: 0
+        data:
+          affected_items:
+            - <<: *manager_log
+          failed_items: []
+          total_affected_items: !anyint
+          total_failed_items: 0
 
   # GET /manager/logs
-  - name: Filters -> tag=wazuh-syscheckd, limit=1
+  - name: Filters -> tag=openarmor-syscheckd, limit=1
     request:
       verify: False
       url: "{protocol:s}://{host:s}:{port:d}/manager/logs"
@@ -732,20 +720,20 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        tag: wazuh-syscheckd
+        tag: openarmor-syscheckd
         limit: 1
     response:
-        status_code: 200
-        json:
-          error: 0
-          data:
-            affected_items:
-              - <<: *manager_log
-            failed_items: []
-            total_affected_items: !anyint
-            total_failed_items: 0
+      status_code: 200
+      json:
+        error: 0
+        data:
+          affected_items:
+            - <<: *manager_log
+          failed_items: []
+          total_affected_items: !anyint
+          total_failed_items: 0
 
-  - name: Filters by query (tag=wazuh-syscheckd, level=info)
+  - name: Filters by query (tag=openarmor-syscheckd, level=info)
     request:
       verify: False
       url: "{protocol:s}://{host:s}:{port:d}/manager/logs"
@@ -753,14 +741,14 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        q: tag=wazuh-syscheckd;level=info
+        q: tag=openarmor-syscheckd;level=info
     response:
       status_code: 200
       verify_response_with:
         - function: tavern_utils:test_expected_value
           extra_kwargs:
             key: "tag"
-            expected_values: "wazuh-syscheckd"
+            expected_values: "openarmor-syscheckd"
         - function: tavern_utils:test_expected_value
           extra_kwargs:
             key: "level"
@@ -793,7 +781,7 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        tag: wazuh-unknown-daemon
+        tag: openarmor-unknown-daemon
     response:
       status_code: 200
       json:
@@ -812,13 +800,13 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        select: 'timestamp,tag'
+        select: "timestamp,tag"
     response:
       verify_response_with:
         # Check response item keys are the selected keys
         function: tavern_utils:test_select_key_affected_items
         extra_kwargs:
-          select_key: 'timestamp,tag'
+          select_key: "timestamp,tag"
       status_code: 200
       json:
         error: 0
@@ -835,7 +823,7 @@ stages:
       headers:
         Authorization: "Bearer {test_login_token}"
       params:
-        select: 'noexists'
+        select: "noexists"
     response:
       status_code: 400
       json: &invalid_select
@@ -859,7 +847,6 @@ stages:
 test_name: GET /manager/logs/summary
 
 stages:
-
   # GET /manager/logs/summary
   - name: Request
     request:
@@ -882,7 +869,6 @@ stages:
 test_name: GET /manager/api/config
 
 stages:
-
   # GET /manager/api/config
   - name: Get API configuration
     request:
@@ -944,10 +930,10 @@ stages:
                   indexer:
                     allow: !anybool
                   integrations:
-                       virustotal:
-                         public_key:
-                           allow: !anybool
-                           minimum_quota: !anyint
+                    virustotal:
+                      public_key:
+                        allow: !anybool
+                        minimum_quota: !anyint
           total_affected_items: 1
           total_failed_items: 0
           failed_items: []
@@ -956,7 +942,6 @@ stages:
 test_name: GET /manager/configuration/validation (OK)
 
 stages:
-
   # GET /manager/configuration/validation
   - name: Request validation
     request:
@@ -972,7 +957,7 @@ stages:
         data:
           affected_items:
             - name: !anystr
-              status: 'OK'
+              status: "OK"
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -981,7 +966,6 @@ stages:
 test_name: GET /manager/configuration/{component}/{configuration}
 
 stages:
-
   - name: Show the config of analysis/global in the manager
     request:
       verify: False
@@ -1194,7 +1178,7 @@ stages:
         data:
           affected_items:
             - reports: !anything
-          failed_items: [ ]
+          failed_items: []
           total_affected_items: 1
           total_failed_items: 0
 
@@ -1288,10 +1272,10 @@ stages:
           total_affected_items: 1
           total_failed_items: 0
 
-  - name: Show the config of wazuh-db/internal in the manager
+  - name: Show the config of openarmor-db/internal in the manager
     request:
       verify: False
-      url: "{protocol:s}://{host:s}:{port:d}/manager/configuration/wazuh-db/internal"
+      url: "{protocol:s}://{host:s}:{port:d}/manager/configuration/openarmor-db/internal"
       method: GET
       headers:
         Authorization: "Bearer {test_login_token}"
@@ -1310,10 +1294,10 @@ stages:
           total_affected_items: 1
           total_failed_items: 0
 
-  - name: Show the config of wazuh-db/wdb in the manager
+  - name: Show the config of openarmor-db/wdb in the manager
     request:
       verify: False
-      url: "{protocol:s}://{host:s}:{port:d}/manager/configuration/wazuh-db/wdb"
+      url: "{protocol:s}://{host:s}:{port:d}/manager/configuration/openarmor-db/wdb"
       method: GET
       headers:
         Authorization: "Bearer {test_login_token}"
@@ -1367,7 +1351,6 @@ stages:
 test_name: PUT /manager/configuration
 
 stages:
-
   # PUT /manager/configuration
   - name: Upload a valid configuration
     request:
@@ -1383,7 +1366,7 @@ stages:
       json:
         data:
           affected_items:
-            - 'manager'
+            - "manager"
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -1407,11 +1390,10 @@ stages:
         data:
           affected_items:
             - alerts:
-                log_alert_level: '300'
+                log_alert_level: "300"
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
-
 
   # PUT /manager/configuration
   - name: Try to upload an invalid configuration
@@ -1433,7 +1415,7 @@ stages:
             - error:
                 code: 1113
               id:
-                - 'manager'
+                - "manager"
           total_affected_items: 0
           total_failed_items: 1
 
@@ -1457,7 +1439,7 @@ stages:
             - error:
                 code: 1113
               id:
-                - 'manager'
+                - "manager"
           total_affected_items: 0
           total_failed_items: 1
 
@@ -1480,7 +1462,7 @@ stages:
             - error:
                 code: 1908
               id:
-                - 'manager'
+                - "manager"
           total_affected_items: 0
           total_failed_items: 1
 
@@ -1517,7 +1499,7 @@ stages:
         data:
           affected_items:
             - alerts:
-                log_alert_level: '300'
+                log_alert_level: "300"
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -1526,7 +1508,6 @@ stages:
 test_name: GET /manager/version/check with update_check disabled
 
 stages:
-
   - name: Get wazuh version
     request:
       verify: False
@@ -1588,7 +1569,7 @@ stages:
       save:
         json:
           wazuh_version: data.api_version
-  
+
   - name: Enable update check
     request:
       verify: False
@@ -1603,7 +1584,7 @@ stages:
       json:
         data:
           affected_items:
-            - 'manager'
+            - "manager"
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -1668,7 +1649,6 @@ stages:
 test_name: GET /manager/version/check with update_check service error
 
 stages:
-
   - name: Set an invalid CTI url
     request:
       verify: False
@@ -1683,7 +1663,7 @@ stages:
       json:
         data:
           affected_items:
-            - 'manager'
+            - "manager"
           failed_items: []
           total_affected_items: 1
           total_failed_items: 0
@@ -1738,7 +1718,6 @@ stages:
 test_name: PUT /manager/restart
 
 stages:
-
   # PUT /manager/restart
   - name: Restart manager
     request:

@@ -12,7 +12,7 @@
 %endif
 
 Summary:     Wazuh helps you to gain security visibility into your infrastructure by monitoring hosts at an operating system and application level. It provides the following capabilities: log analysis, file integrity monitoring, intrusions detection and policy and compliance monitoring
-Name:        wazuh-manager
+Name:        openarmor-manager
 Version:     %{_version}
 Release:     %{_release}
 License:     GPL
@@ -24,8 +24,8 @@ Vendor:      Wazuh, Inc <info@wazuh.com>
 Packager:    Wazuh, Inc <info@wazuh.com>
 Requires(pre):    /usr/sbin/groupadd /usr/sbin/useradd
 Requires(postun): /usr/sbin/groupdel /usr/sbin/userdel
-Conflicts:   ossec-hids ossec-hids-agent wazuh-agent wazuh-local
-Obsoletes: wazuh-api < 4.0.0
+Conflicts:   ossec-hids ossec-hids-agent openarmor-agent openarmor-local
+Obsoletes: openarmor-api < 4.0.0
 AutoReqProv: no
 
 Requires: coreutils
@@ -96,10 +96,10 @@ mkdir -p ${RPM_BUILD_ROOT}%{_localstatedir}/.ssh
 # Copy the installed files into RPM_BUILD_ROOT directory
 cp -pr %{_localstatedir}/* ${RPM_BUILD_ROOT}%{_localstatedir}/
 sed -i "s:WAZUH_HOME_TMP:%{_localstatedir}:g" src/init/templates/ossec-hids-rh.init
-install -m 0755 src/init/templates/ossec-hids-rh.init ${RPM_BUILD_ROOT}%{_initrddir}/wazuh-manager
+install -m 0755 src/init/templates/ossec-hids-rh.init ${RPM_BUILD_ROOT}%{_initrddir}/openarmor-manager
 mkdir -p ${RPM_BUILD_ROOT}/usr/lib/systemd/system/
-sed -i "s:WAZUH_HOME_TMP:%{_localstatedir}:g" src/init/templates/wazuh-manager.service
-install -m 0644 src/init/templates/wazuh-manager.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system/
+sed -i "s:WAZUH_HOME_TMP:%{_localstatedir}:g" src/init/templates/openarmor-manager.service
+install -m 0644 src/init/templates/openarmor-manager.service ${RPM_BUILD_ROOT}/usr/lib/systemd/system/
 
 # Clean the preinstalled configuration assesment files
 rm -f ${RPM_BUILD_ROOT}%{_localstatedir}/ruleset/sca/*
@@ -213,21 +213,21 @@ fi
 
 # Stop the services to upgrade the package
 if [ $1 = 2 ]; then
-  if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet wazuh-manager > /dev/null 2>&1; then
-    systemctl stop wazuh-manager.service > /dev/null 2>&1
+  if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet openarmor-manager > /dev/null 2>&1; then
+    systemctl stop openarmor-manager.service > /dev/null 2>&1
     %{_localstatedir}/bin/ossec-control stop > /dev/null 2>&1
     touch %{_localstatedir}/tmp/wazuh.restart
   # Check for SysV
-  elif command -v service > /dev/null 2>&1 && service wazuh-manager status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
-    service wazuh-manager stop > /dev/null 2>&1
+  elif command -v service > /dev/null 2>&1 && service openarmor-manager status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
+    service openarmor-manager stop > /dev/null 2>&1
     %{_localstatedir}/bin/ossec-control stop > /dev/null 2>&1
     touch %{_localstatedir}/tmp/wazuh.restart
-  elif %{_localstatedir}/bin/wazuh-control status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
+  elif %{_localstatedir}/bin/openarmor-control status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
     touch %{_localstatedir}/tmp/wazuh.restart
   elif %{_localstatedir}/bin/ossec-control status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
     touch %{_localstatedir}/tmp/wazuh.restart
   fi
-  %{_localstatedir}/bin/ossec-control stop > /dev/null 2>&1 || %{_localstatedir}/bin/wazuh-control stop > /dev/null 2>&1
+  %{_localstatedir}/bin/ossec-control stop > /dev/null 2>&1 || %{_localstatedir}/bin/openarmor-control stop > /dev/null 2>&1
 fi
 if pgrep -f ossec-authd > /dev/null 2>&1; then
     kill -15 $(pgrep -f ossec-authd)
@@ -271,8 +271,8 @@ if [ $1 = 2 ]; then
     # Import the variables from ossec-init.conf file
     . %{_sysconfdir}/ossec-init.conf
   else
-    # Ask wazuh-control the version
-    VERSION=$(%{_localstatedir}/bin/wazuh-control info -v)
+    # Ask openarmor-control the version
+    VERSION=$(%{_localstatedir}/bin/openarmor-control info -v)
   fi
 
   # Get the major and minor version
@@ -288,21 +288,21 @@ if [ $1 = 2 ]; then
   # Delete 3.X Wazuh API service
   if [ "$MAJOR" = "3" ] && [ -d %{_localstatedir}/api ]; then
     if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 ; then
-      systemctl stop wazuh-api.service > /dev/null 2>&1
-      systemctl disable wazuh-api.service > /dev/null 2>&1
-      rm -f /etc/systemd/system/wazuh-api.service
+      systemctl stop openarmor-api.service > /dev/null 2>&1
+      systemctl disable openarmor-api.service > /dev/null 2>&1
+      rm -f /etc/systemd/system/openarmor-api.service
     elif command -v service > /dev/null 2>&1 && command -v chkconfig > /dev/null 2>&1; then
-      service wazuh-api stop > /dev/null 2>&1
-      chkconfig wazuh-api off > /dev/null 2>&1
-      chkconfig --del wazuh-api > /dev/null 2>&1
-      rm -f /etc/rc.d/init.d/wazuh-api || true
+      service openarmor-api stop > /dev/null 2>&1
+      chkconfig openarmor-api off > /dev/null 2>&1
+      chkconfig --del openarmor-api > /dev/null 2>&1
+      rm -f /etc/rc.d/init.d/openarmor-api || true
     fi
   fi
 fi
 
 %post
 
-echo "VERSION=\"$(%{_localstatedir}/bin/wazuh-control info -v)\"" > /etc/ossec-init.conf
+echo "VERSION=\"$(%{_localstatedir}/bin/openarmor-control info -v)\"" > /etc/ossec-init.conf
 
 # Upgrade install code block
 if [ $1 = 2 ]; then
@@ -346,12 +346,12 @@ if [ $1 = 1 ]; then
 fi
 
 if [[ -d /run/systemd/system ]]; then
-  rm -f %{_initrddir}/wazuh-manager
+  rm -f %{_initrddir}/openarmor-manager
 fi
 
 # Generation auto-signed certificate if not exists
 if [ ! -f "%{_localstatedir}/etc/sslmanager.key" ] && [ ! -f "%{_localstatedir}/etc/sslmanager.cert" ]; then
-  %{_localstatedir}/bin/wazuh-authd -C 365 -B 2048 -S "/C=US/ST=California/CN=Wazuh/" -K %{_localstatedir}/etc/sslmanager.key -X %{_localstatedir}/etc/sslmanager.cert 2>/dev/null
+  %{_localstatedir}/bin/openarmor-authd -C 365 -B 2048 -S "/C=US/ST=California/CN=Wazuh/" -K %{_localstatedir}/etc/sslmanager.key -X %{_localstatedir}/etc/sslmanager.cert 2>/dev/null
   chmod 640 %{_localstatedir}/etc/sslmanager.key
   chmod 640 %{_localstatedir}/etc/sslmanager.cert
 fi
@@ -512,13 +512,13 @@ if [ $1 = 0 ]; then
 
   # Stop the services before uninstall the package
   # Check for systemd
-  if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet wazuh-manager > /dev/null 2>&1; then
-    systemctl stop wazuh-manager.service > /dev/null 2>&1
+  if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 && systemctl is-active --quiet openarmor-manager > /dev/null 2>&1; then
+    systemctl stop openarmor-manager.service > /dev/null 2>&1
   # Check for SysV
-  elif command -v service > /dev/null 2>&1 && service wazuh-manager status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
-    service wazuh-manager stop > /dev/null 2>&1
+  elif command -v service > /dev/null 2>&1 && service openarmor-manager status 2>/dev/null | grep "is running" > /dev/null 2>&1; then
+    service openarmor-manager stop > /dev/null 2>&1
   fi
-  %{_localstatedir}/bin/wazuh-control stop > /dev/null 2>&1
+  %{_localstatedir}/bin/openarmor-control stop > /dev/null 2>&1
 
   # Remove the SELinux policy
   if command -v getenforce > /dev/null 2>&1 && command -v semodule > /dev/null 2>&1; then
@@ -576,8 +576,8 @@ fi
 
 # posttrans code is the last thing executed in a install/upgrade
 %posttrans
-if [ -f %{_sysconfdir}/systemd/system/wazuh-manager.service ]; then
-  rm -rf %{_sysconfdir}/systemd/system/wazuh-manager.service
+if [ -f %{_sysconfdir}/systemd/system/openarmor-manager.service ]; then
+  rm -rf %{_sysconfdir}/systemd/system/openarmor-manager.service
   systemctl daemon-reload > /dev/null 2>&1
 fi
 
@@ -585,11 +585,11 @@ if [ -f %{_localstatedir}/tmp/wazuh.restart ]; then
   rm -f %{_localstatedir}/tmp/wazuh.restart
   if command -v systemctl > /dev/null 2>&1 && systemctl > /dev/null 2>&1 ; then
     systemctl daemon-reload > /dev/null 2>&1
-    systemctl restart wazuh-manager.service > /dev/null 2>&1
+    systemctl restart openarmor-manager.service > /dev/null 2>&1
   elif command -v service > /dev/null 2>&1 ; then
-    service wazuh-manager restart > /dev/null 2>&1
+    service openarmor-manager restart > /dev/null 2>&1
   else
-    %{_localstatedir}/bin/wazuh-control restart > /dev/null 2>&1
+    %{_localstatedir}/bin/openarmor-control restart > /dev/null 2>&1
   fi
 fi
 
@@ -619,9 +619,9 @@ rm -fr %{buildroot}
 
 %files
 %defattr(-,root,wazuh)
-%config(missingok) %{_initrddir}/wazuh-manager
+%config(missingok) %{_initrddir}/openarmor-manager
 %attr(640, root, wazuh) %verify(not md5 size mtime) %ghost %{_sysconfdir}/ossec-init.conf
-/usr/lib/systemd/system/wazuh-manager.service
+/usr/lib/systemd/system/openarmor-manager.service
 %dir %attr(750, root, wazuh) %{_localstatedir}
 %attr(750, root, wazuh) %{_localstatedir}/agentless
 %dir %attr(750, root, wazuh) %{_localstatedir}/active-response
@@ -645,30 +645,30 @@ rm -fr %{buildroot}
 %attr(750, root, root) %{_localstatedir}/bin/clear_stats
 %attr(750, root, wazuh) %{_localstatedir}/bin/cluster_control
 %attr(750, root, root) %{_localstatedir}/bin/manage_agents
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-agentlessd
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-analysisd
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-authd
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-control
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-csyslogd
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-dbd
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-execd
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-integratord
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-logcollector
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-logtest-legacy
-%attr(750, root, wazuh) %{_localstatedir}/bin/wazuh-logtest
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-maild
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-monitord
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-regex
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-remoted
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-reportd
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-syscheckd
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-agentlessd
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-analysisd
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-authd
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-control
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-csyslogd
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-dbd
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-execd
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-integratord
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-logcollector
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-logtest-legacy
+%attr(750, root, wazuh) %{_localstatedir}/bin/openarmor-logtest
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-maild
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-monitord
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-regex
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-remoted
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-reportd
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-syscheckd
 %attr(750, root, wazuh) %{_localstatedir}/bin/verify-agent-conf
-%attr(750, root, wazuh) %{_localstatedir}/bin/wazuh-apid
-%attr(750, root, wazuh) %{_localstatedir}/bin/wazuh-clusterd
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-db
-%attr(750, root, root) %{_localstatedir}/bin/wazuh-modulesd
+%attr(750, root, wazuh) %{_localstatedir}/bin/openarmor-apid
+%attr(750, root, wazuh) %{_localstatedir}/bin/openarmor-clusterd
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-db
+%attr(750, root, root) %{_localstatedir}/bin/openarmor-modulesd
 %attr(750, root, wazuh) %{_localstatedir}/bin/rbac_control
-%attr(750, root, wazuh) %{_localstatedir}/bin/wazuh-keystore
+%attr(750, root, wazuh) %{_localstatedir}/bin/openarmor-keystore
 %dir %attr(770, wazuh, wazuh) %{_localstatedir}/etc
 %attr(660, root, wazuh) %config(noreplace) %{_localstatedir}/etc/ossec.conf
 %attr(640, root, wazuh) %config(noreplace) %{_localstatedir}/etc/client.keys

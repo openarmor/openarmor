@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-# Program to build and package OSX wazuh-agent
+# Program to build and package OSX openarmor-agent
 # Wazuh package generator
 # Copyright (C) 2015, Wazuh Inc.
 #
@@ -109,7 +109,7 @@ function get_pkgproj_specs() {
     VERSION="$1"
     pkg_final_name="$2"
 
-    pkg_file="${WAZUH_PACKAGES_PATH}/specs/wazuh-agent-${ARCH}.pkgproj"
+    pkg_file="${WAZUH_PACKAGES_PATH}/specs/openarmor-agent-${ARCH}.pkgproj"
 
     if [ ! -f "${pkg_file}" ]; then
         echo "Warning: the file ${pkg_file} does not exists. Check the version selected."
@@ -137,16 +137,16 @@ function build_package() {
 
     export CONFIG="${WAZUH_PATH}/etc/preloaded-vars.conf"
     WAZUH_PACKAGES_PATH="${WAZUH_PATH}/packages/macos"
-    AGENT_PKG_FILE="${WAZUH_PACKAGES_PATH}/package_files/wazuh-agent-${ARCH}.pkgproj"
+    AGENT_PKG_FILE="${WAZUH_PACKAGES_PATH}/package_files/openarmor-agent-${ARCH}.pkgproj"
     ENTITLEMENTS_PATH="${WAZUH_PACKAGES_PATH}/entitlements.plist"
 
     VERSION=$(cat ${WAZUH_PATH}/src/VERSION | cut -d "-" -f1 | cut -c 2-)
 
     # Define output package name
     if [ $IS_STAGE == "no" ]; then
-        pkg_name="wazuh-agent_${VERSION}-${REVISION}_${ARCH}_${short_commit_hash}"
+        pkg_name="openarmor-agent_${VERSION}-${REVISION}_${ARCH}_${short_commit_hash}"
     else
-        pkg_name="wazuh-agent-${VERSION}-${REVISION}.${ARCH}"
+        pkg_name="openarmor-agent-${VERSION}-${REVISION}.${ARCH}"
     fi
 
     get_pkgproj_specs $VERSION $pkg_name

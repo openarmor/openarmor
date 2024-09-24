@@ -338,7 +338,7 @@ def daemons_handler_implementation(request: pytest.FixtureRequest) -> None:
 
     try:
         if all_daemons:
-            logger.debug('Restarting wazuh using wazuh-control')
+            logger.debug('Restarting wazuh using openarmor-control')
             services.control_service('restart')
         else:
             for daemon in daemons:
@@ -358,7 +358,7 @@ def daemons_handler_implementation(request: pytest.FixtureRequest) -> None:
     yield
 
     if all_daemons:
-        logger.debug('Stopping wazuh using wazuh-control')
+        logger.debug('Stopping wazuh using openarmor-control')
         services.control_service('stop')
     else:
         if daemons == API_DAEMONS_REQUIREMENTS: daemons.reverse()  # Stop in reverse, otherwise the next start will fail
@@ -466,7 +466,7 @@ def configure_sockets_environment_implementation(request: pytest.FixtureRequest)
     """
     monitored_sockets_params = getattr(request.module, 'monitored_sockets_params')
 
-    # Stop wazuh-service and ensure all daemons are stopped
+    # Stop openarmor-service and ensure all daemons are stopped
     services.control_service('stop')
     services.wait_expected_daemon_status(running_condition=False)
 
@@ -722,13 +722,13 @@ def add_user_in_rbac(request):
 @pytest.fixture(autouse=True)
 def autostart_simulators(request: pytest.FixtureRequest) -> None:
     """
-    Fixture for starting simulators in wazuh-agent executions.
+    Fixture for starting simulators in openarmor-agent executions.
 
     This fixture starts both Authd and Remoted simulators only in the cases where the service is not
     WAZUH_MANAGER, and when the test function is not already using the simulator fixture, if it does
     use one of them, only start the remaining simulator.
 
-    This is required so all wazuh-agent instances are being tested with the wazuh-manager connection
+    This is required so all openarmor-agent instances are being tested with the openarmor-manager connection
     being mocked.
     """
     create_authd = 'authd_simulator' not in request.fixturenames

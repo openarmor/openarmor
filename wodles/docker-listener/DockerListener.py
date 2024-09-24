@@ -40,7 +40,7 @@ class DockerListener:
         # socket variables
         self.wazuh_path = os.path.abspath(os.path.join(__file__, "..", "..", ".."))
         self.wazuh_queue = os.path.join(self.wazuh_path, "queue", "sockets", "queue")
-        self.msg_header = "1:Wazuh-Docker:"
+        self.msg_header = "1:Openarmor-Docker:"
         # docker variables
         self.client = None
         self.thread1 = None

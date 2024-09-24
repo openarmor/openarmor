@@ -7,7 +7,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: These tests will check if the 'wazuh-authd' daemon correctly handles the enrollment requests
+brief: These tests will check if the 'openarmor-authd' daemon correctly handles the enrollment requests
        from the API.
 
 tier: 0
@@ -20,8 +20,8 @@ components:
     - manager
 
 daemons:
-    - wazuh-authd
-    - wazuh-api
+    - openarmor-authd
+    - openarmor-api
 
 os_platform:
     - linux
@@ -122,7 +122,7 @@ def test_agentd_server_configuration(test_metadata, truncate_monitored_files_mod
                                      daemons_handler_module, wait_for_api_startup_module):
     '''
     description:
-        Checks `wazuh-api` responds correctly to agent registration requests. Also, ensure client.keys is update
+        Checks `openarmor-api` responds correctly to agent registration requests. Also, ensure client.keys is update
         accordingly to the new agents parameters.
 
     wazuh_min_version:

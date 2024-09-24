@@ -26,7 +26,7 @@ function install_wazuh(){
 
   echo "Testing the following variables $1"
 
-  eval "echo \"$1\" > ${WAZUH_MACOS_AGENT_DEPLOYMENT_VARS} && installer -pkg wazuh-agent-${VERSION}-0.commit${SHA}.pkg -target / > /dev/null 2>&1"
+  eval "echo \"$1\" > ${WAZUH_MACOS_AGENT_DEPLOYMENT_VARS} && installer -pkg openarmor-agent-${VERSION}-0.commit${SHA}.pkg -target / > /dev/null 2>&1"
   
 }
 
@@ -38,7 +38,7 @@ function remove_wazuh () {
   /bin/rm -rf /Library/StartupItems/WAZUH > /dev/null 2>&1
   /usr/bin/dscl . -delete "/Users/wazuh" > /dev/null 2>&1
   /usr/bin/dscl . -delete "/Groups/wazuh" > /dev/null 2>&1
-  /usr/sbin/pkgutil --forget com.wazuh.pkg.wazuh-agent > /dev/null 2>&1
+  /usr/sbin/pkgutil --forget com.wazuh.pkg.openarmor-agent > /dev/null 2>&1
 
 }
 
@@ -76,8 +76,8 @@ function test() {
 
 }
 
-echo "Download package https://s3.us-west-1.amazonaws.com/packages-dev.wazuh.com/warehouse/pullrequests/${MAJOR}.${MINOR}/macos/wazuh-agent-${VERSION}-0.commit${SHA}.pkg"
-wget "https://s3.us-west-1.amazonaws.com/packages-dev.wazuh.com/warehouse/pullrequests/${MAJOR}.${MINOR}/macos/wazuh-agent-${VERSION}-0.commit${SHA}.pkg" > /dev/null 2>&1
+echo "Download package https://s3.us-west-1.amazonaws.com/packages-dev.wazuh.com/warehouse/pullrequests/${MAJOR}.${MINOR}/macos/openarmor-agent-${VERSION}-0.commit${SHA}.pkg"
+wget "https://s3.us-west-1.amazonaws.com/packages-dev.wazuh.com/warehouse/pullrequests/${MAJOR}.${MINOR}/macos/openarmor-agent-${VERSION}-0.commit${SHA}.pkg" > /dev/null 2>&1
 
 install_wazuh "WAZUH_MANAGER='1.1.1.1' && WAZUH_MANAGER_PORT='7777' && WAZUH_PROTOCOL='udp' && WAZUH_REGISTRATION_SERVER='2.2.2.2' && WAZUH_REGISTRATION_PORT='8888' && WAZUH_REGISTRATION_PASSWORD='password' && WAZUH_KEEP_ALIVE_INTERVAL='10' && WAZUH_TIME_RECONNECT='10' && WAZUH_REGISTRATION_CA='/Library/Ossec/etc/testsslmanager.cert' && WAZUH_REGISTRATION_CERTIFICATE='/Library/Ossec/etc/testsslmanager.cert' && WAZUH_REGISTRATION_KEY='/Library/Ossec/etc/testsslmanager.key' && WAZUH_AGENT_NAME='test-agent' && WAZUH_AGENT_GROUP='test-group' && ENROLLMENT_DELAY='10'" 
 test "WAZUH_MANAGER WAZUH_MANAGER_PORT WAZUH_PROTOCOL WAZUH_REGISTRATION_SERVER WAZUH_REGISTRATION_PORT WAZUH_REGISTRATION_PASSWORD WAZUH_KEEP_ALIVE_INTERVAL WAZUH_TIME_RECONNECT WAZUH_REGISTRATION_CA WAZUH_REGISTRATION_CERTIFICATE WAZUH_REGISTRATION_KEY WAZUH_AGENT_NAME WAZUH_AGENT_GROUP ENROLLMENT_DELAY" 

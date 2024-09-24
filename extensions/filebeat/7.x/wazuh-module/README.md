@@ -12,17 +12,16 @@ The Wazuh Filebeat module is hosted at the following URLs
 
 The Wazuh Filebeat module must follow the following nomenclature, where revision corresponds to X.Y values
 
-- wazuh-filebeat-{revision}.tar.gz
+- openarmor-filebeat-{revision}.tar.gz
 
 Currently, we host the following modules
 
-|Module|Version|
-|:--|:--|
-|wazuh-filebeat-0.1.tar.gz|From 3.9.x to 4.2.x included|
-|wazuh-filebeat-0.2.tar.gz|From 4.3.x to 4.6.x included|
-|wazuh-filebeat-0.3.tar.gz|4.7.x|
-|wazuh-filebeat-0.4.tar.gz|From 4.8.x to current|
-
+| Module                        | Version                      |
+| :---------------------------- | :--------------------------- |
+| openarmor-filebeat-0.1.tar.gz | From 3.9.x to 4.2.x included |
+| openarmor-filebeat-0.2.tar.gz | From 4.3.x to 4.6.x included |
+| openarmor-filebeat-0.3.tar.gz | 4.7.x                        |
+| openarmor-filebeat-0.4.tar.gz | From 4.8.x to current        |
 
 ## How-To update module tar.gz file
 
@@ -30,7 +29,7 @@ To add a new version of the module it is necessary to follow the following steps
 
 1. Clone the wazuh/wazuh repository
 2. Check out the branch that adds a new version
-3. Access the directory: **extensions/filebeat/7.x/wazuh-module/**
+3. Access the directory: **extensions/filebeat/7.x/openarmor-module/**
 4. Create a directory called: **wazuh**
 
 ```
@@ -82,7 +81,7 @@ To add a new version of the module it is necessary to follow the following steps
 9. Create **tar.gz** file
 
 ```
-# tar -czvf wazuh-filebeat-0.4.tar.gz wazuh
+# tar -czvf openarmor-filebeat-0.4.tar.gz wazuh
 ```
 
 10. Check the user, group, and permissions of the created file

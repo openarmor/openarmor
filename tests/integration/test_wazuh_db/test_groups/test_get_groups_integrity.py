@@ -7,7 +7,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: Wazuh-db is the daemon in charge of the databases with all the Wazuh persistent information, exposing a socket
+brief: Openarmor-db is the daemon in charge of the databases with all the Wazuh persistent information, exposing a socket
        to receive requests and provide information. The Wazuh core uses list-based databases to store information
        related to agent keys, and FIM/Rootcheck event data.
        This test checks the usage of the get-groups-integrity command used to determine if the agent groups are synced
@@ -22,7 +22,7 @@ components:
     - manager
 
 daemons:
-    - wazuh-db
+    - openarmor-db
 
 os_platform:
     - linux
@@ -47,7 +47,7 @@ os_version:
     - Red Hat 6
 
 references:
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-db.html
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-db.html
 
 tags:
     - wazuh_db
@@ -74,8 +74,8 @@ daemons_handler_configuration = {'all_daemons': True}
 @pytest.mark.parametrize('test_metadata', t_config_metadata, ids=t_case_ids)
 def test_get_groups_integrity(daemons_handler, test_metadata, create_groups):
     '''
-    description: Check that every input message using the 'get-groups-integrity' command in wazuh-db socket generates
-                 the proper output to wazuh-db socket. To do this, it performs a query to the socket with a command
+    description: Check that every input message using the 'get-groups-integrity' command in openarmor-db socket generates
+                 the proper output to openarmor-db socket. To do this, it performs a query to the socket with a command
                  taken from the list of test_metadata's 'input' field, and compare the result with the test_metadata's
                  'output' field.
 

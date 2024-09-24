@@ -14,7 +14,7 @@ from api.util import remove_nones_to_dict, raise_if_exc
 from wazuh.core.cluster.dapi.dapi import DistributedAPI
 import wazuh.active_response as active_response
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 
 async def run_command(agents_list: str = '*', pretty: bool = False,

@@ -24,7 +24,7 @@ if [ -d "${DIR}" ]; then
     touch "${DIR}/WAZUH_PKG_UPGRADE"
     upgrade="true"
 
-    if ${DIR}/bin/wazuh-control status | grep "is running" > /dev/null 2>&1; then
+    if ${DIR}/bin/openarmor-control status | grep "is running" > /dev/null 2>&1; then
         touch "${DIR}/WAZUH_RESTART"
         restart="true"
     elif ${DIR}/bin/ossec-control status | grep "is running" > /dev/null 2>&1; then
@@ -36,8 +36,8 @@ fi
 # Stops the agent before upgrading it
 echo "Stopping the agent before upgrading it."
 
-if [ -f ${DIR}/bin/wazuh-control ]; then
-    ${DIR}/bin/wazuh-control stop
+if [ -f ${DIR}/bin/openarmor-control ]; then
+    ${DIR}/bin/openarmor-control stop
 elif [ -f ${DIR}/bin/ossec-control ]; then
     ${DIR}/bin/ossec-control stop
 fi
@@ -59,9 +59,9 @@ if [ -n "${upgrade}" ]; then
 fi
 
 if [ -n "${upgrade}" ]; then
-    if pkgutil --pkgs | grep -i wazuh-agent-etc > /dev/null 2>&1 ; then
-        echo "Removing previous package receipt for wazuh-agent-etc"
-        pkgutil --forget com.wazuh.pkg.wazuh-agent-etc
+    if pkgutil --pkgs | grep -i openarmor-agent-etc > /dev/null 2>&1 ; then
+        echo "Removing previous package receipt for openarmor-agent-etc"
+        pkgutil --forget com.wazuh.pkg.openarmor-agent-etc
     fi
 fi
 
@@ -114,8 +114,8 @@ if [[ ${new_uid} != ${new_gid} ]]
 fi
 
 # Stops the agent before upgrading it
-if [ -f ${DIR}/bin/wazuh-control ]; then
-    ${DIR}/bin/wazuh-control stop
+if [ -f ${DIR}/bin/openarmor-control ]; then
+    ${DIR}/bin/openarmor-control stop
 elif [ -f ${DIR}/bin/ossec-control ]; then
     ${DIR}/bin/ossec-control stop
 fi

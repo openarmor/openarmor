@@ -110,7 +110,7 @@ def test_get_ossec_log_fields():
     result = get_ossec_log_fields('2020/07/14 06:10:40 rootcheck: INFO: Ending rootcheck scan.')
     assert isinstance(result, tuple), 'The result is not a tuple'
     assert result[0] == datetime(2020, 7, 14, 6, 10, 40, tzinfo=timezone.utc)
-    assert result[1] == 'wazuh-rootcheck'
+    assert result[1] == 'openarmor-rootcheck'
     assert result[2] == 'info'
     assert result[3] == ' Ending rootcheck scan.'
 
@@ -147,7 +147,7 @@ def test_get_logs_summary(mock_exists, mock_active_logging_format):
         result = get_logs_summary()
         assert all(key in log for key in ('all', 'info', 'error', 'critical', 'warning', 'debug')
                    for log in result.values())
-        assert result['wazuh-modulesd:database'] == {'all': 2, 'info': 0, 'error': 0, 'critical': 0, 'warning': 0,
+        assert result['openarmor-modulesd:database'] == {'all': 2, 'info': 0, 'error': 0, 'critical': 0, 'warning': 0,
                                                      'debug': 2}
 
 
@@ -203,10 +203,10 @@ def test_validation_ko(mock_exists):
 
 @pytest.mark.parametrize('error_flag, error_msg', [
     (0, ""),
-    (1, "2019/02/27 11:30:07 wazuh-clusterd: ERROR: [Cluster] [Main] Error 3004 - Error in cluster configuration: "
+    (1, "2019/02/27 11:30:07 openarmor-clusterd: ERROR: [Cluster] [Main] Error 3004 - Error in cluster configuration: "
         "Unspecified key"),
-    (1, "2019/02/27 11:30:24 wazuh-authd: ERROR: (1230): Invalid element in the configuration: "
-        "'use_source_i'.\n2019/02/27 11:30:24 wazuh-authd: ERROR: (1202): Configuration error at "
+    (1, "2019/02/27 11:30:24 openarmor-authd: ERROR: (1230): Invalid element in the configuration: "
+        "'use_source_i'.\n2019/02/27 11:30:24 openarmor-authd: ERROR: (1202): Configuration error at "
         "'/var/ossec/etc/ossec.conf'.")
 ])
 def test_parse_execd_output(error_flag, error_msg):

@@ -6,7 +6,7 @@
  * License (version 2) as published by the FSF - Free Software
  * Foundation.
  *
- * Test corresponding to the wazuh-modulesd shared functions
+ * Test corresponding to the openarmor-modulesd shared functions
  */
 
 #include <stdarg.h>

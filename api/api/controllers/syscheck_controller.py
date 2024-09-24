@@ -12,7 +12,7 @@ from api.util import remove_nones_to_dict, parse_api_param, raise_if_exc
 from wazuh.core.cluster.dapi.dapi import DistributedAPI
 from wazuh.syscheck import run, clear, files, last_scan
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 
 async def put_syscheck(agents_list: str = '*', pretty: bool = False,

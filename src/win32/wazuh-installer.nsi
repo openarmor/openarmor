@@ -27,7 +27,7 @@
 
 ; output file
 !ifndef OutFile
-    !define OutFile "wazuh-agent-${VERSION}.exe"
+    !define OutFile "openarmor-agent-${VERSION}.exe"
 !endif
 
 Var is_upgrade
@@ -185,8 +185,8 @@ Section "Wazuh Agent (required)" MainSec
     CreateDirectory "$INSTDIR\ruleset\sca"
 
     ; install files
-    File wazuh-agent.exe
-    File wazuh-agent-eventchannel.exe
+    File openarmor-agent.exe
+    File openarmor-agent-eventchannel.exe
     File default-ossec.conf
     File manage_agents.exe
     File /oname=win32ui.exe os_win32ui.exe
@@ -228,12 +228,12 @@ Section "Wazuh Agent (required)" MainSec
     FileOpen $0 "$INSTDIR\active-response\active-responses.log" w
     FileClose $0
 
-    ; use appropriate version of "wazuh-agent.exe"
+    ; use appropriate version of "openarmor-agent.exe"
     ${If} ${AtLeastWinVista}
-        Delete "$INSTDIR\wazuh-agent.exe"
-        Rename "$INSTDIR\wazuh-agent-eventchannel.exe" "$INSTDIR\wazuh-agent.exe"
+        Delete "$INSTDIR\openarmor-agent.exe"
+        Rename "$INSTDIR\openarmor-agent-eventchannel.exe" "$INSTDIR\openarmor-agent.exe"
     ${Else}
-        Delete "$INSTDIR\wazuh-agent-eventchannel.exe"
+        Delete "$INSTDIR\openarmor-agent-eventchannel.exe"
     ${Endif}
 
     ; write registry keys
@@ -342,7 +342,7 @@ Section "Wazuh Agent (required)" MainSec
 
     ; install OSSEC service
     ServiceInstall:
-        nsExec::ExecToLog '"$INSTDIR\wazuh-agent.exe" install-service'
+        nsExec::ExecToLog '"$INSTDIR\openarmor-agent.exe" install-service'
         Pop $0
         ${If} $0 <> 1
             MessageBox MB_ABORTRETRYIGNORE|MB_ICONSTOP "$\r$\n\
@@ -421,7 +421,7 @@ Section "Uninstall"
     ; uninstall the services
     ; this also stops the service as well so it should be done early
     ServiceUninstall:
-        nsExec::ExecToLog '"$INSTDIR\wazuh-agent.exe" uninstall-service'
+        nsExec::ExecToLog '"$INSTDIR\openarmor-agent.exe" uninstall-service'
         Pop $0
         ${If} $0 <> 1
             MessageBox MB_ABORTRETRYIGNORE|MB_ICONSTOP "$\r$\n\
@@ -478,7 +478,7 @@ Section "Uninstall"
     DeleteRegKey HKLM SOFTWARE\OSSEC
 
     ; remove files and uninstaller
-    Delete "$INSTDIR\wazuh-agent.exe"
+    Delete "$INSTDIR\openarmor-agent.exe"
     Delete "$INSTDIR\agent-auth.exe"
     Delete "$INSTDIR\manage_agents.exe"
     Delete "$INSTDIR\ossec.conf"

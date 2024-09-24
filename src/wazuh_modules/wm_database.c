@@ -292,7 +292,7 @@ void wm_sync_agents() {
 /**
  * @brief Synchronizes a keystore with the agent table of global.db. It will insert
  *        the agents that are in the keystore and are not in global.db.
- *        In addition it will remove from global.db in wazuh-db all the agents that
+ *        In addition it will remove from global.db in openarmor-db all the agents that
  *        are not in the keystore. Also it will remove all the artifacts for those
  *        agents.
  *
@@ -358,7 +358,7 @@ void sync_keys_with_wdb(keystore *keys) {
 }
 
 /**
- * @brief This function removes the wazuh-db agent DB and the diff folder of an agent.
+ * @brief This function removes the openarmor-db agent DB and the diff folder of an agent.
  *
  * @param agent_id The ID of the agent.
  * @param agent_name The name of the agent.
@@ -366,12 +366,12 @@ void sync_keys_with_wdb(keystore *keys) {
 void wm_clean_agent_artifacts(int agent_id, const char* agent_name) {
     int result = OS_INVALID;
 
-    // Removing wazuh-db database
+    // Removing openarmor-db database
     char wdbquery[OS_SIZE_128 + 1];
     char wdboutput[OS_SIZE_1024];
     snprintf(wdbquery, OS_SIZE_128, "wazuhdb remove %d", agent_id);
     if (result = wdbc_query_ex(&wdb_wmdb_sock, wdbquery, wdboutput, sizeof(wdboutput)), result) {
-        mtdebug1(WM_DATABASE_LOGTAG, "Could not remove the wazuh-db DB of the agent %d.", agent_id);
+        mtdebug1(WM_DATABASE_LOGTAG, "Could not remove the openarmor-db DB of the agent %d.", agent_id);
     }
 
     delete_diff(agent_name);

@@ -1,5 +1,5 @@
 services:
-  wazuh-master:
+  openarmor-master:
     profiles:
       - standalone
       - cluster
@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: base/manager/manager.Dockerfile
     image: integration_test_wazuh-manager
-    hostname: wazuh-master
+    hostname: openarmor-master
     ports:
       - "55000:55000"
     volumes:
@@ -15,44 +15,44 @@ services:
       - ./tools/:/tools
     entrypoint:
       - /scripts/entrypoint.sh
-      - wazuh-master
+      - openarmor-master
       - master-node
       - master
       - ${ENV_MODE}
 
-  wazuh-worker1:
+  openarmor-worker1:
     profiles:
       - cluster
     image: integration_test_wazuh-manager
-    hostname: wazuh-worker1
+    hostname: openarmor-worker1
     volumes:
       - ./configurations/tmp/manager:/tmp_volume
       - ./tools/:/tools
     entrypoint:
       - /scripts/entrypoint.sh
-      - wazuh-master
+      - openarmor-master
       - worker1
       - worker
     depends_on:
-      - wazuh-master
+      - openarmor-master
 
-  wazuh-worker2:
+  openarmor-worker2:
     profiles:
       - cluster
     image: integration_test_wazuh-manager
-    hostname: wazuh-worker2
+    hostname: openarmor-worker2
     volumes:
       - ./configurations/tmp/manager:/tmp_volume
       - ./tools/:/tools
     entrypoint:
       - /scripts/entrypoint.sh
-      - wazuh-master
+      - openarmor-master
       - worker2
       - worker
     depends_on:
-      - wazuh-master
+      - openarmor-master
 
-  wazuh-agent1:
+  openarmor-agent1:
     profiles:
       - standalone
       - cluster
@@ -60,69 +60,69 @@ services:
       context: .
       dockerfile: base/agent/new.Dockerfile
     image: integration_test_wazuh-agent
-    hostname: wazuh-agent1
+    hostname: openarmor-agent1
     volumes:
       - ./configurations/tmp/agent:/tmp_volume
       - ./tools/:/tools
     entrypoint:
       - /scripts/entrypoint.sh
       - haproxy-lb
-      - wazuh-agent1
+      - openarmor-agent1
     depends_on:
       - haproxy-lb
 
-  wazuh-agent2:
+  openarmor-agent2:
     profiles:
       - standalone
       - cluster
     image: integration_test_wazuh-agent
-    hostname: wazuh-agent2
+    hostname: openarmor-agent2
     volumes:
       - ./configurations/tmp/agent:/tmp_volume
       - ./tools/:/tools
     entrypoint:
       - /scripts/entrypoint.sh
       - haproxy-lb
-      - wazuh-agent2
+      - openarmor-agent2
     depends_on:
-      - wazuh-agent1
+      - openarmor-agent1
       - haproxy-lb
 
-  wazuh-agent3:
+  openarmor-agent3:
     profiles:
       - standalone
       - cluster
     image: integration_test_wazuh-agent
-    hostname: wazuh-agent3
+    hostname: openarmor-agent3
     volumes:
       - ./configurations/tmp/agent:/tmp_volume
       - ./tools/:/tools
     entrypoint:
       - /scripts/entrypoint.sh
       - haproxy-lb
-      - wazuh-agent3
+      - openarmor-agent3
     depends_on:
-      - wazuh-agent2
+      - openarmor-agent2
       - haproxy-lb
 
-  wazuh-agent4:
+  openarmor-agent4:
     profiles:
       - standalone
       - cluster
     image: integration_test_wazuh-agent
-    hostname: wazuh-agent4
+    hostname: openarmor-agent4
     volumes:
       - ./configurations/tmp/agent:/tmp_volume
       - ./tools/:/tools
     entrypoint:
       - /scripts/entrypoint.sh
       - haproxy-lb
-      - wazuh-agent4
+      - openarmor-agent4
     depends_on:
-      - wazuh-agent3
+      - openarmor-agent3
       - haproxy-lb
 
-  wazuh-agent5:
+  openarmor-agent5:
     profiles:
       - standalone
       - cluster
@@ -130,71 +130,71 @@ services:
       context: .
       dockerfile: base/agent/old.Dockerfile
     image: integration_test_wazuh-agent_old
-    hostname: wazuh-agent5
+    hostname: openarmor-agent5
     volumes:
       - ./configurations/tmp/agent:/tmp_volume
       - ./tools/:/tools
     entrypoint:
       - /scripts/entrypoint.sh
       - haproxy-lb
-      - wazuh-agent5
+      - openarmor-agent5
       - agent_old
     depends_on:
-      - wazuh-agent4
+      - openarmor-agent4
       - haproxy-lb
 
-  wazuh-agent6:
+  openarmor-agent6:
     profiles:
       - standalone
       - cluster
     image: integration_test_wazuh-agent_old
-    hostname: wazuh-agent6
+    hostname: openarmor-agent6
     volumes:
       - ./configurations/tmp/agent:/tmp_volume
       - ./tools/:/tools
     entrypoint:
       - /scripts/entrypoint.sh
       - haproxy-lb
-      - wazuh-agent6
+      - openarmor-agent6
       - agent_old
     depends_on:
-      - wazuh-agent5
+      - openarmor-agent5
       - haproxy-lb
 
-  wazuh-agent7:
+  openarmor-agent7:
     profiles:
       - standalone
       - cluster
     image: integration_test_wazuh-agent_old
-    hostname: wazuh-agent7
+    hostname: openarmor-agent7
     volumes:
       - ./configurations/tmp/agent:/tmp_volume
       - ./tools/:/tools
     entrypoint:
       - /scripts/entrypoint.sh
       - haproxy-lb
-      - wazuh-agent7
+      - openarmor-agent7
       - agent_old
     depends_on:
-      - wazuh-agent6
+      - openarmor-agent6
       - haproxy-lb
 
-  wazuh-agent8:
+  openarmor-agent8:
     profiles:
       - standalone
       - cluster
     image: integration_test_wazuh-agent_old
-    hostname: wazuh-agent8
+    hostname: openarmor-agent8
     volumes:
       - ./configurations/tmp/agent:/tmp_volume
       - ./tools/:/tools
     entrypoint:
       - /scripts/entrypoint.sh
       - haproxy-lb
-      - wazuh-agent8
+      - openarmor-agent8
       - agent_old
     depends_on:
-      - wazuh-agent7
+      - openarmor-agent7
       - haproxy-lb
 
   haproxy-lb:
@@ -208,9 +208,9 @@ services:
       - /scripts/entrypoint.sh
       - ${ENV_MODE}
     depends_on:
-      - wazuh-master
-      - wazuh-worker1
-      - wazuh-worker2
+      - openarmor-master
+      - openarmor-worker1
+      - openarmor-worker2
 
   cti:
     profiles:

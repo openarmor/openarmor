@@ -32,7 +32,7 @@ A WPK package must contain an installation program, in binary form or a script i
 
 1. Fork itself, the parent will return 0 immediately.
 2. Restart the agent.
-3. Before exiting, the installer must write a file called `upgrade_result` containing a status number (`0` means *OK*). For instance:
+3. Before exiting, the installer must write a file called `upgrade_result` containing a status number (`0` means _OK_). For instance:
 
 ```
 0
@@ -54,20 +54,20 @@ pip install cryptography
 1. Download sources from GitHub at branch 3.0:
 
 ```
-curl -Lo wazuh-3.0.zip https://github.com/wazuh/wazuh/archive/3.0.zip
-unzip wazuh-3.0.zip
+curl -Lo openarmor-3.0.zip https://github.com/wazuh/wazuh/archive/3.0.zip
+unzip openarmor-3.0.zip
 ```
 
 2. Compile the project:
 
 ```
-make -C wazuh-3.0/src TARGET=agent
+make -C openarmor-3.0/src TARGET=agent
 ```
 
 3. Change to the base directory:
 
 ```
-cd wazuh-3.0
+cd openarmor-3.0
 ```
 
 4. Install the root CA, only if you want to **overwrite the root CA** with the file you created before:
@@ -89,7 +89,7 @@ tools/agent-upgrade/wpkpack.py output/myagent.wpk path/to/wpkcert.pem path/to/wp
 
 In this particular case, the Wazuh Project's root directory contains the proper `upgrade.sh` file.
 
-*Note: this is a mere example. If you want to distribute a WPK package this way you should first clean the directory.*
+_Note: this is a mere example. If you want to distribute a WPK package this way you should first clean the directory._
 
 ## Install a custom WPK package
 

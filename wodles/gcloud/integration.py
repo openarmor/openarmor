@@ -20,7 +20,7 @@ from utils import ANALYSISD, MAX_EVENT_SIZE
 class WazuhGCloudIntegration:
     """Class for sending events from Google Cloud to Wazuh."""
 
-    header = '1:Wazuh-GCloud:'
+    header = '1:Openarmor-GCloud:'
     key_name = 'gcp'
 
     def __init__(self, logger: logging.Logger):

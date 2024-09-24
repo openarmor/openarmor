@@ -170,14 +170,14 @@ def check_health(node_type: str = 'manager', agents: list = None,
         nodes_to_check = ['master'] if only_check_master_health else env_cluster_nodes
         for node in nodes_to_check:
             health = subprocess.check_output(
-                f"docker inspect env-wazuh-{node}-1 -f '{{{{json .State.Health.Status}}}}'",
+                f"docker inspect env-openarmor-{node}-1 -f '{{{{json .State.Health.Status}}}}'",
                 shell=True)
             if not health.startswith(b'"healthy"'):
                 return False
     elif node_type == 'agent':
         for agent in agents:
             health = subprocess.check_output(
-                f"docker inspect env-wazuh-agent{agent}-1 -f '{{{{json .State.Health.Status}}}}'",
+                f"docker inspect env-openarmor-agent{agent}-1 -f '{{{{json .State.Health.Status}}}}'",
                 shell=True)
             if not health.startswith(b'"healthy"'):
                 return False
@@ -322,7 +322,7 @@ def save_logs(test_name: str):
         for log in logs:
             try:
                 subprocess.check_output(
-                    f"docker cp env-wazuh-{node}-1:{os.path.join(logs_path, log)} "
+                    f"docker cp env-openarmor-{node}-1:{os.path.join(logs_path, log)} "
                     f"{os.path.join(test_logs_path, f'test_{test_name}-{node}-{log}')}",
                     shell=True)
             except subprocess.CalledProcessError:
@@ -332,7 +332,7 @@ def save_logs(test_name: str):
     for agent in agent_names:
         try:
             subprocess.check_output(
-                f"docker cp env-wazuh-{agent}-1:{os.path.join(logs_path, 'ossec.log')} "
+                f"docker cp env-openarmor-{agent}-1:{os.path.join(logs_path, 'ossec.log')} "
                 f"{os.path.join(test_logs_path, f'test_{test_name}-{agent}-ossec.log')}",
                 shell=True)
         except subprocess.CalledProcessError:
@@ -405,7 +405,7 @@ def api_test(request: _pytest.fixtures.SubRequest):
 
         # Check if entrypoint was successful
         try:
-            error_message = subprocess.check_output(["docker", "exec", "-t", "env-wazuh-master-1", "sh", "-c",
+            error_message = subprocess.check_output(["docker", "exec", "-t", "env-openarmor-master-1", "sh", "-c",
                                                      "cat /entrypoint_error"]).decode().strip()
             pytest.fail(error_message)
         except subprocess.CalledProcessError:

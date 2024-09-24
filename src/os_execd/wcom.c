@@ -199,7 +199,7 @@ size_t wcom_restart(char ** output) {
             exec_cmd[1] = "manager";
 #endif
         } else {
-            exec_cmd[0] = "bin/wazuh-control";
+            exec_cmd[0] = "bin/openarmor-control";
             exec_cmd[1] = "restart";
         }
 
@@ -222,7 +222,7 @@ size_t wcom_restart(char ** output) {
         static char command[OS_FLSIZE];
         snprintf(command, sizeof(command), "%s/%s", AR_BINDIR, "restart-wazuh.exe");
         char *cmd[2] = { command, NULL };
-        char *cmd_parameters = "{\"version\":1,\"origin\":{\"name\":\"\",\"module\":\"wazuh-execd\"},\"command\":\"add\",\"parameters\":{\"extra_args\":[],\"alert\":{},\"program\":\"restart-wazuh.exe\"}}";
+        char *cmd_parameters = "{\"version\":1,\"origin\":{\"name\":\"\",\"module\":\"openarmor-execd\"},\"command\":\"add\",\"parameters\":{\"extra_args\":[],\"alert\":{},\"program\":\"restart-wazuh.exe\"}}";
         wfd_t *wfd = wpopenv(cmd[0], cmd, W_BIND_STDIN);
         if (wfd) {
             /* Send alert to AR script */
@@ -318,11 +318,11 @@ error:
 }
 
 size_t wcom_check_manager_config(char **output) {
-    static const char *daemons[] = {"bin/wazuh-authd", "bin/wazuh-remoted",
-                                    "bin/wazuh-execd", "bin/wazuh-analysisd", "bin/wazuh-logcollector",
-                                    "bin/wazuh-integratord", "bin/wazuh-syscheckd", "bin/wazuh-maild",
-                                    "bin/wazuh-modulesd", "bin/wazuh-clusterd", "bin/wazuh-agentlessd",
-                                    "bin/wazuh-integratord", "bin/wazuh-dbd", "bin/wazuh-csyslogd", NULL
+    static const char *daemons[] = {"bin/openarmor-authd", "bin/openarmor-remoted",
+                                    "bin/openarmor-execd", "bin/openarmor-analysisd", "bin/openarmor-logcollector",
+                                    "bin/openarmor-integratord", "bin/openarmor-syscheckd", "bin/openarmor-maild",
+                                    "bin/openarmor-modulesd", "bin/openarmor-clusterd", "bin/openarmor-agentlessd",
+                                    "bin/openarmor-integratord", "bin/openarmor-dbd", "bin/openarmor-csyslogd", NULL
                                     };
 
     int response_retval = 0;

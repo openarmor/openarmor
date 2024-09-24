@@ -14,7 +14,7 @@ from api.models.base_model_ import Body
 from api.models.event_ingest_model import EventIngestModel
 from api.util import raise_if_exc, remove_nones_to_dict
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 
 async def forward_event(pretty: bool = False, wait_for_complete: bool = False) -> ConnexionResponse:

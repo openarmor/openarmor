@@ -16,9 +16,9 @@ targets:
     - manager
 
 daemons:
-    - wazuh-authd
-    - wazuh-db
-    - wazuh-modulesd
+    - openarmor-authd
+    - openarmor-db
+    - openarmor-modulesd
 
 os_platform:
     - linux

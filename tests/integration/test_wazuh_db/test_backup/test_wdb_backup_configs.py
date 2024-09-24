@@ -5,8 +5,8 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: Wazuh-db is the daemon in charge of the databases with all the Wazuh persistent information, exposing a socket
-       to receive requests and provide information. Wazuh-db has the capability to do automatic database backups, based
+brief: Openarmor-db is the daemon in charge of the databases with all the Wazuh persistent information, exposing a socket
+       to receive requests and provide information. Openarmor-db has the capability to do automatic database backups, based
        on the configuration parameters. This test, checks the proper working of the backup configuration and the
        backup files are generated correctly.
 
@@ -19,7 +19,7 @@ components:
     - manager
 
 daemons:
-    - wazuh-db
+    - openarmor-db
 
 os_platform:
     - linux
@@ -44,7 +44,7 @@ os_version:
     - Red Hat 6
 
 references:
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-db.html
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-db.html
 
 tags:
     - wazuh_db

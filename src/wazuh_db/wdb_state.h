@@ -1299,7 +1299,7 @@ void w_inc_mitre_sql();
 void w_inc_mitre_sql_time(struct timeval time);
 
 /**
- * @brief Create a JSON object with all the wazuh-db state information
+ * @brief Create a JSON object with all the openarmor-db state information
  * @return JSON object
  */
 cJSON* wdb_create_state_json();

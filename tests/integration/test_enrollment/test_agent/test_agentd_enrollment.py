@@ -15,7 +15,7 @@ targets:
     - agent
 
 daemons:
-    - wazuh-agentd
+    - openarmor-agentd
 os_platform:
     - linux
     - windows

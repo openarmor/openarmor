@@ -1086,7 +1086,7 @@ int wdb_parse_agents_set_sys_osinfo(wdb_t * wdb, char * input, char * output);
 
 /**
  * @brief Function to parse generic dbsync message operation, and generate
- * a message to process in wazuh-db process.
+ * a message to process in openarmor-db process.
  *
  * @param wdb The Global struct database.
  * @param input Buffer input
@@ -2538,7 +2538,7 @@ void wdbi_remove_by_pk(wdb_t *wdb, wdb_component_t component, const char * pk);
 sqlite3_stmt * wdb_get_cache_stmt(wdb_t * wdb, char const *query);
 
 /**
- * @brief Method to read the internal wazuh-db configuration.
+ * @brief Method to read the internal openarmor-db configuration.
  *
  * @return cJSON* Returns a cJSON object with the configuration requested.
  */

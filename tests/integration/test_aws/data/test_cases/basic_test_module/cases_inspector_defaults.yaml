@@ -2,9 +2,8 @@
   description: Inspector default configurations
   configuration_parameters:
     SERVICE_TYPE: inspector
-    LOG_GROUP_NAME: wazuh-inspector-integration-tests
+    LOG_GROUP_NAME: openarmor-inspector-integration-tests
   metadata:
     resource_type: log_group
     service_type: inspector
-    log_group_name: wazuh-inspector-integration-tests
-
+    log_group_name: openarmor-inspector-integration-tests

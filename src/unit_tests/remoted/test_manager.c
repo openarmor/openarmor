@@ -5137,7 +5137,7 @@ void test_save_controlmsg_shutdown(void **state)
     expect_string(__wrap_wdb_update_agent_connection_status, sync_status, "synced");
     will_return(__wrap_wdb_update_agent_connection_status, OS_SUCCESS);
 
-    expect_string(__wrap_SendMSG, message, "1:wazuh-remoted:ossec: Agent stopped: 'NEW_AGENT->10.2.2.5'.");
+    expect_string(__wrap_SendMSG, message, "1:openarmor-remoted:ossec: Agent stopped: 'NEW_AGENT->10.2.2.5'.");
     expect_string(__wrap_SendMSG, locmsg, "[001] (NEW_AGENT) 10.2.2.5");
     expect_any(__wrap_SendMSG, loc);
     will_return(__wrap_SendMSG, -1);
@@ -5151,7 +5151,7 @@ void test_save_controlmsg_shutdown(void **state)
 
     expect_string(__wrap__minfo, formatted_msg, "Successfully reconnected to 'queue/sockets/queue'");
 
-    expect_string(__wrap_SendMSG, message, "1:wazuh-remoted:ossec: Agent stopped: 'NEW_AGENT->10.2.2.5'.");
+    expect_string(__wrap_SendMSG, message, "1:openarmor-remoted:ossec: Agent stopped: 'NEW_AGENT->10.2.2.5'.");
     expect_string(__wrap_SendMSG, locmsg, "[001] (NEW_AGENT) 10.2.2.5");
     expect_any(__wrap_SendMSG, loc);
     will_return(__wrap_SendMSG, -1);

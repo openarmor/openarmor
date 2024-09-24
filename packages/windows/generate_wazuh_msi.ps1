@@ -2,7 +2,7 @@
 # This program is a free software; you can redistribute it and/or modify it under the terms of GPLv2
 
 param (
-    [string]$MSI_NAME = "wazuh-agent.msi",
+    [string]$MSI_NAME = "openarmor-agent.msi",
     [string]$SIGN = "no",
     [string]$WIX_TOOLS_PATH = "",
     [string]$SIGN_TOOLS_PATH = "",
@@ -17,7 +17,7 @@ if(($help.isPresent)) {
     "
     This tool can be used to generate the Windows Wazuh agent msi package.
 
-    PARAMETERS TO BUILD WAZUH-AGENT MSI (OPTIONALS):
+    PARAMETERS TO BUILD OPENARMOR-AGENT MSI (OPTIONALS):
         1. MSI_NAME: MSI package name output.
         2. SIGN: yes or no. By default 'no'.
         3. WIX_TOOLS_PATH: Wix tools path.
@@ -28,8 +28,8 @@ if(($help.isPresent)) {
         * WAZUH:
           $ ./generate_wazuh_msi.ps1  -MSI_NAME {{ NAME }} -SIGN {{ yes|no }} -WIX_TOOLS_PATH {{ PATH }} -SIGN_TOOLS_PATH {{ PATH }}
 
-            Build a devel msi:    $ ./generate_wazuh_msi.ps1 -MSI_NAME wazuh-agent_4.9.0-0_windows_0ceb378.msi -SIGN no
-            Build a prod msi:     $ ./generate_wazuh_msi.ps1 -MSI_NAME wazuh-agent-4.9.0-1.msi -SIGN yes
+            Build a devel msi:    $ ./generate_wazuh_msi.ps1 -MSI_NAME openarmor-agent_4.9.0-0_windows_0ceb378.msi -SIGN no
+            Build a prod msi:     $ ./generate_wazuh_msi.ps1 -MSI_NAME openarmor-agent-4.9.0-1.msi -SIGN yes
     "
     Exit
 }
@@ -70,8 +70,8 @@ function BuildWazuhMsi(){
 
     Write-Host "Building MSI installer..."
 
-    & $CANDLE_EXE -nologo .\wazuh-installer.wxs -out "wazuh-installer.wixobj" -ext WixUtilExtension -ext WixUiExtension
-    & $LIGHT_EXE ".\wazuh-installer.wixobj" -out $MSI_NAME -ext WixUtilExtension -ext WixUiExtension
+    & $CANDLE_EXE -nologo .\openarmor-installer.wxs -out "openarmor-installer.wixobj" -ext WixUtilExtension -ext WixUiExtension
+    & $LIGHT_EXE ".\openarmor-installer.wixobj" -out $MSI_NAME -ext WixUtilExtension -ext WixUiExtension
 
     if($SIGN -eq "yes"){
         Write-Host "Signing $MSI_NAME..."

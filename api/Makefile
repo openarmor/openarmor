@@ -40,7 +40,7 @@ install:
     # Install scripts/%.py on $(INSTALLDIR)/bin/%
 	$(foreach script,$(wildcard scripts/*.py),$(INSTALL_EXEC) wrappers/generic_wrapper.sh $(patsubst scripts/%.py,$(INSTALLDIR)/bin/%,$(script));)
 	
-	$(MV_FILE) $(INSTALLDIR)/bin/wazuh_apid $(INSTALLDIR)/bin/wazuh-apid
+	$(MV_FILE) $(INSTALLDIR)/bin/wazuh_apid $(INSTALLDIR)/bin/openarmor-apid
 
 restore:
     # Restore old API config

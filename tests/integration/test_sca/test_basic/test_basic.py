@@ -16,7 +16,7 @@ targets:
     - agent
 
 daemons:
-    - wazuh-modulesd
+    - openarmor-modulesd
 
 os_platform:
     - linux

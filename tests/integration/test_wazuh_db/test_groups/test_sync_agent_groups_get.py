@@ -3,7 +3,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
            Created by Wazuh, Inc. <info@wazuh.com>.
            This program is free software; you can redistribute it and/or modify it under the terms of GPLv2
 type: integration
-brief: Wazuh-db is the daemon in charge of the databases with all the Wazuh persistent information, exposing a socket
+brief: Openarmor-db is the daemon in charge of the databases with all the Wazuh persistent information, exposing a socket
        to receive requests and provide information. The Wazuh core uses list-based databases to store information
        related to agent keys, and FIM/Rootcheck event data.
        This test checks the usage of the sync-agent-groups-get command used to allow the cluster getting the
@@ -14,7 +14,7 @@ modules:
 components:
     - manager
 daemons:
-    - wazuh-db
+    - openarmor-db
 os_platform:
     - linux
 os_version:
@@ -36,7 +36,7 @@ os_version:
     - Red Hat 7
     - Red Hat 6
 references:
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-db.html
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-db.html
 tags:
     - wazuh_db
 '''

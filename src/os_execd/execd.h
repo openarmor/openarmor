@@ -12,7 +12,7 @@
 #define EXECD_H
 
 #ifndef ARGV0
-#define ARGV0 "wazuh-execd"
+#define ARGV0 "openarmor-execd"
 #endif
 
 /* Arguments for the commands */

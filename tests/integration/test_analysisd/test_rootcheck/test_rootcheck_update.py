@@ -17,7 +17,7 @@ targets:
     - manager
 
 daemons:
-    - wazuh-analysisd
+    - openarmor-analysisd
 
 os_platform:
     - linux
@@ -35,7 +35,7 @@ os_version:
 
 references:
     - https://documentation.wazuh.com/current/user-manual/capabilities/policy-monitoring/rootcheck
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-analysisd.html
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-analysisd.html
 
 tags:
     - rootcheck
@@ -100,7 +100,7 @@ def test_rootcheck_update(test_configuration, test_metadata, set_wazuh_configura
             brief: Apply changes to the ossec.conf configuration.
         - wait_for_rootcheck_startup:
             type: fixture
-            brief: Wait until the 'wazuh-analysisd' has begun and the 'alerts.json' file is created.
+            brief: Wait until the 'openarmor-analysisd' has begun and the 'alerts.json' file is created.
         - truncate_monitored_files:
             type: fixture
             brief: Truncate wazuh logs.

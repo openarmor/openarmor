@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Copyright (C) 2015, Wazuh Inc.
-# wazuh-control        This shell script takes care of starting
+# openarmor-control        This shell script takes care of starting
 #                      or stopping ossec-hids
 # Author: Daniel B. Cid <daniel.cid@gmail.com>
 
@@ -26,7 +26,7 @@ if [ $? = 0 ]; then
 fi
 
 AUTHOR="Wazuh Inc."
-DAEMONS="wazuh-modulesd wazuh-monitord wazuh-logcollector wazuh-syscheckd wazuh-analysisd wazuh-maild wazuh-execd wazuh-db wazuh-agentlessd wazuh-integratord wazuh-dbd wazuh-csyslogd"
+DAEMONS="openarmor-modulesd openarmor-monitord openarmor-logcollector openarmor-syscheckd openarmor-analysisd openarmor-maild openarmor-execd openarmor-db openarmor-agentlessd openarmor-integratord openarmor-dbd openarmor-csyslogd"
 
 # Reverse order of daemons
 SDAEMONS=$(echo $DAEMONS | awk '{ for (i=NF; i>1; i--) printf("%s ",$i); print $1; }')
@@ -218,12 +218,12 @@ testconfig()
 start_service()
 {
     echo "Starting Wazuh $VERSION..."
-    TEST=$(${DIR}/bin/wazuh-logtest-legacy -t  2>&1)
+    TEST=$(${DIR}/bin/openarmor-logtest-legacy -t  2>&1)
     echo $TEST
 
     if [ ! -z "$TEST" ]; then
-        echo "wazuh-analysisd: Configuration error. Exiting."
-        touch ${DIR}/var/run/wazuh-analysisd.failed
+        echo "openarmor-analysisd: Configuration error. Exiting."
+        touch ${DIR}/var/run/openarmor-analysisd.failed
         exit 1;
     fi
 
@@ -263,7 +263,7 @@ start_service()
     if [ $? = 0 ]; then
         echo ""
         echo "Starting sub agent directory (for hybrid mode)"
-        ${DIR}/ossec-agent/bin/wazuh-control start
+        ${DIR}/ossec-agent/bin/openarmor-control start
     fi
 
     echo "Completed."
@@ -343,7 +343,7 @@ stop_service()
     if [ $? = 0 ]; then
         echo ""
         echo "Stopping sub agent directory (for hybrid mode)"
-        ${DIR}/ossec-agent/bin/wazuh-control stop
+        ${DIR}/ossec-agent/bin/openarmor-control stop
     fi
     echo "Wazuh $VERSION Stopped"
 }
@@ -393,7 +393,7 @@ restart)
     restart_service
     ;;
 reload)
-    DAEMONS=$(echo $DAEMONS | sed 's/wazuh-execd//')
+    DAEMONS=$(echo $DAEMONS | sed 's/openarmor-execd//')
     restart_service
     ;;
 status)

@@ -7,9 +7,9 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: The 'wazuh-agentd' program is the client-side daemon that communicates with the server.
+brief: The 'openarmor-agentd' program is the client-side daemon that communicates with the server.
        These tests will check if the configuration options related to the statistics file of
-       the 'wazuh-agentd' daemon are working properly. The statistics files are documents that
+       the 'openarmor-agentd' daemon are working properly. The statistics files are documents that
        show real-time information about the Wazuh environment.
 
 components:
@@ -19,7 +19,7 @@ targets:
     - agent
 
 daemons:
-    - wazuh-agentd
+    - openarmor-agentd
 
 os_platform:
     - linux
@@ -40,7 +40,7 @@ os_version:
     - Windows Server 2016
 
 references:
-    - https://documentation.wazuh.com/current/user-manual/reference/statistics-files/wazuh-agentd-state.html
+    - https://documentation.wazuh.com/current/user-manual/reference/statistics-files/openarmor-agentd-state.html
 
 tags:
     - stats_file
@@ -89,7 +89,7 @@ def test_agentd_state_config(test_configuration, test_metadata, remove_state_fil
                              truncate_monitored_files, daemons_handler):
 
     '''
-    description: Check that the 'wazuh-agentd.state' statistics file is created
+    description: Check that the 'openarmor-agentd.state' statistics file is created
                  automatically and verify that it is updated at the set intervals.
 
     wazuh_min_version: 4.2.0
@@ -105,7 +105,7 @@ def test_agentd_state_config(test_configuration, test_metadata, remove_state_fil
             brief: Configuration cases.
         - remove_state_file:
             type: fixture
-            brief: Removes wazuh-agentd.state file.
+            brief: Removes openarmor-agentd.state file.
         - set_wazuh_configuration:
             type: fixture
             brief: Configure a custom environment for testing.
@@ -117,8 +117,8 @@ def test_agentd_state_config(test_configuration, test_metadata, remove_state_fil
             brief: Reset the 'ossec.log' file and start a new monitor.
 
     assertions:
-        - Verify that the 'wazuh-agentd.state' statistics file has been created.
-        - Verify that the 'wazuh-agentd.state' statistics file is updated at the specified intervals.
+        - Verify that the 'openarmor-agentd.state' statistics file has been created.
+        - Verify that the 'openarmor-agentd.state' statistics file is updated at the specified intervals.
 
     input_description: An external YAML file (wazuh_conf.yaml) includes configuration settings for the agent.
                        Different test cases that are contained in an external YAML file (wazuh_state_config_tests.yaml)

@@ -1,12 +1,12 @@
 # Generate syscheck library
 if(${TARGET} STREQUAL "winagent")
-  file(GLOB sysfiles ${SRC_FOLDER}/syscheckd/build/CMakeFiles/wazuh-syscheckd-event.dir/src/*.obj
-                     ${SRC_FOLDER}/syscheckd/build/CMakeFiles/wazuh-syscheckd-event.dir/src/*/*.obj)
-  list(REMOVE_ITEM sysfiles ${SRC_FOLDER}/syscheckd/build/CMakeFiles/wazuh-syscheckd.dir/src/main.c.obj)
+  file(GLOB sysfiles ${SRC_FOLDER}/syscheckd/build/CMakeFiles/openarmor-syscheckd-event.dir/src/*.obj
+                     ${SRC_FOLDER}/syscheckd/build/CMakeFiles/openarmor-syscheckd-event.dir/src/*/*.obj)
+  list(REMOVE_ITEM sysfiles ${SRC_FOLDER}/syscheckd/build/CMakeFiles/openarmor-syscheckd.dir/src/main.c.obj)
 else()
-  file(GLOB sysfiles ${SRC_FOLDER}/syscheckd/build/CMakeFiles/wazuh-syscheckd.dir/src/*.o
-                     ${SRC_FOLDER}/syscheckd/build/CMakeFiles/wazuh-syscheckd.dir/src/*/*.o)
-  list(REMOVE_ITEM sysfiles ${SRC_FOLDER}/syscheckd/build/CMakeFiles/wazuh-syscheckd.dir/src/main.c.o)
+  file(GLOB sysfiles ${SRC_FOLDER}/syscheckd/build/CMakeFiles/openarmor-syscheckd.dir/src/*.o
+                     ${SRC_FOLDER}/syscheckd/build/CMakeFiles/openarmor-syscheckd.dir/src/*/*.o)
+  list(REMOVE_ITEM sysfiles ${SRC_FOLDER}/syscheckd/build/CMakeFiles/openarmor-syscheckd.dir/src/main.c.o)
 endif()
 
 file(GLOB rootfiles ${SRC_FOLDER}/rootcheck/*.o)
@@ -84,9 +84,9 @@ include(${SRC_FOLDER}/unit_tests/wrappers/wazuh/shared/shared.cmake)
 
 # Generate syscheckd-event library
 if(${TARGET} STREQUAL "winagent")
-  file(GLOB syscheck_event_files ${SRC_FOLDER}/syscheckd/build/CMakeFiles/wazuh-syscheckd-event.dir/src/*.obj
-                                 ${SRC_FOLDER}/syscheckd/build/CMakeFiles/wazuh-syscheckd-event.dir/src/*/*.obj)
-  list(REMOVE_ITEM sysfiles {SRC_FOLDER}/syscheckd/build/CMakeFiles/wazuh-syscheckd-event.dir/src/main.obj)
+  file(GLOB syscheck_event_files ${SRC_FOLDER}/syscheckd/build/CMakeFiles/openarmor-syscheckd-event.dir/src/*.obj
+                                 ${SRC_FOLDER}/syscheckd/build/CMakeFiles/openarmor-syscheckd-event.dir/src/*/*.obj)
+  list(REMOVE_ITEM sysfiles {SRC_FOLDER}/syscheckd/build/CMakeFiles/openarmor-syscheckd-event.dir/src/main.obj)
   add_library(SYSCHECK_EVENT_O STATIC ${syscheck_event_files})
 
   set_source_files_properties(

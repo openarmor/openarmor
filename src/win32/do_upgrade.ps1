@@ -20,7 +20,7 @@ if (Test-Path "$env:windir\sysnative") {
 
 function remove_upgrade_files {
     Remove-Item -Path ".\upgrade\*"  -Exclude "*.log", "upgrade_result" -ErrorAction SilentlyContinue
-    Remove-Item -Path ".\wazuh-agent*.msi" -ErrorAction SilentlyContinue
+    Remove-Item -Path ".\openarmor-agent*.msi" -ErrorAction SilentlyContinue
     Remove-Item -Path ".\do_upgrade.ps1" -ErrorAction SilentlyContinue
 }
 
@@ -63,14 +63,14 @@ function get_wazuh_installation_directory {
 # Check process status
 function check-process
 {
-    $process_id = (Get-Process wazuh-agent).id
+    $process_id = (Get-Process openarmor-agent).id
     $counter = 10
     while($process_id -eq $null -And $counter -gt 0)
     {
         $counter--
         Start-Service -Name "Wazuh"
         Start-Sleep 2
-        $process_id = (Get-Process wazuh-agent).id
+        $process_id = (Get-Process openarmor-agent).id
     }
     write-output "$(Get-Date -format u) - Process ID: $($process_id)." >> .\upgrade\upgrade.log
 }
@@ -82,12 +82,12 @@ function check-installation
     $counter = 5
     while($new_version -eq $current_version -And $counter -gt 0)
     {
-        write-output "$(Get-Date -format u) - Waiting for the Wazuh-Agent installation to end." >> .\upgrade\upgrade.log
+        write-output "$(Get-Date -format u) - Waiting for the Openarmor-Agent installation to end." >> .\upgrade\upgrade.log
         $counter--
         Start-Sleep 2
         $new_version = (Get-Content VERSION)
     }
-    write-output "$(Get-Date -format u) - Restarting Wazuh-Agent service." >> .\upgrade\upgrade.log
+    write-output "$(Get-Date -format u) - Restarting Openarmor-Agent service." >> .\upgrade\upgrade.log
     Get-Service -Name "Wazuh" | Start-Service
 }
 
@@ -97,7 +97,7 @@ function install
     kill -processname win32ui -ErrorAction SilentlyContinue -Force
     Remove-Item .\upgrade\upgrade_result -ErrorAction SilentlyContinue
     write-output "$(Get-Date -format u) - Starting upgrade process." >> .\upgrade\upgrade.log
-    cmd /c start /wait (Get-Item ".\wazuh-agent*.msi").Name -quiet -norestart -log installer.log
+    cmd /c start /wait (Get-Item ".\openarmor-agent*.msi").Name -quiet -norestart -log installer.log
 }
 
 # Check that the Wazuh installation runs on the expected path
@@ -132,7 +132,7 @@ Start-Sleep 10
 
 # Check status file
 function Get-AgentStatus {
-    Select-String -Path '.\wazuh-agent.state' -Pattern "^status='(.+)'" | %{$_.Matches[0].Groups[1].value}
+    Select-String -Path '.\openarmor-agent.state' -Pattern "^status='(.+)'" | %{$_.Matches[0].Groups[1].value}
 }
 
 $status = Get-AgentStatus

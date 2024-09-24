@@ -4,8 +4,8 @@
 
 @startuml sequence_diagram_db_fim
 database "<agent-id>.db" as agent.db
-actor "wazuh-manager" as manager
-actor "wazuh-agent" as fim
+actor "openarmor-manager" as manager
+actor "openarmor-agent" as fim
 participant os as os
 participant rsync
 participant dbsync

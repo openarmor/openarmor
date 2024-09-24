@@ -14,7 +14,7 @@ from wazuh import cdb_list
 from wazuh.core.cluster.dapi.dapi import DistributedAPI
 from wazuh.core.results import AffectedItemsWazuhResult
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 
 
 async def get_lists(pretty: bool = False, wait_for_complete: bool = False, offset: int = 0, limit: int = None,

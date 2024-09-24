@@ -147,7 +147,7 @@ STATIC bool group_changed(const char *multi_group);
  * @param agent_id. Agent id to assign a group
  * @param msg. Message from agent to process and validate current configuration files
  * @param group. Name of the found group, it will include the name of the group or 'default' group or NULL if it fails.
- * @param wdb_sock Wazuh-DB socket.
+ * @param wdb_sock Openarmor-DB socket.
  * @return OS_SUCCESS if it found or assigned a group, OS_INVALID otherwise
  */
 STATIC int lookfor_agent_group(const char *agent_id, char *msg, char **group, int *wdb_sock);
@@ -197,7 +197,7 @@ STATIC void copy_directory(const char *src_path, const char *dst_path, char *gro
  * @param msg Message to send
  * @param status_code Status code to set
  * @param version Agent version to set
- * @param wdb_sock Wazuh-DB socket
+ * @param wdb_sock Openarmor-DB socket
  */
 STATIC void send_wrong_version_response(const char *agent_id, char *msg, agent_status_code_t status_code, char *version, int *wdb_sock);
 

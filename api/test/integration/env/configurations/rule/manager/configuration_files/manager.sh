@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "$HOSTNAME" == "wazuh-master" ]; then
+if [ "$HOSTNAME" == "openarmor-master" ]; then
   mkdir -p /var/ossec/etc/decoders/subdir
   chown -R wazuh:wazuh /var/ossec/etc/decoders/subdir
   sed -i -e "/<decoder_dir>etc\/decoders<\/decoder_dir>/a \    <decoder_dir>etc/decoders/subdir</decoder_dir>" /var/ossec/etc/ossec.conf

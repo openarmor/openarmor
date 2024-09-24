@@ -873,7 +873,7 @@ void test_wm_agent_upgrade_validate_wpk_version_linux_package_rpm_deb(void **sta
 
     os_strdup("v4.9.0 231ef123a32d312b4123c21313ee6780", versions);
 
-    expect_string(__wrap__mtwarn, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mtwarn, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mtwarn, formatted_msg, "(8169): Agent '0' with platform 'centos' won't be upgraded using package 'deb' without the force option. Ignoring...");
 
     expect_string(__wrap_wurl_http_get, url, "https://packages.wazuh.com/4.x/wpk/linux/rpm/x86_64/versions");
@@ -906,7 +906,7 @@ void test_wm_agent_upgrade_validate_wpk_version_linux_package_rpm_deb_force(void
 
     os_strdup("v4.9.0 231ef123a32d312b4123c21313ee6780", versions);
 
-    expect_string(__wrap__mtdebug1, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mtdebug1, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mtdebug1, formatted_msg, "(8170): Agent '0' with platform 'centos' will be upgraded using package 'deb'");
 
     expect_string(__wrap_wurl_http_get, url, "https://packages.wazuh.com/4.x/wpk/linux/deb/amd64/versions");
@@ -1027,7 +1027,7 @@ void test_wm_agent_upgrade_validate_wpk_version_linux_package_deb_rpm(void **sta
 
     os_strdup("v4.9.0 231ef123a32d312b4123c21313ee6780", versions);
 
-    expect_string(__wrap__mtwarn, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mtwarn, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mtwarn, formatted_msg, "(8169): Agent '0' with platform 'ubuntu' won't be upgraded using package 'rpm' without the force option. Ignoring...");
 
     expect_string(__wrap_wurl_http_get, url, "https://packages.wazuh.com/4.x/wpk/linux/deb/amd64/versions");
@@ -1061,7 +1061,7 @@ void test_wm_agent_upgrade_validate_wpk_version_linux_package_deb_rpm_force(void
 
     os_strdup("v4.9.0 231ef123a32d312b4123c21313ee6780", versions);
 
-    expect_string(__wrap__mtdebug1, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mtdebug1, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mtdebug1, formatted_msg, "(8170): Agent '0' with platform 'ubuntu' will be upgraded using package 'rpm'");
 
     expect_string(__wrap_wurl_http_get, url, "https://packages.wazuh.com/4.x/wpk/linux/rpm/x86_64/versions");
@@ -1089,7 +1089,7 @@ void test_wm_agent_upgrade_validate_wpk_version_linux_package_unsupported_x86_64
     task->use_http = false;
     os_strdup("v4.9.0", task->wpk_version);
 
-    expect_string(__wrap__mtwarn, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mtwarn, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mtwarn, formatted_msg, "(8171): Agent '0' with unsupported platform 'unsupported' won't be upgraded without a default package.");
 
     int ret = wm_agent_upgrade_validate_wpk_version(agent, task, NULL);
@@ -1113,7 +1113,7 @@ void test_wm_agent_upgrade_validate_wpk_version_linux_package_unsupported_aarch6
     task->use_http = false;
     os_strdup("v4.9.0", task->wpk_version);
 
-    expect_string(__wrap__mtwarn, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mtwarn, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mtwarn, formatted_msg, "(8171): Agent '0' with unsupported platform 'unsupported' won't be upgraded without a default package.");
 
     int ret = wm_agent_upgrade_validate_wpk_version(agent, task, NULL);
@@ -1141,7 +1141,7 @@ void test_wm_agent_upgrade_validate_wpk_version_linux_package_unsupported_rpm(vo
 
     os_strdup("v4.9.0 231ef123a32d312b4123c21313ee6780", versions);
 
-    expect_string(__wrap__mtdebug1, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mtdebug1, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mtdebug1, formatted_msg, "(8172): Agent '0' with unsupported platform 'unsupported' will be upgraded with package 'rpm'");
 
     expect_string(__wrap_wurl_http_get, url, "https://packages.wazuh.com/4.x/wpk/linux/rpm/i386/versions");
@@ -1173,7 +1173,7 @@ void test_wm_agent_upgrade_validate_wpk_version_linux_package_unsupported_deb(vo
 
     os_strdup("v4.9.0 231ef123a32d312b4123c21313ee6780", versions);
 
-    expect_string(__wrap__mtdebug1, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mtdebug1, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mtdebug1, formatted_msg, "(8172): Agent '0' with unsupported platform 'unsupported' will be upgraded with package 'deb'");
 
     expect_string(__wrap_wurl_http_get, url, "https://packages.wazuh.com/4.x/wpk/linux/deb/i386/versions");
@@ -1363,7 +1363,7 @@ void test_wm_agent_upgrade_validate_wpk_exist_diff_sha1(void **state)
     expect_value(__wrap_fclose, _File, 1);
     will_return(__wrap_fclose, 0);
 
-    expect_string(__wrap__mtdebug1, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mtdebug1, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mtdebug1, formatted_msg, "(8161): Downloading WPK file from: 'https://packages.wazuh.com/4.x/wpk/windows/wazuh_agent_v4.0.0_windows.wpk'");
 
     expect_string(__wrap_wurl_request, url, "https://packages.wazuh.com/4.x/wpk/windows/wazuh_agent_v4.0.0_windows.wpk");
@@ -1394,7 +1394,7 @@ void test_wm_agent_upgrade_validate_wpk_download_retry(void **state)
     expect_string(__wrap_wfopen, mode, "rb");
     will_return(__wrap_wfopen, 0);
 
-    expect_string(__wrap__mtdebug1, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mtdebug1, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mtdebug1, formatted_msg, "(8161): Downloading WPK file from: 'https://packages.wazuh.com/4.x/wpk/windows/wazuh_agent_v4.0.0_windows.wpk'");
 
     expect_string(__wrap_wurl_request, url, "https://packages.wazuh.com/4.x/wpk/windows/wazuh_agent_v4.0.0_windows.wpk");
@@ -1432,7 +1432,7 @@ void test_wm_agent_upgrade_validate_wpk_download_diff_sha1(void **state)
     expect_string(__wrap_wfopen, mode, "rb");
     will_return(__wrap_wfopen, 0);
 
-    expect_string(__wrap__mtdebug1, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mtdebug1, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mtdebug1, formatted_msg, "(8161): Downloading WPK file from: 'https://packages.wazuh.com/4.x/wpk/windows/wazuh_agent_v4.0.0_windows.wpk'");
 
     expect_string(__wrap_wurl_request, url, "https://packages.wazuh.com/4.x/wpk/windows/wazuh_agent_v4.0.0_windows.wpk");
@@ -1463,7 +1463,7 @@ void test_wm_agent_upgrade_validate_wpk_download_retry_max(void **state)
     expect_string(__wrap_wfopen, mode, "rb");
     will_return(__wrap_wfopen, 0);
 
-    expect_string(__wrap__mtdebug1, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mtdebug1, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mtdebug1, formatted_msg, "(8161): Downloading WPK file from: 'https://packages.wazuh.com/4.x/wpk/windows/wazuh_agent_v4.0.0_windows.wpk'");
 
     expect_string(__wrap_wurl_request, url, "https://packages.wazuh.com/4.x/wpk/windows/wazuh_agent_v4.0.0_windows.wpk");
@@ -1601,7 +1601,7 @@ void test_wm_agent_upgrade_validate_task_status_message_error_code(void **state)
     cJSON_AddNumberToObject(response, "agent", 5);
     cJSON_AddStringToObject(response, "status", "Done");
 
-    expect_string(__wrap__mterror, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mterror, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mterror, formatted_msg, "(8119): There has been an error updating task state. Error code: '1', message: 'Error'");
 
     int ret = wm_agent_upgrade_validate_task_status_message(response, NULL, NULL);
@@ -1615,7 +1615,7 @@ void test_wm_agent_upgrade_validate_task_status_message_invalid_json(void **stat
 {
     cJSON *response = cJSON_CreateObject();
 
-    expect_string(__wrap__mterror, tag, "wazuh-modulesd:agent-upgrade");
+    expect_string(__wrap__mterror, tag, "openarmor-modulesd:agent-upgrade");
     expect_string(__wrap__mterror, formatted_msg, "(8107): Required parameters in message are missing.");
 
     int ret = wm_agent_upgrade_validate_task_status_message(response, NULL, NULL);

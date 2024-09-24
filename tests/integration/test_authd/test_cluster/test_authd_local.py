@@ -7,7 +7,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: This module verifies the correct behavior of 'wazuh-authd' under different messages
+brief: This module verifies the correct behavior of 'openarmor-authd' under different messages
        in a Cluster scenario (for Master).
 
 components:
@@ -17,8 +17,8 @@ targets:
     - manager
 
 daemons:
-    - wazuh-authd
-    - wazuh-db
+    - openarmor-authd
+    - openarmor-db
 
 os_platform:
     - linux

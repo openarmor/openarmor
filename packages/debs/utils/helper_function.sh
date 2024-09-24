@@ -18,7 +18,7 @@ setup_build(){
     package_name="$4"
     debug="$5"
 
-    cp -pr ${specs_path}/wazuh-${BUILD_TARGET}/debian ${sources_dir}/debian
+    cp -pr ${specs_path}/openarmor-${BUILD_TARGET}/debian ${sources_dir}/debian
     cp -p /tmp/gen_permissions.sh ${sources_dir}
 
     # Generating directory structure to build the .deb package
@@ -62,7 +62,7 @@ build_package(){
 get_package_and_checksum(){
     wazuh_version="$1"
     short_commit_hash="$2"
-    base_name="wazuh-${BUILD_TARGET}_${wazuh_version}-${REVISION}"
+    base_name="openarmor-${BUILD_TARGET}_${wazuh_version}-${REVISION}"
 
     if [[ "${ARCHITECTURE_TARGET}" == "ppc64le" ]]; then
         deb_file="${base_name}_ppc64el.deb"
@@ -76,8 +76,8 @@ get_package_and_checksum(){
 
     pkg_path="${build_dir}/${BUILD_TARGET}"
     if [[ "${checksum}" == "yes" ]]; then
-        cd ${pkg_path} && sha512sum wazuh-${BUILD_TARGET}*deb > /var/local/wazuh/${deb_file}.sha512
+        cd ${pkg_path} && sha512sum openarmor-${BUILD_TARGET}*deb > /var/local/wazuh/${deb_file}.sha512
     fi
 
-    find ${pkg_path} -type f -name "wazuh-${BUILD_TARGET}*deb" -exec mv {} /var/local/wazuh/${deb_file} \;
+    find ${pkg_path} -type f -name "openarmor-${BUILD_TARGET}*deb" -exec mv {} /var/local/wazuh/${deb_file} \;
 }

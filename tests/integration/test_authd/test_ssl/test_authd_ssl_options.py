@@ -8,7 +8,7 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 type: integration
 
 brief: These tests will check if the 'SSL' (Secure Socket Layer) protocol-related settings of
-       the 'wazuh-authd' daemon are working correctly. The 'wazuh-authd' daemon can
+       the 'openarmor-authd' daemon are working correctly. The 'openarmor-authd' daemon can
        automatically add a Wazuh agent to a Wazuh manager and provide the key
        to the agent. It is used along with the 'agent-auth' application.
 
@@ -19,9 +19,9 @@ targets:
     - manager
 
 daemons:
-    - wazuh-authd
-    - wazuh-db
-    - wazuh-modulesd
+    - openarmor-authd
+    - openarmor-db
+    - openarmor-modulesd
 
 os_platform:
     - linux
@@ -38,7 +38,7 @@ os_version:
     - Ubuntu Bionic
 
 references:
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-authd.html
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-authd.html
     - https://documentation.wazuh.com/current/user-manual/reference/ossec-conf/auth.html
 
 tags:
@@ -81,7 +81,7 @@ def test_ossec_auth_configurations(test_configuration, test_metadata, set_wazuh_
                                    configure_sockets_environment, wait_for_authd_startup):
     '''
     description:
-        Checks if the 'SSL' settings of the 'wazuh-authd' daemon work correctly by enrolling agents
+        Checks if the 'SSL' settings of the 'openarmor-authd' daemon work correctly by enrolling agents
         that use different values for these settings. Different types of encryption and secure
         connection protocols are tested, in addition to the 'ssl_auto_negotiate' option
         that automatically chooses the protocol to be used.

@@ -7,9 +7,9 @@ copyright: Copyright (C) 2015-2024, Wazuh Inc.
 
 type: integration
 
-brief: The 'wazuh-analysisd' daemon receives the log messages and compares them to the rules.
+brief: The 'openarmor-analysisd' daemon receives the log messages and compares them to the rules.
        It then creates an alert when a log message matches an applicable rule.
-       Specifically, these tests will check if the 'wazuh-analysisd' daemon generates alerts
+       Specifically, these tests will check if the 'openarmor-analysisd' daemon generates alerts
        using custom rules that contains the 'mitre' field to enrich those alerts with
        MITREs IDs, techniques and tactics.
 
@@ -22,8 +22,8 @@ targets:
     - manager
 
 daemons:
-    - wazuh-analysisd
-    - wazuh-db
+    - openarmor-analysisd
+    - openarmor-db
 
 os_platform:
     - linux
@@ -40,7 +40,7 @@ os_version:
     - Ubuntu Bionic
 
 references:
-    - https://documentation.wazuh.com/current/user-manual/reference/daemons/wazuh-analysisd.html
+    - https://documentation.wazuh.com/current/user-manual/reference/daemons/openarmor-analysisd.html
     - https://attack.mitre.org/
 
 tags:

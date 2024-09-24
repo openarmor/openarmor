@@ -27,7 +27,7 @@ from wazuh.core.results import AffectedItemsWazuhResult, WazuhResult
 from wazuh.core.security import revoke_tokens
 from wazuh.rbac import preprocessor
 
-logger = logging.getLogger('wazuh-api')
+logger = logging.getLogger('openarmor-api')
 auth_re = re.compile(r'basic (.*)', re.IGNORECASE)
 
 
