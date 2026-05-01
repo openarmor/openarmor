@@ -360,7 +360,7 @@ Variant WinService::install(Variant vParams)
 			{ "startMode", nStartMode},
 			{ "errorControl", vParams.get("errorControl", SERVICE_ERROR_NORMAL) },  
 			{ "description", "Protects system against malicious activity and data leaks" },
-			{ "displayName", "Comodo EDR Service" },
+			{ "displayName", "OpenArmor EDR Service" },
 			{ "restartIfCrash", Dictionary() },
 			{ "reinstall", fReinstall}
 		})
@@ -519,7 +519,7 @@ Variant WinService::stopService()
 //
 void WinService::saveServiceData(const std::string& sName, Variant vData) const
 {
-	sys::win::WriteRegistryValue(HKEY_LOCAL_MACHINE, L"Software\\ComodoEdrAgent",
+	sys::win::WriteRegistryValue(HKEY_LOCAL_MACHINE, L"Software\\OpenArmorAgent",
 		std::wstring(sName.begin(), sName.end()), vData);
 
 }
@@ -537,7 +537,7 @@ std::optional<Variant> WinService::loadServiceData(const std::string& sName) con
 	try
 	{
 		return sys::win::ReadRegistryValue(HKEY_LOCAL_MACHINE,
-			std::wstring(L"Software\\ComodoEdrAgent"), std::wstring(sName.begin(), sName.end()));
+			std::wstring(L"Software\\OpenArmorAgent"), std::wstring(sName.begin(), sName.end()));
 	}
 	catch (...)
 	{
@@ -553,7 +553,7 @@ Variant WinService::loadServiceData(const std::string& sName, Variant vDefault) 
 	try
 	{
 		return sys::win::ReadRegistryValue(HKEY_LOCAL_MACHINE,
-			std::wstring(L"Software\\ComodoEdrAgent"), std::wstring(sName.begin(), sName.end()));
+			std::wstring(L"Software\\OpenArmorAgent"), std::wstring(sName.begin(), sName.end()));
 	}
 	catch (...)
 	{

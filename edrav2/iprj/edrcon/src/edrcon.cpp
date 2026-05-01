@@ -55,7 +55,7 @@ int wmain(int argc, wchar_t* argv[])
 	pApp->addMode("compile", cmd::createAppMode_compile());
 	// Add your application mode handlers below
 
-	int ec = pApp->run("edrcon", "Comodo EDR console", argc, argv);
+	int ec = pApp->run("edrcon", "OpenArmor console", argc, argv);
 	SetConsoleOutputCP(nConsoleCP);
 	return ec;
 

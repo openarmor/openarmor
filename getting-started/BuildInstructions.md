@@ -1,9 +1,9 @@
 # Build Instructions
 You should have Microsoft Visual Studio 2019 to build the code
-* Open Microsoft Visual Studio 2019 as Administrator under  /openedr/edrav2/build/vs2019/
+* Open Microsoft Visual Studio 2019 as Administrator under  /openarmor/edrav2/build/vs2019/
 * Open the edrav2.sln solutions file within the folder
 * Build Release on edrav2.sln on Visual Studio
-* Open Microsoft Visual Studio 2019 as Administrator under  /openedr/edrav2/iprj/installations/build/vs2019/
+* Open Microsoft Visual Studio 2019 as Administrator under  /openarmor/edrav2/iprj/installations/build/vs2019/
 * Open installation.wixproj
 * Compile installer.
 ```

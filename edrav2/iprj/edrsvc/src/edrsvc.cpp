@@ -55,7 +55,7 @@ int wmain(int argc, wchar_t* argv[])
 		pApp->addMode("server", cmd::createAppMode_wait());
 		//pApp->addMode("dump", cmd::createAppMode_dump());
 		//pApp->addMode("test", cmd::createAppMode_wait());
-		ec = pApp->run("edrsvc", "Comodo EDR service", argc, argv);
+		ec = pApp->run("edrsvc", "OpenArmor EDR service", argc, argv);
 	}
 	// std::cout << "Application finished." << std::endl;
 	SetConsoleOutputCP(nConsoleCP);
