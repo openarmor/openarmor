@@ -3,7 +3,7 @@
  * You can get the pre-configured package at https://github.com/deviantony/docker-elk
     also, you can configure your system defaults also work but less securely please check  https://github.com/deviantony/docker-elk/blob/main/README.md for further information on configuration details
 
- ![git clone](https://github.com/openarmor/openarmor/blob/main/docs/screenshots/git-clone-elk.avif)
+ ![git clone](https://github.com/openarmor/openarmor/blob/main/assets/screenshots/git-clone-elk.avif)
 
    Clone or download the repository
    Open Terminal inside repo and run
@@ -12,7 +12,7 @@ $ sudo docker-compose up -d
 ```
    -d is for running at the background and if permissions are asked please re-run with sudo privileges
 
- ![Docker compose up](https://github.com/openarmor/openarmor/blob/main/docs/screenshots/docker-compose-allup.avif)
+ ![Docker compose up](https://github.com/openarmor/openarmor/blob/main/assets/screenshots/docker-compose-allup.avif)
 
    You should be able to see docker containers.
     
@@ -20,7 +20,7 @@ check with
 ```console
 sudo docker ps
 ```
-![Docker ps](https://github.com/openarmor/openarmor/blob/main/docs/screenshots/docker-ps-list.avif)
+![Docker ps](https://github.com/openarmor/openarmor/blob/main/assets/screenshots/docker-ps-list.avif)
 
    keep in mind kibana is the log ui in this setup  we gonna use kibanas port later on
     by now your monitoring tools are up and running

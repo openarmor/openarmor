@@ -9,7 +9,7 @@
 ```console
 .\filebeat.exe modules enable logstash --path.config"C:\ProgramData\Elastic\Beats\filebeat"
 ```
-![Filebeat module](https://github.com/openarmor/openarmor/blob/main/docs/screenshots/filebeat-enable-module-logstash.avif)
+![Filebeat module](https://github.com/openarmor/openarmor/blob/main/assets/screenshots/filebeat-enable-module-logstash.avif)
 
 This command will enable logstash feature and choose your configuration path
 
@@ -47,9 +47,9 @@ setup.kibana:
     output.logstash:
      hosts: ["Your docker adress:5044"]
 ```
-![filebeat config](https://github.com/openarmor/openarmor/blob/main/docs/screenshots/filebeatinputs-filebeatyaml.avif)
-![filebeat config](https://github.com/openarmor/openarmor/blob/main/docs/screenshots/filebeatmodules-filebeatyaml.avif)
-![filebeat config](https://github.com/openarmor/openarmor/blob/main/docs/screenshots/logstashconfig-filebeatyml.avif)
+![filebeat config](https://github.com/openarmor/openarmor/blob/main/assets/screenshots/filebeatinputs-filebeatyaml.avif)
+![filebeat config](https://github.com/openarmor/openarmor/blob/main/assets/screenshots/filebeatmodules-filebeatyaml.avif)
+![filebeat config](https://github.com/openarmor/openarmor/blob/main/assets/screenshots/logstashconfig-filebeatyml.avif)
 
 * Now we have to configure activated logstash on filebeat go to  C:\ProgramData\Elastic\Beats\filebeat\modules.d\
     You can check out logstash.yaml and edit accourding to your needs and configuration.
@@ -68,14 +68,14 @@ module: logstash
   slowlog:
     enabled: false
 ```
- ![Logstash Config](https://github.com/openarmor/openarmor/blob/main/docs/screenshots/logstash-yaml.avif)
+ ![Logstash Config](https://github.com/openarmor/openarmor/blob/main/assets/screenshots/logstash-yaml.avif)
 
  as for the final step to run filebeat with these configurations please restart the filebeat service from your services.msc
  or run this command from your Powershell as an administrator
 
-![Services msc](https://github.com/openarmor/openarmor/blob/main/docs/screenshots/services-filebeat-restart.avif)
+![Services msc](https://github.com/openarmor/openarmor/blob/main/assets/screenshots/services-filebeat-restart.avif)
 
  ```console
     Restart-Service -Force filebeat
  ```
- ![Powershell Services](https://github.com/openarmor/openarmor/blob/main/docs/screenshots/filebeat-service-restart.avif)
+ ![Powershell Services](https://github.com/openarmor/openarmor/blob/main/assets/screenshots/filebeat-service-restart.avif)

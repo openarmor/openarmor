@@ -3334,7 +3334,7 @@ After running `docker-compose up -d`, verify all services started:
 docker-compose ps
 ```
 
-![Docker Compose Up](docs/screenshots/docker-compose-allup.avif)
+![Docker Compose Up](assets/screenshots/docker-compose-allup.avif)
 
 Expected output:
 
@@ -3346,7 +3346,7 @@ openarmor-kibana        kibana:8.x.x            "/bin/tini -- /usr/l…"   kiban
 openarmor-filebeat      elastic/filebeat:8.x.x  "/usr/bin/tini -- /u…"   filebeat        running
 ```
 
-![Docker PS](docs/screenshots/docker-ps-list.avif)
+![Docker PS](assets/screenshots/docker-ps-list.avif)
 
 Watch logs for Elasticsearch to confirm it is ready:
 
@@ -3959,8 +3959,8 @@ output {
 
 #### Step 3: logstash.yml Configuration
 
-![Logstash Config](docs/screenshots/logstashconfig-filebeatyml.avif)
-![Logstash YAML](docs/screenshots/logstash-yaml.avif)
+![Logstash Config](assets/screenshots/logstashconfig-filebeatyml.avif)
+![Logstash YAML](assets/screenshots/logstash-yaml.avif)
 
 Edit `/etc/logstash/logstash.yml`:
 
@@ -4003,8 +4003,8 @@ Filebeat is the log shipper that runs on the Windows endpoint (where OpenArmor i
 
 #### Step 1: Download Filebeat
 
-![Install Filebeat 1](docs/screenshots/installing%20filebeat1.avif)
-![Install Filebeat 2](docs/screenshots/installing%20file%20beat2.avif)
+![Install Filebeat 1](assets/screenshots/installing%20filebeat1.avif)
+![Install Filebeat 2](assets/screenshots/installing%20file%20beat2.avif)
 
 Download Filebeat for Windows from: [https://www.elastic.co/downloads/beats/filebeat](https://www.elastic.co/downloads/beats/filebeat)
 
@@ -4032,7 +4032,7 @@ PowerShell.exe -ExecutionPolicy UnRestricted -File .\install-service-filebeat.ps
 
 #### Step 2: Configure filebeat.yml
 
-![Configure Inputs](docs/screenshots/filebeatinputs-filebeatyaml.avif)
+![Configure Inputs](assets/screenshots/filebeatinputs-filebeatyaml.avif)
 
 The main configuration file is `C:\filebeat\filebeat-8.11.0-windows-x86_64\filebeat.yml`.
 
@@ -4104,8 +4104,8 @@ Replace `your-logstash-host` with the IP address or hostname of your Logstash/Do
 
 #### Step 3: Enable the Logstash Module
 
-![Enable Module](docs/screenshots/filebeat-enable-module-logstash.avif)
-![Configure Modules](docs/screenshots/filebeatmodules-filebeatyaml.avif)
+![Enable Module](assets/screenshots/filebeat-enable-module-logstash.avif)
+![Configure Modules](assets/screenshots/filebeatmodules-filebeatyaml.avif)
 
 ```cmd
 cd C:\filebeat\filebeat-8.11.0-windows-x86_64
@@ -4151,8 +4151,8 @@ logstash: your-logstash-host:5044...
 
 #### Step 6: Start and Verify Filebeat
 
-![Service Restart](docs/screenshots/filebeat-service-restart.avif)
-![Services Restart](docs/screenshots/services-filebeat-restart.avif)
+![Service Restart](assets/screenshots/filebeat-service-restart.avif)
+![Services Restart](assets/screenshots/services-filebeat-restart.avif)
 
 ```cmd
 # Start via services
@@ -4181,7 +4181,7 @@ INFO    [monitoring]                log/log.go:145  Non-zero metrics in the last
 
 The `"added":150,"done":150` indicates events are being shipped.
 
-![Git Clone ELK](docs/screenshots/git-clone-elk.avif)
+![Git Clone ELK](assets/screenshots/git-clone-elk.avif)
 
 ---
 
@@ -4197,13 +4197,13 @@ Open your browser and navigate to:
 http://your-kibana-host:5601
 ```
 
-![Kibana UI 1](docs/screenshots/elastic%20ui1.avif)
+![Kibana UI 1](assets/screenshots/elastic%20ui1.avif)
 
 On first launch, Kibana will display the welcome screen and prompt you to configure a data view (index pattern).
 
 #### Step 2: Create an Index Pattern (Data View)
 
-![Kibana UI 2](docs/screenshots/elastic%20ui2.avif)
+![Kibana UI 2](assets/screenshots/elastic%20ui2.avif)
 
 1. In the left sidebar, click the **hamburger menu (☰)** → **Stack Management**
 2. Under **Kibana**, click **Data Views**
@@ -4214,7 +4214,7 @@ On first launch, Kibana will display the welcome screen and prompt you to config
    - **Timestamp field:** `@timestamp`
 5. Click **Save data view to Kibana**
 
-![Kibana UI 3](docs/screenshots/elastic%20ui3.avif)
+![Kibana UI 3](assets/screenshots/elastic%20ui3.avif)
 
 #### Step 3: Explore Data in Discover
 
@@ -4223,11 +4223,11 @@ On first launch, Kibana will display the welcome screen and prompt you to config
 3. Set the time range (top right) to the period when your endpoints were active
 4. You should see OpenArmor events appearing in the results table
 
-![Kibana UI 4](docs/screenshots/elastic%20ui4.avif)
+![Kibana UI 4](assets/screenshots/elastic%20ui4.avif)
 
 #### Step 4: Import Pre-Built OpenArmor Dashboards
 
-![Kibana UI 5](docs/screenshots/elastic%20ui5.avif)
+![Kibana UI 5](assets/screenshots/elastic%20ui5.avif)
 
 Pre-built dashboards are included in the repository at `getting-started/kibana/`:
 
@@ -4239,7 +4239,7 @@ Pre-built dashboards are included in the repository at `getting-started/kibana/`
 
 #### Step 5: Configure SIEM Alerts
 
-![Kibana UI 6](docs/screenshots/elastic%20ui6.avif)
+![Kibana UI 6](assets/screenshots/elastic%20ui6.avif)
 
 To set up alert rules for suspicious activity:
 
@@ -4262,7 +4262,7 @@ Risk score: 73
 
 #### Step 6: Saved Searches for Threat Hunting
 
-![Kibana UI 7](docs/screenshots/elastic%20ui7.avif)
+![Kibana UI 7](assets/screenshots/elastic%20ui7.avif)
 
 Create saved searches for common threat hunting queries:
 
@@ -7859,39 +7859,39 @@ The following screenshots show OpenArmor integrated with the Comodo Dragon platf
 
 **Detection & Alerting** — Real-time alert feed with severity classification, process information, MITRE ATT&CK technique tags, and FLS reputation verdicts. Analysts can filter by severity, endpoint, or technique and drill into any alert for full context.
 
-![Detection and Alerting](docs/screenshots/Screenshot_1.avif)
+![Detection and Alerting](assets/screenshots/Screenshot_1.avif)
 
 **Event Details** — Full event context for any alert: enriched process chain showing the complete parent-child ancestry, file hash with FLS verdict, command line arguments, user context, and associated MITRE technique. Provides everything needed for triage without leaving the console.
 
-![Event Details](docs/screenshots/Screenshot_2.avif)
+![Event Details](assets/screenshots/Screenshot_2.avif)
 
 **Main Dashboard** — SOC-level overview showing active alert counts by severity, trending threat techniques across the endpoint fleet, endpoint health status, cloud upload throughput, and top offending endpoints. Designed for display on a SOC monitor.
 
-![Dashboard](docs/screenshots/Screenshot_3.avif)
+![Dashboard](assets/screenshots/Screenshot_3.avif)
 
 **Process Timeline** — Chronological view of all events associated with a specific process across its lifetime, from creation through termination. Useful for reconstructing the full activity of a suspicious process.
 
-![Process Timeline](docs/screenshots/Screenshot_4.avif)
+![Process Timeline](assets/screenshots/Screenshot_4.avif)
 
 **Process Tree View** — Hierarchical parent-child process visualization showing how a threat propagated through the process tree. Colors indicate event types (red: alerts, yellow: suspicious, grey: informational). Essential for understanding lateral movement and code execution chains.
 
-![Process Tree View](docs/screenshots/Screenshot_5.avif)
+![Process Tree View](assets/screenshots/Screenshot_5.avif)
 
 **Event Search** — Full-text search across all telemetry with support for field-specific filters (`processName:powershell.exe AND severity:high`). Returns results in milliseconds from Elasticsearch. Supports export to JSON and CSV.
 
-![Event Search](docs/screenshots/Screenshot_6.avif)
+![Event Search](assets/screenshots/Screenshot_6.avif)
 
 ### ELK Stack Screenshots
 
 The following screenshots show OpenArmor telemetry visualized in the open source Kibana interface.
 
-![Elasticsearch UI 1](docs/screenshots/elastic%20ui1.avif)
-![Elasticsearch UI 2](docs/screenshots/elastic%20ui2.avif)
-![Elasticsearch UI 3](docs/screenshots/elastic%20ui3.avif)
-![Elasticsearch UI 4](docs/screenshots/elastic%20ui4.avif)
-![Elasticsearch UI 5](docs/screenshots/elastic%20ui5.avif)
-![Elasticsearch UI 6](docs/screenshots/elastic%20ui6.avif)
-![Elasticsearch UI 7](docs/screenshots/elastic%20ui7.avif)
+![Elasticsearch UI 1](assets/screenshots/elastic%20ui1.avif)
+![Elasticsearch UI 2](assets/screenshots/elastic%20ui2.avif)
+![Elasticsearch UI 3](assets/screenshots/elastic%20ui3.avif)
+![Elasticsearch UI 4](assets/screenshots/elastic%20ui4.avif)
+![Elasticsearch UI 5](assets/screenshots/elastic%20ui5.avif)
+![Elasticsearch UI 6](assets/screenshots/elastic%20ui6.avif)
+![Elasticsearch UI 7](assets/screenshots/elastic%20ui7.avif)
 
 ---
 
