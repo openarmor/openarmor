@@ -11,7 +11,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/openarmor/openarmor?style=social)](https://github.com/openarmor/openarmor)
 [![Slack](https://img.shields.io/badge/slack-join-4A154B.svg)](https://openedr.com/register/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Build](https://img.shields.io/badge/build-VS2019-blue.svg)](getting-started/BuildInstructions.md)
+[![Build](https://img.shields.io/badge/build-VS2019-blue.svg)](docs/getting-started/BuildInstructions.md)
 [![Release](https://img.shields.io/badge/release-v2.5.1-green.svg)](https://github.com/ComodoSecurity/openedr/releases/tag/release-2.5.1)
 
 ---
@@ -3401,8 +3401,8 @@ logstash:
   image: logstash:8.11.0
   container_name: openarmor-logstash
   volumes:
-    - ./getting-started/logstash/pipeline:/usr/share/logstash/pipeline:ro   # Pipeline configs
-    - ./getting-started/logstash/config:/usr/share/logstash/config:ro       # logstash.yml
+    - ./docs/getting-started/logstash/pipeline:/usr/share/logstash/pipeline:ro   # Pipeline configs
+    - ./docs/getting-started/logstash/config:/usr/share/logstash/config:ro       # logstash.yml
   ports:
     - "5044:5044"      # Beats input — Filebeat ships to this port
     - "5000:5000"      # Optional: Syslog input (TCP)
@@ -3418,7 +3418,7 @@ logstash:
 
 **Key settings:**
 - Port `5044` is the Beats protocol input. Filebeat on Windows endpoints connects to this port.
-- Pipeline configs are mounted from `./getting-started/logstash/pipeline/`. Modify these to customize parsing.
+- Pipeline configs are mounted from `./docs/getting-started/logstash/pipeline/`. Modify these to customize parsing.
 - `depends_on: elasticsearch: condition: service_healthy` — Logstash waits for Elasticsearch to pass its healthcheck before starting.
 
 #### Kibana
@@ -3454,7 +3454,7 @@ filebeat:
   container_name: openarmor-filebeat
   user: root
   volumes:
-    - ./getting-started/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+    - ./docs/getting-started/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
     - /var/log/openarmor:/var/log/openarmor:ro    # Mount Windows log share (NFS/SMB)
   command: filebeat -e -strict.perms=false
   depends_on:
@@ -3655,7 +3655,7 @@ Windows Endpoint
 
 ### Setting Up Elasticsearch
 
-For the full setup guide with detailed configuration options, see: `getting-started/SettingELK.md`
+For the full setup guide with detailed configuration options, see: `docs/getting-started/SettingELK.md`
 
 #### Step 1: Download and Install Elasticsearch
 
@@ -4187,7 +4187,7 @@ The `"added":150,"done":150` indicates events are being shipped.
 
 ### Setting Up Kibana
 
-For the full setup guide, see: `getting-started/SettingKibana.md`
+For the full setup guide, see: `docs/getting-started/SettingKibana.md`
 
 #### Step 1: Access Kibana
 
@@ -4229,11 +4229,11 @@ On first launch, Kibana will display the welcome screen and prompt you to config
 
 ![Kibana UI 5](assets/screenshots/elastic%20ui5.avif)
 
-Pre-built dashboards are included in the repository at `getting-started/kibana/`:
+Pre-built dashboards are included in the repository at `docs/getting-started/kibana/`:
 
 1. In Kibana, go to **Stack Management** → **Saved Objects**
 2. Click **Import**
-3. Select the dashboard export file: `getting-started/kibana/openarmor-dashboards.ndjson`
+3. Select the dashboard export file: `docs/getting-started/kibana/openarmor-dashboards.ndjson`
 4. On the import screen, select **Overwrite** if prompted
 5. Click **Import**
 
@@ -7907,7 +7907,7 @@ A: At default configuration, expect 1–2% additional CPU usage and 80–120 MB 
 A: Detection latency from event occurrence to alert generation is typically under 100 milliseconds on the endpoint. Cloud visibility latency (time from event to alert appearing in the cloud console) depends on batch interval settings — typically 3–10 seconds with default configuration.
 
 **Q: Can I write my own detection rules?**
-A: Yes. OpenArmor's policy engine uses a JSON-based rule language that supports field matching, logical operators, threshold conditions, and sequence detection. Rules are compiled with `edrcon compile` and hot-reloaded. See the [Policy Reference](getting-started/policy-reference.md) for the full rule language specification.
+A: Yes. OpenArmor's policy engine uses a JSON-based rule language that supports field matching, logical operators, threshold conditions, and sequence detection. Rules are compiled with `edrcon compile` and hot-reloaded. See the [Policy Reference](docs/getting-started/policy-reference.md) for the full rule language specification.
 
 **Q: Does OpenArmor work in air-gapped environments?**
 A: Yes. Disable cloud providers in `edrsvc.json` and set `offlineBufferMaxMb` to accommodate the expected event volume between data transfers. Use `edrcon dump` to export events to JSON for manual transfer to your analysis platform. Enrollment can use offline bundle mode.
@@ -7961,7 +7961,7 @@ A: By default, OpenArmor does not collect audio/video streams, browser history, 
 A: No. OpenArmor runs as a driver inside each monitored OS instance. Hypervisor-level visibility would require a separate solution (e.g., VMware vSphere Trust Authority or similar).
 
 **Q: How do I customize the Kibana dashboards?**
-A: Import the provided dashboard JSON from `getting-started/kibana-dashboards.ndjson` into Kibana (Stack Management > Saved Objects > Import). Dashboards can then be customized in the Kibana interface and exported for version control.
+A: Import the provided dashboard JSON from `docs/getting-started/kibana-dashboards.ndjson` into Kibana (Stack Management > Saved Objects > Import). Dashboards can then be customized in the Kibana interface and exported for version control.
 
 **Q: How many endpoints can one ELK cluster handle?**
 A: A well-tuned ELK cluster (3 nodes, 32 GB RAM each, SSD storage) can handle approximately 5,000–10,000 endpoints generating typical event volumes. For larger deployments, use Elasticsearch's hot-warm-cold architecture, cross-cluster replication, or consider the AWS OpenSearch managed service.
@@ -8057,7 +8057,7 @@ clang-format -i -style=file src\**\*.cpp src\**\*.h
 Detection rules are the highest-impact contribution for most users. To write a rule:
 
 1. Identify the behavior you want to detect (MITRE technique, specific malware TTP, etc.)
-2. Write the rule in JSON following the rule language specification in [getting-started/policy-reference.md](getting-started/policy-reference.md)
+2. Write the rule in JSON following the rule language specification in [docs/getting-started/policy-reference.md](docs/getting-started/policy-reference.md)
 3. Test with synthetic events: `edrcon compile --policy my_rule.json --test-events tests/test_events.json`
 4. Verify the rule has no false positives in your environment by running it in `audit` mode for at least one week
 5. Submit via pull request with:
@@ -8217,6 +8217,6 @@ Full license texts are available in `THIRD_PARTY_LICENSES/`. The Boost Software 
 
 *Built by the community. Securing the world.*
 
-[GitHub](https://github.com/openarmor/openarmor) • [Slack](https://openedr.com/register/) • [Docs](getting-started/) • [Issues](https://github.com/openarmor/openarmor/issues)
+[GitHub](https://github.com/openarmor/openarmor) • [Slack](https://openedr.com/register/) • [Docs](docs/getting-started/) • [Issues](https://github.com/openarmor/openarmor/issues)
 
 </div>
